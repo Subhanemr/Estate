@@ -4,6 +4,7 @@
     {
         Admin,
         Moderator,
+        Agent,
         Member
     }
 }
