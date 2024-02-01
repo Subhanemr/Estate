@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Estate.Domain.Entities
+﻿namespace Estate.Domain.Entities
 {
-    internal class ParkingType
+    public class ParkingType : BaseNameEntity
     {
+        public ICollection<ProductParkingType>? ProductParkingTypes { get; set; }
     }
 }

@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Estate.Application\Estate.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Estate.Infrastructure\Estate.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Estate.Persistance\Estate.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

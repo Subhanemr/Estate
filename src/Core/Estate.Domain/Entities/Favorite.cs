@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Estate.Domain.Entities
+﻿namespace Estate.Domain.Entities
 {
-    internal class Favorite
+    public class Favorite : BaseEntity
     {
+        public string AppUserId { get; set; } = null!;
+        public AppUser AppUser { get; set; } = null!;
+        public int ProductId { get; set; }
+        public Product Product { get; set; } = null!;
     }
 }

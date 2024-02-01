@@ -11,6 +11,7 @@
         public string? LinkedLink { get; set; }
         public string? InstaLink { get; set; }
 
+        public ICollection<BlogComment>? BlogComments { get; set; }
 
     }
 }

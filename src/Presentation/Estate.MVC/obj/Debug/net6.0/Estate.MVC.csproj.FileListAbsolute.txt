@@ -218,3 +218,5 @@ C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\refint\
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\Estate.MVC.pdb
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\Estate.MVC.genruntimeconfig.cache
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\ref\Estate.MVC.dll
+C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\Estate.MVC.RazorAssemblyInfo.cache
+C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\Estate.MVC.RazorAssemblyInfo.cs

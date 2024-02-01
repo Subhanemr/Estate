@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Estate.Application.Abstractions.Repositories;
+using Estate.Domain.Entities;
+using Estate.Persistance.Contexts;
 
 namespace Estate.Persistance.Implementations.Repositories
 {
-    internal class AgencyNameRepository
+    public class AgencyNameRepository : NameRepository<Agency>, IAgencyNameRepository
     {
+        public AgencyNameRepository(AppDbContext context) : base(context) { }
     }
 }

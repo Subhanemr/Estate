@@ -13,8 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Implementations\Repositories\Generic\" />
-    <Folder Include="Implementations\Services\" />
   </ItemGroup>
 
   <ItemGroup>

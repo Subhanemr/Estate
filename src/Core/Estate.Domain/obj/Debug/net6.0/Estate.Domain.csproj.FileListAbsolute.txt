@@ -1,0 +1,12 @@
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\bin\Debug\net6.0\Estate.Domain.deps.json
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\bin\Debug\net6.0\Estate.Domain.dll
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\bin\Debug\net6.0\Estate.Domain.pdb
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\Estate.Domain.csproj.AssemblyReference.cache
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\Estate.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\Estate.Domain.AssemblyInfoInputs.cache
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\Estate.Domain.AssemblyInfo.cs
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\Estate.Domain.csproj.CoreCompileInputs.cache
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\Estate.Domain.dll
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\refint\Estate.Domain.dll
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\Estate.Domain.pdb
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\ref\Estate.Domain.dll

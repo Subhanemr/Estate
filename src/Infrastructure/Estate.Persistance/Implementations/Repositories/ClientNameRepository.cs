@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Estate.Application.Abstractions.Repositories;
+using Estate.Domain.Entities;
+using Estate.Persistance.Contexts;
 
 namespace Estate.Persistance.Implementations.Repositories
 {
-    internal class ClientNameRepository
+    public class ClientNameRepository : NameRepository<Client>, IClientNameRepository
     {
+        public ClientNameRepository(AppDbContext context) : base(context) { }
     }
 }

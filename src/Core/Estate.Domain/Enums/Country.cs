@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Estate.Domain.Enums
+﻿namespace Estate.Domain.Enums
 {
-    internal class Country
+    public enum Country
     {
+        America,
+        Azerbaijan,
     }
 }

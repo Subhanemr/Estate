@@ -25,9 +25,9 @@
         public bool ElementarySchool { get; set; }
 
         public int CategoryId { get; set; }
-        public int AgentId { get; set; }
+        public string AppUserId { get; set; } = null!;
         public Category Category { get; set; } = null!;
-        public Agent Agent { get; set; } = null!;
+        public AppUser AppUser { get; set; } = null!;
         public ICollection<ProductImage> ProductImages { get; set; } = null!;
         public ICollection<ProductComment>? ProductComments { get; set; }
         public ICollection<ProductFeatures>? ProductFeatures { get; set; }

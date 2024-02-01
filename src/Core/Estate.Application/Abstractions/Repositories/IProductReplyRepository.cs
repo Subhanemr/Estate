@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Estate.Domain.Entities;
 
 namespace Estate.Application.Abstractions.Repositories
 {
-    internal class IProductReplyRepository
+    public interface IProductReplyRepository : IRepository<ProductReply>
     {
     }
 }
