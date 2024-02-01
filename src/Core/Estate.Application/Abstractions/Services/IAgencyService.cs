@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Estate.Domain.Enums
+namespace Estate.Application.Abstractions.Services
 {
-    internal class Country
+    internal class AgencyService
     {
     }
 }

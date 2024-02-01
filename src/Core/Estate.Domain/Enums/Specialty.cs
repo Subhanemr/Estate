@@ -1,10 +1,12 @@
-﻿namespace Estate.Domain.Enums
-{
-    public enum Specialty
-    {
-        Teacher,
-        Journalist,
-        WebDesigner,
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
+namespace Estate.Domain.Enums
+{
+    internal class Specialty
+    {
     }
 }

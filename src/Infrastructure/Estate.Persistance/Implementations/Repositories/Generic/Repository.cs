@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Estate.Domain.Enums
+namespace Estate.Persistance.Implementations.Repositories.Generic
 {
-    internal class Country
+    internal class Repository
     {
     }
 }
