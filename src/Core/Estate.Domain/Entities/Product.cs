@@ -2,7 +2,7 @@
 {
     public class Product : BaseNameEntity
     {
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         public float LotSize { get; set; }
         public float Area { get; set; }
         public byte Bedrooms { get; set; }
@@ -18,7 +18,7 @@
 
         public string FaceLink { get; set; } = null!;
         public string TwitLink { get; set; } = null!;
-        public string GoogleLink { get; set; } = null!;
+        public string? GoogleLink { get; set; } = null!;
 
         public bool HighSchool { get; set; }
         public bool MiddleSchool { get; set; }

@@ -1,4 +1,5 @@
-﻿using Estate.Domain.Entities;
+﻿using Estate.Application.ViewModels.Category;
+using Estate.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Linq.Expressions;
 
@@ -6,16 +7,14 @@ namespace Estate.Application.Abstractions.Services
 {
     public interface ICategoryService
     {
-        Task<ICollection<ItemActorVM>> GetAllWhereAsync(int take, int page = 1);
-        Task<ICollection<ItemActorVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Category, object>>? orderExpression, int page = 1);
-        Task<GetActorVM> GetByIdAsync(int id, int take, int page = 1);
-        Task<bool> CreateAsync(string? search, CreateActorVM create, ModelStateDictionary model);
-        Task<UpdateActorVM> UpdateAsync(int id, string? search);
-        Task<bool> UpdatePostAsync(int id, UpdateActorVM update, ModelStateDictionary model, string? search);
+        Task<ICollection<ItemCategoryVM>> GetAllWhereAsync(int take, int page = 1);
+        Task<ICollection<ItemCategoryVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Category, object>>? orderExpression, int page = 1);
+        Task<GetCategoryVM> GetByIdAsync(int id, int take, int page = 1);
+        Task<bool> CreateAsync(CreateCategoryVM create, ModelStateDictionary model);
+        Task<UpdateCategoryVM> UpdateAsync(int id);
+        Task<bool> UpdatePostAsync(int id, UpdateCategoryVM update, ModelStateDictionary model);
         Task DeleteAsync(int id);
         Task SoftDeleteAsync(int id);
         Task ReverseSoftDeleteAsync(int id);
-        void CreatePopulateDropdowns(CreateActorVM create, string? search);
-        void UpdatePopulateDropdowns(UpdateActorVM update, string? search);
     }
 }
