@@ -18,7 +18,10 @@ namespace Estate.Domain.Entities
         public string? TwitLink { get; set; } 
         public string? GoogleLink { get; set; } 
         public string? LinkedLink { get; set; } 
-        public string? InstaLink { get; set; } 
+        public string? InstaLink { get; set; }
+
+        public bool IsFounder { get; set; }
+        public bool SoulOfAgency { get; set; }
 
         public ICollection<Product>? Products { get; set; }
         public ICollection<AgencyAppUser>? AgencyAppUsers { get; set; }

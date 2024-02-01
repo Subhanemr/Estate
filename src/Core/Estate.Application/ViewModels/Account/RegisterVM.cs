@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Estate.Application.ViewModels.Account
+﻿namespace Estate.Application.ViewModels.Account
 {
-    internal class RegisterVM
-    {
-    }
+    public record RegisterVM(string UserName, string Name, string Surname, string Email, string Password, string ConfirmPassword);
 }

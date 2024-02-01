@@ -4,7 +4,7 @@
     {
         public int ProductId { get; set; }
         public int FeaturesId { get; set; }
-        public Product Product { get; set; } = null!;
-        public Features Features { get; set; } = null!;
+        public Product? Product { get; set; } 
+        public Features? Features { get; set; } 
     }
 }

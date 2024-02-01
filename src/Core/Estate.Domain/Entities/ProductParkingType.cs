@@ -4,7 +4,7 @@
     {
         public int ProductId { get; set; }
         public int ParkingTypeId { get; set; }
-        public Product Product { get; set; } = null!;
-        public ParkingType ParkingType { get; set; } = null!;
+        public Product? Product { get; set; } 
+        public ParkingType? ParkingType { get; set; } 
     }
 }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Estate.Application.ViewModels.Agency
+﻿namespace Estate.Application.ViewModels.Agency
 {
-    internal class IncludeAgencyVM
-    {
-    }
+    public record IncludeAgencyVM(int Id, string Name);
 }

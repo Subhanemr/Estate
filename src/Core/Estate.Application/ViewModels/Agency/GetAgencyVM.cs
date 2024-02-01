@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Estate.Application.ViewModels.Account;
+using Estate.Domain.Entities;
 
 namespace Estate.Application.ViewModels.Agency
 {
-    internal class GetAgencyVM
-    {
-    }
+    public record GetAgencyVM(int Id, string Name, ICollection<IncludeAppUser> AppUsers);
 }

@@ -5,8 +5,8 @@
         public string ReplyComment { get; set; } = null!;
         public DateTime ReplyCommentTime { get; set; }
         public string AppUserId { get; set; } = null!;
-        public AppUser AppUser { get; set; } = null!;
+        public AppUser? AppUser { get; set; } 
         public int ProductCommentId { get; set; }
-        public ProductComment ProductComment { get; set; } = null!;
+        public ProductComment? ProductComment { get; set; } 
     }
 }

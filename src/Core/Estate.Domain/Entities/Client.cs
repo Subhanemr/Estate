@@ -8,6 +8,6 @@
         public string Comment { get; set; } = null!;
 
         public int CorporateId { get; set; }
-        public Corporate Corporate { get; set; } = null!;
+        public Corporate? Corporate { get; set; } 
     }
 }

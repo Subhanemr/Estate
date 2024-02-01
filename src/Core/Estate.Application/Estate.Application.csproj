@@ -12,23 +12,6 @@
 
   <ItemGroup>
     <Folder Include="Validators\" />
-    <Folder Include="ViewModels\Blog\" />
-    <Folder Include="ViewModels\Category\" />
-    <Folder Include="ViewModels\Client\" />
-    <Folder Include="ViewModels\Corporate\" />
-    <Folder Include="ViewModels\AppUserImage\" />
-    <Folder Include="ViewModels\BlogComment\" />
-    <Folder Include="ViewModels\BlogImage\" />
-    <Folder Include="ViewModels\BlogReply\" />
-    <Folder Include="ViewModels\Favorite\" />
-    <Folder Include="ViewModels\Features\" />
-    <Folder Include="ViewModels\ParkingType\" />
-    <Folder Include="ViewModels\RoofType\" />
-    <Folder Include="ViewModels\ViewType\" />
-    <Folder Include="ViewModels\ProductReply\" />
-    <Folder Include="ViewModels\ProductImage\" />
-    <Folder Include="ViewModels\ProductComment\" />
-    <Folder Include="ViewModels\Product\" />
   </ItemGroup>
 
   <ItemGroup>

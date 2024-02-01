@@ -6,6 +6,6 @@
         public string Url { get; set; } = null!;
         public bool? IsPrimary { get; set; }
         public int BlogId { get; set; }
-        public Blog Blog { get; set; } = null!;
+        public Blog? Blog { get; set; }
     }
 }

@@ -3,8 +3,8 @@
     public class Favorite : BaseEntity
     {
         public string AppUserId { get; set; } = null!;
-        public AppUser AppUser { get; set; } = null!;
+        public AppUser? AppUser { get; set; } 
         public int ProductId { get; set; }
-        public Product Product { get; set; } = null!;
+        public Product? Product { get; set; } 
     }
 }

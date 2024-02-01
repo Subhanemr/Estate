@@ -4,7 +4,7 @@
     {
         public string Url { get; set; } = null!;
         public bool? IsPrimary { get; set; }
-        public int AppUserId { get; set; }
-        public AppUser AppUser { get; set; } = null!;
+        public string AppUserId { get; set; } = null!;
+        public AppUser? AppUser { get; set; }
     }
 }
