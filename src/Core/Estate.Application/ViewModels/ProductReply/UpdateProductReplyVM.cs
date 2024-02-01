@@ -1,4 +1,4 @@
 ﻿namespace Estate.Application.ViewModels.ProductReply
 {
-    public record UpdateProductReplyVM();
+    public record UpdateProductReplyVM(string ReplyComment);
 }

@@ -1,4 +1,4 @@
 ﻿namespace Estate.Application.ViewModels.ProductComment
 {
-    public record CreateProductCommentVM();
+    public record CreateProductCommentVM(string Comment);
 }

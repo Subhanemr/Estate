@@ -1,4 +1,4 @@
 ﻿namespace Estate.Application.ViewModels.ViewType
 {
-    public record IncludeViewTypeVM();
+    public record IncludeViewTypeVM(int Id, string Name);
 }

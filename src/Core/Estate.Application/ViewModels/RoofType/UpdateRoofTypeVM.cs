@@ -1,4 +1,4 @@
 ﻿namespace Estate.Application.ViewModels.RoofType
 {
-    public record UpdateRoofTypeVM();
+    public record UpdateRoofTypeVM(string Name);
 }

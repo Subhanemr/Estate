@@ -1,4 +1,6 @@
-﻿namespace Estate.Application.ViewModels.Category
+﻿using Estate.Application.ViewModels.Product;
+
+namespace Estate.Application.ViewModels.Category
 {
-    public record IncludeCategoryVM();
+    public record IncludeCategoryVM(string Name, string Img);
 }

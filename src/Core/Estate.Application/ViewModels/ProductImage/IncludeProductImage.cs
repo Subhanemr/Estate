@@ -1,4 +1,4 @@
 ﻿namespace Estate.Application.ViewModels.ProductImage
 {
-    public record IncludeProductImage();
+    public record IncludeProductImage(int Id, string Url, bool? IsPrimary, int ProductId);
 }
