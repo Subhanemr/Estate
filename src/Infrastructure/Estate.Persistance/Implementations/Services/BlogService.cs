@@ -43,7 +43,11 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> CreateAsync(CreateBlogVM create, ModelStateDictionary model)
         {
             if (!model.IsValid) return false;
-
+            if (await _repository.CheckUniqueAsync(x => x.Name == create.Name))
+            {
+                model.AddModelError("Name", "Name is exists");
+                return false;
+            }
             AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
 
             if (!create.MainPhoto.ValidateType())
@@ -179,6 +183,13 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> UpdatePostAsync(int id, UpdateBlogVM update, ModelStateDictionary model)
         {
             if (!model.IsValid) return false;
+
+            if (await _repository.CheckUniqueAsync(x => x.Name == update.Name))
+            {
+                model.AddModelError("Name", "Name is exists");
+                return false;
+            }
+
             AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
 
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
@@ -200,9 +211,6 @@ namespace Estate.Persistance.Implementations.Services
                     model.AddModelError("MainPhoto", "Image should not be larger than 10 mb");
                     return false;
                 }
-            }
-            if (update.MainPhoto != null)
-            {
                 BlogImage main = item.BlogImages.FirstOrDefault(x => x.IsPrimary == true);
                 main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
                 _blogImageRepository.Delete(main);

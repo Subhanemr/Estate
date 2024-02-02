@@ -6,7 +6,6 @@ using Estate.Application.ViewModels.ProductComment;
 using Estate.Application.ViewModels.ProductImage;
 using Estate.Application.ViewModels.RoofType;
 using Estate.Application.ViewModels.ViewType;
-using Estate.Domain.Entities;
 
 namespace Estate.Application.ViewModels.Product
 {

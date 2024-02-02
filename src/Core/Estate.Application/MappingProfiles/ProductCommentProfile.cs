@@ -15,6 +15,7 @@ namespace Estate.Application.MappingProfiles
                 .ForMember(x => x.Product, opt => opt.MapFrom(src => src.Product))
                 .ForMember(x => x.AppUser, opt => opt.MapFrom(src => src.AppUser));
             CreateMap<IncludeProductCommentVM, ProductComment>().ReverseMap()
+                .ForMember(x => x.Replies, opt => opt.MapFrom(src => src.ProductReplies.ToList()))
                 .ForMember(x => x.AppUser, opt => opt.MapFrom(src => src.AppUser));
             CreateMap<ItemProductCommentVM, ProductComment>().ReverseMap()
                 .ForMember(x => x.Replies, opt => opt.MapFrom(src => src.ProductReplies.ToList()))

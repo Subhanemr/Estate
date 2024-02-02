@@ -7,7 +7,6 @@ using Estate.Infrastructure.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -19,17 +18,15 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IAgencyRepository _repository;
         private readonly IAgencyNameRepository _nameRepository;
         private readonly IHttpContextAccessor _http;
-        private readonly ITempDataDictionaryFactory _tempDataDictionaryFactory;
         private readonly UserManager<AppUser> _userManager;
 
         public AgencyService(IMapper mapper, IAgencyRepository repository, IAgencyNameRepository nameRepository, 
-            IHttpContextAccessor http, ITempDataDictionaryFactory tempDataDictionaryFactory, UserManager<AppUser> userManager)
+            IHttpContextAccessor http, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
             _nameRepository = nameRepository;
             _http = http;
-            _tempDataDictionaryFactory = tempDataDictionaryFactory;
             _userManager = userManager;
         }
 
@@ -84,7 +81,8 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<GetAgencyVM> GetByIdAsync(int id, int take, int page = 1)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Agency item = await _repository.GetByIdPaginatedAsync(id, take: take, skip: (page - 1) * take, IsTracking: false, includes: nameof(Category.Movies));
+            string[] includes ={ $"{nameof(Agency.AgencyAppUsers)}.{nameof(AgencyAppUser.AppUser)}"};
+            Agency item = await _repository.GetByIdPaginatedAsync(id, take: take, skip: (page - 1) * take, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetAgencyVM get = _mapper.Map<GetAgencyVM>(item);

@@ -22,19 +22,16 @@ namespace Estate.Persistance.Implementations.Services
         private readonly ICategoryNameRepository _nameRepository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
-        private readonly ITempDataDictionaryFactory _tempDataDictionaryFactory;
         private readonly UserManager<AppUser> _userManager;
 
         public CategoryService(IMapper mapper, ICategoryRepository repository, ICategoryNameRepository nameRepository, 
-            IHttpContextAccessor http, IWebHostEnvironment env, ITempDataDictionaryFactory tempDataDictionaryFactory, 
-            UserManager<AppUser> userManager)
+            IHttpContextAccessor http, IWebHostEnvironment env, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
             _nameRepository = nameRepository;
             _http = http;
             _env = env;
-            _tempDataDictionaryFactory = tempDataDictionaryFactory;
             _userManager = userManager;
         }
 
@@ -42,6 +39,11 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (!model.IsValid) return false;
 
+            if (await _repository.CheckUniqueAsync(x => x.Name == create.Name))
+            {
+                model.AddModelError("Name", "Name is exists");
+                return false;
+            }
             AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
 
             if (!create.Photo.ValidateType())
@@ -140,7 +142,11 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (!model.IsValid) return false;
             AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-
+            if (await _repository.CheckUniqueAsync(x => x.Name == update.Name))
+            {
+                model.AddModelError("Name", "Name is exists");
+                return false;
+            }
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Category.Products)}" };
 
@@ -159,6 +165,7 @@ namespace Estate.Persistance.Implementations.Services
                     model.AddModelError("Photo", "Image should not be larger than 10 mb");
                     return false;
                 }
+                item.Img.DeleteFile(_env.WebRootPath, "assets", "img");
                 item.Img = await update.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
             }
             var config = new MapperConfiguration(cfg =>

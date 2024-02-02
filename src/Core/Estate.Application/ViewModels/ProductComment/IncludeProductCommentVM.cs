@@ -1,7 +1,8 @@
-﻿using Estate.Domain.Entities;
+﻿using Estate.Application.ViewModels.ProductReply;
+using Estate.Domain.Entities;
 
 namespace Estate.Application.ViewModels.ProductComment
 {
     public record IncludeProductCommentVM(int Id, string Comment, DateTime CoomentTime,
-        string AppUserId, AppUser? AppUser, int ProductId);
+        string AppUserId, AppUser? AppUser, int ProductId, ICollection<IncludeProductReplyVM> Replies);
 }
