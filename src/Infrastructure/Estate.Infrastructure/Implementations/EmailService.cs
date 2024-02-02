@@ -1,10 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Net.Mail;
 using System.Net;
+using Estate.Application.Abstractions.Services;
 
-namespace Estate.Persistance.Implementations.Services
+namespace Estate.Infrastructure.Implementations
 {
-    public class EmailService
+    public class EmailService : IEmailService
     {
         private readonly IConfiguration _conf;
 

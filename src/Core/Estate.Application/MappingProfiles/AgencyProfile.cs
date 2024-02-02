@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Estate.Application.ViewModels.Agency;
+using Estate.Domain.Entities;
 
 namespace Estate.Application.MappingProfiles
 {
-    internal class AgencyProfile
+    internal class AgencyProfile : Profile
     {
+        public AgencyProfile()
+        {
+            CreateMap<Agency, CreateAgencyVM>().ReverseMap();
+            CreateMap<Agency, UpdateAgencyVM>().ReverseMap();
+            CreateMap<GetAgencyVM, Agency>().ReverseMap()
+                .ForMember(x => x.AppUsers, opt => opt.MapFrom(src => src.AgencyAppUsers.Select(ma => ma.AppUser).ToList()));
+            CreateMap<IncludeAgencyVM, Agency>().ReverseMap();
+            CreateMap<ItemAgencyVM, Agency>().ReverseMap();
+            CreateMap<UpdateAgencyVM, Agency>().ReverseMap();
+        }
     }
 }

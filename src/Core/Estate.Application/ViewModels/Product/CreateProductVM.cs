@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Http;
 
 namespace Estate.Application.ViewModels.Product
 {
-    public record CreateProductVM(string Name, double Price, float LotSize, float Area, byte Bedrooms, byte Bathrooms,
-        byte Garages, short YearBuilt, byte RoomCount, string? SchoolDistrict, string? SchoolDistrictPhone,
+    public record CreateProductVM(string Name, double Price, float LotSize, float Area, int Bedrooms, int Bathrooms,
+        int Garages, int YearBuilt, int RoomCount, string? SchoolDistrict, string? SchoolDistrictPhone,
         string Address, string Description, string FaceLink, string TwitLink, string? GoogleLink, 
         bool HighSchool, bool MiddleSchool, bool ElementarySchool, int CategoryId, 
-        IFormFile MainPhoto, ICollection<IFormFile> Photos)
+        IFormFile MainPhoto, ICollection<IFormFile>? Photos)
     {
         public ICollection<IncludeCategoryVM>? Categories { get; set; }
 

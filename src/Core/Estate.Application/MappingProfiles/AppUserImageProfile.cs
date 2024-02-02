@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Estate.Application.ViewModels.AppUserImage;
+using Estate.Domain.Entities;
 
 namespace Estate.Application.MappingProfiles
 {
-    internal class AppUserImageProfile
+    internal class AppUserImageProfile : Profile
     {
+        public AppUserImageProfile()
+        {
+            CreateMap<IncludeAppUserImage, AppUserImage>().ReverseMap();
+        }
     }
 }

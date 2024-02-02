@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Estate.Application.ViewModels.ProductImage;
+using Estate.Domain.Entities;
 
 namespace Estate.Application.MappingProfiles
 {
-    internal class ProductImageProfile
+    internal class ProductImageProfile : Profile
     {
+        public ProductImageProfile()
+        {
+            CreateMap<IncludeProductImageVM, ProductImage>().ReverseMap();
+        }
     }
 }
