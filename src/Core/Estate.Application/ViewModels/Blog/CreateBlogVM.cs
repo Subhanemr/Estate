@@ -1,5 +1,4 @@
-﻿using Estate.Application.ViewModels.BlogImage;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 
 namespace Estate.Application.ViewModels.Blog
 {
