@@ -1,6 +1,8 @@
-﻿namespace Estate.Persistance.Implementations.Services
+﻿using Estate.Application.Abstractions.Services;
+
+namespace Estate.Persistance.Implementations.Services
 {
-    internal class ViewTypeService
+    public class ViewTypeService : IViewTypeService
     {
     }
 }

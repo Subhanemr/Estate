@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Estate.Application.Abstractions.Services;
 
 namespace Estate.Persistance.Implementations.Services
 {
-    internal class ExteriorTypeService
+    public class ExteriorTypeService : IExteriorTypeService
     {
     }
 }
