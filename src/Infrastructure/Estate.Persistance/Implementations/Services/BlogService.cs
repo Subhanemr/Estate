@@ -20,20 +20,17 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IMapper _mapper;
         private readonly IBlogRepository _repository;
         private readonly IBlogNameRepository _nameRepository;
-        private readonly IBlogImageRepository _blogImageRepository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
         private readonly ITempDataDictionaryFactory _tempDataDictionaryFactory;
         private readonly UserManager<AppUser> _userManager;
 
-        public BlogService(IMapper mapper, IBlogRepository repository, IBlogNameRepository nameRepository, 
-            IBlogImageRepository blogImageRepository, IHttpContextAccessor http, IWebHostEnvironment env, 
+        public BlogService(IMapper mapper, IBlogRepository repository, IBlogNameRepository nameRepository, IHttpContextAccessor http, IWebHostEnvironment env, 
             ITempDataDictionaryFactory tempDataDictionaryFactory, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
             _nameRepository = nameRepository;
-            _blogImageRepository = blogImageRepository;
             _http = http;
             _env = env;
             _tempDataDictionaryFactory = tempDataDictionaryFactory;
@@ -114,7 +111,7 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Blog.BlogImages)}" };
             Blog item = await _repository.GetByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
-            foreach (BlogImage image in item.BlogImages)
+            foreach (var image in item.BlogImages)
             {
                 image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
             }
@@ -213,7 +210,7 @@ namespace Estate.Persistance.Implementations.Services
                 }
                 BlogImage main = item.BlogImages.FirstOrDefault(x => x.IsPrimary == true);
                 main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
-                _blogImageRepository.Delete(main);
+                _repository.DeleteImage(main);
                 item.BlogImages.Add(new BlogImage
                 {
                     CreatedBy = user.UserName,
@@ -232,6 +229,7 @@ namespace Estate.Persistance.Implementations.Services
             foreach (var image in remove)
             {
                 image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
+                _repository.DeleteImage(image);
                 item.BlogImages.Remove(image);
             }
 

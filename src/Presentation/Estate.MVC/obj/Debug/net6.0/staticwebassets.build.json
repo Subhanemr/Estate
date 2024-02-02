@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "Veq8x1Gf+jzFcK8nrQPbuzTeCF6ksPqh9YNSkZhw5K8=",
+  "Hash": "AuAwhI40Sg5aQhsH0xcOjC6OW5jUFtRiXHNRwvG9Jyo=",
   "Source": "Estate.MVC",
   "BasePath": "_content/Estate.MVC",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Estate.MVC\\wwwroot",
+      "Source": "Estate.MVC",
+      "ContentRoot": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\",
+      "BasePath": "_content/Estate.MVC",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

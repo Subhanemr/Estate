@@ -38,12 +38,6 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IRoofTypeNameRepository _roofTypeNameRepository;
         private readonly IViewTypeRepository _viewTypeRepository;
         private readonly IViewTypeNameRepository _viewTypeNameRepository;
-        private readonly IProductFeaturesRepository _productFeaturesRepository;
-        private readonly IProductExteriorTypeRepository _productExteriorTypeRepository;
-        private readonly IProductParkingTypeRepository _productParkingTypeRepository;
-        private readonly IProductRoofTypeRepository _productRoofTypeRepository;
-        private readonly IProductViewTypeRepository _productViewTypeRepository;
-        private readonly IProductImageRepository _productImageRepository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
         private readonly ITempDataDictionaryFactory _tempDataDictionaryFactory;
@@ -54,10 +48,7 @@ namespace Estate.Persistance.Implementations.Services
             IFeaturesNameRepository featuresNameRepository, IExteriorTypeRepository exteriorTypeRepository, IExteriorTypeNameRepository exteriorTypeNameRepository,
             IParkingTypeRepository parkingTypeRepository, IParkingTypeNameRepository parkkingTypeNameRepository, IRoofTypeRepository roofTypeRepository,
             IRoofTypeNameRepository roofTypeNameRepository, IViewTypeRepository viewTypeRepository, IViewTypeNameRepository viewTypeNameRepository,
-            IHttpContextAccessor http, IWebHostEnvironment env, ITempDataDictionaryFactory tempDataDictionaryFactory, UserManager<AppUser> userManager, 
-            IProductFeaturesRepository productFeaturesRepository, IProductExteriorTypeRepository productExteriorTypeRepository, 
-            IProductParkingTypeRepository productParkingTypeRepository, IProductRoofTypeRepository productRoofTypeRepository, 
-            IProductViewTypeRepository productViewTypeRepository)
+            IHttpContextAccessor http, IWebHostEnvironment env, ITempDataDictionaryFactory tempDataDictionaryFactory, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
@@ -78,11 +69,6 @@ namespace Estate.Persistance.Implementations.Services
             _env = env;
             _tempDataDictionaryFactory = tempDataDictionaryFactory;
             _userManager = userManager;
-            _productFeaturesRepository = productFeaturesRepository;
-            _productExteriorTypeRepository = productExteriorTypeRepository;
-            _productParkingTypeRepository = productParkingTypeRepository;
-            _productRoofTypeRepository = productRoofTypeRepository;
-            _productViewTypeRepository = productViewTypeRepository;
         }
 
         public async void CreatePopulateDropdowns(CreateProductVM create)
@@ -375,7 +361,7 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.FeatureIds.Contains(ps.FeaturesId)).ToList();
             foreach (var featureRemove in featureToRemove)
             {
-                _productFeaturesRepository.Delete(featureRemove);
+                _repository.DeleteFeatures(featureRemove);
             }
 
             ICollection<ProductFeatures> featureToAdd = update.FeatureIds
@@ -391,7 +377,7 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.ExteriorTypeIds.Contains(ps.ExteriorTypeId)).ToList();
             foreach (var exteriorTypeRemove in exteriorTypeToRemove)
             {
-                _productExteriorTypeRepository.Delete(exteriorTypeRemove);
+                _repository.DeleteExteriorType(exteriorTypeRemove);
             }
 
             ICollection<ProductExteriorType> exteriorTypeToAdd = update.ExteriorTypeIds
@@ -407,7 +393,7 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.ParkingTypeIds.Contains(ps.ParkingTypeId)).ToList();
             foreach (var parkingTypeRemove in parkingTypeToRemove)
             {
-                _productParkingTypeRepository.Delete(parkingTypeRemove);
+                _repository.DeleteParkingType(parkingTypeRemove);
             }
 
             ICollection<ProductParkingType> parkingTypeToAdd = update.ParkingTypeIds
@@ -423,7 +409,7 @@ namespace Estate.Persistance.Implementations.Services
                     .Where(ps => !update.RoofTypeIds.Contains(ps.RoofTypeId)).ToList();
             foreach (var roofTyperemove in roofTypeToRemove)
             {
-                _productRoofTypeRepository.Delete(roofTyperemove);
+                _repository.DeleteRoofType(roofTyperemove);
             }
 
             ICollection<ProductRoofType> roofTypeToAdd = update.RoofTypeIds
@@ -439,7 +425,7 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.ViewTypeIds.Contains(ps.ViewTypeId)).ToList();
             foreach (var viewTypeRemove in viewTypeToRemove)
             {
-                _productViewTypeRepository.Delete(viewTypeRemove);
+                _repository.DeleteViewType(viewTypeRemove);
             }
 
             ICollection<ProductViewType> viewTypeToAdd = update.ViewTypeIds
@@ -467,7 +453,7 @@ namespace Estate.Persistance.Implementations.Services
                 }
                 ProductImage main = item.ProductImages.FirstOrDefault(x => x.IsPrimary == true);
                 main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
-                _productImageRepository.Delete(main);
+                _repository.DeleteImage(main);
                 item.ProductImages.Add(new ProductImage
                 {
                     CreatedBy = user.UserName,

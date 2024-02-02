@@ -1,4 +1,5 @@
-﻿using FluentValidation.AspNetCore;
+﻿using Estate.Application.ViewModels.Agency;
+using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -9,7 +10,7 @@ namespace Estate.Application.ServiceRegistrations
         public static IServiceCollection AddAplicationServices(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddFluentValidation(options => options.RegisterValidatorsFromAssemblyContaining(typeof(c)));
+            services.AddFluentValidation(options => options.RegisterValidatorsFromAssemblyContaining(typeof(CreateAgencyVM)));
             return services;
         }
     }
