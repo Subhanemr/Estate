@@ -7,9 +7,6 @@ namespace Estate.Persistance.Implementations.Repositories
 {
     public class ProductRepository : Repository<Product>, IProductRepository
     {
-        private readonly DbSet<ProductImage> _dbImage;
-        private readonly DbSet<ProductComment> _dbComment;
-        private readonly DbSet<ProductReply> _dbReply;
         private readonly DbSet<ProductExteriorType> _dbExteriorType;
         private readonly DbSet<ProductFeatures> _dbFeatures;
         private readonly DbSet<ProductParkingType> _dbParkingType;
@@ -18,39 +15,13 @@ namespace Estate.Persistance.Implementations.Repositories
 
         public ProductRepository(AppDbContext context) : base(context)
         {
-            _dbImage = context.Set<ProductImage>();
-            _dbComment = context.Set<ProductComment>();
-            _dbReply = context.Set<ProductReply>();
+            _dbExteriorType = context.Set<ProductExteriorType>();
+            _dbFeatures = context.Set<ProductFeatures>();
+            _dbParkingType = context.Set<ProductParkingType>();
+            _dbRoofType = context.Set<ProductRoofType>();
+            _dbViewType = context.Set<ProductViewType>();
         }
 
-        public void DeleteImage(ProductImage image)
-        {
-            _dbImage.Remove(image);
-        }
-        public async Task AddComment(ProductComment comment)
-        {
-            await _dbComment.AddAsync(comment);
-        }
-        public void UpdateComment(ProductComment comment)
-        {
-            _dbComment.Update(comment);
-        }
-        public void DeleteComment(ProductComment comment)
-        {
-            _dbComment.Remove(comment);
-        }
-        public async Task AddReply(ProductReply comment)
-        {
-            await _dbReply.AddAsync(comment);
-        }
-        public void UpdateReply(ProductReply comment)
-        {
-            _dbReply.Update(comment);
-        }
-        public void DeleteReply(ProductReply comment)
-        {
-            _dbReply.Remove(comment);
-        }
         public void DeleteExteriorType(ProductExteriorType item)
         {
             _dbExteriorType.Remove(item);

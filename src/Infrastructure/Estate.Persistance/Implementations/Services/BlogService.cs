@@ -210,7 +210,6 @@ namespace Estate.Persistance.Implementations.Services
                 }
                 BlogImage main = item.BlogImages.FirstOrDefault(x => x.IsPrimary == true);
                 main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
-                _repository.DeleteImage(main);
                 item.BlogImages.Add(new BlogImage
                 {
                     CreatedBy = user.UserName,
@@ -229,7 +228,6 @@ namespace Estate.Persistance.Implementations.Services
             foreach (var image in remove)
             {
                 image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
-                _repository.DeleteImage(image);
                 item.BlogImages.Remove(image);
             }
 

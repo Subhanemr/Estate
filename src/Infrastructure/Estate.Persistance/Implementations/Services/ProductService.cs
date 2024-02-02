@@ -453,7 +453,6 @@ namespace Estate.Persistance.Implementations.Services
                 }
                 ProductImage main = item.ProductImages.FirstOrDefault(x => x.IsPrimary == true);
                 main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
-                _repository.DeleteImage(main);
                 item.ProductImages.Add(new ProductImage
                 {
                     CreatedBy = user.UserName,

@@ -32,10 +32,7 @@ namespace Estate.Persistance.ServiceRegistrations
             services.AddScoped<IAgencyNameRepository, AgencyNameRepository>();
             services.AddScoped<IAgencyAppUserRepository, AgencyAppUserRepository>();
             services.AddScoped<IAppUserImageRepository, AppUserImageRepository>();
-            services.AddScoped<IBlogCommentRepository, BlogCommentRepository>();
-            services.AddScoped<IBlogImageRepository, BlogImageRepository>();
             services.AddScoped<IBlogNameRepository, BlogNameRepository>();
-            services.AddScoped<IBlogReplyRepository, BlogReplyRepository>();
             services.AddScoped<IBlogRepository, BlogRepository>();
             services.AddScoped<ICategoryNameRepository, CategoryNameRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -48,20 +45,13 @@ namespace Estate.Persistance.ServiceRegistrations
             services.AddScoped<IFeaturesNameRepository, FeaturesNameRepository>();
             services.AddScoped<IFeaturesRepository, FeaturesRepository>();
             services.AddScoped<IParkingTypeNameRepository, ParkingTypeNameRepository>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-            services.AddScoped<,>();
-
+            services.AddScoped<IParkingTypeRepository, ParkingTypeRepository>();
+            services.AddScoped<IProductNameRepository, ProductNameRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IRoofTypeNameRepository, RoofTypeNameRepository>();
+            services.AddScoped<IRoofTypeRepository, RoofTypeRepository>();
+            services.AddScoped<IViewTypeNameRepository, ViewTypeNameRepository>();
+            services.AddScoped<IViewTypeRepository, ViewTypeRepository>();
 
             services.AddScoped<AppDbContextInitializer>();
 
