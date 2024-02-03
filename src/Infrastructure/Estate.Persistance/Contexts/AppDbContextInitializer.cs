@@ -39,6 +39,8 @@ namespace Estate.Persistance.Contexts
         {
             AppUser admin = new AppUser
             {
+                Name = "Subhan",
+                Surname = "Neqa",
                 Email = _configuration["AdminSettings:Email"],
                 UserName = _configuration["AdminSettings:UserName"]
             };

@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Configurations\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -47,28 +47,18 @@ namespace Estate.Persistance.ServiceRegistrations
             services.AddScoped<IViewTypeService, ViewTypeService>();
 
             services.AddScoped<IAgencyRepository, AgencyRepository>();
-            services.AddScoped<IAgencyNameRepository, AgencyNameRepository>();
             services.AddScoped<IAgencyAppUserRepository, AgencyAppUserRepository>();
             services.AddScoped<IAppUserImageRepository, AppUserImageRepository>();
-            services.AddScoped<IBlogNameRepository, BlogNameRepository>();
             services.AddScoped<IBlogRepository, BlogRepository>();
-            services.AddScoped<ICategoryNameRepository, CategoryNameRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IClientRepository, ClientRepository>();
-            services.AddScoped<ICorporateNameRepository, CorporateNameRepository>();
             services.AddScoped<ICorporateRepository, CorporateRepository>();
-            services.AddScoped<IExteriorTypeNameRepository, ExteriorTypeNameRepository>();
             services.AddScoped<IExteriorTypeRepository, ExteriorTypeRepository>();
             services.AddScoped<IFavoriteRepository, FavoriteRepository>();
-            services.AddScoped<IFeaturesNameRepository, FeaturesNameRepository>();
             services.AddScoped<IFeaturesRepository, FeaturesRepository>();
-            services.AddScoped<IParkingTypeNameRepository, ParkingTypeNameRepository>();
             services.AddScoped<IParkingTypeRepository, ParkingTypeRepository>();
-            services.AddScoped<IProductNameRepository, ProductNameRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IRoofTypeNameRepository, RoofTypeNameRepository>();
             services.AddScoped<IRoofTypeRepository, RoofTypeRepository>();
-            services.AddScoped<IViewTypeNameRepository, ViewTypeNameRepository>();
             services.AddScoped<IViewTypeRepository, ViewTypeRepository>();
 
             services.AddScoped<AppDbContextInitializer>();

@@ -16,16 +16,14 @@ namespace Estate.Persistance.Implementations.Services
     {
         private readonly IMapper _mapper;
         private readonly IExteriorTypeRepository _repository;
-        private readonly IExteriorTypeNameRepository _nameRepository;
         private readonly IHttpContextAccessor _http;
         private readonly UserManager<AppUser> _userManager;
 
-        public ExteriorTypeService(IMapper mapper, IExteriorTypeRepository repository, IExteriorTypeNameRepository nameRepository, 
+        public ExteriorTypeService(IMapper mapper, IExteriorTypeRepository repository, 
             IHttpContextAccessor http, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
-            _nameRepository = nameRepository;
             _http = http;
             _userManager = userManager;
         }
@@ -39,8 +37,8 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             ExteriorType item = _mapper.Map<ExteriorType>(create);
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-            item.CreatedBy = user.UserName;
+            //AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
+            //item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();

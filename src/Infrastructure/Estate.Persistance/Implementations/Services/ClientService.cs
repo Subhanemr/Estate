@@ -18,17 +18,15 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IMapper _mapper;
         private readonly IClientRepository _repository;
         private readonly ICorporateRepository _corporateRepository;
-        private readonly ICorporateNameRepository _corporateNameRepository;
         private readonly IHttpContextAccessor _http;
         private readonly UserManager<AppUser> _userManager;
 
         public ClientService(IMapper mapper, IClientRepository repository, ICorporateRepository corporateRepository, 
-            ICorporateNameRepository corporateNameRepository, IHttpContextAccessor http, UserManager<AppUser> userManager)
+            IHttpContextAccessor http, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
             _corporateRepository = corporateRepository;
-            _corporateNameRepository = corporateNameRepository;
             _http = http;
             _userManager = userManager;
         }

@@ -16,16 +16,14 @@ namespace Estate.Persistance.Implementations.Services
     {
         private readonly IMapper _mapper;
         private readonly IViewTypeRepository _repository;
-        private readonly IViewTypeNameRepository _nameRepository;
         private readonly IHttpContextAccessor _http;
         private readonly UserManager<AppUser> _userManager;
 
-        public ViewTypeService(IMapper mapper, IViewTypeRepository repository, IViewTypeNameRepository nameRepository, 
+        public ViewTypeService(IMapper mapper, IViewTypeRepository repository,
             IHttpContextAccessor http, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
-            _nameRepository = nameRepository;
             _http = http;
             _userManager = userManager;
         }

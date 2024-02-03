@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "AIk0VIZJ7yzjEnQmupVU9RK/n5swqKX7QaBkIGmVo/eMDz6evyND+qEbIFBhHYos59cItXbLYCUQ1PGUIL6x1w==",
+  "dgSpecHash": "FSHCl6F71ZwYrYeBNCT0NII1Xwa8NEQqJqANbwRfrYyPuzBCPjZ86QL8NMGyPwrAz1BO8Qek+7gyId2jNd6o9g==",
   "success": true,
   "projectFilePath": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Infrastructure\\Estate.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -22,7 +22,6 @@
     "C:\\Users\\T x\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\T x\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.1\\microsoft.extensions.dependencyinjection.6.0.1.nupkg.sha512",
     "C:\\Users\\T x\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
-    "C:\\Users\\T x\\.nuget\\packages\\microsoft.extensions.http\\6.0.0\\microsoft.extensions.http.6.0.0.nupkg.sha512",
     "C:\\Users\\T x\\.nuget\\packages\\microsoft.extensions.identity.core\\6.0.26\\microsoft.extensions.identity.core.6.0.26.nupkg.sha512",
     "C:\\Users\\T x\\.nuget\\packages\\microsoft.extensions.identity.stores\\6.0.26\\microsoft.extensions.identity.stores.6.0.26.nupkg.sha512",
     "C:\\Users\\T x\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0\\microsoft.extensions.logging.6.0.0.nupkg.sha512",

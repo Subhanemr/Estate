@@ -1,6 +1,7 @@
 ﻿using Estate.Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace Estate.Persistance.Contexts
 {
@@ -34,5 +35,23 @@ namespace Estate.Persistance.Contexts
         public DbSet<RoofType> RoofTypes { get; set; }
         public DbSet<ViewType> ViewTypes { get; set; }
 
+        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            var entities = ChangeTracker.Entries<BaseEntity>();
+            foreach (var data in entities)
+            {
+                switch (data.State)
+                {
+                    case EntityState.Added:
+                        data.Entity.CreateAt = DateTime.Now;
+                        break;
+                    case EntityState.Modified:
+                        data.Entity.UpdateAt = DateTime.Now;
+                        break;
+                }
+            }
+
+            return base.SaveChangesAsync(cancellationToken);
+        }
     }
 }

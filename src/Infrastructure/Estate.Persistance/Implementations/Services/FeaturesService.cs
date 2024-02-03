@@ -16,16 +16,14 @@ namespace Estate.Persistance.Implementations.Services
     {
         private readonly IMapper _mapper;
         private readonly IFeaturesRepository _repository;
-        private readonly IFeaturesNameRepository _nameRepository;
         private readonly IHttpContextAccessor _http;
         private readonly UserManager<AppUser> _userManager;
 
-        public FeaturesService(IMapper mapper, IFeaturesRepository repository, IFeaturesNameRepository nameRepository, 
+        public FeaturesService(IMapper mapper, IFeaturesRepository repository,
             IHttpContextAccessor http, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
-            _nameRepository = nameRepository;
             _http = http;
             _userManager = userManager;
         }

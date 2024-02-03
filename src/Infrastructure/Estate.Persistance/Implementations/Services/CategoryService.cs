@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -19,17 +18,15 @@ namespace Estate.Persistance.Implementations.Services
     {
         private readonly IMapper _mapper;
         private readonly ICategoryRepository _repository;
-        private readonly ICategoryNameRepository _nameRepository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
         private readonly UserManager<AppUser> _userManager;
 
-        public CategoryService(IMapper mapper, ICategoryRepository repository, ICategoryNameRepository nameRepository, 
+        public CategoryService(IMapper mapper, ICategoryRepository repository,
             IHttpContextAccessor http, IWebHostEnvironment env, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
-            _nameRepository = nameRepository;
             _http = http;
             _env = env;
             _userManager = userManager;

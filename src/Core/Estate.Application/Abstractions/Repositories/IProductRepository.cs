@@ -9,5 +9,6 @@ namespace Estate.Application.Abstractions.Repositories
         void DeleteRoofType(ProductRoofType item);
         void DeleteParkingType(ProductParkingType item);
         void DeleteViewType(ProductViewType item);
+        IQueryable<Product> GetFiltered(string? search, int? order, int? categoryId, int skip = 0, int take = 0, params string[] includes);
     }
 }

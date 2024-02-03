@@ -68,10 +68,6 @@
             "FluentValidation.DependencyInjectionExtensions": {
               "target": "Package",
               "version": "[11.9.0, )"
-            },
-            "Microsoft.Extensions.Http": {
-              "target": "Package",
-              "version": "[6.0.0, )"
             }
           },
           "imports": [

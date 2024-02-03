@@ -1,0 +1,1257 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\css\\maps\\style.css.map",
+      "PackagePath": "staticwebassets\\admin\\css\\maps\\style.css.map"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\css\\style.css",
+      "PackagePath": "staticwebassets\\admin\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\.DS_Store",
+      "PackagePath": "staticwebassets\\admin\\fonts\\.DS_Store"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\.DS_Store",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\.DS_Store"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Black.eot",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Black.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Black.ttf",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Black.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Black.woff",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Black.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Black.woff2",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Black.woff2"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Bold.eot",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Bold.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Bold.ttf",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Bold.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Bold.woff",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Bold.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Bold.woff2",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Bold.woff2"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Light.eot",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Light.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Light.ttf",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Light.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Light.woff",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Light.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Light.woff2",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Light.woff2"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Medium.eot",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Medium.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Medium.ttf",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Medium.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Medium.woff",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Medium.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Medium.woff2",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Medium.woff2"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Regular.eot",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Regular.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Regular.ttf",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Regular.woff",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Regular.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Regular.woff2",
+      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Regular.woff2"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\.DS_Store",
+      "PackagePath": "staticwebassets\\admin\\images\\.DS_Store"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\auth\\.DS_Store",
+      "PackagePath": "staticwebassets\\admin\\images\\auth\\.DS_Store"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\auth\\lockscreen-bg.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\auth\\lockscreen-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\auth\\login-bg.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\auth\\login-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\auth\\register-bg.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\auth\\register-bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\.DS_Store",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\.DS_Store"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face1.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face10.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face11.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face12.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face13.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face13.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face14.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face14.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face15.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face16.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face16.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face17.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face17.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face18.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face18.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face19.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face19.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face2.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face20.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face20.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face21.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face21.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face22.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face22.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face23.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face23.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face24.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face24.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face25.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face25.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face26.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face26.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face27.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face27.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face3.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face4.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face5.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face6.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face7.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face8.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face9.jpg",
+      "PackagePath": "staticwebassets\\admin\\images\\faces\\face9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\favicon.ico",
+      "PackagePath": "staticwebassets\\admin\\images\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\favicon.png",
+      "PackagePath": "staticwebassets\\admin\\images\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\logo-mini.svg",
+      "PackagePath": "staticwebassets\\admin\\images\\logo-mini.svg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\logo.svg",
+      "PackagePath": "staticwebassets\\admin\\images\\logo.svg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\.DS_Store",
+      "PackagePath": "staticwebassets\\admin\\js\\.DS_Store"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\Chart.min.js",
+      "PackagePath": "staticwebassets\\admin\\js\\Chart.min.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\chart.js",
+      "PackagePath": "staticwebassets\\admin\\js\\chart.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\dashboard.js",
+      "PackagePath": "staticwebassets\\admin\\js\\dashboard.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\data-table.js",
+      "PackagePath": "staticwebassets\\admin\\js\\data-table.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\dataTables.bootstrap4.js",
+      "PackagePath": "staticwebassets\\admin\\js\\dataTables.bootstrap4.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\documentation.js",
+      "PackagePath": "staticwebassets\\admin\\js\\documentation.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\file-upload.js",
+      "PackagePath": "staticwebassets\\admin\\js\\file-upload.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\hoverable-collapse.js",
+      "PackagePath": "staticwebassets\\admin\\js\\hoverable-collapse.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\jquery.cookie.js",
+      "PackagePath": "staticwebassets\\admin\\js\\jquery.cookie.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\jquery.dataTables.js",
+      "PackagePath": "staticwebassets\\admin\\js\\jquery.dataTables.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\off-canvas.js",
+      "PackagePath": "staticwebassets\\admin\\js\\off-canvas.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\tabs.js",
+      "PackagePath": "staticwebassets\\admin\\js\\tabs.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\template.js",
+      "PackagePath": "staticwebassets\\admin\\js\\template.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\.DS_Store",
+      "PackagePath": "staticwebassets\\admin\\vendors\\.DS_Store"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\base\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\admin\\vendors\\base\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\base\\vendor.bundle.base.css",
+      "PackagePath": "staticwebassets\\admin\\vendors\\base\\vendor.bundle.base.css"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\base\\vendor.bundle.base.js",
+      "PackagePath": "staticwebassets\\admin\\vendors\\base\\vendor.bundle.base.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\chart.js\\Chart.min.js",
+      "PackagePath": "staticwebassets\\admin\\vendors\\chart.js\\Chart.min.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\datatables.net-bs4\\dataTables.bootstrap4.css",
+      "PackagePath": "staticwebassets\\admin\\vendors\\datatables.net-bs4\\dataTables.bootstrap4.css"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\datatables.net-bs4\\dataTables.bootstrap4.js",
+      "PackagePath": "staticwebassets\\admin\\vendors\\datatables.net-bs4\\dataTables.bootstrap4.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\datatables.net\\jquery.dataTables.js",
+      "PackagePath": "staticwebassets\\admin\\vendors\\datatables.net\\jquery.dataTables.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\mdi\\css\\materialdesignicons.min.css",
+      "PackagePath": "staticwebassets\\admin\\vendors\\mdi\\css\\materialdesignicons.min.css"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\mdi\\css\\materialdesignicons.min.css.map",
+      "PackagePath": "staticwebassets\\admin\\vendors\\mdi\\css\\materialdesignicons.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\mdi\\fonts\\materialdesignicons-webfont.eot",
+      "PackagePath": "staticwebassets\\admin\\vendors\\mdi\\fonts\\materialdesignicons-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\mdi\\fonts\\materialdesignicons-webfont.ttf",
+      "PackagePath": "staticwebassets\\admin\\vendors\\mdi\\fonts\\materialdesignicons-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff",
+      "PackagePath": "staticwebassets\\admin\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2",
+      "PackagePath": "staticwebassets\\admin\\vendors\\mdi\\fonts\\materialdesignicons-webfont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\css\\style.css",
+      "PackagePath": "staticwebassets\\assets\\css\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\FontAwesome.otf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\Hotel-Regular.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Hotel-Regular.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\Hotel-Regular.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Hotel-Regular.svg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\Hotel-Regular.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Hotel-Regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\Hotel-Regular.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\Hotel-Regular.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\MaterialIcons-Regular.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\MaterialIcons-Regular.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\MaterialIcons-Regular.ijmap",
+      "PackagePath": "staticwebassets\\assets\\fonts\\MaterialIcons-Regular.ijmap"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\MaterialIcons-Regular.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\MaterialIcons-Regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\MaterialIcons-Regular.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\MaterialIcons-Regular.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\MaterialIcons-Regular.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\MaterialIcons-Regular.woff2"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.svg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\glyphicons-halflings-regular.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\glyphicons-halflings-regular.woff2"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\linecons.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\linecons.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\linecons.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\linecons.svg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\linecons.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\linecons.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\linecons.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\linecons.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\materialdesignicons-webfont.eot",
+      "PackagePath": "staticwebassets\\assets\\fonts\\materialdesignicons-webfont.eot"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\materialdesignicons-webfont.svg",
+      "PackagePath": "staticwebassets\\assets\\fonts\\materialdesignicons-webfont.svg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\materialdesignicons-webfont.ttf",
+      "PackagePath": "staticwebassets\\assets\\fonts\\materialdesignicons-webfont.ttf"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\materialdesignicons-webfont.woff",
+      "PackagePath": "staticwebassets\\assets\\fonts\\materialdesignicons-webfont.woff"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\fonts\\materialdesignicons-webfont.woff2",
+      "PackagePath": "staticwebassets\\assets\\fonts\\materialdesignicons-webfont.woff2"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\08_Agency_Page_16.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\08_Agency_Page_16.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\Thumbs.db",
+      "PackagePath": "staticwebassets\\assets\\images\\Thumbs.db"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\_blank.png",
+      "PackagePath": "staticwebassets\\assets\\images\\_blank.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agency-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\agency-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agency-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\agency-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agency-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\agency-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agency-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\agency-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agency-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\agency-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agency-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\agency-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agency-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\agency-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agency-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\agency-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agency-9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\agency-9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agent-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\agent-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agent-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\agent-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\bg-clients.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\bg-clients.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_list-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_list-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_list-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_list-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_list-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_list-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_list-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_list-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_list-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_list-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_list-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_list-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-1_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-1_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-1_thumb.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-1_thumb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-2_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-2_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-2_thumb.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-2_thumb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-3_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-3_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-3_thumb.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-3_thumb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-4_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-4_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-4_thumb.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-4_thumb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-5_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-5_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-5_thumb.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-5_thumb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-6_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-6_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\catalog_single-6_thumb.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\catalog_single-6_thumb.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\categories-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\categories-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\categories-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\categories-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\categories-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\categories-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\categories-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\categories-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\categories-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\categories-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\categories-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\categories-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\categories-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\categories-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\categories-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\categories-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\certifikate-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\certifikate-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\client-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\client-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\clients-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\clients-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\clients-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\clients-2.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\clients-3.png",
+      "PackagePath": "staticwebassets\\assets\\images\\clients-3.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\clients-4.png",
+      "PackagePath": "staticwebassets\\assets\\images\\clients-4.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\clients-5.png",
+      "PackagePath": "staticwebassets\\assets\\images\\clients-5.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\elements-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\elements-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\elements-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\elements-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\extras-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\extras-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\favicon.ico",
+      "PackagePath": "staticwebassets\\assets\\images\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-10_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-10_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-11_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-11_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-12_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-12_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-1_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-1_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-2_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-2_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-3_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-3_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-4_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-4_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-5_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-5_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-6_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-6_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-7_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-7_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-8_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-8_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-9_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-9_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-cobbles-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-cobbles-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-cobbles-10.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-cobbles-10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-cobbles-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-cobbles-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-cobbles-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-cobbles-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-cobbles-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-cobbles-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-cobbles-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-cobbles-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-cobbles-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-cobbles-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-cobbles-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-cobbles-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-cobbles-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-cobbles-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-cobbles-9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-cobbles-9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-10.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-11.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-12.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-masonry-9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-masonry-9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-padding-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-padding-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-padding-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-padding-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-padding-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-padding-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-padding-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-padding-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-padding-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-padding-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-padding-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-padding-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-padding-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-padding-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-padding-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-padding-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gallery-padding-9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\gallery-padding-9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gmap_marker.png",
+      "PackagePath": "staticwebassets\\assets\\images\\gmap_marker.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\gmap_marker_active.png",
+      "PackagePath": "staticwebassets\\assets\\images\\gmap_marker_active.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\icon-minus.png",
+      "PackagePath": "staticwebassets\\assets\\images\\icon-minus.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\icon-plus.png",
+      "PackagePath": "staticwebassets\\assets\\images\\icon-plus.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\ie8-panel\\warning_bar_0000_us.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\ie8-panel\\warning_bar_0000_us.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-10.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-10.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-11.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-11.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-16.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-16.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-17.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-17.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-18.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-18.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\index-9.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\index-9.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\left_sidebar_blog-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\left_sidebar_blog-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\left_sidebar_blog-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\left_sidebar_blog-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\left_sidebar_blog-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\left_sidebar_blog-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\left_sidebar_blog-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\left_sidebar_blog-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\left_sidebar_blog-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\left_sidebar_blog-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\left_sidebar_blog-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\left_sidebar_blog-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\left_sidebar_blog-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\left_sidebar_blog-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\left_sidebar_blog-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\left_sidebar_blog-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\logo-1.png",
+      "PackagePath": "staticwebassets\\assets\\images\\logo-1.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\logo-2.png",
+      "PackagePath": "staticwebassets\\assets\\images\\logo-2.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\photoswipe-controls.png",
+      "PackagePath": "staticwebassets\\assets\\images\\photoswipe-controls.png"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\post_page-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\post_page-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\post_page-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\post_page-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\post_page-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\post_page-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\post_page-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\post_page-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\post_page-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\post_page-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\preloader.gif",
+      "PackagePath": "staticwebassets\\assets\\images\\preloader.gif"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-1_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-1_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-2_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-2_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-3_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-3_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-4_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-4_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-5_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-5_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-single-6_original.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-single-6_original.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-thumbnail-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-thumbnail-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-thumbnail-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-thumbnail-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-thumbnail-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-thumbnail-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-thumbnail-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-thumbnail-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-thumbnail-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-thumbnail-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\product-thumbnail-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\product-thumbnail-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\services-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\services-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\services-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\services-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\services-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\services-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\services-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\services-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\services-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\services-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\services-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\services-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\services-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\services-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\services-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\services-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\slide-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slide-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\slide-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slide-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\slide-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\slide-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\team-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\team-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\team-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\team-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\team-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\team-6.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\team-7.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\team-8.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\team-8.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\three-column-blog-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\three-column-blog-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\three-column-blog-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\three-column-blog-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\three-column-blog-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\three-column-blog-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\three-column-blog-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\three-column-blog-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\three-column-blog-5.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\three-column-blog-5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\two-column-blog-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\two-column-blog-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\two-column-blog-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\two-column-blog-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\two-column-blog-3.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\two-column-blog-3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\two-column-blog-4.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\two-column-blog-4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\typography-1.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\typography-1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\typography-2.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\typography-2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\warning_bar_0000_us.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\warning_bar_0000_us.jpg"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\js\\core.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\core.min.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\js\\html5shiv.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\html5shiv.min.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\js\\pointer-events.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\pointer-events.min.js"
+    },
+    {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\js\\script.js",
+      "PackagePath": "staticwebassets\\assets\\js\\script.js"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Estate.MVC.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Estate.MVC.props",
+      "PackagePath": "build\\Estate.MVC.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Estate.MVC.props",
+      "PackagePath": "buildMultiTargeting\\Estate.MVC.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Estate.MVC.props",
+      "PackagePath": "buildTransitive\\Estate.MVC.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -18,17 +18,15 @@ namespace Estate.Persistance.Implementations.Services
     {
         private readonly IMapper _mapper;
         private readonly ICorporateRepository _repository;
-        private readonly ICorporateNameRepository _nameRepository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
         private readonly UserManager<AppUser> _userManager;
 
-        public CorporateService(IMapper mapper, ICorporateRepository repository, ICorporateNameRepository nameRepository, 
+        public CorporateService(IMapper mapper, ICorporateRepository repository,
             IHttpContextAccessor http, IWebHostEnvironment env, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
-            _nameRepository = nameRepository;
             _http = http;
             _env = env;
             _userManager = userManager;

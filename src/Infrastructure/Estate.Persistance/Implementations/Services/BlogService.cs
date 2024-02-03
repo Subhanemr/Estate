@@ -19,18 +19,16 @@ namespace Estate.Persistance.Implementations.Services
     {
         private readonly IMapper _mapper;
         private readonly IBlogRepository _repository;
-        private readonly IBlogNameRepository _nameRepository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
         private readonly ITempDataDictionaryFactory _tempDataDictionaryFactory;
         private readonly UserManager<AppUser> _userManager;
 
-        public BlogService(IMapper mapper, IBlogRepository repository, IBlogNameRepository nameRepository, IHttpContextAccessor http, IWebHostEnvironment env, 
+        public BlogService(IMapper mapper, IBlogRepository repository, IHttpContextAccessor http, IWebHostEnvironment env, 
             ITempDataDictionaryFactory tempDataDictionaryFactory, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
-            _nameRepository = nameRepository;
             _http = http;
             _env = env;
             _tempDataDictionaryFactory = tempDataDictionaryFactory;

@@ -12,6 +12,16 @@ namespace Estate.Application.Validators.Account
                 .Length(2, 25).WithMessage("Username max characters is 2-25")
                 .Matches(@"^[a-zA-Z0-9\s]*$").WithMessage("Username can only contain letters, numbers, and spaces");
 
+            RuleFor(x => x.Name)
+                .NotEmpty().WithMessage("Name is required")
+                .Length(2, 25).WithMessage("Name max characters is 2-25")
+                .Matches(@"^[a-zA-Z0-9\s]*$").WithMessage("Name can only contain letters, numbers, and spaces");
+
+            RuleFor(x => x.Surname)
+                .NotEmpty().WithMessage("Surname is required")
+                .Length(2, 25).WithMessage("Surname max characters is 2-25")
+                .Matches(@"^[a-zA-Z0-9\s]*$").WithMessage("Surname can only contain letters, numbers, and spaces");
+
             RuleFor(x => x.Email)
                 .NotEmpty().WithMessage("Email must be entered mutled")
                 .Length(10, 255).WithMessage("It should be between 10 and 255 characters")

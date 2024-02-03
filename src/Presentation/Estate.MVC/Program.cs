@@ -28,7 +28,8 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseMiddleware<GlobalExceptionMiddleware>();
+//app.UseMiddleware<GlobalExceptionMiddleware>();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(

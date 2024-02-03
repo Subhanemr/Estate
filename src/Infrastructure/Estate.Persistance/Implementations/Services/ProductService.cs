@@ -25,46 +25,30 @@ namespace Estate.Persistance.Implementations.Services
     {
         private readonly IMapper _mapper;
         private readonly IProductRepository _repository;
-        private readonly IProductNameRepository _nameRepository;
         private readonly ICategoryRepository _categoryRepository;
-        private readonly ICategoryNameRepository _categoryNameRepository;
         private readonly IFeaturesRepository _featuresRepository;
-        private readonly IFeaturesNameRepository _featuresNameRepository;
         private readonly IExteriorTypeRepository _exteriorTypeRepository;
-        private readonly IExteriorTypeNameRepository _exteriorTypeNameRepository;
         private readonly IParkingTypeRepository _parkingTypeRepository;
-        private readonly IParkingTypeNameRepository _parkkingTypeNameRepository;
         private readonly IRoofTypeRepository _roofTypeRepository;
-        private readonly IRoofTypeNameRepository _roofTypeNameRepository;
         private readonly IViewTypeRepository _viewTypeRepository;
-        private readonly IViewTypeNameRepository _viewTypeNameRepository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
         private readonly ITempDataDictionaryFactory _tempDataDictionaryFactory;
         private readonly UserManager<AppUser> _userManager;
 
-        public ProductService(IMapper mapper, IProductRepository repository, IProductNameRepository nameRepository,
-            ICategoryRepository categoryRepository, ICategoryNameRepository categoryNameRepository, IFeaturesRepository featuresRepository,
-            IFeaturesNameRepository featuresNameRepository, IExteriorTypeRepository exteriorTypeRepository, IExteriorTypeNameRepository exteriorTypeNameRepository,
-            IParkingTypeRepository parkingTypeRepository, IParkingTypeNameRepository parkkingTypeNameRepository, IRoofTypeRepository roofTypeRepository,
-            IRoofTypeNameRepository roofTypeNameRepository, IViewTypeRepository viewTypeRepository, IViewTypeNameRepository viewTypeNameRepository,
+        public ProductService(IMapper mapper, IProductRepository repository,
+            ICategoryRepository categoryRepository, IFeaturesRepository featuresRepository, IExteriorTypeRepository exteriorTypeRepository,
+            IParkingTypeRepository parkingTypeRepository, IRoofTypeRepository roofTypeRepository, IViewTypeRepository viewTypeRepository,
             IHttpContextAccessor http, IWebHostEnvironment env, ITempDataDictionaryFactory tempDataDictionaryFactory, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
-            _nameRepository = nameRepository;
             _categoryRepository = categoryRepository;
-            _categoryNameRepository = categoryNameRepository;
             _featuresRepository = featuresRepository;
-            _featuresNameRepository = featuresNameRepository;
             _exteriorTypeRepository = exteriorTypeRepository;
-            _exteriorTypeNameRepository = exteriorTypeNameRepository;
             _parkingTypeRepository = parkingTypeRepository;
-            _parkkingTypeNameRepository = parkkingTypeNameRepository;
             _roofTypeRepository = roofTypeRepository;
-            _roofTypeNameRepository = roofTypeNameRepository;
             _viewTypeRepository = viewTypeRepository;
-            _viewTypeNameRepository = viewTypeNameRepository;
             _http = http;
             _env = env;
             _tempDataDictionaryFactory = tempDataDictionaryFactory;

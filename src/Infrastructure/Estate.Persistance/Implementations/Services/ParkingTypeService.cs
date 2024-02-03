@@ -16,15 +16,13 @@ namespace Estate.Persistance.Implementations.Services
     {
         private readonly IMapper _mapper;
         private readonly IParkingTypeRepository _repository;
-        private readonly IParkingTypeNameRepository _nameRepository;
         private readonly IHttpContextAccessor _http;
         private readonly UserManager<AppUser> _userManager;
 
-        public ParkingTypeService(IMapper mapper, IParkingTypeRepository repository, IParkingTypeNameRepository nameRepository, IHttpContextAccessor http, UserManager<AppUser> userManager)
+        public ParkingTypeService(IMapper mapper, IParkingTypeRepository repository,  IHttpContextAccessor http, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
-            _nameRepository = nameRepository;
             _http = http;
             _userManager = userManager;
         }
