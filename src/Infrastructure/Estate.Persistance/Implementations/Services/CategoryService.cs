@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace Estate.Persistance.Implementations.Services
@@ -68,7 +69,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task DeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes ={ $"{nameof(Category.Products)}" };
+            string[] includes = { $"{nameof(Category.Products)}" };
             Category item = await _repository.GetByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
@@ -102,24 +103,42 @@ namespace Estate.Persistance.Implementations.Services
             return vMs;
         }
 
-        public async Task<PaginationVM<ItemCategoryVM>> GetFilteredAsync(string? search, int? order, int take,int page)
+        public async Task<PaginationVM<ItemCategoryVM>> GetFilteredAsync(string? search, int take, int page, int order)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(Category.Products)}" };
             double count = await _repository.CountAsync();
-            ICollection<Category> items = await _repository
-                    .GetFiltered(search, order, take, (page-1), includes).ToListAsync();
+
+            ICollection<Category> items = new List<Category>();
+
+            switch (order)
+            {
+                case 1:
+                    items = await _repository
+                    .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, 
+                        x => x.Name,false, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+                case 2:
+                    items = await _repository
+                     .GetAllWhereByOrder(expression: x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, 
+                     orderException: x => x.CreateAt, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                    break;
+                case 3:
+                    items = await _repository
+                    .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                        x => x.Name,IsDescending: true, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+            }
 
             ICollection<ItemCategoryVM> vMs = _mapper.Map<ICollection<ItemCategoryVM>>(items);
 
             PaginationVM<ItemCategoryVM> pagination = new PaginationVM<ItemCategoryVM>
             {
                 CurrentPage = page,
-                TotalPage = Math.Ceiling(count / 10),
+                TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage <page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }

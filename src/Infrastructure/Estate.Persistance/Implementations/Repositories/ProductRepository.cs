@@ -12,7 +12,6 @@ namespace Estate.Persistance.Implementations.Repositories
         private readonly DbSet<ProductParkingType> _dbParkingType;
         private readonly DbSet<ProductRoofType> _dbRoofType;
         private readonly DbSet<ProductViewType> _dbViewType;
-        private readonly DbSet<Product> _dbProduct;
 
         public ProductRepository(AppDbContext context) : base(context)
         {
@@ -21,7 +20,6 @@ namespace Estate.Persistance.Implementations.Repositories
             _dbParkingType = context.Set<ProductParkingType>();
             _dbRoofType = context.Set<ProductRoofType>();
             _dbViewType = context.Set<ProductViewType>();
-            _dbProduct = context.Set<Product>();
         }
 
         public void DeleteExteriorType(ProductExteriorType item)
@@ -43,53 +41,6 @@ namespace Estate.Persistance.Implementations.Repositories
         public void DeleteViewType(ProductViewType item)
         {
             _dbViewType.Remove(item);
-        }
-        public IQueryable<Product> GetFiltered(string? search, int? order, int? categoryId, int skip = 0, int take = 0, params string[] includes)
-        {
-            var query = _dbProduct.AsQueryable();
-
-            if (skip != 0) query = query.Skip(skip);
-
-            if (take != 0) query = query.Take(take);
-
-            query = _addIncludes(query, includes);
-            
-            switch (order)
-            {
-                case 1:
-                    query = query.OrderBy(p => p.Name);
-                    break;
-                case 2:
-                    query = query.OrderBy(p => p.Price);
-                    break;
-                case 3:
-                    query = query.OrderByDescending(p => p.CreateAt);
-                    break;
-                case 4:
-                    query = query.OrderByDescending(p => p.Price);
-                    break;
-            }
-            if (!string.IsNullOrEmpty(search))
-            {
-                query = query.Where(p => p.Name.ToLower().Contains(search.ToLower()));
-            }
-            if (categoryId != null)
-            {
-                query = query.Where(p => p.CategoryId == categoryId);
-            }
-            return query;
-        }
-
-        private IQueryable<Product> _addIncludes(IQueryable<Product> query, params string[] includes)
-        {
-            if (includes != null)
-            {
-                for (int i = 0; i < includes.Length; i++)
-                {
-                    query = query.Include(includes[i]);
-                }
-            }
-            return query;
         }
     }
 }

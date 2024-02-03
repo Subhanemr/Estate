@@ -15,9 +15,9 @@ namespace Estate.MVC.Areas.Admin.Controllers
             _service = service;
         }
 
-        public async Task<IActionResult> Index(string? search, int? order, int page=1)
+        public async Task<IActionResult> Index(string? search, int order = 1, int page = 1)
         {
-            return View(await _service.GetFilteredAsync(search, order, 10, page));
+            return View(model: await _service.GetFilteredAsync(search, 10, page, order));
         }
 
         public IActionResult Create()

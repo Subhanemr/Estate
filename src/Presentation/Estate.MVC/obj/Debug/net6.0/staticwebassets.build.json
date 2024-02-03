@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SaIohg/yGnEzdoB6sxoZhJ+tqN5K/zpzbSw5LMEOFwI=",
+  "Hash": "VnG0CctIO77axBEUqO5G2HEF/vND1tBNdFkN7fNjsOA=",
   "Source": "Estate.MVC",
   "BasePath": "_content/Estate.MVC",
   "Mode": "Default",
@@ -2072,6 +2072,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\08_Agency_Page_16.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\8084c4ba-d656-48a1-addb-87082ca830ac.jpg",
+      "SourceId": "Estate.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\",
+      "BasePath": "_content/Estate.MVC",
+      "RelativePath": "assets/images/8084c4ba-d656-48a1-addb-87082ca830ac.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\8084c4ba-d656-48a1-addb-87082ca830ac.jpg"
     },
     {
       "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agency-1.jpg",
