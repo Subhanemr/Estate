@@ -1,6 +1,4 @@
-﻿using Estate.Application.ViewModels.Product;
-
-namespace Estate.Application.ViewModels.RoofType
+﻿namespace Estate.Application.ViewModels
 {
     public record GetRoofTypeVM(int Id, string Name, ICollection<IncludeProductVM> Products);
 }

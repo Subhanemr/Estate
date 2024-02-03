@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Estate.Application.Abstractions.Services;
-using Estate.Application.ViewModels.Account;
+using Estate.Application.ViewModels;
 using Estate.Domain.Entities;
 using Estate.Domain.Enums;
 using Microsoft.AspNetCore.Identity;

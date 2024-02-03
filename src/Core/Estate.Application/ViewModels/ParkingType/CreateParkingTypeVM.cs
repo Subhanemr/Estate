@@ -1,4 +1,4 @@
-﻿namespace Estate.Application.ViewModels.ParkingType
+﻿namespace Estate.Application.ViewModels
 {
     public record CreateParkingTypeVM(string Name);
 }

@@ -1,6 +1,4 @@
-﻿using Estate.Application.ViewModels.ProductImage;
-
-namespace Estate.Application.ViewModels.Product
+﻿namespace Estate.Application.ViewModels
 {
     public record IncludeProductVM(int Id, string Name, double Price, float LotSize, float Area, byte Bedrooms, byte Bathrooms,
         byte Garages, short YearBuilt, byte RoomCount, string? SchoolDistrict, string? SchoolDistrictPhone,

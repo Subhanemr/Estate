@@ -1,4 +1,4 @@
-﻿namespace Estate.Application.ViewModels.Agency
+﻿namespace Estate.Application.ViewModels
 {
     public record ItemAgencyVM(int Id, string Name);
 }

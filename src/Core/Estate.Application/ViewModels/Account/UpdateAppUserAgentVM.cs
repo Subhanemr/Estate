@@ -1,8 +1,6 @@
-﻿using Estate.Application.ViewModels.Agency;
-using Estate.Application.ViewModels.AppUserImage;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 
-namespace Estate.Application.ViewModels.Account
+namespace Estate.Application.ViewModels
 {
     public record UpdateAppUserAgentVM(string PhoneFirst, string? PhoneSecond, string Address, string About,
         string FaceLink, string TwitLink, string? GoogleLink, string LinkedLink, string InstaLink, IFormFile? MainPhoto,

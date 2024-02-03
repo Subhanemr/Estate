@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Estate.Application.Abstractions.Repositories;
 using Estate.Application.Abstractions.Services;
-using Estate.Application.ViewModels.Category;
+using Estate.Application.ViewModels;
 using Estate.Domain.Entities;
 using Estate.Infrastructure.Exceptions;
 using Estate.Infrastructure.Implementations;
@@ -41,7 +41,6 @@ namespace Estate.Persistance.Implementations.Services
                 model.AddModelError("Name", "Name is exists");
                 return false;
             }
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
 
             if (!create.Photo.ValidateType())
             {
@@ -56,8 +55,9 @@ namespace Estate.Persistance.Implementations.Services
 
             Category item = _mapper.Map<Category>(create);
 
-            item.Img = await create.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
-            item.CreatedBy = user.UserName;
+            item.Img = await create.Photo.CreateFileAsync(_env.WebRootPath, "assets", "images");
+            //AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
+            //item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
@@ -90,7 +90,7 @@ namespace Estate.Persistance.Implementations.Services
             return vMs;
         }
 
-        public async Task<ICollection<ItemCategoryVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Category, object>>? orderExpression, int page = 1)
+        public async Task<ICollection<ItemCategoryVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Category, object>>? orderExpression, int page)
         {
             string[] includes = { $"{nameof(Category.Products)}" };
 
@@ -100,6 +100,28 @@ namespace Estate.Persistance.Implementations.Services
             ICollection<ItemCategoryVM> vMs = _mapper.Map<ICollection<ItemCategoryVM>>(items);
 
             return vMs;
+        }
+
+        public async Task<PaginationVM<ItemCategoryVM>> GetFilteredAsync(string? search, int? order, int take,int page)
+        {
+            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+
+            string[] includes = { $"{nameof(Category.Products)}" };
+            double count = await _repository.CountAsync();
+            ICollection<Category> items = await _repository
+                    .GetFiltered(search, order, take, (page-1), includes).ToListAsync();
+
+            ICollection<ItemCategoryVM> vMs = _mapper.Map<ICollection<ItemCategoryVM>>(items);
+
+            PaginationVM<ItemCategoryVM> pagination = new PaginationVM<ItemCategoryVM>
+            {
+                CurrentPage = page,
+                TotalPage = Math.Ceiling(count / 10),
+                Items = vMs
+            };
+            if (pagination.TotalPage <page) throw new NotFoundException("Your request was not found");
+
+            return pagination;
         }
 
         public async Task<GetCategoryVM> GetByIdAsync(int id, int take, int page = 1)

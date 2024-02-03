@@ -1,4 +1,4 @@
-﻿namespace Estate.Application.ViewModels.ExteriorType
+﻿namespace Estate.Application.ViewModels
 {
     public record CreateExteriorTypeVM(string Name);
 }

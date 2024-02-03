@@ -1,4 +1,4 @@
-﻿namespace Estate.Application.ViewModels.BlogComment
+﻿namespace Estate.Application.ViewModels
 {
     public record UpdateBlogCommentVM(string Comment);
 }

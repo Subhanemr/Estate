@@ -1,7 +1,6 @@
 ﻿using Estate.Application.Abstractions.Services;
-using Estate.Application.ViewModels.ExteriorType;
+using Estate.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Estate.MVC.Areas.Admin.Controllers
 {

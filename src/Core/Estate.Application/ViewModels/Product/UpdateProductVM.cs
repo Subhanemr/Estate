@@ -1,13 +1,6 @@
-﻿using Estate.Application.ViewModels.Category;
-using Estate.Application.ViewModels.ExteriorType;
-using Estate.Application.ViewModels.Features;
-using Estate.Application.ViewModels.ParkingType;
-using Estate.Application.ViewModels.ProductImage;
-using Estate.Application.ViewModels.RoofType;
-using Estate.Application.ViewModels.ViewType;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 
-namespace Estate.Application.ViewModels.Product
+namespace Estate.Application.ViewModels
 {
     public record UpdateProductVM(string Name, double Price, float LotSize, float Area, int Bedrooms, int Bathrooms,
         int Garages, int YearBuilt, int RoomCount, string? SchoolDistrict, string? SchoolDistrictPhone,

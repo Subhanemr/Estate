@@ -1,6 +1,4 @@
-﻿using Estate.Application.ViewModels.Product;
-
-namespace Estate.Application.ViewModels.ViewType
+﻿namespace Estate.Application.ViewModels
 {
     public record GetViewTypeVM(int Id, string Name, ICollection<IncludeProductVM> Products);
 }

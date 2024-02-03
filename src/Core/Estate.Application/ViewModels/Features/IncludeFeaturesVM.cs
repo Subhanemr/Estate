@@ -1,6 +1,4 @@
-﻿using Estate.Application.ViewModels.Product;
-
-namespace Estate.Application.ViewModels.Features
+﻿namespace Estate.Application.ViewModels
 {
     public record IncludeFeaturesVM(int Id, string Name);
 }

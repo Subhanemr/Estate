@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "a/CG+VTWjOOvFbkSSTHk7hoaIurwKKjqQFxoIglmyyE=",
+  "Hash": "SaIohg/yGnEzdoB6sxoZhJ+tqN5K/zpzbSw5LMEOFwI=",
   "Source": "Estate.MVC",
   "BasePath": "_content/Estate.MVC",
   "Mode": "Default",
@@ -2990,6 +2990,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\extras-1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\f4aafe4d-c157-4c2b-86f8-1b0c0d7586a8.jpg",
+      "SourceId": "Estate.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\",
+      "BasePath": "_content/Estate.MVC",
+      "RelativePath": "assets/images/f4aafe4d-c157-4c2b-86f8-1b0c0d7586a8.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\f4aafe4d-c157-4c2b-86f8-1b0c0d7586a8.jpg"
     },
     {
       "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\favicon.ico",

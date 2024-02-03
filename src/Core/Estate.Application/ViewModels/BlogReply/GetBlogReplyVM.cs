@@ -1,7 +1,6 @@
-﻿using Estate.Application.ViewModels.BlogComment;
-using Estate.Domain.Entities;
+﻿using Estate.Domain.Entities;
 
-namespace Estate.Application.ViewModels.BlogReply
+namespace Estate.Application.ViewModels
 {
     public record GetBlogReplyVM(int Id, string Comment, DateTime CoomentTime, 
         string AppUserId, AppUser AppUser, int BlogCommnetId, IncludeBlogCommnetVM BlogComment);

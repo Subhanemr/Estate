@@ -1,4 +1,4 @@
-﻿using Estate.Application.ViewModels.Client;
+﻿using Estate.Application.ViewModels;
 using Estate.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Linq.Expressions;

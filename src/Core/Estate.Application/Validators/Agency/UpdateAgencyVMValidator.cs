@@ -1,4 +1,4 @@
-﻿using Estate.Application.ViewModels.Agency;
+﻿using Estate.Application.ViewModels;
 using FluentValidation;
 
 namespace Estate.Application.Validators.Agency

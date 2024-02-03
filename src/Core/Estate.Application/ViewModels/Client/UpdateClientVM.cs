@@ -1,6 +1,4 @@
-﻿using Estate.Application.ViewModels.Corporate;
-
-namespace Estate.Application.ViewModels.Client
+﻿namespace Estate.Application.ViewModels
 {
     public record UpdateClientVM(string Comment, string Country, string? Specialty, int CorporateId)
     {

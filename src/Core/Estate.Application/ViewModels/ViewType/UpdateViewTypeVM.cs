@@ -1,4 +1,4 @@
-﻿namespace Estate.Application.ViewModels.ViewType
+﻿namespace Estate.Application.ViewModels
 {
     public record UpdateViewTypeVM(string Name);
 }

@@ -1,6 +1,4 @@
-﻿using Estate.Application.ViewModels.Product;
-
-namespace Estate.Application.ViewModels.ParkingType
+﻿namespace Estate.Application.ViewModels
 {
     public record ItemParkingTypeVM(int Id, string Name, ICollection<IncludeProductVM>? Products);
 }

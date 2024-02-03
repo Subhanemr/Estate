@@ -1,4 +1,4 @@
-﻿using Estate.Application.ViewModels.Category;
+﻿using Estate.Application.ViewModels;
 using Estate.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Linq.Expressions;
@@ -9,6 +9,7 @@ namespace Estate.Application.Abstractions.Services
     {
         Task<ICollection<ItemCategoryVM>> GetAllWhereAsync(int take, int page = 1);
         Task<ICollection<ItemCategoryVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Category, object>>? orderExpression, int page = 1);
+        Task<PaginationVM<ItemCategoryVM>> GetFilteredAsync(string? search, int? order, int take, int page = 1);
         Task<GetCategoryVM> GetByIdAsync(int id, int take, int page = 1);
         Task<bool> CreateAsync(CreateCategoryVM create, ModelStateDictionary model);
         Task<UpdateCategoryVM> UpdateAsync(int id);

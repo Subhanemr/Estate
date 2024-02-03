@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Estate.Application.Abstractions.Repositories;
 using Estate.Application.Abstractions.Services;
-using Estate.Application.ViewModels.Corporate;
+using Estate.Application.ViewModels;
 using Estate.Domain.Entities;
 using Estate.Infrastructure.Exceptions;
 using Estate.Infrastructure.Implementations;

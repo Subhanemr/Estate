@@ -1,7 +1,4 @@
-﻿using Estate.Application.ViewModels.Account;
-using Estate.Domain.Entities;
-
-namespace Estate.Application.ViewModels.Agency
+﻿namespace Estate.Application.ViewModels
 {
     public record GetAgencyVM(int Id, string Name, ICollection<IncludeAppUser> AppUsers);
 }

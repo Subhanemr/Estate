@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Estate.Application.ViewModels.ProductComment;
+using Estate.Application.ViewModels;
 using Estate.Domain.Entities;
 
 namespace Estate.Application.MappingProfiles

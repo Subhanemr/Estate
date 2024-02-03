@@ -1,4 +1,4 @@
-﻿using Estate.Application.ViewModels.BlogReply;
+﻿using Estate.Application.ViewModels;
 using FluentValidation;
 
 namespace Estate.Application.Validators.BlogReply

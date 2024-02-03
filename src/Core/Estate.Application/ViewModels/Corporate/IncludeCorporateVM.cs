@@ -1,6 +1,4 @@
-﻿using Estate.Application.ViewModels.Client;
-
-namespace Estate.Application.ViewModels.Corporate
+﻿namespace Estate.Application.ViewModels
 {
     public record IncludeCorporateVM(int Id, string CorporateLink, string Description, string Img);
 }

@@ -1,6 +1,4 @@
-﻿using Estate.Application.ViewModels.Product;
-
-namespace Estate.Application.ViewModels.ExteriorType
+﻿namespace Estate.Application.ViewModels
 {
     public record GetExteriorTypeVM(int Id, string Name, ICollection<IncludeProductVM> Products);
 }

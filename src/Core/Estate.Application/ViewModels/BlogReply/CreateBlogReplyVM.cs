@@ -1,4 +1,4 @@
-﻿namespace Estate.Application.ViewModels.BlogReply
+﻿namespace Estate.Application.ViewModels
 {
     public record CreateBlogReplyVM(string ReplyComment);
 }

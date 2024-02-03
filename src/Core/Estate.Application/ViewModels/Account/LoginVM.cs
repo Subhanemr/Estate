@@ -1,4 +1,4 @@
-﻿namespace Estate.Application.ViewModels.Account
+﻿namespace Estate.Application.ViewModels
 {
     public record LoginVM(string UserNameOrEmail, string Password, bool IsRemembered);
 }

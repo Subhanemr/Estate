@@ -1,13 +1,7 @@
 ﻿using AutoMapper;
 using Estate.Application.Abstractions.Repositories;
 using Estate.Application.Abstractions.Services;
-using Estate.Application.ViewModels.Category;
-using Estate.Application.ViewModels.ExteriorType;
-using Estate.Application.ViewModels.Features;
-using Estate.Application.ViewModels.ParkingType;
-using Estate.Application.ViewModels.Product;
-using Estate.Application.ViewModels.RoofType;
-using Estate.Application.ViewModels.ViewType;
+using Estate.Application.ViewModels;
 using Estate.Domain.Entities;
 using Estate.Infrastructure.Exceptions;
 using Estate.Infrastructure.Implementations;

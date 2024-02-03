@@ -1,4 +1,4 @@
-﻿using Estate.Application.ViewModels.Account;
+﻿using Estate.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Estate.Application.Abstractions.Services

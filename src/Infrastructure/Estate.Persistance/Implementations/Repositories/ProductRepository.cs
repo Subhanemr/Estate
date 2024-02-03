@@ -1,10 +1,7 @@
 ﻿using Estate.Application.Abstractions.Repositories;
-using Estate.Application.ViewModels.Product;
 using Estate.Domain.Entities;
 using Estate.Persistance.Contexts;
-using FluentValidation.Validators;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace Estate.Persistance.Implementations.Repositories
 {

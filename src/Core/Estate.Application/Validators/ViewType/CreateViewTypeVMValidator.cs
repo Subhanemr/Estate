@@ -1,4 +1,4 @@
-﻿using Estate.Application.ViewModels.ViewType;
+﻿using Estate.Application.ViewModels;
 using FluentValidation;
 
 namespace Estate.Application.Validators.ViewType
