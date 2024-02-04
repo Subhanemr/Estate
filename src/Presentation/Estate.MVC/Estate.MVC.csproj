@@ -7,8 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Shared\Components - Copy\**" />
+    <Content Remove="Views\Shared\Components - Copy\**" />
+    <EmbeddedResource Remove="Views\Shared\Components - Copy\**" />
+    <None Remove="Views\Shared\Components - Copy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Views\Shared\Components\" />
   </ItemGroup>
 
   <ItemGroup>

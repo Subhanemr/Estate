@@ -49,7 +49,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Agencies", (string)null);
+                    b.ToTable("Agencies");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.AgencyAppUser", b =>
@@ -86,7 +86,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("AgencyAppUsers", (string)null);
+                    b.ToTable("AgencyAppUsers");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.AppUser", b =>
@@ -155,9 +155,6 @@ namespace Estate.Persistance.Contexts.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneFirst")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
@@ -238,7 +235,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("AppUserImages", (string)null);
+                    b.ToTable("AppUserImages");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.Blog", b =>
@@ -294,7 +291,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Blogs", (string)null);
+                    b.ToTable("Blogs");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.BlogComment", b =>
@@ -338,7 +335,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("BlogComments", (string)null);
+                    b.ToTable("BlogComments");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.BlogImage", b =>
@@ -379,7 +376,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("BlogImages", (string)null);
+                    b.ToTable("BlogImages");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.BlogReply", b =>
@@ -423,7 +420,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("BlogCommentId");
 
-                    b.ToTable("BlogReplies", (string)null);
+                    b.ToTable("BlogReplies");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.Category", b =>
@@ -457,7 +454,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.Client", b =>
@@ -505,7 +502,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("CorporateId");
 
-                    b.ToTable("Clients", (string)null);
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.Corporate", b =>
@@ -547,7 +544,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Corporates", (string)null);
+                    b.ToTable("Corporates");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.ExteriorType", b =>
@@ -577,7 +574,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ExteriorTypes", (string)null);
+                    b.ToTable("ExteriorTypes");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.Favorite", b =>
@@ -614,7 +611,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Favorites", (string)null);
+                    b.ToTable("Favorites");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.Features", b =>
@@ -644,7 +641,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Features", (string)null);
+                    b.ToTable("Features");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.ParkingType", b =>
@@ -674,7 +671,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ParkingTypes", (string)null);
+                    b.ToTable("ParkingTypes");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.Product", b =>
@@ -773,7 +770,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.ProductComment", b =>
@@ -817,7 +814,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductComments", (string)null);
+                    b.ToTable("ProductComments");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.ProductExteriorType", b =>
@@ -853,7 +850,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductExteriorTypes", (string)null);
+                    b.ToTable("ProductExteriorTypes");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.ProductFeatures", b =>
@@ -889,7 +886,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductFeatures", (string)null);
+                    b.ToTable("ProductFeatures");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.ProductImage", b =>
@@ -927,7 +924,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductImages", (string)null);
+                    b.ToTable("ProductImages");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.ProductParkingType", b =>
@@ -963,7 +960,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductParkingTypes", (string)null);
+                    b.ToTable("ProductParkingTypes");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.ProductReply", b =>
@@ -1007,7 +1004,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("ProductCommentId");
 
-                    b.ToTable("ProductReplies", (string)null);
+                    b.ToTable("ProductReplies");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.ProductRoofType", b =>
@@ -1047,7 +1044,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("RoofTypeId");
 
-                    b.ToTable("ProductRoofTypes", (string)null);
+                    b.ToTable("ProductRoofTypes");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.ProductViewType", b =>
@@ -1083,7 +1080,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasIndex("ViewTypeId");
 
-                    b.ToTable("ProductViewTypes", (string)null);
+                    b.ToTable("ProductViewTypes");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.RoofType", b =>
@@ -1113,7 +1110,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("RoofTypes", (string)null);
+                    b.ToTable("RoofTypes");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.ViewType", b =>
@@ -1143,7 +1140,7 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ViewTypes", (string)null);
+                    b.ToTable("ViewTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

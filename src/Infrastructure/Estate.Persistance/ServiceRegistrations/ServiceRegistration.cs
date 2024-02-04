@@ -1,6 +1,7 @@
 ﻿using Estate.Application.Abstractions.Repositories;
 using Estate.Application.Abstractions.Services;
 using Estate.Domain.Entities;
+using Estate.Infrastructure.Implementations;
 using Estate.Persistance.Contexts;
 using Estate.Persistance.Implementations.Repositories;
 using Estate.Persistance.Implementations.Services;
@@ -30,8 +31,10 @@ namespace Estate.Persistance.ServiceRegistrations
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
 
-                options.SignIn.RequireConfirmedAccount = true;
+                options.SignIn.RequireConfirmedEmail = true;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
+            services.AddScoped<IEmailService, EmailService>();
 
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAgencyService, AgencyService>();

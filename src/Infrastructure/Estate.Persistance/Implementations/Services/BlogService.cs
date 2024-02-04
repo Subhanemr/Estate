@@ -21,21 +21,19 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IBlogRepository _repository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
-        private readonly ITempDataDictionaryFactory _tempDataDictionaryFactory;
         private readonly UserManager<AppUser> _userManager;
 
-        public BlogService(IMapper mapper, IBlogRepository repository, IHttpContextAccessor http, IWebHostEnvironment env, 
-            ITempDataDictionaryFactory tempDataDictionaryFactory, UserManager<AppUser> userManager)
+        public BlogService(IMapper mapper, IBlogRepository repository, IHttpContextAccessor http, 
+            IWebHostEnvironment env, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
             _http = http;
             _env = env;
-            _tempDataDictionaryFactory = tempDataDictionaryFactory;
             _userManager = userManager;
         }
 
-        public async Task<bool> CreateAsync(CreateBlogVM create, ModelStateDictionary model)
+        public async Task<bool> CreateAsync(CreateBlogVM create, ModelStateDictionary model, ITempDataDictionary tempData)
         {
             if (!model.IsValid) return false;
             if (await _repository.CheckUniqueAsync(x => x.Name == create.Name))
@@ -66,9 +64,6 @@ namespace Estate.Persistance.Implementations.Services
             item.BlogImages = new List<BlogImage> { mainImage };
 
             if (item.BlogImages == null) item.BlogImages = new List<BlogImage>();
-
-            var httpContext = _http.HttpContext;
-            var tempData = _tempDataDictionaryFactory.GetTempData(httpContext);
 
             tempData["Message"] = "";
 
@@ -175,7 +170,7 @@ namespace Estate.Persistance.Implementations.Services
             await _repository.SaveChanceAsync();
         }
 
-        public async Task<bool> UpdatePostAsync(int id, UpdateBlogVM update, ModelStateDictionary model)
+        public async Task<bool> UpdatePostAsync(int id, UpdateBlogVM update, ModelStateDictionary model, ITempDataDictionary tempData)
         {
             if (!model.IsValid) return false;
 
@@ -228,9 +223,6 @@ namespace Estate.Persistance.Implementations.Services
                 image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
                 item.BlogImages.Remove(image);
             }
-
-            var httpContext = _http.HttpContext;
-            var tempData = _tempDataDictionaryFactory.GetTempData(httpContext);
 
             tempData["Message"] = "";
 

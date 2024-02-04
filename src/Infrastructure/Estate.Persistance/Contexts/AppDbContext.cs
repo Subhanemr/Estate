@@ -35,6 +35,12 @@ namespace Estate.Persistance.Contexts
         public DbSet<RoofType> RoofTypes { get; set; }
         public DbSet<ViewType> ViewTypes { get; set; }
 
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        //    base.OnModelCreating(modelBuilder);
+        //}
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var entities = ChangeTracker.Entries<BaseEntity>();

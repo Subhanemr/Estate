@@ -1,0 +1,69 @@
+﻿@model LoginVM
+
+<section class="section-full undefined text-center text-sm-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 undefined">
+                <h1>Login/Register</h1>
+                <p></p>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Extras</a>
+                    </li>
+                    <li class="active">Login/Register</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section Login-->
+<section class="section-md text-center text-sm-left">
+    <div class="container">
+        <h2>Sign In</h2>
+        <hr>
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-lg-5">
+                <div class="tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" asp-action="Login" asp-controller="Account">Login</a>
+                        </li>
+                        <li>
+                            <a asp-action="Register" asp-controller="Account">Registration</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab1" class="tab-pane fade in active">
+                            <div asp-validation-summary="ModelOnly"></div>
+                            <form method="post">
+                                <div class="form-group">
+                                    <label asp-for="UserNameOrEmail" class="form-label">Username or Email</label>
+                                    <input asp-for="UserNameOrEmail" class="form-control" placeholder="Username or Email">
+                                    <span asp-validation-for="UserNameOrEmail" class="m-1 text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password" class="form-label">Password</label>
+                                    <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                                    <span asp-validation-for="Password" class="m-1 text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="d-flex">
+                                        <label asp-for="IsRemembered">Remember me</label>
+                                        <input asp-for="IsRemembered">
+                                        <span asp-validation-for="Password" class="m-1 text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group-btn">
+                                    <button type="submit" class="btn btn-sushi btn-sm btn-min-width-xs">Enter</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

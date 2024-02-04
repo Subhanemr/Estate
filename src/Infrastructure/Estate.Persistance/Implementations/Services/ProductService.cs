@@ -27,13 +27,12 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IViewTypeRepository _viewTypeRepository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
-        private readonly ITempDataDictionaryFactory _tempDataDictionaryFactory;
         private readonly UserManager<AppUser> _userManager;
 
         public ProductService(IMapper mapper, IProductRepository repository,
             ICategoryRepository categoryRepository, IFeaturesRepository featuresRepository, IExteriorTypeRepository exteriorTypeRepository,
             IParkingTypeRepository parkingTypeRepository, IRoofTypeRepository roofTypeRepository, IViewTypeRepository viewTypeRepository,
-            IHttpContextAccessor http, IWebHostEnvironment env, ITempDataDictionaryFactory tempDataDictionaryFactory, UserManager<AppUser> userManager)
+            IHttpContextAccessor http, IWebHostEnvironment env, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
@@ -45,7 +44,6 @@ namespace Estate.Persistance.Implementations.Services
             _viewTypeRepository = viewTypeRepository;
             _http = http;
             _env = env;
-            _tempDataDictionaryFactory = tempDataDictionaryFactory;
             _userManager = userManager;
         }
 
@@ -68,7 +66,7 @@ namespace Estate.Persistance.Implementations.Services
             update.ViewTypes = _mapper.Map<ICollection<IncludeViewTypeVM>>(await _viewTypeRepository.GetAll().ToListAsync());
         }
 
-        public async Task<bool> CreateAsync(CreateProductVM create, ModelStateDictionary model)
+        public async Task<bool> CreateAsync(CreateProductVM create, ModelStateDictionary model, ITempDataDictionary tempData)
         {
             if (!model.IsValid)
             {
@@ -146,9 +144,6 @@ namespace Estate.Persistance.Implementations.Services
             item.ProductImages = new List<ProductImage> { mainImage };
 
             if (item.ProductImages == null) item.ProductImages = new List<ProductImage>();
-
-            var httpContext = _http.HttpContext;
-            var tempData = _tempDataDictionaryFactory.GetTempData(httpContext);
 
             tempData["Message"] = "";
 
@@ -269,7 +264,7 @@ namespace Estate.Persistance.Implementations.Services
             await _repository.SaveChanceAsync();
         }
 
-        public async Task<bool> UpdatePostAsync(int id, UpdateProductVM update, ModelStateDictionary model)
+        public async Task<bool> UpdatePostAsync(int id, UpdateProductVM update, ModelStateDictionary model, ITempDataDictionary tempData)
         {
             if (!model.IsValid)
             {
@@ -451,9 +446,6 @@ namespace Estate.Persistance.Implementations.Services
                 image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
                 item.ProductImages.Remove(image);
             }
-
-            var httpContext = _http.HttpContext;
-            var tempData = _tempDataDictionaryFactory.GetTempData(httpContext);
 
             tempData["Message"] = "";
 

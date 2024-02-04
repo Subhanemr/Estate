@@ -1,0 +1,83 @@
+﻿@model RegisterVM
+
+<section class="section-full undefined text-center text-sm-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 undefined">
+                <h1>Login/Register</h1>
+                <p></p>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Extras</a>
+                    </li>
+                    <li class="active">Login/Register</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section Login-->
+<section class="section-md text-center text-sm-left">
+    <div class="container">
+        <h2>Sign In</h2>
+        <hr>
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-lg-5">
+                <div class="tabs-custom">
+                    <ul class="nav nav-tabs">
+                        <li>
+                            <a asp-action="Login" asp-controller="Account">Login</a>
+                        </li>
+                        <li class="active">
+                            <a data-toggle="tab" asp-action="Register" asp-controller="Account">Registration</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab2" class="tab-pane active">
+                            <div asp-validation-summary="All"></div>
+                            <form method="post">
+                                <div class="form-group">
+                                    <label asp-for="UserName" class="form-label">Username</label>
+                                    <input asp-for="UserName" class="form-control" placeholder="Username">
+                                    <span asp-validation-for="UserName" class="m-1 text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Name" class="form-label">Name</label>
+                                    <input asp-for="Name" class="form-control" placeholder="Name">
+                                    <span asp-validation-for="Name" class="m-1 text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Surname" class="form-label">Surname</label>
+                                    <input asp-for="Surname" class="form-control" placeholder="Surname">
+                                    <span asp-validation-for="Surname" class="m-1 text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="form-label">Email</label>
+                                    <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                                    <span asp-validation-for="Email" class="m-1 text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Password" class="form-label">Password</label>
+                                    <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                                    <span asp-validation-for="Password" class="m-1 text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                                    <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password">
+                                    <span asp-validation-for="ConfirmPassword" class="m-1 text-danger"></span>
+                                </div>
+                                <div class="form-group-btn">
+                                    <button type="submit" class="btn btn-sushi btn-sm btn-min-width-xs">Enter</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
