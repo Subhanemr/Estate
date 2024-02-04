@@ -14,6 +14,7 @@ namespace Estate.Persistance.Implementations.Services
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IMapper _mapper;
 
+
         public AccountService(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IMapper mapper)
         {
             _userManager = userManager;
@@ -61,6 +62,7 @@ namespace Estate.Persistance.Implementations.Services
                 }
                 return false;
             }
+            
             await _userManager.AddToRoleAsync(user, UserRoles.Member.ToString());
 
             return true;

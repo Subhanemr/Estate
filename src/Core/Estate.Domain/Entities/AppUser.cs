@@ -10,7 +10,6 @@ namespace Estate.Domain.Entities
         public bool IsActivate { get; set; }
         public string Img { get; set; } = "default-profile.png";
 
-        public string? PhoneFirst { get; set; }
         public string? PhoneSecond { get; set; } 
         public string? Address { get; set; }
         public string? About { get; set; } 

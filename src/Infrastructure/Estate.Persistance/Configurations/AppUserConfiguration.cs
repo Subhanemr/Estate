@@ -21,11 +21,9 @@ namespace Estate.Persistance.Configurations
                 .HasMaxLength(25);
 
             builder.Property(u => u.Email)
-                .IsRequired()
                 .HasMaxLength(255);
 
-            builder.Property(u => u.PhoneFirst)
-                .IsRequired()
+            builder.Property(u => u.PhoneNumber)
                 .HasMaxLength(25);
 
             builder.Property(u => u.PhoneSecond)
