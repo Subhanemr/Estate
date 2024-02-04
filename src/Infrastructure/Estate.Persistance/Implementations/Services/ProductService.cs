@@ -226,6 +226,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<PaginationVM<ItemProductVM>> GetFilteredAsync(string? search, int take, int page, int order, int? categoryId)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes ={
                 $"{nameof(Product.Category)}",
@@ -234,7 +235,6 @@ namespace Estate.Persistance.Implementations.Services
             double count = await _repository.CountAsync();
 
             ICollection<Product> items = new List<Product>();
-
             switch (order)
             {
                 case 1:
@@ -284,6 +284,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<PaginationVM<ItemProductVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order, int? categoryId)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes ={
                 $"{nameof(Product.Category)}",

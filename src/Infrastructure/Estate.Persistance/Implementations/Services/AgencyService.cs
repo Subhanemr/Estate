@@ -79,6 +79,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<PaginationVM<ItemAgencyVM>> GetFilteredAsync(string? search, int take, int page, int order)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(Agency.AgencyAppUsers)}.{nameof(AgencyAppUser.AppUser)}" };
             double count = await _repository.CountAsync();
@@ -123,6 +124,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<PaginationVM<ItemAgencyVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(Agency.AgencyAppUsers)}.{nameof(AgencyAppUser.AppUser)}" };
 

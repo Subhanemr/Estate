@@ -56,8 +56,8 @@ namespace Estate.Persistance.Implementations.Services
             Category item = _mapper.Map<Category>(create);
 
             item.Img = await create.Photo.CreateFileAsync(_env.WebRootPath, "assets", "images");
-            //AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-            //item.CreatedBy = user.UserName;
+            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
+            item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
@@ -105,6 +105,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<PaginationVM<ItemCategoryVM>> GetFilteredAsync(string? search, int take, int page, int order)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(Category.Products)}" };
             double count = await _repository.CountAsync();
@@ -150,6 +151,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<PaginationVM<ItemCategoryVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(Category.Products)}" };
             double count = await _repository.CountAsync();

@@ -139,6 +139,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<PaginationVM<ItemBlogVM>> GetFilteredAsync(string? search, int take, int page, int order)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(Blog.BlogImages)}" };
 
@@ -185,6 +186,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<PaginationVM<ItemBlogVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(Blog.BlogImages)}" };
 
