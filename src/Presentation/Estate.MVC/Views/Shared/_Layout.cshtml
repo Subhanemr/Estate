@@ -34,6 +34,12 @@
                                 <dd>
                                     <a asp-action="Logout" asp-controller="Account" class="text-sushi">Log-out</a>
                                 </dd>
+                                @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Moderator.ToString()))
+                                {
+                                    <dd>
+                                        <a asp-action="Index" asp-controller="Home" asp-area="Admin" class="text-sushi">Admin Panel</a>
+                                    </dd>
+                                }
                             }
                             else
                             {

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "VnG0CctIO77axBEUqO5G2HEF/vND1tBNdFkN7fNjsOA=",
+  "Hash": "bkokglCU9Fso2wtGF/NpkVgKgbwjJqHt3o/8GBm8SMo=",
   "Source": "Estate.MVC",
   "BasePath": "_content/Estate.MVC",
   "Mode": "Default",
@@ -2956,6 +2956,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\clients-5.png"
+    },
+    {
+      "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\default-profile.png",
+      "SourceId": "Estate.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\",
+      "BasePath": "_content/Estate.MVC",
+      "RelativePath": "assets/images/default-profile.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\images\\default-profile.png"
     },
     {
       "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\elements-1.jpg",

@@ -223,8 +223,123 @@ namespace Estate.Persistance.Implementations.Services
 
             return vMs;
         }
+        public async Task<PaginationVM<ItemProductVM>> GetFilteredAsync(string? search, int take, int page, int order, int? categoryId)
+        {
+            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
 
-        public async Task<GetProductVM> GetByIdAsync(int id, int take, int page = 1)
+            string[] includes ={
+                $"{nameof(Product.Category)}",
+                $"{nameof(Product.ProductComments)}.{nameof(ProductComment.ProductReplies)}",
+                $"{nameof(Product.ProductImages)}" };
+            double count = await _repository.CountAsync();
+
+            ICollection<Product> items = new List<Product>();
+
+            switch (order)
+            {
+                case 1:
+                    items = await _repository
+                    .GetAllWhereByOrder(x => x.IsDeleted == false && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                        x => x.Name, false, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+                case 2:
+                    items = await _repository
+                     .GetAllWhereByOrder(expression: x => x.IsDeleted == false && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     orderException: x => x.CreateAt, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                    break;
+                case 3:
+                    items = await _repository
+                    .GetAllWhereByOrder(x => x.IsDeleted == false && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                        x => x.Name, IsDescending: true, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+                case 4:
+                    items = await _repository
+                     .GetAllWhereByOrder(expression: x => x.IsDeleted == false && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     orderException: x => x.CreateAt, IsDescending: true, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                    break;
+                case 5:
+                    items = await _repository
+                     .GetAllWhereByOrder(expression: x => x.IsDeleted == false && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     orderException: x => x.Price, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                    break;
+                case 6:
+                    items = await _repository
+                     .GetAllWhereByOrder(expression: x => x.IsDeleted == false && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     orderException: x => x.Price, IsDescending: true, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                    break;
+            }
+
+            ICollection<ItemProductVM> vMs = _mapper.Map<ICollection<ItemProductVM>>(items);
+
+            PaginationVM<ItemProductVM> pagination = new PaginationVM<ItemProductVM>
+            {
+                CurrentPage = page,
+                TotalPage = Math.Ceiling(count / take),
+                Items = vMs
+            };
+
+            return pagination;
+        }
+
+        public async Task<PaginationVM<ItemProductVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order, int? categoryId)
+        {
+            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+
+            string[] includes ={
+                $"{nameof(Product.Category)}",
+                $"{nameof(Product.ProductComments)}.{nameof(ProductComment.ProductReplies)}",
+                $"{nameof(Product.ProductImages)}" };
+            double count = await _repository.CountAsync();
+
+            ICollection<Product> items = new List<Product>();
+
+            switch (order)
+            {
+                case 1:
+                    items = await _repository
+                    .GetAllWhereByOrder(x => x.IsDeleted == true && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                        x => x.Name, false, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+                case 2:
+                    items = await _repository
+                     .GetAllWhereByOrder(expression: x => x.IsDeleted == true && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     orderException: x => x.CreateAt, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                    break;
+                case 3:
+                    items = await _repository
+                    .GetAllWhereByOrder(x => x.IsDeleted == true && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                        x => x.Name, IsDescending: true, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+                case 4:
+                    items = await _repository
+                     .GetAllWhereByOrder(expression: x => x.IsDeleted == true && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     orderException: x => x.CreateAt, IsDescending: true, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                    break;
+                case 5:
+                    items = await _repository
+                     .GetAllWhereByOrder(expression: x => x.IsDeleted == true && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     orderException: x => x.Price, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                    break;
+                case 6:
+                    items = await _repository
+                     .GetAllWhereByOrder(expression: x => x.IsDeleted == true && categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     orderException: x => x.Price, IsDescending: true, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                    break;
+            }
+
+            ICollection<ItemProductVM> vMs = _mapper.Map<ICollection<ItemProductVM>>(items);
+
+            PaginationVM<ItemProductVM> pagination = new PaginationVM<ItemProductVM>
+            {
+                CurrentPage = page,
+                TotalPage = Math.Ceiling(count / take),
+                Items = vMs
+            };
+
+            return pagination;
+        }
+
+        public async Task<GetProductVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes ={

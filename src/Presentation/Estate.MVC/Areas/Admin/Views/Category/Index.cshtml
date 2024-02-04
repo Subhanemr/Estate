@@ -3,6 +3,16 @@
 @{
     int count = (Model.CurrentPage - 1) * 10;
 }
+<div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="search">
+            <i class="mdi mdi-magnify"></i>
+        </span>
+    </div>
+    <form >
+        <input type="text" class="form-control" placeholder="Search now" aria-label="search" aria-describedby="search">
+    </form>
+</div>
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -51,9 +61,9 @@
                                     <a asp-action="Update" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-primary btn-info">
                                         <i class="mdi mdi-pencil text-white"></i>
                                     </a>
-                                    @if (User.IsInRole(UserRoles.Admin.ToString()))
+                                    @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Member.ToString()))
                                     {
-                                        <a asp-action="Delete" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-danger btn-info">
+                                        <a asp-action="SoftDelete" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-danger btn-info">
                                             <i class="mdi mdi-delete text-white"></i>
                                         </a>
                                     }

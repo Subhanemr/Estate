@@ -101,7 +101,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Client.Corporate)}" };
-            Client item = await _repository.GetByIdAsync(id, includes: includes);
+            Client item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetClientVM get = _mapper.Map<GetClientVM>(item);
