@@ -83,3 +83,5 @@ C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\bin\Debug\net6.0\runtime
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\bin\Debug\net6.0\CloudinaryDotNet.dll
+C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\bin\Debug\net6.0\Newtonsoft.Json.dll

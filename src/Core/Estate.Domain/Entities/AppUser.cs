@@ -8,7 +8,7 @@ namespace Estate.Domain.Entities
         public string Surname { get; set; } = null!;
 
         public bool IsActivate { get; set; }
-        public string Img { get; set; } = "default-profile.png";
+        public string Img { get; set; } = "https://res.cloudinary.com/dzsysx73x/image/upload/v1707148401/cwlzdvof54s1fw1eo19z.png";
 
         public string? PhoneSecond { get; set; } 
         public string? Address { get; set; }

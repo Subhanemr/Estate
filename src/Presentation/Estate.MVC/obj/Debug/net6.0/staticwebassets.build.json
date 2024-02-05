@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bkokglCU9Fso2wtGF/NpkVgKgbwjJqHt3o/8GBm8SMo=",
+  "Hash": "WxUmGLblXFjerK3hI2rgsVUd4LSzDCZ/4JvxIfxozUE=",
   "Source": "Estate.MVC",
   "BasePath": "_content/Estate.MVC",
   "Mode": "Default",
@@ -2074,23 +2074,6 @@
       "OriginalItemSpec": "wwwroot\\assets\\images\\08_Agency_Page_16.jpg"
     },
     {
-      "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\8084c4ba-d656-48a1-addb-87082ca830ac.jpg",
-      "SourceId": "Estate.MVC",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\",
-      "BasePath": "_content/Estate.MVC",
-      "RelativePath": "assets/images/8084c4ba-d656-48a1-addb-87082ca830ac.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\8084c4ba-d656-48a1-addb-87082ca830ac.jpg"
-    },
-    {
       "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\agency-1.jpg",
       "SourceId": "Estate.MVC",
       "SourceType": "Discovered",
@@ -3024,23 +3007,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\images\\extras-1.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\f4aafe4d-c157-4c2b-86f8-1b0c0d7586a8.jpg",
-      "SourceId": "Estate.MVC",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\",
-      "BasePath": "_content/Estate.MVC",
-      "RelativePath": "assets/images/f4aafe4d-c157-4c2b-86f8-1b0c0d7586a8.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\assets\\images\\f4aafe4d-c157-4c2b-86f8-1b0c0d7586a8.jpg"
     },
     {
       "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\images\\favicon.ico",

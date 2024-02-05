@@ -47,8 +47,6 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
 
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-
             if (!await _corporateRepository.CheckUniqueAsync(x => x.Id == create.CorporateId))
             {
                 CreatePopulateDropdowns(create);
@@ -57,7 +55,7 @@ namespace Estate.Persistance.Implementations.Services
             }
             Client item = _mapper.Map<Client>(create);
 
-            item.CreatedBy = user.UserName;
+            item.CreatedBy = _http.HttpContext.User.Identity.Name;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
@@ -232,8 +230,6 @@ namespace Estate.Persistance.Implementations.Services
                 UpdatePopulateDropdowns(update);
                 return false;
             }
-
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
 
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Client.Corporate)}" };

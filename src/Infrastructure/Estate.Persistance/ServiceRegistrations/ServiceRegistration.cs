@@ -48,6 +48,7 @@ namespace Estate.Persistance.ServiceRegistrations
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IRoofTypeService, RoofTypeService>();
             services.AddScoped<IViewTypeService, ViewTypeService>();
+            services.AddScoped<ISettingsService, SettingsService>();
 
             services.AddScoped<IAgencyRepository, AgencyRepository>();
             services.AddScoped<IAgencyAppUserRepository, AgencyAppUserRepository>();
@@ -62,6 +63,7 @@ namespace Estate.Persistance.ServiceRegistrations
             services.AddScoped<IParkingTypeRepository, ParkingTypeRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IRoofTypeRepository, RoofTypeRepository>();
+            services.AddScoped<ISettingsRepository, SettingsRepository>();
             services.AddScoped<IViewTypeRepository, ViewTypeRepository>();
 
             services.AddScoped<AppDbContextInitializer>();

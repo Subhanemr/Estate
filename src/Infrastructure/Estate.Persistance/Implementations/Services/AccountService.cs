@@ -4,6 +4,7 @@ using Estate.Application.ViewModels;
 using Estate.Domain.Entities;
 using Estate.Domain.Enums;
 using Estate.Infrastructure.Exceptions;
+using Estate.Infrastructure.Implementations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -69,6 +70,9 @@ namespace Estate.Persistance.Implementations.Services
             if (!model.IsValid) return false;
 
             AppUser user = _mapper.Map<AppUser>(register);
+            user.Name = user.Name.Capitalize();
+            user.Surname = user.Surname.Capitalize();
+
             var result = await _userManager.CreateAsync(user, register.Password);
             if (!result.Succeeded)
             {

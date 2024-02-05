@@ -34,6 +34,7 @@ namespace Estate.Persistance.Contexts
         public DbSet<ProductViewType> ProductViewTypes { get; set; }
         public DbSet<RoofType> RoofTypes { get; set; }
         public DbSet<ViewType> ViewTypes { get; set; }
+        public DbSet<Settings> Settings { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{

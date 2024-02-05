@@ -1,7 +1,7 @@
 ﻿@model AppUser
 
 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" id="profileDropdown">
-    <img src="~/assets/images/@Model.Img" alt="@User.Identity.Name" />
+    <img src="@Model.Img" alt="@User.Identity.Name" />
     <span class="nav-profile-name">@User.Identity.Name</span>
 </a>
 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">

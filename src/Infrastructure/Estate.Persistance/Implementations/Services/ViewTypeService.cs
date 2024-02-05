@@ -89,22 +89,22 @@ namespace Estate.Persistance.Implementations.Services
             {
                 case 1:
                     items = await _repository
-                    .GetAllWhereByOrder(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                    .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                         x => x.Name, false, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 2:
                     items = await _repository
-                     .GetAllWhereByOrder(expression: x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.CreateAt, false, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 3:
                     items = await _repository
-                    .GetAllWhereByOrder(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                    .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                         x => x.Name, true, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 4:
                     items = await _repository
-                     .GetAllWhereByOrder(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.CreateAt, true, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
             }
@@ -136,22 +136,22 @@ namespace Estate.Persistance.Implementations.Services
             {
                 case 1:
                     items = await _repository
-                    .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                    .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                         x => x.Name, false, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 2:
                     items = await _repository
-                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.CreateAt, false, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 3:
                     items = await _repository
-                    .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                    .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                         x => x.Name, true, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 4:
                     items = await _repository
-                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.CreateAt, true, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
             }

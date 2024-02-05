@@ -11,6 +11,10 @@
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <img src="@Model.Img" width="25%">
+                    <input hidden="hidden" asp-for="Img" class="form-control">
+                </div>
+                <div class="form-group">
                     <label asp-for="Photo">Image</label>
                     <input asp-for="Photo" class="form-control" placeholder="Image">
                     <span asp-validation-for="Photo" class="text-danger"></span>

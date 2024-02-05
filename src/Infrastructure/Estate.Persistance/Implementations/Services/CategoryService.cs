@@ -7,10 +7,8 @@ using Estate.Infrastructure.Exceptions;
 using Estate.Infrastructure.Implementations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System.Linq.Expressions;
 
 namespace Estate.Persistance.Implementations.Services
@@ -21,16 +19,16 @@ namespace Estate.Persistance.Implementations.Services
         private readonly ICategoryRepository _repository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
-        private readonly UserManager<AppUser> _userManager;
+        private readonly ICLoudService _cLoud;
 
         public CategoryService(IMapper mapper, ICategoryRepository repository,
-            IHttpContextAccessor http, IWebHostEnvironment env, UserManager<AppUser> userManager)
+            IHttpContextAccessor http, IWebHostEnvironment env, ICLoudService cLoud)
         {
             _mapper = mapper;
             _repository = repository;
             _http = http;
             _env = env;
-            _userManager = userManager;
+            _cLoud = cLoud;
         }
 
         public async Task<bool> CreateAsync(CreateCategoryVM create, ModelStateDictionary model)
@@ -56,9 +54,9 @@ namespace Estate.Persistance.Implementations.Services
 
             Category item = _mapper.Map<Category>(create);
 
-            item.Img = await create.Photo.CreateFileAsync(_env.WebRootPath, "assets", "images");
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-            item.CreatedBy = user.UserName;
+            //item.Img = await create.Photo.CreateFileAsync(_env.WebRootPath, "assets", "images");
+            item.Img = await _cLoud.FileCreateAsync(create.Photo);
+            item.CreatedBy = _http.HttpContext.User.Identity.Name;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
@@ -73,7 +71,8 @@ namespace Estate.Persistance.Implementations.Services
             Category item = await _repository.GetByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
-            item.Img.DeleteFile(_env.WebRootPath, "assets", "img");
+            await _cLoud.FileDeleteAsync(item.Img);
+            //item.Img.DeleteFile(_env.WebRootPath, "assets", "images");
 
             _repository.Delete(item);
             await _repository.SaveChanceAsync();
@@ -235,7 +234,6 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> UpdatePostAsync(int id, UpdateCategoryVM update, ModelStateDictionary model)
         {
             if (!model.IsValid) return false;
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
             if (await _repository.CheckUniqueAsync(x => x.Name == update.Name))
             {
                 model.AddModelError("Name", "Name is exists");
@@ -259,8 +257,11 @@ namespace Estate.Persistance.Implementations.Services
                     model.AddModelError("Photo", "Image should not be larger than 10 mb");
                     return false;
                 }
-                item.Img.DeleteFile(_env.WebRootPath, "assets", "img");
-                item.Img = await update.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
+
+                await _cLoud.FileDeleteAsync(item.Img);
+                item.Img = await _cLoud.FileCreateAsync(update.Photo);
+                //item.Img.DeleteFile(_env.WebRootPath, "assets", "images");
+                //item.Img = await update.Photo.CreateFileAsync(_env.WebRootPath, "assets", "images");
             }
             var config = new MapperConfiguration(cfg =>
             {

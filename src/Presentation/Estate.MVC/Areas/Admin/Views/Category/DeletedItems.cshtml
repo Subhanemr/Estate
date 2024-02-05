@@ -1,39 +1,39 @@
 ﻿@model PaginationVM<ItemCategoryVM>
-
 @{
     int count = (Model.CurrentPage - 1) * 10;
 }
-<div class="input-group mx-3">
-    <form asp-action="Index" asp-controller="Category"
-          asp-route-order="@Model.Order">
-        <input type="text" class="form-control" placeholder="Search now" name="search" value="@(Model.Search == null? "":Model.Search)">
-    </form>
-</div>
-<div class="dropdown py-2">
-    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Sort by Default
-    </button>
-    <ul class="dropdown-menu">
-        <li>
-            <a class="dropdown-item" asp-action="Index" asp-controller="Category"
-               asp-route-order="1" asp-route-search="@Model.Search">Name</a>
-        </li>
-        <li>
-            <a class="dropdown-item" asp-action="Index" asp-controller="Category"
-               asp-route-order="2" asp-route-search="@Model.Search">Created at</a>
-        </li>
-        <li>
-            <a class="dropdown-item" asp-action="Index" asp-controller="Category"
-               asp-route-order="3" asp-route-search="@Model.Search">Descending by Name</a>
-        </li>
-        <li>
-            <a class="dropdown-item" asp-action="Index" asp-controller="Category"
-               asp-route-order="4" asp-route-search="@Model.Search">Descending by Created at</a>
-        </li>
-    </ul>
-</div>
-<div class="d-flex justify-content-end">
 
+
+<div class="d-flex justify-content-end">
+    <div class="input-group mx-3">
+        <form asp-action="Index" asp-controller="Category"
+              asp-route-order="@Model.Order">
+            <input type="text" class="form-control" placeholder="Search now" name="search" value="@(Model.Search == null? "":Model.Search)">
+        </form>
+    </div>
+    <div class="dropdown py-2">
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Sort by Default
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a class="dropdown-item" asp-action="Index" asp-controller="Category"
+                   asp-route-order="1" asp-route-search="@Model.Search">Name</a>
+            </li>
+            <li>
+                <a class="dropdown-item" asp-action="Index" asp-controller="Category"
+                   asp-route-order="2" asp-route-search="@Model.Search">Created at</a>
+            </li>
+            <li>
+                <a class="dropdown-item" asp-action="Index" asp-controller="Category"
+                   asp-route-order="3" asp-route-search="@Model.Search">Descending by Name</a>
+            </li>
+            <li>
+                <a class="dropdown-item" asp-action="Index" asp-controller="Category"
+                   asp-route-order="4" asp-route-search="@Model.Search">Descending by Created at</a>
+            </li>
+        </ul>
+    </div>
     <a asp-controller="Category" asp-action="Index" class="btn btn-success fw-bold fs-6 text-white w-25 m-2">Categories</a>
 </div>
 
@@ -73,7 +73,7 @@
                                     @count
                                 </td>
                                 <td>
-                                    <img src="~/assets/images//@category.Img" alt="@category.Name">
+                                    <img src="@category.Img" alt="@category.Name">
                                 </td>
                                 <td>
                                     @category.Name
@@ -94,7 +94,7 @@
                                             <i class="mdi mdi-delete-forever text-white"></i>
                                         </a>
                                     }
-                                    <a asp-action="More" asp-controller="Category" asp-route-id="@category.Id" class="btn  btn-primary">
+                                    <a asp-action="Detail" asp-controller="Category" asp-route-id="@category.Id" class="btn  btn-primary">
                                         <i class="mdi mdi-open-in-new text-white"></i>
                                     </a>
                                 </td>

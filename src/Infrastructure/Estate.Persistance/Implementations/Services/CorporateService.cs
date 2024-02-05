@@ -20,16 +20,16 @@ namespace Estate.Persistance.Implementations.Services
         private readonly ICorporateRepository _repository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
-        private readonly UserManager<AppUser> _userManager;
+        private readonly ICLoudService _cLoud;
 
         public CorporateService(IMapper mapper, ICorporateRepository repository,
-            IHttpContextAccessor http, IWebHostEnvironment env, UserManager<AppUser> userManager)
+            IHttpContextAccessor http, IWebHostEnvironment env, ICLoudService cLoud)
         {
             _mapper = mapper;
             _repository = repository;
             _http = http;
             _env = env;
-            _userManager = userManager;
+            _cLoud = cLoud;
         }
 
         public async Task<bool> CreateAsync(CreateCorporateVM create, ModelStateDictionary model)
@@ -40,7 +40,6 @@ namespace Estate.Persistance.Implementations.Services
                 model.AddModelError("Name", "Name is exists");
                 return false;
             }
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
 
             if (!create.Photo.ValidateType())
             {
@@ -55,8 +54,9 @@ namespace Estate.Persistance.Implementations.Services
 
             Corporate item = _mapper.Map<Corporate>(create);
 
-            item.Img = await create.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
-            item.CreatedBy = user.UserName;
+            item.Img = await _cLoud.FileCreateAsync(create.Photo);
+            //item.Img = await create.Photo.CreateFileAsync(_env.WebRootPath, "assets", "images");
+            item.CreatedBy = _http.HttpContext.User.Identity.Name;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
@@ -70,7 +70,9 @@ namespace Estate.Persistance.Implementations.Services
             string[] includes = { $"{nameof(Corporate.Clients)}" };
             Corporate item = await _repository.GetByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
-            item.Img.DeleteFile(_env.WebRootPath, "assets", "img");
+
+            await _cLoud.FileDeleteAsync(item.Img);
+            //item.Img.DeleteFile(_env.WebRootPath, "assets", "images");
             _repository.Delete(item);
             await _repository.SaveChanceAsync();
         }
@@ -233,7 +235,6 @@ namespace Estate.Persistance.Implementations.Services
                 model.AddModelError("Name", "Name is exists");
                 return false;
             }
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
 
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Corporate.Clients)}" };
@@ -253,8 +254,11 @@ namespace Estate.Persistance.Implementations.Services
                     return false;
                 }
 
-                item.Img.DeleteFile(_env.WebRootPath, "assets", "img");
-                item.Img = await update.Photo.CreateFileAsync(_env.WebRootPath, "assets", "img");
+                await _cLoud.FileDeleteAsync(item.Img);
+                item.Img = await _cLoud.FileCreateAsync(update.Photo);
+
+                //item.Img.DeleteFile(_env.WebRootPath, "assets", "images");
+                //item.Img = await update.Photo.CreateFileAsync(_env.WebRootPath, "assets", "images");
             }
 
 

@@ -21,16 +21,16 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IBlogRepository _repository;
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
-        private readonly UserManager<AppUser> _userManager;
+        private readonly ICLoudService _cLoud;
 
         public BlogService(IMapper mapper, IBlogRepository repository, IHttpContextAccessor http,
-            IWebHostEnvironment env, UserManager<AppUser> userManager)
+            IWebHostEnvironment env, ICLoudService cLoud)
         {
             _mapper = mapper;
             _repository = repository;
             _http = http;
             _env = env;
-            _userManager = userManager;
+            _cLoud = cLoud;
         }
 
         public async Task<bool> CreateAsync(CreateBlogVM create, ModelStateDictionary model, ITempDataDictionary tempData)
@@ -41,7 +41,6 @@ namespace Estate.Persistance.Implementations.Services
                 model.AddModelError("Name", "Name is exists");
                 return false;
             }
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
 
             if (!create.MainPhoto.ValidateType())
             {
@@ -55,10 +54,11 @@ namespace Estate.Persistance.Implementations.Services
             }
             BlogImage mainImage = new BlogImage
             {
-                CreatedBy = user.UserName,
+                CreatedBy = _http.HttpContext.User.Identity.Name,
                 IsPrimary = true,
-                Url = await create.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
-            };
+                Url = await _cLoud.FileCreateAsync(create.MainPhoto)
+            //Url = await create.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
+        };
             Blog item = _mapper.Map<Blog>(create);
 
             item.BlogImages = new List<BlogImage> { mainImage };
@@ -83,12 +83,13 @@ namespace Estate.Persistance.Implementations.Services
 
                 item.BlogImages.Add(new BlogImage
                 {
-                    CreatedBy = user.UserName,
+                    CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = null,
-                    Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")
+                    Url = await _cLoud.FileCreateAsync(photo)
+                    //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")
                 });
             }
-            item.CreatedBy = user.UserName;
+            item.CreatedBy = _http.HttpContext.User.Identity.Name;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
@@ -106,7 +107,8 @@ namespace Estate.Persistance.Implementations.Services
             if (item == null) throw new NotFoundException("Your request was not found");
             foreach (var image in item.BlogImages)
             {
-                image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
+                await _cLoud.FileDeleteAsync(image.Url);
+                //image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
             }
             _repository.Delete(item);
             await _repository.SaveChanceAsync();
@@ -278,8 +280,6 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
 
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes ={
                 $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.BlogReplies)}",
@@ -300,12 +300,14 @@ namespace Estate.Persistance.Implementations.Services
                     return false;
                 }
                 BlogImage main = item.BlogImages.FirstOrDefault(x => x.IsPrimary == true);
-                main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
+                await _cLoud.FileDeleteAsync(main.Url);
+                //main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
                 item.BlogImages.Add(new BlogImage
                 {
-                    CreatedBy = user.UserName,
+                    CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = true,
-                    Url = await update.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
+                    Url = await _cLoud.FileCreateAsync(update.MainPhoto)
+                    //Url = await update.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
                 });
             }
 
@@ -318,7 +320,8 @@ namespace Estate.Persistance.Implementations.Services
 
             foreach (var image in remove)
             {
-                image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
+                await _cLoud.FileDeleteAsync(image.Url);
+                //image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
                 item.BlogImages.Remove(image);
             }
 
@@ -342,9 +345,10 @@ namespace Estate.Persistance.Implementations.Services
 
                     item.BlogImages.Add(new BlogImage
                     {
-                        CreatedBy = user.UserName,
+                        CreatedBy = _http.HttpContext.User.Identity.Name,
                         IsPrimary = null,
-                        Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")
+                        Url = await _cLoud.FileCreateAsync(photo)
+                        //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")
                     });
                 }
             }
