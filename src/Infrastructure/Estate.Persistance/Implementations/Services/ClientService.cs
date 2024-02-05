@@ -20,7 +20,7 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IHttpContextAccessor _http;
         private readonly UserManager<AppUser> _userManager;
 
-        public ClientService(IMapper mapper, IClientRepository repository, ICorporateRepository corporateRepository, 
+        public ClientService(IMapper mapper, IClientRepository repository, ICorporateRepository corporateRepository,
             IHttpContextAccessor http, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
@@ -97,10 +97,106 @@ namespace Estate.Persistance.Implementations.Services
             return vMs;
         }
 
-        public async Task<GetClientVM> GetByIdAsync(int id, int take, int page = 1)
+        public async Task<PaginationVM<ItemClientVM>> GetFilteredAsync(string? search, int take, int page, int order)
+        {
+            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
+
+            string[] includes = { $"{nameof(Client.Corporate)}", $"{nameof(Client.AppUser)}" };
+            double count = await _repository.CountAsync();
+
+            ICollection<Client> items = new List<Client>();
+
+            switch (order)
+            {
+                case 1:
+                    items = await _repository
+                    .GetAllWhereByOrder(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Comment.ToLower().Contains(search.ToLower()) : true,
+                        x => x.Comment, false, false, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+                case 2:
+                    items = await _repository
+                     .GetAllWhereByOrder(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Comment.ToLower().Contains(search.ToLower()) : true,
+                      x => x.CreateAt, false, false, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+                case 3:
+                    items = await _repository
+                    .GetAllWhereByOrder(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Comment.ToLower().Contains(search.ToLower()) : true,
+                        x => x.Comment, true, false, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+                case 4:
+                    items = await _repository
+                     .GetAllWhereByOrder(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Comment.ToLower().Contains(search.ToLower()) : true,
+                      x => x.CreateAt, true, false, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+            }
+
+            ICollection<ItemClientVM> vMs = _mapper.Map<ICollection<ItemClientVM>>(items);
+
+            PaginationVM<ItemClientVM> pagination = new PaginationVM<ItemClientVM>
+            {
+                Search = search,
+                Order = order,
+                CurrentPage = page,
+                TotalPage = Math.Ceiling(count / take),
+                Items = vMs
+            };
+
+            return pagination;
+        }
+
+        public async Task<PaginationVM<ItemClientVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order)
+        {
+            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
+
+            string[] includes = { $"{nameof(Client.Corporate)}", $"{nameof(Client.AppUser)}" };
+            double count = await _repository.CountAsync();
+
+            ICollection<Client> items = new List<Client>();
+
+            switch (order)
+            {
+                case 1:
+                    items = await _repository
+                    .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Comment.ToLower().Contains(search.ToLower()) : true,
+                        x => x.Comment, false, true, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+                case 2:
+                    items = await _repository
+                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Comment.ToLower().Contains(search.ToLower()) : true,
+                      x => x.CreateAt, false, true, skip: (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+                case 3:
+                    items = await _repository
+                    .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Comment.ToLower().Contains(search.ToLower()) : true,
+                        x => x.Comment, true, true, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+                case 4:
+                    items = await _repository
+                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Comment.ToLower().Contains(search.ToLower()) : true,
+                      x => x.CreateAt, true, true, (page - 1) * take, take, false, includes).ToListAsync();
+                    break;
+            }
+
+            ICollection<ItemClientVM> vMs = _mapper.Map<ICollection<ItemClientVM>>(items);
+
+            PaginationVM<ItemClientVM> pagination = new PaginationVM<ItemClientVM>
+            {
+                Search = search,
+                Order = order,
+                CurrentPage = page,
+                TotalPage = Math.Ceiling(count / take),
+                Items = vMs
+            };
+
+            return pagination;
+        }
+
+        public async Task<GetClientVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes = { $"{nameof(Client.Corporate)}" };
+            string[] includes = { $"{nameof(Client.Corporate)}", $"{nameof(Client.AppUser)}" };
             Client item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 

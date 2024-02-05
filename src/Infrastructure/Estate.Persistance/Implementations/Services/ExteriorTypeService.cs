@@ -19,7 +19,7 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IHttpContextAccessor _http;
         private readonly UserManager<AppUser> _userManager;
 
-        public ExteriorTypeService(IMapper mapper, IExteriorTypeRepository repository, 
+        public ExteriorTypeService(IMapper mapper, IExteriorTypeRepository repository,
             IHttpContextAccessor http, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
@@ -90,22 +90,22 @@ namespace Estate.Persistance.Implementations.Services
                 case 1:
                     items = await _repository
                     .GetAllWhereByOrder(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                        x => x.Name, false, (page - 1) * take, take, false, includes).ToListAsync();
+                        x => x.Name, false, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 2:
                     items = await _repository
-                     .GetAllWhereByOrder(expression: x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                     orderException: x => x.CreateAt, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                     .GetAllWhereByOrder(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                      x => x.CreateAt, false, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 3:
                     items = await _repository
                     .GetAllWhereByOrder(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                        x => x.Name, IsDescending: true, (page - 1) * take, take, false, includes).ToListAsync();
+                        x => x.Name, true, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 4:
                     items = await _repository
                      .GetAllWhereByOrder(expression: x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                     orderException: x => x.CreateAt, IsDescending: true, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                     orderException: x => x.CreateAt, true, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
             }
 
@@ -113,6 +113,8 @@ namespace Estate.Persistance.Implementations.Services
 
             PaginationVM<ItemExteriorTypeVM> pagination = new PaginationVM<ItemExteriorTypeVM>
             {
+                Search = search,
+                Order = order,
                 CurrentPage = page,
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
@@ -135,22 +137,22 @@ namespace Estate.Persistance.Implementations.Services
                 case 1:
                     items = await _repository
                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                        x => x.Name, false, (page - 1) * take, take, false, includes).ToListAsync();
+                        x => x.Name, false, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 2:
                     items = await _repository
-                     .GetAllWhereByOrder(expression: x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                     orderException: x => x.CreateAt, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                      x => x.CreateAt, false, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 3:
                     items = await _repository
                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                        x => x.Name, IsDescending: true, (page - 1) * take, take, false, includes).ToListAsync();
+                        x => x.Name, true, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 4:
                     items = await _repository
-                     .GetAllWhereByOrder(expression: x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                     orderException: x => x.CreateAt, IsDescending: true, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                        x => x.CreateAt, true, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
             }
 
@@ -158,6 +160,8 @@ namespace Estate.Persistance.Implementations.Services
 
             PaginationVM<ItemExteriorTypeVM> pagination = new PaginationVM<ItemExteriorTypeVM>
             {
+                Search = search,
+                Order = order,
                 CurrentPage = page,
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs

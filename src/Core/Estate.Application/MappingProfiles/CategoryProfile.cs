@@ -9,7 +9,7 @@ namespace Estate.Application.MappingProfiles
         public CategoryProfile()
         {
             CreateMap<CreateCategoryVM, Category>().ReverseMap();
-            CreateMap<UpdateCategoryVM, Category>().ReverseMap();
+            CreateMap<Category, UpdateCategoryVM>().ReverseMap();
             CreateMap<GetCategoryVM, Category>().ReverseMap()
                 .ForMember(x => x.Products, opt => opt.MapFrom(src => src.Products));
             CreateMap<IncludeCategoryVM, Category>().ReverseMap();

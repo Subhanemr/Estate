@@ -17,6 +17,7 @@ namespace Estate.Application.Abstractions.Repositories
         IQueryable<T> GetAllWhereByOrder(Expression<Func<T, bool>>? expression = null,
             Expression<Func<T, object>>? orderException = null,
             bool IsDescending = false,
+            bool IsDeleted = false,
             int skip = 0,
             int take = 0,
             bool IsTracking = true,

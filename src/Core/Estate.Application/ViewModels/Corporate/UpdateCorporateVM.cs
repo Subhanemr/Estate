@@ -2,5 +2,8 @@
 
 namespace Estate.Application.ViewModels
 {
-    public record UpdateCorporateVM(string CorporateLink, string Description, IFormFile? Photo);
+    public record UpdateCorporateVM(string CorporateLink, string Description)
+    {
+        public IFormFile? Photo { get; set; }
+    }
 }

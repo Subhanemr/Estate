@@ -57,6 +57,7 @@ namespace Estate.MVC.Areas.Admin.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
         public async Task<IActionResult> SoftDelete(int id)
         {
             await _service.SoftDeleteAsync(id);

@@ -42,15 +42,20 @@ namespace Estate.Persistance.Implementations.Services
                     return false;
                 }
             }
+            if(user.IsActivate == true)
+            {
+                model.AddModelError("Error", "Your account is not active");
+                return false;
+            }
             var result = await _signInManager.PasswordSignInAsync(user, login.Password, login.IsRemembered, true);
             if (result.IsLockedOut)
             {
-                model.AddModelError(string.Empty, "Your Account is locked-out please wait");
+                model.AddModelError("Error", "Your Account is locked-out please wait");
                 return false;
             }
             if (!result.Succeeded)
             {
-                model.AddModelError(string.Empty, "Username, Email or Password is wrong");
+                model.AddModelError("Error", "Username, Email or Password is wrong");
                 return false;
             }
             return true;

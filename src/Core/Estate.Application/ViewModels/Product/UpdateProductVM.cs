@@ -5,9 +5,11 @@ namespace Estate.Application.ViewModels
     public record UpdateProductVM(string Name, double Price, float LotSize, float Area, int Bedrooms, int Bathrooms,
         int Garages, int YearBuilt, int RoomCount, string? SchoolDistrict, string? SchoolDistrictPhone,
         string Address, string Description, string FaceLink, string TwitLink, string? GoogleLink,
-        bool HighSchool, bool MiddleSchool, bool ElementarySchool, int CategoryId,
-        IFormFile? MainPhoto, ICollection<IFormFile>? Photos)
+        bool HighSchool, bool MiddleSchool, bool ElementarySchool, int CategoryId)
     {
+        public IFormFile? MainPhoto { get; set; }
+        public ICollection<IFormFile>? Photos { get; set; }
+
         public ICollection<IncludeCategoryVM>? Categories { get; set; }
 
         public ICollection<IncludeProductImageVM>? Images { get; set; }
