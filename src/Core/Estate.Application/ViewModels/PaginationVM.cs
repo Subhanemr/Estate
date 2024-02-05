@@ -2,6 +2,7 @@
 {
     public class PaginationVM<T> 
     {
+        public int Take { get; set; }
         public int? CategoryId { get; set; }
         public int Order { get; set; }
         public string? Search { get; set; }

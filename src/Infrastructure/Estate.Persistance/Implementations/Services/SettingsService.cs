@@ -62,6 +62,7 @@ namespace Estate.Persistance.Implementations.Services
 
             PaginationVM<ItemSettingsVM> pagination = new PaginationVM<ItemSettingsVM>
             {
+                Take = take,
                 Search = search,
                 Order = order,
                 CurrentPage = page,
@@ -71,54 +72,6 @@ namespace Estate.Persistance.Implementations.Services
 
             return pagination;
         }
-
-        public async Task<PaginationVM<ItemSettingsVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order)
-        {
-            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
-            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
-
-            double count = await _repository.CountAsync();
-
-            ICollection<Settings> items = new List<Settings>();
-
-            switch (order)
-            {
-                case 1:
-                    items = await _repository
-                    .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Key.ToLower().Contains(search.ToLower()) : true,
-                        x => x.Key, false, true, (page - 1) * take, take, false).ToListAsync();
-                    break;
-                case 2:
-                    items = await _repository
-                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Key.ToLower().Contains(search.ToLower()) : true,
-                      x => x.CreateAt, false, true, (page - 1) * take, take, false).ToListAsync();
-                    break;
-                case 3:
-                    items = await _repository
-                    .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Key.ToLower().Contains(search.ToLower()) : true,
-                        x => x.Key, true, true, (page - 1) * take, take, false).ToListAsync();
-                    break;
-                case 4:
-                    items = await _repository
-                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Key.ToLower().Contains(search.ToLower()) : true,
-                      x => x.CreateAt, true, true, (page - 1) * take, take, false).ToListAsync();
-                    break;
-            }
-
-            ICollection<ItemSettingsVM> vMs = _mapper.Map<ICollection<ItemSettingsVM>>(items);
-
-            PaginationVM<ItemSettingsVM> pagination = new PaginationVM<ItemSettingsVM>
-            {
-                Search = search,
-                Order = order,
-                CurrentPage = page,
-                TotalPage = Math.Ceiling(count / take),
-                Items = vMs
-            };
-
-            return pagination;
-        }
-
 
         public async Task<UpdateSettingsVM> UpdateAsync(int id)
         {

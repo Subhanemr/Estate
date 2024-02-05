@@ -137,6 +137,7 @@ namespace Estate.Persistance.Implementations.Services
 
             PaginationVM<ItemCorporateVM> pagination = new PaginationVM<ItemCorporateVM>
             {
+                Take = take,
                 Search = search,
                 Order = order,
                 CurrentPage = page,
@@ -185,6 +186,7 @@ namespace Estate.Persistance.Implementations.Services
 
             PaginationVM<ItemCorporateVM> pagination = new PaginationVM<ItemCorporateVM>
             {
+                Take = take,
                 Search = search,
                 Order = order,
                 CurrentPage = page,

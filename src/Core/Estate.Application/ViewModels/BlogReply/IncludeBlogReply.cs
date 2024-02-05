@@ -3,5 +3,5 @@
 namespace Estate.Application.ViewModels
 {
     public record IncludeBlogReply(int Id, string Comment, DateTime CoomentTime, 
-        string AppUserId, AppUser? AppUser, int BlogCommnetId);
+        string AppUserId, IncludeAppUserVM? AppUser, int BlogCommnetId);
 }

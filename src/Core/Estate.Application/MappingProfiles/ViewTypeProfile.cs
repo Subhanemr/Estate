@@ -11,10 +11,10 @@ namespace Estate.Application.MappingProfiles
             CreateMap<CreateViewTypeVM, ViewType>().ReverseMap();
             CreateMap<UpdateViewTypeVM, ViewType>().ReverseMap();
             CreateMap<GetViewTypeVM, ViewType>().ReverseMap()
-                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductViewTypes));
+                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductViewTypes.Select(ma => ma.Product).ToList()));
             CreateMap<IncludeViewTypeVM, ViewType>().ReverseMap();
             CreateMap<ItemViewTypeVM, ViewType>().ReverseMap()
-                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductViewTypes));
+                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductViewTypes.Select(ma => ma.Product).ToList()));
         }
     }
 }

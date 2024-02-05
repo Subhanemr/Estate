@@ -1,1 +1,26 @@
 ﻿@model CreateCorporateVM 
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Create Corporate</h4>
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="CorporateLink">Corporate Link</label>
+                    <input asp-for="CorporateLink" class="form-control" placeholder="Name">
+                    <span asp-validation-for="CorporateLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photo">Image</label>
+                    <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Image">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+                <div class="form-group border border-primary">
+                    <textarea asp-for="Description" class="form-control" rows="12" placeholder="Description"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary me-2">Submit</button>
+                <a asp-action="Index" asp-controller="Corporate" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

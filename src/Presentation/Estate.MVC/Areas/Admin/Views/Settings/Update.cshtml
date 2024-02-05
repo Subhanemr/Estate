@@ -1,0 +1,23 @@
+﻿@model UpdateSettingsVM
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Update Features</h4>
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label asp-for="Key">Key</label>
+                    <p class="fs-4 fw-bold">@Model.Key</p>
+                    <input asp-for="Key" hidden="hidden" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Value">Value</label>
+                    <input asp-for="Value" class="form-control" placeholder="Value">
+                    <span asp-validation-for="Value" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary me-2">Submit</button>
+                <a asp-action="Index" asp-controller="Settings" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

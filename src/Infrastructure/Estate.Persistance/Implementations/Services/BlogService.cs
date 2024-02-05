@@ -177,6 +177,7 @@ namespace Estate.Persistance.Implementations.Services
 
             PaginationVM<ItemBlogVM> pagination = new PaginationVM<ItemBlogVM>
             {
+                Take = take,
                 Search = search,
                 Order = order,
                 CurrentPage = page,
@@ -226,6 +227,7 @@ namespace Estate.Persistance.Implementations.Services
 
             PaginationVM<ItemBlogVM> pagination = new PaginationVM<ItemBlogVM>
             {
+                Take = take,
                 Search = search,
                 Order = order,
                 CurrentPage = page,

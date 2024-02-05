@@ -3,7 +3,6 @@
     public class BlogComment : BaseEntity
     {
         public string Comment { get; set; } = null!;
-        public DateTime CoomentTime { get; set; }
         public string AppUserId { get; set; } = null!;
         public AppUser? AppUser { get; set; }
         public int BlogId { get; set; }

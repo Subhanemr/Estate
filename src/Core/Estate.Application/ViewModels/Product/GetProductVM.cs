@@ -4,8 +4,7 @@
         byte Garages, short YearBuilt, byte RoomCount, string? SchoolDistrict, string? SchoolDistrictPhone,
         string Address, string Description, string FaceLink, string TwitLink, string? GoogleLink,
         bool HighSchool, bool MiddleSchool, bool ElementarySchool, int CategoryId, IncludeCategoryVM Category,
-        ICollection<IncludeProductImageVM> Images, ICollection<IncludeProductCommentVM>? Comments,
-        ICollection<IncludeFeaturesVM>? Features, ICollection<IncludeExteriorTypeVM>? ExteriorTypes,
-        ICollection<IncludeParkingTypeVM>? ParkingTypes, ICollection<IncludeRoofTypeVM>? RoofTypes,
-        ICollection<IncludeViewTypeVM>? ViewTypes);
+        ICollection<IncludeProductImageVM> Images, List<IncludeProductCommentVM>? Comments,
+        List<IncludeFeaturesVM>? Features, List<IncludeExteriorTypeVM>? ExteriorTypes,
+        List<IncludeParkingTypeVM>? ParkingTypes, List<IncludeRoofTypeVM>? RoofTypes, List<IncludeViewTypeVM>? ViewTypes);
 }

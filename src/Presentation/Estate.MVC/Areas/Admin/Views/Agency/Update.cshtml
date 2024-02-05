@@ -1,1 +1,18 @@
 ﻿@model UpdateAgencyVM
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Update Agency</h4>
+            <form class="forms-sample" method="post">
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary me-2">Submit</button>
+                <a asp-action="Index" asp-controller="Agency" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

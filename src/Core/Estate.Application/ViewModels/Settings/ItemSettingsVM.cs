@@ -1,4 +1,4 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record ItemSettingsVM(string Key, string Value);
+    public record ItemSettingsVM(int Id,string Key, string Value);
 }

@@ -1,1 +1,22 @@
 ﻿@model GetAgencyVM
+
+<div class="container">
+    <h3 class="fw-bold m-3">@Model.Name Products</h3>
+    <h4 class="fw-normal mx-5 my-3">Users Count: @Model.AppUsers.Count</h4>
+</div>
+<div class="card-group">
+    @foreach (var user in Model.AppUsers)
+    {
+
+        <div class="card m-1 bg-primary text-white rounded-3">
+            <img src="@user.Img"
+                 alt="@user.UserName" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title text-white">Username:<a></a> @user.UserName</h5>
+                <p class="card-text">Name: @user.Name</p>
+                <p class="card-text">Surname: @user.Surname</p>
+            </div>
+        </div>
+    }
+</div>
+<a class="btn btn-light fw-bold fs-4" asp-action="Index" asp-controller="Features">Back</a>

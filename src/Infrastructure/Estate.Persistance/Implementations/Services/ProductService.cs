@@ -33,7 +33,7 @@ namespace Estate.Persistance.Implementations.Services
         public ProductService(IMapper mapper, IProductRepository repository,
             ICategoryRepository categoryRepository, IFeaturesRepository featuresRepository, IExteriorTypeRepository exteriorTypeRepository,
             IParkingTypeRepository parkingTypeRepository, IRoofTypeRepository roofTypeRepository, IViewTypeRepository viewTypeRepository,
-            IHttpContextAccessor http, IWebHostEnvironment env, UserManager<AppUser> userManager)
+            IHttpContextAccessor http, IWebHostEnvironment env, UserManager<AppUser> userManager, ICLoudService cLoud)
         {
             _mapper = mapper;
             _repository = repository;
@@ -46,6 +46,7 @@ namespace Estate.Persistance.Implementations.Services
             _http = http;
             _env = env;
             _userManager = userManager;
+            _cLoud = cLoud;
         }
 
         public async void CreatePopulateDropdowns(CreateProductVM create)
@@ -226,7 +227,7 @@ namespace Estate.Persistance.Implementations.Services
 
             return vMs;
         }
-        public async Task<PaginationVM<ItemProductVM>> GetFilteredAsync(string? search, int take, int page, int order, int? categoryId)
+        public async Task<PaginationVM<ProductFilterVM>> GetFilteredAsync(string? search, int take, int page, int order, int? categoryId)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
@@ -272,22 +273,26 @@ namespace Estate.Persistance.Implementations.Services
                     break;
             }
 
-            ICollection<ItemProductVM> vMs = _mapper.Map<ICollection<ItemProductVM>>(items);
-
-            PaginationVM<ItemProductVM> pagination = new PaginationVM<ItemProductVM>
+            ProductFilterVM filtered = new ProductFilterVM
             {
+                Products = _mapper.Map<ICollection<ItemProductVM>>(items),
+                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll().ToListAsync())
+            };
+            PaginationVM<ProductFilterVM> pagination = new PaginationVM<ProductFilterVM>
+            {
+                Take = take,
                 Search = search,
                 Order = order,
                 CategoryId = categoryId,
                 CurrentPage = page,
                 TotalPage = Math.Ceiling(count / take),
-                Items = vMs
+                Item = filtered
             };
 
             return pagination;
         }
 
-        public async Task<PaginationVM<ItemProductVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order, int? categoryId)
+        public async Task<PaginationVM<ProductFilterVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order, int? categoryId)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
@@ -334,16 +339,20 @@ namespace Estate.Persistance.Implementations.Services
                     break;
             }
 
-            ICollection<ItemProductVM> vMs = _mapper.Map<ICollection<ItemProductVM>>(items);
-
-            PaginationVM<ItemProductVM> pagination = new PaginationVM<ItemProductVM>
+            ProductFilterVM filtered = new ProductFilterVM
             {
+                Products = _mapper.Map<ICollection<ItemProductVM>>(items),
+                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll().ToListAsync())
+            };
+            PaginationVM<ProductFilterVM> pagination = new PaginationVM<ProductFilterVM>
+            {
+                Take = take,
                 Search = search,
                 Order = order,
                 CategoryId = categoryId,
                 CurrentPage = page,
                 TotalPage = Math.Ceiling(count / take),
-                Items = vMs
+                Item = filtered
             };
 
             return pagination;

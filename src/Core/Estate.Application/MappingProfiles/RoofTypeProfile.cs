@@ -11,10 +11,10 @@ namespace Estate.Application.MappingProfiles
             CreateMap<CreateRoofTypeVM, RoofType>().ReverseMap();
             CreateMap<UpdateRoofTypeVM, RoofType>().ReverseMap();
             CreateMap<GetRoofTypeVM, RoofType>().ReverseMap()
-                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductRoofTypes));
+                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductRoofTypes.Select(ma => ma.Product).ToList()));
             CreateMap<IncludeRoofTypeVM, RoofType>().ReverseMap();
             CreateMap<ItemRoofTypeVM, RoofType>().ReverseMap()
-                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductRoofTypes));
+                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductRoofTypes.Select(ma => ma.Product).ToList()));
         }
     }
 }

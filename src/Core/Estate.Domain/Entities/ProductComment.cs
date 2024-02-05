@@ -5,7 +5,6 @@ namespace Estate.Domain.Entities
     public class ProductComment : BaseEntity
     {
         public string Comment { get; set; } = null!;
-        public DateTime CoomentTime { get; set; }
         public string AppUserId { get; set; } = null!;
         public AppUser? AppUser { get; set; }
         public int ProductId { get; set; }

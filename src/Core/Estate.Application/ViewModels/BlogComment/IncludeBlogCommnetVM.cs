@@ -3,6 +3,6 @@
 namespace Estate.Application.ViewModels
 {
     public record IncludeBlogCommnetVM(int Id, string Comment, DateTime CoomentTime, 
-        string AppUserId, AppUser? AppUser, int BlogId, ICollection<IncludeBlogReply> Replies);
+        string AppUserId, IncludeAppUserVM? AppUser, int BlogId, ICollection<IncludeBlogReply> Replies);
 }
 

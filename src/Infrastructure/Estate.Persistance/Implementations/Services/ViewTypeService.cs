@@ -160,6 +160,7 @@ namespace Estate.Persistance.Implementations.Services
 
             PaginationVM<ItemViewTypeVM> pagination = new PaginationVM<ItemViewTypeVM>
             {
+                Take = take,
                 Search = search,
                 Order = order,
                 CurrentPage = page,

@@ -1,4 +1,4 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record GetAgencyVM(int Id, string Name, ICollection<IncludeAppUser> AppUsers);
+    public record GetAgencyVM(int Id, string Name, ICollection<IncludeAppUserVM> AppUsers);
 }

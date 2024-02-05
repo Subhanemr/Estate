@@ -11,10 +11,10 @@ namespace Estate.Application.MappingProfiles
             CreateMap<CreateParkingTypeVM, ParkingType>().ReverseMap();
             CreateMap<UpdateParkingTypeVM, ParkingType>().ReverseMap();
             CreateMap<GetParkingTypeVM, ParkingType>().ReverseMap()
-                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductParkingTypes));
+                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductParkingTypes.Select(ma => ma.Product).ToList()));
             CreateMap<IncludeParkingTypeVM, ParkingType>().ReverseMap();
             CreateMap<ItemParkingTypeVM, ParkingType>().ReverseMap()
-                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductParkingTypes));
+                .ForMember(x => x.Products, opt => opt.MapFrom(src => src.ProductParkingTypes.Select(ma => ma.Product).ToList()));
         }
     }
 }

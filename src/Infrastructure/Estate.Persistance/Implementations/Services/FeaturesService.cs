@@ -113,6 +113,7 @@ namespace Estate.Persistance.Implementations.Services
 
             PaginationVM<ItemFeaturesVM> pagination = new PaginationVM<ItemFeaturesVM>
             {
+                Take = take,
                 Search = search,
                 Order = order,
                 CurrentPage = page,
@@ -160,6 +161,7 @@ namespace Estate.Persistance.Implementations.Services
 
             PaginationVM<ItemFeaturesVM> pagination = new PaginationVM<ItemFeaturesVM>
             {
+                Take = take,
                 Search = search,
                 Order = order,
                 CurrentPage = page,

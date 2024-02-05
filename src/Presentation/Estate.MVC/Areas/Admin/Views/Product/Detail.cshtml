@@ -1,1 +1,91 @@
 ﻿@model GetProductVM
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-3 m-1 w-50">
+
+        <div class="col">
+            <div class="card">
+                <p class="card-text fw-bold m-2">Main Image</p>
+                <img src="@Model.Images.FirstOrDefault(p => p.IsPrimary == true).Url" class="img-fluid rounded-start" alt="@Model.Name">
+            </div>
+        </div>
+
+        @foreach (var productImage in Model.Images.Where(p => p.IsPrimary == null))
+        {
+            <div class="col">
+                <div class="card ">
+                    <p class="card-text fw-bold m-2">Other Images</p>
+                    <img src="@productImage.Url" class="img-fluid rounded-start" alt="@Model.Name">
+                </div>
+            </div>
+        }
+    </div>
+    <div class="card-body m-2">
+        <h5 class="card-title">Name: @Model.Name</h5>
+        <p class="card-text">Description: @Model.Description</p>
+        <p class="card-text">Price: $@Model.Price</p>
+        <p class="card-text">Area: @Model.Area</p>
+        <p class="card-text">Lot Size: @Model.LotSize</p>
+
+        <p class="card-text">Bedrooms: @Model.Bedrooms</p>
+        <p class="card-text">Bathrooms: @Model.Bathrooms</p>
+        <p class="card-text">Garages: @Model.Garages</p>
+        <p class="card-text">YearBuilt: @Model.YearBuilt</p>
+        <p class="card-text">Room Count: @Model.RoomCount</p>
+        <p class="card-text">Garages: @Model.Garages</p>
+
+        <p class="card-text">Category: @Model.Category.Name</p>
+        @if (Model.SchoolDistrict != null)
+        {
+            <p class="card-text">School District: @Model.SchoolDistrict</p>
+            <p class="card-text">School District Phone: @Model.SchoolDistrictPhone</p>
+            <p class="card-text">High School: @(Model.HighSchool != true ? Model.HighSchool : "N/A")</p>
+            <p class="card-text">Middle School: @(Model.MiddleSchool != true ? Model.MiddleSchool : "N/A")</p>
+            <p class="card-text">Elementary School: @(Model.ElementarySchool != true ? Model.ElementarySchool : "N/A")</p>
+        }
+        <p class="card-text">Facebook: <a href="@(Model.FaceLink != null ? Model.FaceLink : "")">@(Model.FaceLink != null ? Model.FaceLink : "N/A")</a> </p>
+        <p class="card-text">Twitter: <a href="@(Model.TwitLink != null ? Model.TwitLink : "")">@(Model.TwitLink != null ? Model.TwitLink : "N/A")</a> </p>
+        <p class="card-text">GoogleLink: <a href="@(Model.GoogleLink != null ? Model.GoogleLink : "")">@(Model.GoogleLink != null ? Model.GoogleLink : "N/A")</a> </p>
+        <p class="card-text">
+            Features: @foreach (var features in Model.Features)
+            {
+                @features.Name
+
+                @(features != Model.Features[Model.Features.Count - 1] ? ", " : "")
+            }
+        </p>
+        <p class="card-text">
+            Exterior Types: @foreach (var exteriorTypes in Model.ExteriorTypes)
+            {
+                @exteriorTypes.Name
+
+                @(exteriorTypes != Model.ExteriorTypes[Model.ExteriorTypes.Count - 1] ? ", " : "")
+            }
+        </p>
+        <p class="card-text">
+            Parking Types: @foreach (var parkingTypes in Model.ParkingTypes)
+            {
+                @parkingTypes.Name
+
+                @(parkingTypes != Model.ParkingTypes[Model.ParkingTypes.Count - 1] ? ", " : "")
+            }
+        </p>
+        <p class="card-text">
+            Roof Types: @foreach (var roofTypes in Model.RoofTypes)
+            {
+                @roofTypes.Name
+
+                @(roofTypes != Model.RoofTypes[Model.RoofTypes.Count - 1] ? ", " : "")
+            }
+        </p>
+        <p class="card-text">
+            View Types: @foreach (var viewTypes in Model.ViewTypes)
+            {
+                @viewTypes.Name
+
+                @(viewTypes != Model.ViewTypes[Model.ViewTypes.Count - 1] ? ", " : "")
+            }
+        </p>
+    </div>
+</div>
+<a class="btn btn-light fw-bold fs-4" asp-action="Index" asp-controller="Product">Back</a>
