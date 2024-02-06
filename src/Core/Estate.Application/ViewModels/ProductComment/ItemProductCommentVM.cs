@@ -2,6 +2,6 @@
 
 namespace Estate.Application.ViewModels
 {
-    public record ItemProductCommentVM(int Id, string Comment, DateTime CoomentTime,
+    public record ItemProductCommentVM(int Id, string Comment, DateTime CreateAt, string CreatedBy,
         string AppUserId, IncludeAppUserVM AppUser, int ProductId, IncludeProductVM Product, ICollection<IncludeProductReplyVM>? Replies);
 }

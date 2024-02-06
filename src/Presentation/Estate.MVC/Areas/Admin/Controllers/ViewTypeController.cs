@@ -82,9 +82,7 @@ namespace Estate.MVC.Areas.Admin.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
-            GetViewTypeVM get = await _service.GetByIdAsync(id);
-
-            return View(get);
+            return View(await _service.GetByIdAsync(id));
         }
     }
 }

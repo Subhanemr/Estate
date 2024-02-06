@@ -15,6 +15,12 @@ namespace Estate.Application.MappingProfiles
             CreateMap<CreateAppUserAgentVM, AppUser>().ReverseMap();
             CreateMap<UpdateAppUserAgentVM, AppUser>().ReverseMap()
                 .ForMember(x => x.Images, opt => opt.MapFrom(src => src.AppUserImages.ToList()));
+            CreateMap<GetAppUserVM, AppUser>().ReverseMap()
+                .ForMember(x => x.Agencies, opt => opt.MapFrom(src => src.AgencyAppUsers.Select(ma => ma.Agency).ToList()))
+                .ForMember(x => x.Images, opt => opt.MapFrom(src => src.AppUserImages.ToList()));
+            CreateMap<IncludeAppUserVM, AppUser>().ReverseMap();
+            CreateMap<ItemAppUserVM, AppUser>().ReverseMap();
+
         }
     }
 }

@@ -2,6 +2,6 @@
 
 namespace Estate.Application.ViewModels
 {
-    public record GetBlogCommentVM(int Id, string Comment, DateTime CoomentTime, 
+    public record GetBlogCommentVM(int Id, string Comment, DateTime CreateAt, string CreatedBy,
         string AppUserId, IncludeAppUserVM AppUser, int BlogId, IncludeBlogVM Blog, ICollection<IncludeBlogReply> Replies);
 }

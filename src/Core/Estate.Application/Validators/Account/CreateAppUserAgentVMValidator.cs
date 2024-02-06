@@ -10,7 +10,7 @@ namespace Estate.Application.Validators.Account
             RuleFor(x => x.AgencyIds).NotNull().WithMessage("Agency was not be emty");
             RuleForEach(x => x.AgencyIds).GreaterThan(0).WithMessage("Agency must be greater than 0");
 
-            RuleFor(x => x.PhoneFirst)
+            RuleFor(x => x.PhoneNumber)
                 .NotEmpty().WithMessage("Phone is required")
                 .Length(5, 25).WithMessage("Phone max characters is 5-25")
                 .Matches(@"^\+?[0-9]*$").WithMessage("Invalid phone number format");

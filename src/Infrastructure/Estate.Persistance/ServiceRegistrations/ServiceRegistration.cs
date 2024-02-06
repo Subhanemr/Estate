@@ -49,6 +49,7 @@ namespace Estate.Persistance.ServiceRegistrations
             services.AddScoped<IRoofTypeService, RoofTypeService>();
             services.AddScoped<IViewTypeService, ViewTypeService>();
             services.AddScoped<ISettingsService, SettingsService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IAgencyRepository, AgencyRepository>();
             services.AddScoped<IAgencyAppUserRepository, AgencyAppUserRepository>();

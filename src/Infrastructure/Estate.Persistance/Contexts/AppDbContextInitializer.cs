@@ -42,7 +42,8 @@ namespace Estate.Persistance.Contexts
                 Name = "Subhan",
                 Surname = "Neqa",
                 Email = _configuration["AdminSettings:Email"],
-                UserName = _configuration["AdminSettings:UserName"]
+                UserName = _configuration["AdminSettings:UserName"],
+                IsFounder = true
             };
 
             await _userManager.CreateAsync(admin, _configuration["AdminSettings:Password"]);

@@ -2,7 +2,7 @@
 
 namespace Estate.Application.ViewModels
 {
-    public record UpdateAppUserAgentVM(string PhoneFirst, string? PhoneSecond, string Address, string About,
+    public record UpdateAppUserAgentVM(string PhoneNumber, string? PhoneSecond, string Address, string About,
         string FaceLink, string TwitLink, string? GoogleLink, string LinkedLink, string InstaLink, IFormFile? MainPhoto,
         ICollection<IFormFile>? Photos, bool TermsConditions)
     {
