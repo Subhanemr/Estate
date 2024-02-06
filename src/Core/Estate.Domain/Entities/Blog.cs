@@ -3,7 +3,6 @@
     public class Blog : BaseNameEntity
     {
         public string Description { get; set; } = null!;
-        public DateTime DateTime { get; set; }
 
         public string FaceLink { get; set; } = null!;
         public string TwitLink { get; set; } = null!;
