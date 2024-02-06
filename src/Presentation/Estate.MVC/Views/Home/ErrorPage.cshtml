@@ -1,0 +1,41 @@
+﻿@model string
+
+<section class="section-full undefined text-center text-sm-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 undefined">
+                <h1>404. Page Not Found</h1>
+                <p></p>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Extras</a>
+                    </li>
+                    <li class="active">404</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section 404-->
+<section class="section-md text-center text-sm-left">
+    <div class="shell">
+        <div class="range">
+            <div class="cell-xs-12 cell-sm-4 col-lg-6 cell-sm-push-2 text-md-right">
+                <span class="big text-darker text-ubold">404</span>
+            </div>
+            <div class="cell-xs-12 cell-sm-8 col-lg-6 cell-sm-push-1">
+                <h2>Sorry, @Model</h2>
+                <hr>
+                <p>You may have mistyped the address or the page may have moved.</p>
+                <div class="btn-group-mod-1">
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-sushi btn-sm btn-min-width-mod-1">
+                        <span class="icon icon-left icon-sm fa-arrow-left"></span>back to homepage
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

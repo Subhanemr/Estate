@@ -111,7 +111,23 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
             AppUser user = await _userManager.Users
-                .Include(x => x.AppUserImages).Include(x => x.AgencyAppUsers).Include(x => x.Products).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+                .Include(x => x.AppUserImages).Include(x => x.AgencyAppUsers)
+                .Include(x => x.Products).ThenInclude(x => x.Category)
+                .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            if (user == null) throw new NotFoundException("Your request was not found");
+
+            GetAppUserVM get = _mapper.Map<GetAppUserVM>(user);
+
+            return get;
+        }
+
+        public async Task<GetAppUserVM> GetByUserNameAsync(string userName)
+        {
+            if (string.IsNullOrWhiteSpace(userName)) throw new WrongRequestException("The request sent does not exist");
+            AppUser user = await _userManager.Users
+                .Include(x => x.AppUserImages).Include(x => x.AgencyAppUsers)
+                .Include(x => x.Products).ThenInclude(x => x.Category)
+                .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.UserName == userName);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             GetAppUserVM get = _mapper.Map<GetAppUserVM>(user);

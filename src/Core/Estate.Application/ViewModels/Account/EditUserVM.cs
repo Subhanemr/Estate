@@ -2,5 +2,5 @@
 
 namespace Estate.Application.ViewModels
 {
-    public record EditUserVM(string UserName, string? Img, IFormFile? Photo);
+    public record EditUserVM(string UserName, string Name, string Surname, string? Img, IFormFile? Photo);
 }

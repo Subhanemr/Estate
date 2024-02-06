@@ -26,11 +26,14 @@
                 <div class="rd-navbar-top-panel">
                     <div class="rd-navbar-top-panel-wrap">
                         <dl class="dl-horizontal-mod-1 login">
-                            <dt>
-                                <span class="mdi mdi-login icon-xxs-mod-2"></span>
-                            </dt>
+
                             @if (User.Identity.IsAuthenticated)
                             {
+                                @await Component.InvokeAsync("AppUser")
+                                <br>
+                                <dt>
+                                    <span class="mdi mdi-login icon-xxs-mod-2"></span>
+                                </dt>
                                 <dd>
                                     <a asp-action="Logout" asp-controller="Account" class="text-sushi">Log-out</a>
                                 </dd>

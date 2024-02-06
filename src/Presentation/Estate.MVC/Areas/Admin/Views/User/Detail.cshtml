@@ -43,6 +43,57 @@
         <p class="card-text">Twiiter: <a href="@(Model.TwitLink != null ? Model.TwitLink : "")">@(Model.TwitLink != null ? Model.TwitLink : "N/A")</a> </p>
     </div>
 </div>
+@foreach (var product in Model.Products)
+{
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-3 m-1 w-50">
+
+            <div class="col">
+                <div class="card">
+                    <p class="card-text fw-bold m-2">Main Image</p>
+                    <img src="@product.Images.FirstOrDefault(p => p.IsPrimary == true).Url" class="img-fluid rounded-start" alt="@product.Name">
+                </div>
+            </div>
+
+            @foreach (var productImage in product.Images.Where(p => p.IsPrimary == null))
+            {
+                <div class="col">
+                    <div class="card ">
+                        <p class="card-text fw-bold m-2">Other Images</p>
+                        <img src="@productImage.Url" class="img-fluid rounded-start" alt="@product.Name">
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="card-body m-2">
+            <h5 class="card-title">Name: @product.Name</h5>
+            <p class="card-text">Description: @product.Description</p>
+            <p class="card-text">Price: $@product.Price</p>
+            <p class="card-text">Area: @product.Area</p>
+            <p class="card-text">Lot Size: @product.LotSize</p>
+
+            <p class="card-text">Bedrooms: @product.Bedrooms</p>
+            <p class="card-text">Bathrooms: @product.Bathrooms</p>
+            <p class="card-text">Garages: @product.Garages</p>
+            <p class="card-text">YearBuilt: @product.YearBuilt</p>
+            <p class="card-text">Room Count: @product.RoomCount</p>
+            <p class="card-text">Garages: @product.Garages</p>
+
+            <p class="card-text">Category: @product.Category.Name</p>
+            @if (product.SchoolDistrict != null)
+            {
+                <p class="card-text">School District: @product.SchoolDistrict</p>
+                <p class="card-text">School District Phone: @product.SchoolDistrictPhone</p>
+                <p class="card-text">High School: @(product.HighSchool != true ? product.HighSchool : "N/A")</p>
+                <p class="card-text">Middle School: @(product.MiddleSchool != true ? product.MiddleSchool : "N/A")</p>
+                <p class="card-text">Elementary School: @(product.ElementarySchool != true ? product.ElementarySchool : "N/A")</p>
+            }
+            <p class="card-text">Facebook: <a href="@(product.FaceLink != null ? product.FaceLink : "")">@(product.FaceLink != null ? product.FaceLink : "N/A")</a> </p>
+            <p class="card-text">Twitter: <a href="@(product.TwitLink != null ? product.TwitLink : "")">@(product.TwitLink != null ? product.TwitLink : "N/A")</a> </p>
+            <p class="card-text">Google Plus: <a href="@(product.GoogleLink != null ? product.GoogleLink : "")">@(product.GoogleLink != null ? product.GoogleLink : "N/A")</a> </p>
+        </div>
+    </div>
+}
 <a class="btn btn-light fw-bold fs-4" asp-action="Index" asp-controller="User">Back</a>
 
 

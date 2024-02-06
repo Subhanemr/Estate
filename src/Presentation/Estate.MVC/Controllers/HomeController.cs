@@ -8,5 +8,14 @@ namespace Estate.MVC.Controllers
         {
             return View();
         }
+
+        public IActionResult ErrorPage(string error)
+        {
+            if (error == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View(model: error);
+        }
     }
 }

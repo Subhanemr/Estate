@@ -1,0 +1,6 @@
+﻿@model AppUser
+
+<dd>
+    <img src="@Model.Img" style="width: 25px; height: 25px; border-radius: 50%;">
+    <a asp-action="Index" asp-controller="User" asp-route-id="@Model.Id" class="text-sushi">@User.Identity.Name</a>
+</dd>

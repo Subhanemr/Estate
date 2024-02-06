@@ -6,6 +6,7 @@
     {
         public string? PhoneNumber { get; init; }
         public List<IncludeAgencyVM> Agencies { get; init; }
+        public ICollection<IncludeProductVM> Products { get; init; }
         public ICollection<IncludeAppUserImage> Images { get; init; }
     }
 }
