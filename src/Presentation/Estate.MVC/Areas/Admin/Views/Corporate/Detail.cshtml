@@ -1,1 +1,28 @@
 ﻿@model GetCorporateVM
+
+<div class="container">
+    <h3 class="fw-bold m-3">@Model.Name clients</h3>
+    <h4 class="fw-normal mx-5 my-3">client Count: @Model.Clients.Count</h4>
+</div>
+
+<div class="container">
+    <img src="@Model.Img" class="w-25">
+    <p class="fs-5">Corporate Link: @Model.CorporateLink</p>
+    <p class="fs-5">Description: @Model.Description</p>
+</div>
+<div class="card-group">
+    @foreach (var client in Model.Clients)
+    {
+        <div class="card m-1 bg-primary text-white rounded-3">
+            <img src="@client.AppUser.Img"
+                 alt="@client.AppUser.UserName" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title text-white">Username: @client.AppUser.UserName</h5>
+                <p class="card-text">Country: @client.Country</p>
+                <p class="card-text">Specialty: @(client.Specialty != null ? client.Specialty : "N/A")</p>
+                <p class="card-text">Comment: @client.Comment</p>
+            </div>
+        </div>
+    }
+</div>
+<a class="btn btn-light fw-bold fs-4" asp-action="Index" asp-controller="Corporate">Back</a>

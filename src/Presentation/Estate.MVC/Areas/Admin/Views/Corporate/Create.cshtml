@@ -6,8 +6,13 @@
             <h4 class="card-title">Create Corporate</h4>
             <form class="forms-sample" method="post" enctype="multipart/form-data">
                 <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
                     <label asp-for="CorporateLink">Corporate Link</label>
-                    <input asp-for="CorporateLink" class="form-control" placeholder="Name">
+                    <input asp-for="CorporateLink" class="form-control" placeholder="Corporate Link">
                     <span asp-validation-for="CorporateLink" class="text-danger"></span>
                 </div>
                 <div class="form-group">

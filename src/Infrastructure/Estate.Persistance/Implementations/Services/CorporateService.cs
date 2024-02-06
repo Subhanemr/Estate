@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using System.Linq.Expressions;
 
 namespace Estate.Persistance.Implementations.Services
@@ -79,7 +80,7 @@ namespace Estate.Persistance.Implementations.Services
 
         public async Task<ICollection<ItemCorporateVM>> GetAllWhereAsync(int take, int page = 1)
         {
-            string[] includes = { $"{nameof(Corporate.Clients)}" };
+            string[] includes = { $"{nameof(Corporate.Clients)}.{nameof(Client.AppUser)}" };
             ICollection<Corporate> items = await _repository
                     .GetAllWhere(skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
 
@@ -90,7 +91,7 @@ namespace Estate.Persistance.Implementations.Services
 
         public async Task<ICollection<ItemCorporateVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Corporate, object>>? orderExpression, int page = 1)
         {
-            string[] includes = { $"{nameof(Corporate.Clients)}" };
+            string[] includes = { $"{nameof(Corporate.Clients)}.{nameof(Client.AppUser)}" };
             ICollection<Corporate> items = await _repository
                     .GetAllWhereByOrder(orderException: orderExpression, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
 
@@ -104,7 +105,7 @@ namespace Estate.Persistance.Implementations.Services
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
-            string[] includes = { $"{nameof(Corporate.Clients)}" };
+            string[] includes = { $"{nameof(Corporate.Clients)}.{nameof(Client.AppUser)}" };
             double count = await _repository.CountAsync();
 
             ICollection<Corporate> items = new List<Corporate>();
@@ -153,7 +154,7 @@ namespace Estate.Persistance.Implementations.Services
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
-            string[] includes = { $"{nameof(Corporate.Clients)}" };
+            string[] includes = { $"{nameof(Corporate.Clients)}.{nameof(Client.AppUser)}" };
             double count = await _repository.CountAsync();
 
             ICollection<Corporate> items = new List<Corporate>();
@@ -200,7 +201,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<GetCorporateVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes = { $"{nameof(Corporate.Clients)}" };
+            string[] includes = { $"{nameof(Corporate.Clients)}.{nameof(Client.AppUser)}" };
             Corporate item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 

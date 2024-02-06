@@ -1,1 +1,56 @@
 ﻿@model CreateBlogVM
+
+<div class="col-md-6 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Create Corporate</h4>
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FaceLink">Facebook</label>
+                    <input asp-for="FaceLink" class="form-control" placeholder="Facebook">
+                    <span asp-validation-for="FaceLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TwitLink">Twitter</label>
+                    <input asp-for="TwitLink" class="form-control" placeholder="Twitter">
+                    <span asp-validation-for="TwitLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoogleLink">Google Plus</label>
+                    <input asp-for="GoogleLink" class="form-control" placeholder="Google Plus">
+                    <span asp-validation-for="GoogleLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LinkedLink">Linked-In</label>
+                    <input asp-for="LinkedLink" class="form-control" placeholder="Linked-In">
+                    <span asp-validation-for="LinkedLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="InstaLink">Instagram</label>
+                    <input asp-for="InstaLink" class="form-control" placeholder="Instagram">
+                    <span asp-validation-for="InstaLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MainPhoto">Image</label>
+                    <input asp-for="MainPhoto" class="form-control" accept="image/*" placeholder="Image">
+                    <span asp-validation-for="MainPhoto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photos">Other Images</label>
+                    <input asp-for="Photos" class="form-control" placeholder="Images" accept="image/*">
+                    <span asp-validation-for="Photos" class="text-danger"></span>
+                </div>
+                <div class="form-group border border-primary">
+                    <textarea asp-for="Description" class="form-control" rows="12" placeholder="Description"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary me-2">Submit</button>
+                <a asp-action="Index" asp-controller="Corporate" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

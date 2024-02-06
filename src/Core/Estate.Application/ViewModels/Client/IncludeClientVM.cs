@@ -1,4 +1,4 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record IncludeClientVM(int Id, string Comment, string Country, string? Specialty, int CorporateId, string AppUserId);
+    public record IncludeClientVM(int Id, string Comment, string Country, string? Specialty, int CorporateId, string AppUserId, IncludeAppUserVM AppUser);
 }

@@ -13,7 +13,8 @@ namespace Estate.Application.MappingProfiles
             CreateMap<GetClientVM, Client>().ReverseMap()
                 .ForMember(x => x.Corporate, opt => opt.MapFrom(src => src.Corporate))
                 .ForMember(x => x.AppUser, opt => opt.MapFrom(src => src.AppUser));
-            CreateMap<IncludeClientVM, Client>().ReverseMap();
+            CreateMap<IncludeClientVM, Client>().ReverseMap()
+                .ForMember(x => x.AppUser, opt => opt.MapFrom(src => src.AppUser));
             CreateMap<ItemClientVM, Client>().ReverseMap()
                 .ForMember(x => x.Corporate, opt => opt.MapFrom(src => src.Corporate))
                 .ForMember(x => x.AppUser, opt => opt.MapFrom(src => src.AppUser));
