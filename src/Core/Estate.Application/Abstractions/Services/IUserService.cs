@@ -1,5 +1,7 @@
 ﻿using Estate.Application.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace Estate.Application.Abstractions.Services
 {
@@ -12,8 +14,17 @@ namespace Estate.Application.Abstractions.Services
         Task ReverseSoftDeleteAsync(string id);
         Task SoftDeleteAsync(string id);
         Task DeleteAsync(string id);
+        Task GiveRoleModeratorAsync(string id);
+        Task DeleteRoleModeratorAsync(string id);
+        Task DeleteRoleAgentAsync(string id);
         Task IsSoulOfAgencyAsync(string id);
         Task<EditUserVM> EditUser(string id);
         Task<bool> EditUserAsync(string id, EditUserVM update, ModelStateDictionary model);
+        Task FogotPassword(string id, IUrlHelper url);
+        Task<bool> ChangePassword(FogotPasswordVM fogotPassword, ModelStateDictionary model);
+        Task<CreateAppUserAgentVM> BeAAgent(string id);
+        Task<bool> BeAAgentPost(string id, CreateAppUserAgentVM create, ModelStateDictionary model, ITempDataDictionary tempData);
+        Task<UpdateAppUserAgentVM> UpdateAgentAsync(string id);
+        Task<bool> UpdateAgentPostAsync(string id, UpdateAppUserAgentVM update, ModelStateDictionary model, ITempDataDictionary tempData);
     }
 }

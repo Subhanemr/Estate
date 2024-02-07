@@ -30,16 +30,17 @@
                             @if (User.Identity.IsAuthenticated)
                             {
                                 @await Component.InvokeAsync("AppUser")
-                                <br>
-                                <dt>
-                                    <span class="mdi mdi-login icon-xxs-mod-2"></span>
-                                </dt>
+
                                 @if (User.IsInRole(UserRoles.Agent.ToString()))
                                 {
                                     <dd>
                                         <a asp-action="Create" asp-controller="Product" class="text-sushi">Create Product</a>
                                     </dd>
                                 }
+                                <br>
+                                <dt>
+                                    <span class="mdi mdi-login icon-xxs-mod-2"></span>
+                                </dt>
                                 <dd>
                                     <a asp-action="Logout" asp-controller="Account" class="text-sushi">Log-out</a>
                                 </dd>
@@ -408,6 +409,8 @@
     <!-- Java script-->
     <script src="~/assets/js/core.min.js"></script>
     <script src="~/assets/js/script.js"></script>
+    @RenderSection("DeleteImages",false)
+
 </body>
 
 </html>

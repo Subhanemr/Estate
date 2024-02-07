@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Estate.MVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Moderator")]
     [AutoValidateAntiforgeryToken]
     public class UserController : Controller
     {
@@ -58,7 +58,23 @@ namespace Estate.MVC.Areas.Admin.Controllers
 
             return RedirectToAction(nameof(DeletedItems));
         }
+        public async Task<IActionResult> GiveRoleModerator(string id)
+        {
+            await _service.GiveRoleModeratorAsync(id);
 
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> DeleteRoleModeratorAsync(string id)
+        {
+            await _service.DeleteRoleModeratorAsync(id);
 
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> DeleteRoleAgentAsync(string id)
+        {
+            await _service.DeleteRoleAgentAsync(id);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -56,7 +56,7 @@ namespace Estate.Application.Validators.Account
 
             RuleFor(x => x.TermsConditions)
                 .NotEmpty().WithMessage("TermsConditions is required")
-                .Equals(true);
+                .Equal(true);
         }
     }
 }

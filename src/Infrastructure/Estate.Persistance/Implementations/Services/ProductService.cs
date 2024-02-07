@@ -641,6 +641,13 @@ namespace Estate.Persistance.Implementations.Services
             if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateProductVM update = _mapper.Map<UpdateProductVM>(item);
+
+            update.FeatureIds = item.ProductFeatures.Select(p => p.FeaturesId).ToList();
+            update.ExteriorTypeIds = item.ProductExteriorTypes.Select(p => p.ExteriorTypeId).ToList();
+            update.ParkingTypeIds = item.ProductParkingTypes.Select(p => p.ParkingTypeId).ToList();
+            update.RoofTypeIds = item.ProductRoofTypes.Select(p => p.RoofTypeId).ToList();
+            update.ViewTypeIds = item.ProductViewTypes.Select(p => p.ViewTypeId).ToList();
+
             UpdatePopulateDropdowns(update);
 
             return update;

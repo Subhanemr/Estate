@@ -51,5 +51,21 @@ namespace Estate.Persistance.Contexts
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(admin);
             await _userManager.ConfirmEmailAsync(admin, token);
         }
+        public async Task InitializeModeratorAsync()
+        {
+            AppUser moder = new AppUser
+            {
+                Name = "Moderator",
+                Surname = "Neqa",
+                Email = _configuration["ModeratorSettings:Email"],
+                UserName = _configuration["ModeratorSettings:UserName"],
+                IsFounder = true
+            };
+
+            await _userManager.CreateAsync(moder, _configuration["ModeratorSettings:Password"]);
+            await _userManager.AddToRoleAsync(moder, UserRoles.Moderator.ToString());
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(moder);
+            await _userManager.ConfirmEmailAsync(moder, token);
+        }
     }
 }

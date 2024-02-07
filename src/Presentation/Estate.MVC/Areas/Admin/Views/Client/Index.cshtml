@@ -67,7 +67,7 @@
                                     @client.Corporate.Name
                                 </td>
                                 <td>
-                                    @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Member.ToString()))
+                                    @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Moderator.ToString()))
                                     {
                                         <a asp-action="SoftDelete" asp-controller="Client" asp-route-id="@client.Id" class="btn btn-danger btn-info">
                                             <i class="mdi mdi-delete text-white"></i>

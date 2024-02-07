@@ -213,7 +213,7 @@
                             <span class="menu-title">Settings</span>
                         </a>
                     </li>
-                    @if (User.IsInRole(UserRoles.Admin.ToString()))
+                    @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Moderator.ToString()))
                     {
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="User" asp-action="Index">

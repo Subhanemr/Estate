@@ -1,5 +1,92 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model CreateAppUserAgentVM
+
+<div style="display: flex;" class="container">
+    <div style="flex: 3;" class="profile">
+        <div style="padding: 20px;" class="card-body">
+            <h4 style="margin-bottom: 20px;">Be a Agent</h4>
+            <form style="max-width: 75%;" method="post" enctype="multipart/form-data">
+                <div style="margin-bottom: 15px;">
+                    <label asp-for="PhoneNumber">Phone Number</label>
+                    <input asp-for="PhoneNumber" style="width: 100%;" placeholder="Phone Number">
+                    <span asp-validation-for="PhoneNumber" style="color: red;"></span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label asp-for="PhoneSecond">Phone Second</label><small>Optional</small>
+                    <input asp-for="PhoneSecond" style="width: 100%;" placeholder="Phone Second">
+                    <span asp-validation-for="PhoneSecond" style="color: red;"></span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label asp-for="Address">Address</label>
+                    <input asp-for="Address" style="width: 100%;" placeholder="Address">
+                    <span asp-validation-for="Address" style="color: red;"></span>
+                </div>
+                <div class="form-group border border-primary">
+                    <textarea asp-for="About" class="form-control" rows="12" placeholder="About"></textarea>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label asp-for="FaceLink">Facebook</label>
+                    <input asp-for="FaceLink" style="width: 100%;" placeholder="Facebook">
+                    <span asp-validation-for="FaceLink" style="color: red;"></span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label asp-for="TwitLink">Twitter</label>
+                    <input asp-for="TwitLink" style="width: 100%;" placeholder="Twitter">
+                    <span asp-validation-for="TwitLink" style="color: red;"></span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label asp-for="GoogleLink">Google Plus</label><small>Optional</small>
+                    <input asp-for="GoogleLink" style="width: 100%;" placeholder="Google Plus">
+                    <span asp-validation-for="GoogleLink" style="color: red;"></span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label asp-for="LinkedLink">Linked-In</label>
+                    <input asp-for="LinkedLink" style="width: 100%;" placeholder="Linked-In">
+                    <span asp-validation-for="LinkedLink" style="color: red;"></span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label asp-for="InstaLink">Instagram</label>
+                    <input asp-for="InstaLink" style="width: 100%;" placeholder="Instagram">
+                    <span asp-validation-for="InstaLink" style="color: red;"></span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label asp-for="MainPhoto">Certificate Image</label>
+                    <input asp-for="MainPhoto" style="width: 100%;" placeholder="Photo" accept="image/*">
+                    <span asp-validation-for="MainPhoto" style="color: red;"></span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label asp-for="Photos">Other Certificate Images</label>
+                    <input asp-for="Photos" style="width: 100%;" placeholder="Photo" accept="image/*">
+                    <span asp-validation-for="Photos" style="color: red;"></span>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label asp-for="AgencyIds">Agencies</label>
+                    <select asp-for="AgencyIds" style="margin-bottom: 15px;" asp-items="new SelectList(Model.Agencys, nameof(IncludeAgencyVM.Id), nameof(IncludeAgencyVM.Name))">
+                        <option selected disabled>Choose Agency</option>
+                    </select>
+                </div>
+                <div class="d-flex" style="display:flex;margin-top: 10px; margin-right: 10px;">
+                    <label asp-for="TermsConditions" style="margin-right: 5px; margin-bottom: 3px;"><b>Terms&Conditions</b></label>
+                    <input asp-for="TermsConditions">
+                    <span asp-validation-for="TermsConditions" class="m-1 text-danger"></span>
+                </div>
+                <button type="submit" style="background-color: #007bff; color: #fff;padding: 10px 25px 10px 25px; margin-right: 2px; margin-top: 2px; border-radius: 5px;">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div style="background-color: #6c757d; border-radius: 0.3rem;" class="bg-secondary border rounded-3">
+        <ul style="padding: 15px; color: #fff;">
+            <li><a asp-action="Index" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Profile Info</a></li>
+            <li><a asp-action="EditUser" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
+            <li><a asp-action="WishList" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
+            <li><a asp-action="FogotPassword" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Forgot Password</a></li>
+            @if (User.IsInRole(UserRoles.Agent.ToString()))
+            {
+                <li><a asp-action="UpdateAgent" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Update Agent Info</a></li>
+            }
+            else
+            {
+                <li><a asp-action="BeAAgent" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
+            }
+        </ul>
+    </div>
+</div>

@@ -20,6 +20,7 @@ using (var scope = app.Services.CreateScope())
     initializer.InitializeDbContextAsync().Wait();
     initializer.CreateUserRolesAsync().Wait();
     initializer.InitializeAdminAsync().Wait();
+    initializer.InitializeModeratorAsync().Wait();
 }
 
 app.UseRouting();

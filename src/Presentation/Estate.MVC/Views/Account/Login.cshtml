@@ -8,10 +8,7 @@
                 <p></p>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">Extras</a>
+                        <a asp-action="Index" asp-controller="Home">Home</a>
                     </li>
                     <li class="active">Login/Register</li>
                 </ol>
@@ -50,12 +47,13 @@
                                     <span asp-validation-for="Password" class="m-1 text-danger"></span>
                                 </div>
                                 <div class="d-flex" style="display:flex;margin-top: 10px; margin-right: 10px;">
-                                    <label asp-for="IsRemembered" style="margin-right: 5px; margin-top: 2px;">Remember me</label>
+                                    <label asp-for="IsRemembered" style="margin-right: 5px; margin-bottom: 3px;">Remember me</label>
                                     <input asp-for="IsRemembered">
-                                    <span asp-validation-for="IsRemembered" class="m-1 text-danger"></span>
+                                    <span asp-validation-for="IsRemembered" class="m-1 text-danger"></span>  
+                                    <a asp-action="FogotPassword" asp-controller="Account" style="margin-left: 25px; margin-top: 2px;"> Fogot Password ?</a>
                                 </div>
                                 <div class="form-group-btn">
-                                    <button type="submit" class="btn btn-sushi btn-sm btn-min-width-xs">Enter</button>
+                                    <button type="submit" class="btn btn-sushi btn-sm btn-min-width-xs" style="margin-top:10px;">Enter</button>
                                 </div>
                             </form>
                         </div>

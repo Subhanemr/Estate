@@ -33,16 +33,22 @@ namespace Estate.MVC.Controllers
         }
         public async Task<IActionResult> FogotPassword(string id)
         {
+            await _service.FogotPassword(id, Url);
             return View();
         }
-        public async Task<IActionResult> ChangePassword(string id)
+        public IActionResult ChangePassword()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(string id, FogotPasswordVM fogotPassword)
+        public async Task<IActionResult> ChangePassword(FogotPasswordVM fogotPassword)
         {
-            return View();
+            bool result = await _service.ChangePassword(fogotPassword, ModelState);
+            if (!result)
+            {
+                return View(fogotPassword);
+            }
+            return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> WishList(string id)
         {
@@ -50,7 +56,32 @@ namespace Estate.MVC.Controllers
         }
         public async Task<IActionResult> BeAAgent(string id)
         {
-            return View();
+            return View(await _service.BeAAgent(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> BeAAgent(string id, CreateAppUserAgentVM create)
+        {
+            bool result = await _service.BeAAgentPost(id,create, ModelState, TempData);
+            if (!result)
+            {
+                return View(create);
+            }
+            return RedirectToAction("Index", "Home", new { Area = ""});
+        }
+
+        public async Task<IActionResult> UpdateAgent(string id)
+        {
+            return View(await _service.UpdateAgentAsync(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateAgent(string id, UpdateAppUserAgentVM update)
+        {
+            bool result = await _service.UpdateAgentPostAsync(id, update, ModelState, TempData);
+            if (!result)
+            {
+                return View(update);
+            }
+            return RedirectToAction("Index", "Home", new { Area = "" });
         }
     }
 }

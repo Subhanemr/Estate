@@ -91,14 +91,23 @@
                                     @(user.SoulOfAgency ? "Yes" : "No")
                                 </td>
                                 <td>
-                                    @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Member.ToString()))
+                                    <a asp-action="DeleteRoleAgentAsync" asp-controller="User" asp-route-id="@user.Id" class="btn btn-success">
+                                        <i class="mdi mdi-human-child text-white"></i>
+                                    </a>
+                                    @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Moderator.ToString()))
                                     {
-                                        <a asp-action="SoftDelete" asp-controller="User" asp-route-id="@user.Id" class="btn btn-danger btn-info">
-                                            <i class="mdi mdi-delete text-white"></i>
+                                        <a asp-action="GiveRoleModerator" asp-controller="User" asp-route-id="@user.Id" class="btn btn-warning btn-info">
+                                            <i class="mdi mdi-key-plus text-white"></i>
+                                        </a>
+                                        <a asp-action="DeleteRoleModeratorAsync" asp-controller="User" asp-route-id="@user.Id" class="btn btn-info btn-info">
+                                            <i class="mdi mdi-key-remove text-white"></i>
                                         </a>
                                     }
+                                    <a asp-action="SoftDelete" asp-controller="User" asp-route-id="@user.Id" class="btn btn-danger btn-info">
+                                        <i class="mdi mdi-delete text-white"></i>
+                                    </a>
                                     <a asp-action="Detail" asp-controller="User" asp-route-id="@user.Id" class="btn  btn-primary">
-                                        <i class="mdi mdi-open-in-new text-white"></i>
+                                        <i class="mdi mdi-account-card-details text-white"></i>
                                     </a>
                                 </td>
                             </tr>

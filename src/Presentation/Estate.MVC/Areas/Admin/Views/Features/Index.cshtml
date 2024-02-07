@@ -65,7 +65,7 @@
                                     <a asp-action="Update" asp-controller="Features" asp-route-id="@Features.Id" class="btn btn-primary btn-info">
                                         <i class="mdi mdi-pencil text-white"></i>
                                     </a>
-                                    @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Member.ToString()))
+                                    @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Moderator.ToString()))
                                     {
                                         <a asp-action="SoftDelete" asp-controller="Features" asp-route-id="@Features.Id" class="btn btn-danger btn-info">
                                             <i class="mdi mdi-delete text-white"></i>

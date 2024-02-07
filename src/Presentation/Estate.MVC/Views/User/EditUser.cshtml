@@ -6,40 +6,47 @@
             <h4 style="margin-bottom: 20px;">Edit Profile</h4>
             <form style="max-width: 75%;" method="post" enctype="multipart/form-data">
                 <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <img src="@Model.Img" style="width: 25%; border-radius:5px;" />
+                    <img src="@Model.Img" style="width: 25%; border-radius:7px;" />
                     <input asp-for="Img" hidden="hidden" style="width: 100%;" placeholder="Image">
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <label for="Photo">Image</label>
+                    <label asp-for="Photo">Image</label>
                     <input asp-for="Photo" style="width: 100%;" placeholder="Photo" accept="image/*">
                     <span asp-validation-for="Photo" style="color: red;"></span>
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <label for="Name">Product Name</label>
+                    <label asp-for="Name">Product Name</label>
                     <input asp-for="Name" style="width: 100%;" placeholder="Name">
                     <span asp-validation-for="Name" style="color: red;"></span>
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <label for="Surname">Surname</label>
+                    <label asp-for="Surname">Surname</label>
                     <input asp-for="Surname" style="width: 100%;" placeholder="Surname">
                     <span asp-validation-for="Surname" style="color: red;"></span>
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <label for="UserName">Username</label>
+                    <label asp-for="UserName">Username</label>
                     <input asp-for="UserName" style="width: 100%;" placeholder="Username">
                     <span asp-validation-for="UserName" style="color: red;"></span>
                 </div>
-                <button type="submit" style="background-color: #007bff; color: #fff; margin-right: 2px; margin-top: 2px; border-radius: 5px;">Submit</button>
+                <button type="submit" style="background-color: #007bff; color: #fff;padding: 10px 25px 10px 25px; margin-right: 2px; margin-top: 2px; border-radius: 5px;">Submit</button>
             </form>
         </div>
     </div>
     <div style="background-color: #6c757d; border-radius: 0.3rem;" class="bg-secondary border rounded-3">
         <ul style="padding: 15px; color: #fff;">
-            <li><a asp-action="EditUser" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Profile Info</a></li>
+            <li><a asp-action="Index" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Profile Info</a></li>
             <li><a asp-action="EditUser" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
             <li><a asp-action="WishList" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
             <li><a asp-action="FogotPassword" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Forgot Password</a></li>
-            <li><a asp-action="BeAAgent" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
+            @if (User.IsInRole(UserRoles.Agent.ToString()))
+            {
+                <li><a asp-action="UpdateAgent" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Update Agent Info</a></li>
+            }
+            else
+            {
+                <li><a asp-action="BeAAgent" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
+            }
         </ul>
     </div>
 </div>

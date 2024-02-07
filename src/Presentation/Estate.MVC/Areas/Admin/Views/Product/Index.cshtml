@@ -121,13 +121,10 @@
                                     @item.Category.Name
                                 </td>
                                 <td>
-                                    @if (User.IsInRole(UserRoles.Admin.ToString()))
+                                    @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Moderator.ToString()))
                                     {
-                                        <a asp-action="ReverseSoftDelete" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-secondary">
+                                        <a asp-action="SoftDelete" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-secondary">
                                             <i class="mdi mdi-backup-restore text-white"></i>
-                                        </a>
-                                        <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-danger btn-info">
-                                            <i class="mdi mdi-delete-forever text-white"></i>
                                         </a>
                                     }
                                     <a asp-action="Detail" asp-controller="Product" asp-route-id="@item.Id" class="btn  btn-primary">

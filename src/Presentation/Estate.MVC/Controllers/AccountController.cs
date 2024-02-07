@@ -1,6 +1,7 @@
 ﻿using Estate.Application.Abstractions.Services;
 using Estate.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 
 namespace Estate.MVC.Controllers
 {
@@ -63,6 +64,38 @@ namespace Estate.MVC.Controllers
                 return View();
             }
             return View();
+        }
+        public IActionResult FogotPasswordSended()
+        {
+            return View();
+        }
+        public IActionResult FogotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> FogotPassword(FindAccountVM account)
+        {
+            bool result = await _service.FogotPassword(account, ModelState, Url);
+            if (!result)
+            {
+                return View(account);
+            }
+            return RedirectToAction(nameof(FogotPasswordSended));
+        }
+        public IActionResult ChangePassword(string userNameOrEmail)
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string userNameOrEmail, FogotPasswordVM fogotPassword)
+        {
+            bool result = await _service.ChangePassword(userNameOrEmail, fogotPassword, ModelState);
+            if (!result)
+            {
+                return View(fogotPassword);
+            }
+            return RedirectToAction(nameof(Login));
         }
     }
 }

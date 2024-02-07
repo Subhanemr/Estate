@@ -21,7 +21,7 @@ namespace Estate.Infrastructure.Implementations
             smtpClient.EnableSsl = true;
             smtpClient.Credentials = new NetworkCredential(_conf["Email:LoginEmail"], _conf["Email:Password"]);
 
-            MailAddress from = new MailAddress(_conf["Email:LoginEmail"], "MultiShop Administration");
+            MailAddress from = new MailAddress(_conf["Email:LoginEmail"], "Modern Estate Administration");
             MailAddress to = new MailAddress(emailTo);
 
             MailMessage message = new MailMessage(from, to);

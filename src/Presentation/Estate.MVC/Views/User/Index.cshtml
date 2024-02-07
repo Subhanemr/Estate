@@ -9,7 +9,7 @@
                     <p style="width: 100%;"> <b>Profile Image</b></p>
                 </div>
                 <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <img src="@Model.Img" style="width: 25%; border-radius:5px;" />
+                    <img src="@Model.Img" style="width: 25%; border-radius:7px;" />
                 </div>
                 <div style="margin-bottom: 15px;">
                     <p style="width: 100%;">Username: <b>@Model.UserName</b></p>
@@ -20,10 +20,13 @@
                 <div style="margin-bottom: 15px;">
                     <p style="width: 100%;">Surname:  <b>@Model.Surname</b></p>
                 </div>
+                <div style="margin-bottom: 15px;">
+                    <p style="width: 100%;">Email:  <b>@Model.Email</b></p>
+                </div>
             </div>
         </div>
     </div>
-    @if (!User.IsInRole(UserRoles.Admin.ToString()))
+    @if (User.IsInRole(UserRoles.Agent.ToString()) || User.IsInRole(UserRoles.Member.ToString()))
     {
         <div style="background-color: #6c757d; border-radius: 0.3rem;" class="bg-secondary border rounded-3">
             <ul style="padding: 15px; color: #fff;">
@@ -31,7 +34,14 @@
                 <li><a asp-action="EditUser" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
                 <li><a asp-action="WishList" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
                 <li><a asp-action="FogotPassword" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Forgot Password</a></li>
-                <li><a asp-action="BeAAgent" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
+                @if (User.IsInRole(UserRoles.Agent.ToString()))
+                {
+                    <li><a asp-action="UpdateAgent" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Update Agent Info</a></li>
+                }
+                else
+                {
+                    <li><a asp-action="BeAAgent" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
+                }
             </ul>
         </div>
     }

@@ -43,7 +43,7 @@ namespace Estate.Persistance.Implementations.Services
                     return false;
                 }
             }
-            if(user.IsActivate == true)
+            if (user.IsActivate == true)
             {
                 model.AddModelError("Error", "Your account is not active");
                 return false;
@@ -98,10 +98,69 @@ namespace Estate.Persistance.Implementations.Services
             var result = await _userManager.ConfirmEmailAsync(appUser, token);
             if (!result.Succeeded)
             {
-                throw new WrongRequestException("The request sent does not exist");
+                string errors = "";
+                foreach (var error in result.Errors)
+                {
+                    errors += error.Description;
+                }
+                throw new WrongRequestException(errors);
             }
             await _signInManager.SignInAsync(appUser, false);
 
+            return true;
+        }
+
+        public async Task<bool> FogotPassword(FindAccountVM account, ModelStateDictionary model, IUrlHelper url)
+        {
+            if (string.IsNullOrWhiteSpace(account.UserNameOrEmail))
+            {
+                model.AddModelError("Error", "Username, Email or Password is wrong");
+                return false;
+
+            }
+            AppUser user = await _userManager.FindByNameAsync(account.UserNameOrEmail);
+            if (user == null)
+            {
+                user = await _userManager.FindByEmailAsync(account.UserNameOrEmail);
+                if (user == null)
+                {
+                    model.AddModelError("Error", "Username, Email or Password is wrong");
+                    return false;
+                }
+            }
+
+            var confirmationLink = url.Action("ChangePassword", "Account", new { account.UserNameOrEmail, Email = user.Email }, _http.HttpContext.Request.Scheme);
+            await _emailService.SendMailAsync(user.Email, "Password Reset", confirmationLink);
+
+            return true;
+        }
+
+        public async Task<bool> ChangePassword(string userNameOrEmail, FogotPasswordVM fogotPassword, ModelStateDictionary model)
+        {
+            AppUser user = await _userManager.FindByNameAsync(userNameOrEmail);
+            if (user == null)
+            {
+                user = await _userManager.FindByEmailAsync(userNameOrEmail);
+                if (user == null)
+                {
+                    if (user == null) throw new NotFoundException("Your request was not found");
+                    return false;
+                }
+            }
+
+            var result = await _userManager.ChangePasswordAsync(user, fogotPassword.Password, fogotPassword.NewPassword);
+            if (!result.Succeeded)
+            {
+                string errors = "";
+                foreach (var error in result.Errors)
+                {
+                    errors += error.Description;
+                }
+                throw new WrongRequestException(errors);
+            }
+
+            await _signInManager.SignOutAsync();
+            await _signInManager.SignInAsync(user, false);
             return true;
         }
     }
