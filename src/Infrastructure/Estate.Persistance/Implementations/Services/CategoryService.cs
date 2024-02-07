@@ -35,7 +35,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (!model.IsValid) return false;
 
-            if (await _repository.CheckUniqueAsync(x => x.Name == create.Name))
+            if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == create.Name.ToLower().Trim()))
             {
                 model.AddModelError("Name", "Name is exists");
                 return false;
@@ -236,7 +236,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> UpdatePostAsync(int id, UpdateCategoryVM update, ModelStateDictionary model)
         {
             if (!model.IsValid) return false;
-            if (await _repository.CheckUniqueAsync(x => x.Name == update.Name))
+            if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == update.Name.ToLower().Trim() && x.Id != id))
             {
                 model.AddModelError("Name", "Name is exists");
                 return false;

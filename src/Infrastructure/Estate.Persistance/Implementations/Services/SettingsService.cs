@@ -90,7 +90,7 @@ namespace Estate.Persistance.Implementations.Services
             Settings item = await _repository.GetByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
-            if (await _repository.CheckUniqueAsync(x => x.Key == update.Key))
+            if (await _repository.CheckUniqueAsync(x => x.Key.ToLower().Trim() == update.Key.ToLower().Trim() && x.Id != id))
             {
                 model.AddModelError("Key", "Key is exists");
                 return false;

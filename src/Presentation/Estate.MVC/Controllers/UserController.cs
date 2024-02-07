@@ -16,5 +16,25 @@ namespace Estate.MVC.Controllers
         {
             return View(await _service.GetByIdAsync(id));
         }
+        public async Task<IActionResult> EditUser(string id)
+        {
+            return View();
+        }
+        public async Task<IActionResult> FogotPassword(string id)
+        {
+            return View();
+        }
+        public async Task<IActionResult> ChangePassword(string id)
+        {
+            return View();
+        }
+        public async Task<IActionResult> WishList(string id)
+        {
+            return View();
+        }
+        public async Task<IActionResult> BeAAgent(string id)
+        {
+            return View();
+        }
     }
 }

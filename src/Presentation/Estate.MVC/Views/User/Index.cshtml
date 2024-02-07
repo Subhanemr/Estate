@@ -1,2 +1,37 @@
 ﻿@model GetAppUserVM
 
+<div style="display: flex;" class="container">
+    <div style="flex: 3;" class="profile">
+        <div style="padding: 20px;" class="card-body">
+            <h4 style="margin-bottom: 20px;">Edit Profile</h4>
+            <div style="max-width: 75%;">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <p style="width: 100%;"> <b>Profile Image</b></p>
+                </div>
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <img src="@Model.Img" style="width: 25%;" />
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <p style="width: 100%;">Username: <b>@Model.UserName</b></p>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <p style="width: 100%;">Name:  <b>@Model.Name</b></p>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <p style="width: 100%;">Surname:  <b>@Model.Surname</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (!User.IsInRole(UserRoles.Admin.ToString()))
+    {
+        <div style="background-color: #6c757d; border-radius: 0.3rem;" class="bg-secondary border rounded-3">
+            <ul style="padding: 15px; color: #fff;">
+                <li><a asp-action="EditUser" asp-controller="Account" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
+                <li><a asp-action="WishList" asp-controller="Account" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
+                <li><a asp-action="FogotPassword" asp-controller="Account" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Forgot Password</a></li>
+                <li><a asp-action="BeAAgent" asp-controller="Account" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
+            </ul>
+        </div>
+    }
+</div>

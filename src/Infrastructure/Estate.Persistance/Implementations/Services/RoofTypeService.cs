@@ -31,7 +31,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> CreateAsync(CreateRoofTypeVM create, ModelStateDictionary model)
         {
             if (!model.IsValid) return false;
-            if (await _repository.CheckUniqueAsync(x => x.Name == create.Name))
+            if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == create.Name.ToLower().Trim()))
             {
                 model.AddModelError("Name", "Name is exists");
                 return false;
@@ -220,7 +220,7 @@ namespace Estate.Persistance.Implementations.Services
             RoofType item = await _repository.GetByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
-            if (await _repository.CheckUniqueAsync(x => x.Name == update.Name))
+            if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == update.Name.ToLower().Trim() && x.Id != id))
             {
                 model.AddModelError("Name", "Name is exists");
                 return false;

@@ -34,6 +34,12 @@
                                 <dt>
                                     <span class="mdi mdi-login icon-xxs-mod-2"></span>
                                 </dt>
+                                @if (User.IsInRole(UserRoles.Agent.ToString()))
+                                {
+                                    <dd>
+                                        <a asp-action="Create" asp-controller="Product" class="text-sushi">Create Product</a>
+                                    </dd>
+                                }
                                 <dd>
                                     <a asp-action="Logout" asp-controller="Account" class="text-sushi">Log-out</a>
                                 </dd>

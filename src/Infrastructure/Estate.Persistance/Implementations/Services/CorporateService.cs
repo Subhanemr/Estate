@@ -36,7 +36,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> CreateAsync(CreateCorporateVM create, ModelStateDictionary model)
         {
             if (!model.IsValid) return false;
-            if (await _repository.CheckUniqueAsync(x => x.CorporateLink == create.CorporateLink))
+            if (await _repository.CheckUniqueAsync(x => x.CorporateLink.ToLower().Trim() == create.CorporateLink.ToLower().Trim()))
             {
                 model.AddModelError("Name", "Name is exists");
                 return false;
@@ -233,7 +233,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> UpdatePostAsync(int id, UpdateCorporateVM update, ModelStateDictionary model)
         {
             if (!model.IsValid) return false;
-            if (await _repository.CheckUniqueAsync(x => x.CorporateLink == update.CorporateLink))
+            if (await _repository.CheckUniqueAsync(x => x.CorporateLink.ToLower().Trim() == update.CorporateLink.ToLower().Trim() && x.Id != id))
             {
                 model.AddModelError("Name", "Name is exists");
                 return false;
