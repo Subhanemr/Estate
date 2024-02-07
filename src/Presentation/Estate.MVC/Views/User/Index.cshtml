@@ -27,10 +27,10 @@
     {
         <div style="background-color: #6c757d; border-radius: 0.3rem;" class="bg-secondary border rounded-3">
             <ul style="padding: 15px; color: #fff;">
-                <li><a asp-action="EditUser" asp-controller="Account" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
-                <li><a asp-action="WishList" asp-controller="Account" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
-                <li><a asp-action="FogotPassword" asp-controller="Account" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Forgot Password</a></li>
-                <li><a asp-action="BeAAgent" asp-controller="Account" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
+                <li><a asp-action="EditUser" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
+                <li><a asp-action="WishList" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
+                <li><a asp-action="FogotPassword" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Forgot Password</a></li>
+                <li><a asp-action="BeAAgent" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
             </ul>
         </div>
     }

@@ -1,4 +1,5 @@
 ﻿using Estate.Application.ViewModels;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Estate.Application.Abstractions.Services
 {
@@ -12,5 +13,7 @@ namespace Estate.Application.Abstractions.Services
         Task SoftDeleteAsync(string id);
         Task DeleteAsync(string id);
         Task IsSoulOfAgencyAsync(string id);
+        Task<EditUserVM> EditUser(string id);
+        Task<bool> EditUserAsync(string id, EditUserVM update, ModelStateDictionary model);
     }
 }

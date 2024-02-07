@@ -1,4 +1,5 @@
 ﻿using Estate.Application.Abstractions.Services;
+using Estate.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Estate.MVC.Controllers
@@ -12,19 +13,34 @@ namespace Estate.MVC.Controllers
             _service = service;
         }
 
-        public async Task<IActionResult> Index(string id)
+        public async Task<IActionResult> Index()
         {
-            return View(await _service.GetByIdAsync(id));
+            return View(await _service.GetByUserNameAsync(User.Identity.Name));
         }
         public async Task<IActionResult> EditUser(string id)
         {
-            return View();
+            return View(await _service.EditUser(id));
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditUser(string id, EditUserVM editUser)
+        {
+            bool result = await _service.EditUserAsync(id, editUser, ModelState);
+            if(!result)
+            {
+                return View(editUser);
+            }
+            return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> FogotPassword(string id)
         {
             return View();
         }
         public async Task<IActionResult> ChangePassword(string id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(string id, FogotPasswordVM fogotPassword)
         {
             return View();
         }

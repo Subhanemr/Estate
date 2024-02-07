@@ -3,7 +3,9 @@ using Estate.Application.Abstractions.Services;
 using Estate.Application.ViewModels;
 using Estate.Domain.Entities;
 using Estate.Infrastructure.Exceptions;
+using Estate.Infrastructure.Implementations;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 
 namespace Estate.Persistance.Implementations.Services
@@ -11,12 +13,16 @@ namespace Estate.Persistance.Implementations.Services
     public class UserService : IUserService
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
         private readonly IMapper _mapper;
+        private readonly ICLoudService _cLoud;
 
-        public UserService(UserManager<AppUser> userManager, IMapper mapper)
+        public UserService(UserManager<AppUser> userManager, IMapper mapper, SignInManager<AppUser> signInManager, ICLoudService cLoud)
         {
             _userManager = userManager;
             _mapper = mapper;
+            _signInManager = signInManager;
+            _cLoud = cLoud;
         }
 
         public async Task<PaginationVM<ItemAppUserVM>> GetFilteredAsync(string? search, int take, int page, int order)
@@ -175,6 +181,42 @@ namespace Estate.Persistance.Implementations.Services
             if (user == null) throw new NotFoundException("Your request was not found");
 
             await _userManager.DeleteAsync(user);
+        }
+
+        public async Task<EditUserVM> EditUser(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
+            AppUser user = await _userManager.Users
+                .Include(x => x.AppUserImages).Include(x => x.AgencyAppUsers)
+                .Include(x => x.Products).ThenInclude(x => x.Category)
+                .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            if (user == null) throw new NotFoundException("Your request was not found");
+
+            EditUserVM get = _mapper.Map<EditUserVM>(user);
+
+            return get;
+        }
+
+        public async Task<bool> EditUserAsync(string id, EditUserVM update, ModelStateDictionary model)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
+            AppUser user = await _userManager.FindByIdAsync(id);
+            if (user == null) throw new NotFoundException("Your request was not found");
+
+            _mapper.Map(update, user);
+            user.Name = user.Name.Capitalize();
+            user.Surname = user.Surname.Capitalize();
+            if(update.Photo != null)
+            {
+                await _cLoud.FileDeleteAsync(user.Img);
+                user.Img = await _cLoud.FileCreateAsync(update.Photo);
+            }
+
+            await _userManager.UpdateAsync(user);
+            await _signInManager.SignOutAsync();
+            await _signInManager.SignInAsync(user, false);
+
+            return true;
         }
     }
 }

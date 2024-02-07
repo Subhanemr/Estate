@@ -225,8 +225,7 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             _mapper.Map(update, item);
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-            item.CreatedBy = user.UserName;
+            item.CreatedBy = _http.HttpContext.User.Identity.Name;
             _repository.Update(item);
             await _repository.SaveChanceAsync();
             return true;
