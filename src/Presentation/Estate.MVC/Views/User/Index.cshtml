@@ -9,7 +9,7 @@
                     <p style="width: 100%;"> <b>Profile Image</b></p>
                 </div>
                 <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <img src="@Model.Img" style="width: 25%;" />
+                    <img src="@Model.Img" style="width: 25%; border-radius:5px;" />
                 </div>
                 <div style="margin-bottom: 15px;">
                     <p style="width: 100%;">Username: <b>@Model.UserName</b></p>
@@ -27,6 +27,7 @@
     {
         <div style="background-color: #6c757d; border-radius: 0.3rem;" class="bg-secondary border rounded-3">
             <ul style="padding: 15px; color: #fff;">
+                <li><a asp-action="Index" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Profile Info</a></li>
                 <li><a asp-action="EditUser" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
                 <li><a asp-action="WishList" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
                 <li><a asp-action="FogotPassword" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Forgot Password</a></li>

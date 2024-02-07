@@ -138,15 +138,41 @@
                             <li class="">
                                 <a href="./">Gallery</a>
                             </li>
+                            <li class="">
+                                <a href="./"><i class="fa-regular fa-heart"></i> 0</a>
+                            </li>
                             <li class="rd-navbar-bottom-panel">
                                 <div class="rd-navbar-bottom-panel-wrap">
                                     <dl class="dl-horizontal-mod-1 login">
-                                        <dt>
-                                            <span class="mdi mdi-login icon-xxs-mod-2"></span>
-                                        </dt>
-                                        <dd>
-                                            <a href="login.html" class="text-sushi">Login/Registration</a>
-                                        </dd>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            @await Component.InvokeAsync("AppUser")
+                                            <br>
+                                            <dt>
+                                                <span class="mdi mdi-login icon-xxs-mod-2"></span>
+                                            </dt>
+                                            @if (User.IsInRole(UserRoles.Agent.ToString()))
+                                            {
+                                                <dd>
+                                                    <a asp-action="Create" asp-controller="Product" class="text-sushi">Create Product</a>
+                                                </dd>
+                                            }
+                                            <dd>
+                                                <a asp-action="Logout" asp-controller="Account" class="text-sushi">Log-out</a>
+                                            </dd>
+                                            @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Moderator.ToString()))
+                                            {
+                                                <dd>
+                                                    <a asp-action="Index" asp-controller="Home" asp-area="Admin" class="text-sushi">Admin Panel</a>
+                                                </dd>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <dd>
+                                                <a asp-action="Login" asp-controller="Account" class="text-sushi">Login/Registration</a>
+                                            </dd>
+                                        }
                                     </dl>
                                     <div class="top-panel-inner">
                                         <dl class="dl-horizontal-mod-1">
