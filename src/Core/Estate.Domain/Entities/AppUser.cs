@@ -22,8 +22,10 @@ namespace Estate.Domain.Entities
         public bool IsFounder { get; set; }
         public bool SoulOfAgency { get; set; }
 
+
+        public int? AgencyId { get; set; }
+        public Agency? Agency { get; set; }
         public ICollection<Product>? Products { get; set; }
-        public ICollection<AgencyAppUser>? AgencyAppUsers { get; set; }
         public ICollection<AppUserImage>? AppUserImages { get; set; }
 
         public ICollection<Favorite>? Favorites { get; set; }

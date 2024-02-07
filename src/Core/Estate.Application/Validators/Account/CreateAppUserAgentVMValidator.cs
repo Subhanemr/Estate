@@ -7,8 +7,7 @@ namespace Estate.Application.Validators.Account
     {
         public CreateAppUserAgentVMValidator()
         {
-            RuleFor(x => x.AgencyIds).NotNull().WithMessage("Agency was not be emty");
-            RuleForEach(x => x.AgencyIds).GreaterThan(0).WithMessage("Agency must be greater than 0");
+            RuleFor(x => x.AgencyId).GreaterThan(0).WithMessage("Agency must be greater than 0");
 
             RuleFor(x => x.PhoneNumber)
                 .NotEmpty().WithMessage("Phone is required")
@@ -55,8 +54,7 @@ namespace Estate.Application.Validators.Account
                 .NotEmpty().WithMessage("Images is required");
 
             RuleFor(x => x.TermsConditions)
-                .NotEmpty().WithMessage("TermsConditions is required")
-                .Equal(true);
+                .NotEmpty().WithMessage("TermsConditions is required");
         }
     }
 }

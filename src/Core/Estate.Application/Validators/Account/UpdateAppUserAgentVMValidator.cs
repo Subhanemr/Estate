@@ -7,8 +7,8 @@ namespace Estate.Application.Validators.Account
     {
         public UpdateAppUserAgentVMValidator()
         {
-            RuleFor(x => x.AgencyIds).NotNull().WithMessage("Agency was not be emty");
-            RuleForEach(x => x.AgencyIds).GreaterThan(0).WithMessage("Agency must be greater than 0");
+            RuleFor(x => x.AgencyId).GreaterThan(0).WithMessage("Agency must be greater than 0");
+
 
             RuleFor(x => x.ImageIds).NotNull().WithMessage("Image was not be emty");
             RuleForEach(x => x.ImageIds).GreaterThan(0).WithMessage("Image must be greater than 0");
@@ -52,8 +52,7 @@ namespace Estate.Application.Validators.Account
                 .Matches(@"^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$").WithMessage("Invalid URL format");
 
             RuleFor(x => x.TermsConditions)
-                .NotEmpty().WithMessage("TermsConditions is required")
-                .Equals(true);
+                .NotEmpty().WithMessage("TermsConditions is required");
         }
     }
 }

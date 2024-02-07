@@ -64,7 +64,8 @@
                 {
                     <div style="position: relative; margin: 3px; width: 150px;" class="col-3">
                         <img src="@image.Url" style="width: 150px; height: 200px;" />
-                        <button type="button" style="position: absolute; left: 55px; top: 2px; background-color: #dc3545; color: #fff; opacity: 0.5; border: none;" class="cus-delete btn">X</button>
+                        <button type="button" 
+                            style="position: absolute; left: 55px; top: 2px; background-color: #dc3545; color: #fff; opacity: 0.5; border: none;" class="cus-delete btn">X</button>
                         <input asp-for="ImageIds" value="@image.Id" type="hidden" style="width: 100%;" class="form-control">
                     </div>
                 }
@@ -74,7 +75,7 @@
                     <span asp-validation-for="Photos" style="color: red;"></span>
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <select style="margin-bottom: 15px;" asp-items="new SelectList(Model.Agencys, nameof(IncludeAgencyVM.Id), nameof(IncludeAgencyVM.Name))">
+                    <select asp-for="AgencyId" style="margin-bottom: 15px;" asp-items="new SelectList(Model.Agencys, nameof(IncludeAgencyVM.Id), nameof(IncludeAgencyVM.Name))">
                         <option selected disabled>Choose Agency</option>
                     </select>
                 </div>

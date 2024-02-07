@@ -21,7 +21,7 @@ namespace Estate.Application.ViewModels
         public IFormFile MainPhoto { get; init; }
         public ICollection<IFormFile> Photos { get; init; }
 
+        public int AgencyId { get; set; }
         public ICollection<IncludeAgencyVM>? Agencys { get; set; }
-        public List<int>? AgencyIds { get; set; }
     }
 }

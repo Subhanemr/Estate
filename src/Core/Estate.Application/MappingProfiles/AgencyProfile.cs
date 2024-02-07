@@ -11,10 +11,10 @@ namespace Estate.Application.MappingProfiles
             CreateMap<Agency, CreateAgencyVM>().ReverseMap();
             CreateMap<Agency, UpdateAgencyVM>().ReverseMap();
             CreateMap<GetAgencyVM, Agency>().ReverseMap()
-                .ForMember(x => x.AppUsers, opt => opt.MapFrom(src => src.AgencyAppUsers.Select(ma => ma.AppUser).ToList()));
+                .ForMember(x => x.AppUsers, opt => opt.MapFrom(src => src.AppUsers.ToList()));
             CreateMap<IncludeAgencyVM, Agency>().ReverseMap();
             CreateMap<ItemAgencyVM, Agency>().ReverseMap()
-                .ForMember(x => x.AppUsers, opt => opt.MapFrom(src => src.AgencyAppUsers.Select(ma => ma.AppUser).ToList()));
+                .ForMember(x => x.AppUsers, opt => opt.MapFrom(src => src.AppUsers.ToList()));
             CreateMap<UpdateAgencyVM, Agency>().ReverseMap();
         }
     }

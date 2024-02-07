@@ -23,7 +23,7 @@ namespace Estate.Application.ViewModels
         public ICollection<IncludeAppUserImage>? Images { get; set; }
         public List<int>? ImageIds { get; set; }
 
+        public int AgencyId { get; set; }
         public ICollection<IncludeAgencyVM>? Agencys { get; set; }
-        public List<int>? AgencyIds { get; set; }
     }
 }

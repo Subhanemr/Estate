@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Estate.Persistance.Implementations.Services
 {
@@ -25,14 +26,13 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IEmailService _emailService;
         private readonly ICLoudService _cLoud;
         private readonly IAgencyRepository _agencyRepository;
-        private readonly IAgencyAppUserRepository _agencyAppUserRepository;
         private readonly IHttpContextAccessor _http;
         private readonly IConfiguration _configuration;
 
 
         public UserService(UserManager<AppUser> userManager, IMapper mapper, SignInManager<AppUser> signInManager,
             ICLoudService cLoud, IEmailService emailService, IHttpContextAccessor http, IConfiguration configuration,
-            IAgencyRepository agencyRepository, IAgencyAppUserRepository agencyAppUserRepository)
+            IAgencyRepository agencyRepository)
         {
             _userManager = userManager;
             _mapper = mapper;
@@ -42,7 +42,6 @@ namespace Estate.Persistance.Implementations.Services
             _http = http;
             _configuration = configuration;
             _agencyRepository = agencyRepository;
-            _agencyAppUserRepository = agencyAppUserRepository;
         }
 
         public async Task<PaginationVM<ItemAppUserVM>> GetFilteredAsync(string? search, int take, int page, int order)
@@ -145,7 +144,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
             AppUser user = await _userManager.Users
-                .Include(x => x.AppUserImages).Include(x => x.AgencyAppUsers)
+                .Include(x => x.AppUserImages).Include(x => x.Agency)
                 .Include(x => x.Products).ThenInclude(x => x.Category)
                 .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
             if (user == null) throw new NotFoundException("Your request was not found");
@@ -159,7 +158,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (string.IsNullOrWhiteSpace(userName)) throw new WrongRequestException("The request sent does not exist");
             AppUser user = await _userManager.Users
-                .Include(x => x.AppUserImages).Include(x => x.AgencyAppUsers)
+                .Include(x => x.AppUserImages).Include(x => x.Agency)
                 .Include(x => x.Products).ThenInclude(x => x.Category)
                 .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.UserName == userName);
             if (user == null) throw new NotFoundException("Your request was not found");
@@ -239,7 +238,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
             AppUser user = await _userManager.Users
-                .Include(x => x.AppUserImages).Include(x => x.AgencyAppUsers)
+                .Include(x => x.AppUserImages).Include(x => x.Agency)
                 .Include(x => x.Products).ThenInclude(x => x.Category)
                 .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
             if (user == null) throw new NotFoundException("Your request was not found");
@@ -317,17 +316,20 @@ namespace Estate.Persistance.Implementations.Services
 
         public async Task<bool> BeAAgentPost(string id, CreateAppUserAgentVM create, ModelStateDictionary model, ITempDataDictionary tempData)
         {
+            if (!create.TermsConditions)
+            {
+                create.Agencys = _mapper.Map<ICollection<IncludeAgencyVM>>(await _agencyRepository.GetAll().ToListAsync());
+                model.AddModelError("TermsConditions", "Plese Read and accept rules");
+                return false;
+            }
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
             AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
-            foreach (int agencyId in create.AgencyIds)
+            if (!await _agencyRepository.CheckUniqueAsync(x => x.Id == create.AgencyId))
             {
-                if (!await _agencyRepository.CheckUniqueAsync(x => x.Id == agencyId))
-                {
-                    create.Agencys = _mapper.Map<ICollection<IncludeAgencyVM>>(await _agencyRepository.GetAll().ToListAsync());
-                    return false;
-                }
+                create.Agencys = _mapper.Map<ICollection<IncludeAgencyVM>>(await _agencyRepository.GetAll().ToListAsync());
+                return false;
             }
 
             if (!create.MainPhoto.ValidateType())
@@ -398,48 +400,34 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
             AppUser user = await _userManager.Users
-                .Include(x => x.AppUserImages).Include(x => x.AgencyAppUsers)
-                .Include(x => x.AgencyAppUsers).FirstOrDefaultAsync(x => x.Id == id);
+                .Include(x => x.AppUserImages).Include(x => x.Agency).FirstOrDefaultAsync(x => x.Id == id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             UpdateAppUserAgentVM update = _mapper.Map<UpdateAppUserAgentVM>(user);
 
             update.Agencys = _mapper.Map<ICollection<IncludeAgencyVM>>(await _agencyRepository.GetAll().ToListAsync());
-            update.AgencyIds = user.AgencyAppUsers.Select(p => p.AgencyId).ToList();
 
             return update;
         }
 
         public async Task<bool> UpdateAgentPostAsync(string id, UpdateAppUserAgentVM update, ModelStateDictionary model, ITempDataDictionary tempData)
         {
+            if (!update.TermsConditions)
+            {
+                update.Agencys = _mapper.Map<ICollection<IncludeAgencyVM>>(await _agencyRepository.GetAll().ToListAsync());
+                model.AddModelError("TermsConditions", "Plese Read and accept rules");
+                return false;
+            }
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _userManager.Users
+                .Include(x => x.AppUserImages).Include(x => x.Agency).FirstOrDefaultAsync(x => x.Id == id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
-            foreach (int agencyId in update.AgencyIds)
+            if (!await _agencyRepository.CheckUniqueAsync(x => x.Id == update.AgencyId))
             {
-                if (!await _agencyRepository.CheckUniqueAsync(x => x.Id == agencyId))
-                {
-                    update.Agencys = _mapper.Map<ICollection<IncludeAgencyVM>>(await _agencyRepository.GetAll().ToListAsync());
-                    return false;
-                }
+                update.Agencys = _mapper.Map<ICollection<IncludeAgencyVM>>(await _agencyRepository.GetAll().ToListAsync());
+                return false;
             }
-            ICollection<AgencyAppUser> agencyToRemove = user.AgencyAppUsers
-                .Where(ps => !update.AgencyIds.Contains(ps.AgencyId)).ToList();
-            foreach (var agencyRemove in agencyToRemove)
-            {
-                _agencyAppUserRepository.Delete(agencyRemove);
-            }
-
-            ICollection<AgencyAppUser> agencyToAdd = update.AgencyIds
-                .Except(user.AgencyAppUsers.Select(ps => ps.AgencyId))
-                .Select(agencyId => new AgencyAppUser { AgencyId = agencyId })
-                .ToList();
-            foreach (var agencyAdd in agencyToAdd)
-            {
-                user.AgencyAppUsers.Add(agencyAdd);
-            }
-
 
             if (update.MainPhoto != null)
             {
@@ -465,6 +453,10 @@ namespace Estate.Persistance.Implementations.Services
                 user.AppUserImages = new List<AppUserImage> { mainImage };
             }
 
+            if (user.AppUserImages == null) user.AppUserImages = new List<AppUserImage>();
+
+            if (update.ImageIds == null) update.ImageIds = new List<int>();
+
             ICollection<AppUserImage> remove = user.AppUserImages
                     .Where(pi => pi.IsPrimary == null && !update.ImageIds.Exists(imgId => imgId == pi.Id)).ToList();
 
@@ -474,8 +466,6 @@ namespace Estate.Persistance.Implementations.Services
                 //image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
                 user.AppUserImages.Remove(image);
             }
-
-            if (user.AppUserImages == null) user.AppUserImages = new List<AppUserImage>();
 
             tempData["Message"] = "";
 

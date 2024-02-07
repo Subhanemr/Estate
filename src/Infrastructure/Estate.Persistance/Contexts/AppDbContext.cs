@@ -11,7 +11,6 @@ namespace Estate.Persistance.Contexts
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Agency> Agencies { get; set; }
-        public DbSet<AgencyAppUser> AgencyAppUsers { get; set; }
         public DbSet<AppUserImage> AppUserImages { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogComment> BlogComments { get; set; }

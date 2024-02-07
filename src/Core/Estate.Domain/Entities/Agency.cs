@@ -2,6 +2,6 @@
 {
     public class Agency : BaseNameEntity
     {
-        public ICollection<AgencyAppUser>? AgencyAppUsers { get; set; }
+        public ICollection<AppUser>? AppUsers { get; set; }
     }
 }

@@ -28,14 +28,11 @@
         <p class="card-text">First Phone: @(Model.PhoneNumber != null ? Model.PhoneNumber : "N/A")</p>
         <p class="card-text">About: @(Model.About != null ? Model.About : "N/A")</p>
         <p class="card-text">Address: @(Model.Address != null ? Model.Address : "N/A")</p>
-        @foreach (var agency in Model.Agencies)
-        {
-            <p class="card-text">
-                Garages: @agency.Name
 
-                @(agency != Model.Agencies[Model.Agencies.Count - 1] ? ", " : "")
-            </p>
-        }
+        <p class="card-text">
+            Agency: @Model.Agency.Name
+        </p>
+
         <p class="card-text">Facebook: <a href="@(Model.FaceLink != null ? Model.FaceLink : "")">@(Model.FaceLink != null ? Model.FaceLink : "N/A")</a> </p>
         <p class="card-text">Twitter: <a href="@(Model.TwitLink != null ? Model.TwitLink : "")">@(Model.TwitLink != null ? Model.TwitLink : "N/A")</a> </p>
         <p class="card-text">Google Plus: <a href="@(Model.GoogleLink != null ? Model.GoogleLink : "")">@(Model.GoogleLink != null ? Model.GoogleLink : "N/A")</a> </p>

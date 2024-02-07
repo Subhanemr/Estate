@@ -52,7 +52,6 @@ namespace Estate.Persistance.ServiceRegistrations
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IAgencyRepository, AgencyRepository>();
-            services.AddScoped<IAgencyAppUserRepository, AgencyAppUserRepository>();
             services.AddScoped<IAppUserImageRepository, AppUserImageRepository>();
             services.AddScoped<IBlogRepository, BlogRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();

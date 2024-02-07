@@ -81,7 +81,7 @@ namespace Estate.Persistance.Implementations.Services
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
-            string[] includes = { $"{nameof(Agency.AgencyAppUsers)}.{nameof(AgencyAppUser.AppUser)}" };
+            string[] includes = { $"{nameof(Agency.AppUsers)}" };
             double count = await _repository.CountAsync();
 
             ICollection<Agency> items = new List<Agency>();
@@ -129,7 +129,7 @@ namespace Estate.Persistance.Implementations.Services
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
-            string[] includes = { $"{nameof(Agency.AgencyAppUsers)}.{nameof(AgencyAppUser.AppUser)}" };
+            string[] includes = { $"{nameof(Agency.AppUsers)}" };
 
             double count = await _repository.CountAsync();
 
@@ -177,7 +177,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<GetAgencyVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes = { $"{nameof(Agency.AgencyAppUsers)}.{nameof(AgencyAppUser.AppUser)}" };
+            string[] includes = { $"{nameof(Agency.AppUsers)}" };
             Agency item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 

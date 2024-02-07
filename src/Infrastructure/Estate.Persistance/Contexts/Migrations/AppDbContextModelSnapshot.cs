@@ -52,43 +52,6 @@ namespace Estate.Persistance.Contexts.Migrations
                     b.ToTable("Agencies");
                 });
 
-            modelBuilder.Entity("Estate.Domain.Entities.AgencyAppUser", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AgencyId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("AppUserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreateAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("UpdateAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AgencyId");
-
-                    b.HasIndex("AppUserId");
-
-                    b.ToTable("AgencyAppUsers");
-                });
-
             modelBuilder.Entity("Estate.Domain.Entities.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -102,6 +65,9 @@ namespace Estate.Persistance.Contexts.Migrations
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("AgencyId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -187,6 +153,8 @@ namespace Estate.Persistance.Contexts.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AgencyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -1295,23 +1263,13 @@ namespace Estate.Persistance.Contexts.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Estate.Domain.Entities.AgencyAppUser", b =>
+            modelBuilder.Entity("Estate.Domain.Entities.AppUser", b =>
                 {
                     b.HasOne("Estate.Domain.Entities.Agency", "Agency")
-                        .WithMany("AgencyAppUsers")
-                        .HasForeignKey("AgencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Estate.Domain.Entities.AppUser", "AppUser")
-                        .WithMany("AgencyAppUsers")
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("AppUsers")
+                        .HasForeignKey("AgencyId");
 
                     b.Navigation("Agency");
-
-                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.AppUserImage", b =>
@@ -1628,13 +1586,11 @@ namespace Estate.Persistance.Contexts.Migrations
 
             modelBuilder.Entity("Estate.Domain.Entities.Agency", b =>
                 {
-                    b.Navigation("AgencyAppUsers");
+                    b.Navigation("AppUsers");
                 });
 
             modelBuilder.Entity("Estate.Domain.Entities.AppUser", b =>
                 {
-                    b.Navigation("AgencyAppUsers");
-
                     b.Navigation("AppUserImages");
 
                     b.Navigation("BlogComments");

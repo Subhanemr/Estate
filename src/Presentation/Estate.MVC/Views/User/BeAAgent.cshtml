@@ -59,8 +59,8 @@
                     <span asp-validation-for="Photos" style="color: red;"></span>
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <label asp-for="AgencyIds">Agencies</label>
-                    <select asp-for="AgencyIds" style="margin-bottom: 15px;" asp-items="new SelectList(Model.Agencys, nameof(IncludeAgencyVM.Id), nameof(IncludeAgencyVM.Name))">
+                    <label asp-for="AgencyId">Agencies</label>
+                    <select asp-for="AgencyId" style="margin-bottom: 15px;" asp-items="new SelectList(Model.Agencys, nameof(IncludeAgencyVM.Id), nameof(IncludeAgencyVM.Name))">
                         <option selected disabled>Choose Agency</option>
                     </select>
                 </div>
