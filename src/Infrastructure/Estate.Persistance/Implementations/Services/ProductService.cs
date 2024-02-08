@@ -49,7 +49,7 @@ namespace Estate.Persistance.Implementations.Services
             _cLoud = cLoud;
         }
 
-        public async void CreatePopulateDropdowns(CreateProductVM create)
+        public async Task CreatePopulateDropdowns(CreateProductVM create)
         {
             create.Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll().ToListAsync());
             create.Features = _mapper.Map<ICollection<IncludeFeaturesVM>>(await _featuresRepository.GetAll().ToListAsync());
@@ -58,7 +58,7 @@ namespace Estate.Persistance.Implementations.Services
             create.RoofTypes = _mapper.Map<ICollection<IncludeRoofTypeVM>>(await _roofTypeRepository.GetAll().ToListAsync());
             create.ViewTypes = _mapper.Map<ICollection<IncludeViewTypeVM>>(await _viewTypeRepository.GetAll().ToListAsync());
         }
-        public async void UpdatePopulateDropdowns(UpdateProductVM update)
+        public async Task UpdatePopulateDropdowns(UpdateProductVM update)
         {
             update.Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll().ToListAsync());
             update.Features = _mapper.Map<ICollection<IncludeFeaturesVM>>(await _featuresRepository.GetAll().ToListAsync());
@@ -72,20 +72,20 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (!model.IsValid)
             {
-                CreatePopulateDropdowns(create);
+                await CreatePopulateDropdowns(create);
                 return false;
             }
 
             if (!await _categoryRepository.CheckUniqueAsync(x => x.Id == create.CategoryId))
             {
-                CreatePopulateDropdowns(create);
+                await CreatePopulateDropdowns(create);
                 return false;
             }
             foreach (int featureId in create.FeatureIds)
             {
                 if (!await _featuresRepository.CheckUniqueAsync(x => x.Id == featureId))
                 {
-                    CreatePopulateDropdowns(create);
+                    await CreatePopulateDropdowns(create);
                     return false;
                 }
             }
@@ -93,7 +93,7 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!await _exteriorTypeRepository.CheckUniqueAsync(x => x.Id == exteriorTypeId))
                 {
-                    CreatePopulateDropdowns(create);
+                    await CreatePopulateDropdowns(create);
                     return false;
                 }
             }
@@ -101,7 +101,7 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!await _parkingTypeRepository.CheckUniqueAsync(x => x.Id == parkingTypeId))
                 {
-                    CreatePopulateDropdowns(create);
+                    await CreatePopulateDropdowns(create);
                     return false;
                 }
             }
@@ -109,7 +109,7 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!await _roofTypeRepository.CheckUniqueAsync(x => x.Id == roofTypeId))
                 {
-                    CreatePopulateDropdowns(create);
+                    await CreatePopulateDropdowns(create);
                     return false;
                 }
             }
@@ -117,19 +117,19 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!await _viewTypeRepository.CheckUniqueAsync(x => x.Id == viewTypeId))
                 {
-                    CreatePopulateDropdowns(create);
+                    await CreatePopulateDropdowns(create);
                     return false;
                 }
             }
             if (!create.MainPhoto.ValidateType())
             {
-                CreatePopulateDropdowns(create);
+                await CreatePopulateDropdowns(create);
                 model.AddModelError("MainPhoto", "File Not supported");
                 return false;
             }
             if (!create.MainPhoto.ValidataSize())
             {
-                CreatePopulateDropdowns(create);
+                await CreatePopulateDropdowns(create);
                 model.AddModelError("MainPhoto", "Image should not be larger than 10 mb");
                 return false;
             }
@@ -144,6 +144,12 @@ namespace Estate.Persistance.Implementations.Services
             Product item = _mapper.Map<Product>(create);
 
             item.ProductImages = new List<ProductImage> { mainImage };
+            item.ProductFeatures = create.FeatureIds.Select(id => new ProductFeatures { FeaturesId = id }).ToList();
+            item.ProductExteriorTypes = create.ExteriorTypeIds.Select(id => new ProductExteriorType { ExteriorTypeId = id }).ToList();
+            item.ProductParkingTypes = create.ParkingTypeIds.Select(id => new ProductParkingType { ParkingTypeId = id }).ToList();
+            item.ProductRoofTypes = create.RoofTypeIds.Select(id => new ProductRoofType { RoofTypeId = id }).ToList();
+            item.ProductViewTypes = create.ViewTypeIds.Select(id => new ProductViewType { ViewTypeId = id }).ToList();
+
 
             if (item.ProductImages == null) item.ProductImages = new List<ProductImage>();
 
@@ -404,7 +410,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (!model.IsValid)
             {
-                UpdatePopulateDropdowns(update);
+                await UpdatePopulateDropdowns(update);
                 return false;
             }
 
@@ -422,14 +428,14 @@ namespace Estate.Persistance.Implementations.Services
 
             if (!await _categoryRepository.CheckUniqueAsync(x => x.Id == update.CategoryId))
             {
-                UpdatePopulateDropdowns(update);
+                await UpdatePopulateDropdowns(update);
                 return false;
             }
             foreach (int featureId in update.FeatureIds)
             {
                 if (!await _featuresRepository.CheckUniqueAsync(x => x.Id == featureId))
                 {
-                    UpdatePopulateDropdowns(update);
+                    await UpdatePopulateDropdowns(update);
                     return false;
                 }
             }
@@ -437,7 +443,7 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!await _exteriorTypeRepository.CheckUniqueAsync(x => x.Id == exteriorTypeId))
                 {
-                    UpdatePopulateDropdowns(update);
+                    await UpdatePopulateDropdowns(update);
                     return false;
                 }
             }
@@ -445,7 +451,7 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!await _parkingTypeRepository.CheckUniqueAsync(x => x.Id == parkingTypeId))
                 {
-                    UpdatePopulateDropdowns(update);
+                    await UpdatePopulateDropdowns(update);
                     return false;
                 }
             }
@@ -453,7 +459,7 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!await _roofTypeRepository.CheckUniqueAsync(x => x.Id == roofTypeId))
                 {
-                    UpdatePopulateDropdowns(update);
+                    await UpdatePopulateDropdowns(update);
                     return false;
                 }
             }
@@ -461,7 +467,7 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!await _viewTypeRepository.CheckUniqueAsync(x => x.Id == viewTypeId))
                 {
-                    UpdatePopulateDropdowns(update);
+                    await UpdatePopulateDropdowns(update);
                     return false;
                 }
             }
@@ -554,13 +560,13 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!update.MainPhoto.ValidateType())
                 {
-                    UpdatePopulateDropdowns(update);
+                    await UpdatePopulateDropdowns(update);
                     model.AddModelError("MainPhoto", "File Not supported");
                     return false;
                 }
                 if (!update.MainPhoto.ValidataSize())
                 {
-                    UpdatePopulateDropdowns(update);
+                    await UpdatePopulateDropdowns(update);
                     model.AddModelError("MainPhoto", "Image should not be larger than 10 mb");
                     return false;
                 }
@@ -655,7 +661,7 @@ namespace Estate.Persistance.Implementations.Services
             update.RoofTypeIds = item.ProductRoofTypes.Select(p => p.RoofTypeId).ToList();
             update.ViewTypeIds = item.ProductViewTypes.Select(p => p.ViewTypeId).ToList();
 
-            UpdatePopulateDropdowns(update);
+            await UpdatePopulateDropdowns(update);
 
             return update;
         }

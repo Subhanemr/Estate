@@ -10,9 +10,8 @@
                     <input asp-for="Name" class="form-control" placeholder="Name">
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
-                <div class="form-group">
-                    <label asp-for="Description">Description</label>
-                    <input asp-for="Description" class="form-control" placeholder="Description">
+                <div class="form-group border border-primary">
+                    <textarea asp-for="Description" class="form-control" rows="12" placeholder="Description"></textarea>
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -72,17 +71,17 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="HighSchool">High School</label>
-                    <input asp-for="HighSchool" class="form-control">
+                    <input asp-for="HighSchool">
                     <span asp-validation-for="HighSchool" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="MiddleSchool">Middle School</label>
-                    <input asp-for="MiddleSchool" class="form-control">
+                    <input asp-for="MiddleSchool" >
                     <span asp-validation-for="MiddleSchool" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="ElementarySchool">Elementary School</label>
-                    <input asp-for="ElementarySchool" class="form-control">
+                    <input asp-for="ElementarySchool" >
                     <span asp-validation-for="ElementarySchool" class="text-danger"></span>
                 </div>
                 <div class="form-group">

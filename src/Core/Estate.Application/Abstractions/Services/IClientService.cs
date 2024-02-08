@@ -18,7 +18,7 @@ namespace Estate.Application.Abstractions.Services
         Task DeleteAsync(int id);
         Task SoftDeleteAsync(int id);
         Task ReverseSoftDeleteAsync(int id);
-        void CreatePopulateDropdowns(CreateClientVM create);
-        void UpdatePopulateDropdowns(UpdateClientVM update);
+        Task CreatePopulateDropdowns(CreateClientVM create);
+        Task UpdatePopulateDropdowns(UpdateClientVM update);
     }
 }

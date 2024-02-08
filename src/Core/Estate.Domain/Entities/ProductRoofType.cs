@@ -1,6 +1,6 @@
 ﻿namespace Estate.Domain.Entities
 {
-    public class ProductRoofType : BaseNameEntity
+    public class ProductRoofType : BaseEntity
     {
         public int ProductId { get; set; }
         public int RoofTypeId { get; set; }

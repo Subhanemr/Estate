@@ -52,7 +52,7 @@ namespace Estate.MVC.Controllers
         }
         public async Task<IActionResult> WishList(string id)
         {
-            return View();
+            return View(await _service.GetByIdAsync(id));
         }
         public async Task<IActionResult> BeAAgent(string id)
         {

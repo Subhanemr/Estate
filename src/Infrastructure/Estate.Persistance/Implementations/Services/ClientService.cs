@@ -30,11 +30,11 @@ namespace Estate.Persistance.Implementations.Services
             _userManager = userManager;
         }
 
-        public async void CreatePopulateDropdowns(CreateClientVM create)
+        public async Task CreatePopulateDropdowns(CreateClientVM create)
         {
             create.Corporates = _mapper.Map<ICollection<IncludeCorporateVM>>(await _corporateRepository.GetAll().ToListAsync());
         }
-        public async void UpdatePopulateDropdowns(UpdateClientVM update)
+        public async Task UpdatePopulateDropdowns(UpdateClientVM update)
         {
             update.Corporates = _mapper.Map<ICollection<IncludeCorporateVM>>(await _corporateRepository.GetAll().ToListAsync());
         }
@@ -43,13 +43,13 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (!model.IsValid)
             {
-                CreatePopulateDropdowns(create);
+                await CreatePopulateDropdowns(create);
                 return false;
             }
 
             if (!await _corporateRepository.CheckUniqueAsync(x => x.Id == create.CorporateId))
             {
-                CreatePopulateDropdowns(create);
+                await CreatePopulateDropdowns(create);
                 model.AddModelError("CorporateId", "Corporate not found");
                 return false;
             }
@@ -229,7 +229,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (!model.IsValid)
             {
-                UpdatePopulateDropdowns(update);
+                await UpdatePopulateDropdowns(update);
                 return false;
             }
 
@@ -240,7 +240,7 @@ namespace Estate.Persistance.Implementations.Services
 
             if (!await _corporateRepository.CheckUniqueAsync(x => x.Id == update.CorporateId))
             {
-                UpdatePopulateDropdowns(update);
+                await UpdatePopulateDropdowns(update);
                 model.AddModelError("CorporateId", "Corporate not found");
                 return false;
             }
@@ -259,7 +259,7 @@ namespace Estate.Persistance.Implementations.Services
             if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateClientVM update = _mapper.Map<UpdateClientVM>(item);
-            UpdatePopulateDropdowns(update);
+            await UpdatePopulateDropdowns(update);
 
             return update;
         }
