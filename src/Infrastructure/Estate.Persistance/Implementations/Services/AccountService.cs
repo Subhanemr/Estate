@@ -59,6 +59,9 @@ namespace Estate.Persistance.Implementations.Services
                 model.AddModelError("Error", "Username, Email or Password is wrong");
                 return false;
             }
+
+            _http.HttpContext.Response.Cookies.Delete("FavoriteEstate");
+
             return true;
         }
         public async Task LogOutAsync()
@@ -105,6 +108,8 @@ namespace Estate.Persistance.Implementations.Services
                 }
                 throw new WrongRequestException(errors);
             }
+
+            _http.HttpContext.Response.Cookies.Delete("FavoriteEstate");
             await _signInManager.SignInAsync(appUser, false);
 
             return true;
@@ -158,6 +163,7 @@ namespace Estate.Persistance.Implementations.Services
                 }
                 throw new WrongRequestException(errors);
             }
+            _http.HttpContext.Response.Cookies.Delete("FavoriteEstate");
 
             await _signInManager.SignOutAsync();
             await _signInManager.SignInAsync(user, false);
