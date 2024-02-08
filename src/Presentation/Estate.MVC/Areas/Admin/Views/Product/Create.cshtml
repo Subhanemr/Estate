@@ -1,0 +1,155 @@
+﻿@model CreateProductVM
+
+<div class="col-md-6 grid-margin stretch-card form-control-color-bg-gray">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Create Product</h4>
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Name">Product Name</label>
+                    <input asp-for="Name" class="form-control" placeholder="Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description">Description</label>
+                    <input asp-for="Description" class="form-control" placeholder="Description">
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price">Price</label>
+                    <input asp-for="Price" class="form-control" placeholder="Price">
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LotSize">Lot Size</label>
+                    <input asp-for="LotSize" class="form-control" placeholder="Lot Size">
+                    <span asp-validation-for="LotSize" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Area">Area</label>
+                    <input asp-for="Area" class="form-control" placeholder="Area">
+                    <span asp-validation-for="Area" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Bedrooms">Bedrooms Count</label>
+                    <input asp-for="Bedrooms" class="form-control" placeholder="Bedrooms Count">
+                    <span asp-validation-for="Bedrooms" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Bathrooms">Bathrooms Count</label>
+                    <input asp-for="Bathrooms" class="form-control" placeholder="Bathrooms Count">
+                    <span asp-validation-for="Bathrooms" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RoomCount">Room Count</label>
+                    <input asp-for="RoomCount" class="form-control" placeholder="Room Count">
+                    <span asp-validation-for="RoomCount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Garages">Garages Count</label>
+                    <input asp-for="Garages" class="form-control" placeholder="Garages Count">
+                    <span asp-validation-for="Garages" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="YearBuilt">Year Built</label>
+                    <input asp-for="YearBuilt" class="form-control" placeholder="Year Built">
+                    <span asp-validation-for="YearBuilt" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SchoolDistrict">School District</label>
+                    <input asp-for="SchoolDistrict" class="form-control" placeholder="School District Optional">
+                    <span asp-validation-for="SchoolDistrict" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SchoolDistrictPhone">School District Phone</label>
+                    <input asp-for="SchoolDistrictPhone" class="form-control" placeholder="School District Phone Optional">
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address">Address</label>
+                    <input asp-for="Address" class="form-control" placeholder="Address">
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="HighSchool">High School</label>
+                    <input asp-for="HighSchool" class="form-control">
+                    <span asp-validation-for="HighSchool" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MiddleSchool">Middle School</label>
+                    <input asp-for="MiddleSchool" class="form-control">
+                    <span asp-validation-for="MiddleSchool" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ElementarySchool">Elementary School</label>
+                    <input asp-for="ElementarySchool" class="form-control">
+                    <span asp-validation-for="ElementarySchool" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FaceLink">Facebook</label>
+                    <input asp-for="FaceLink" class="form-control" placeholder="Facebook">
+                    <span asp-validation-for="FaceLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TwitLink">Twitter</label>
+                    <input asp-for="TwitLink" class="form-control" placeholder="Twitter">
+                    <span asp-validation-for="TwitLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GoogleLink">Google plus</label>
+                    <input asp-for="GoogleLink" class="form-control" placeholder="Google plus">
+                    <span asp-validation-for="GoogleLink" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MainPhoto">Main Image</label>
+                    <input asp-for="MainPhoto" class="form-control" placeholder="MainImage" accept="image/*">
+                    <span asp-validation-for="MainPhoto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Photos">Other Images</label>
+                    <input asp-for="Photos" class="form-control" placeholder="Photos" accept="image/*">
+                    <span asp-validation-for="Photos" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CategoryId">Category</label>
+                    <select asp-for="CategoryId" asp-items="new SelectList(Model.Categories, nameof(IncludeCategoryVM.Id), nameof(IncludeCategoryVM.Name))" class="form-control">
+                        <option selected disabled>Choose Category</option>
+                    </select>
+                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FeatureIds">Features</label>
+                    <select asp-for="FeatureIds" asp-items="new SelectList(Model.Features, nameof(IncludeFeaturesVM.Id), nameof(IncludeFeaturesVM.Name))" class="form-control">
+                    </select>
+                    <span asp-validation-for="FeatureIds" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ExteriorTypeIds">Exterior Types</label>
+                    <select asp-for="ExteriorTypeIds" asp-items="new SelectList(Model.ExteriorTypes, nameof(IncludeExteriorTypeVM.Id), nameof(IncludeExteriorTypeVM.Name))" class="form-control">
+                    </select>
+                    <span asp-validation-for="ExteriorTypeIds" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ParkingTypeIds">Parking Types</label>
+                    <select asp-for="ParkingTypeIds" asp-items="new SelectList(Model.Features, nameof(IncludeParkingTypeVM.Id), nameof(IncludeParkingTypeVM.Name))" class="form-control">
+                    </select>
+                    <span asp-validation-for="ParkingTypeIds" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="RoofTypeIds">Roof Types</label>
+                    <select asp-for="RoofTypeIds" asp-items="new SelectList(Model.Features, nameof(IncludeRoofTypeVM.Id), nameof(IncludeRoofTypeVM.Name))" class="form-control">
+                    </select>
+                    <span asp-validation-for="RoofTypeIds" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ViewTypeIds">View Types</label>
+                    <select asp-for="ViewTypeIds" asp-items="new SelectList(Model.Features, nameof(IncludeViewTypeVM.Id), nameof(IncludeViewTypeVM.Name))" class="form-control">
+                    </select>
+                    <span asp-validation-for="ViewTypeIds" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary me-2">Submit</button>
+                <a asp-action="Index" asp-controller="Home" asp-area="" class="btn btn-light">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

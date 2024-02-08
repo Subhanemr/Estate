@@ -43,9 +43,7 @@ namespace Estate.MVC.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Update(int id)
         {
-            UpdateRoofTypeVM item = await _service.UpdateAsync(id);
-
-            return View(item);
+            return View(await _service.UpdateAsync(id));
         }
         [HttpPost]
         public async Task<IActionResult> Update(int id, UpdateRoofTypeVM update)

@@ -171,7 +171,9 @@ namespace Estate.Persistance.Implementations.Services
                     //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")
                 });
             }
-            item.CreatedBy = _http.HttpContext.User.Identity.Name;
+            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
+            item.AppUserId = user.Id;
+            item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
