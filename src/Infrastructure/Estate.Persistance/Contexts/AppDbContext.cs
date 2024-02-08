@@ -1,4 +1,5 @@
 ﻿using Estate.Domain.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
@@ -7,7 +8,11 @@ namespace Estate.Persistance.Contexts
 {
     public class AppDbContext : IdentityDbContext<AppUser>
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        private readonly IHttpContextAccessor _http;
+        public AppDbContext(DbContextOptions<AppDbContext> options, IHttpContextAccessor http) : base(options)
+        {
+            _http = http;
+        }
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Agency> Agencies { get; set; }
@@ -50,9 +55,11 @@ namespace Estate.Persistance.Contexts
                 {
                     case EntityState.Added:
                         data.Entity.CreateAt = DateTime.Now;
+                        data.Entity.CreatedBy = _http.HttpContext.User.Identity.Name;
                         break;
                     case EntityState.Modified:
                         data.Entity.UpdateAt = DateTime.Now;
+                        data.Entity.CreatedBy = _http.HttpContext.User.Identity.Name;
                         break;
                 }
             }

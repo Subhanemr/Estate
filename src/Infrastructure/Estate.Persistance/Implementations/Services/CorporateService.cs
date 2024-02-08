@@ -57,7 +57,7 @@ namespace Estate.Persistance.Implementations.Services
 
             item.Img = await _cLoud.FileCreateAsync(create.Photo);
             //item.Img = await create.Photo.CreateFileAsync(_env.WebRootPath, "assets", "images");
-            item.CreatedBy = _http.HttpContext.User.Identity.Name;
+            //item.CreatedBy = _http.HttpContext.User.Identity.Name;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();

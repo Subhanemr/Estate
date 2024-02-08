@@ -3,7 +3,7 @@
 
 <head>
     <!-- Site Title-->
-    <title>Home</title>
+    <title>Estate</title>
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1,maximum-scale=1,user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -125,16 +125,17 @@
                         <!-- RD Navbar Nav-->
                         <ul class="rd-navbar-nav">
                             <li class="active">
-                                <a asp-action="Index" asp-controller="Home">Home</a>
+                                <a asp-action="Index" asp-controller="Home" asp-area="">Home</a>
                             </li>
                             <li class="">
                                 <a href="./">Catalog</a>
                             </li>
+                            @await Component.InvokeAsync("Agency")
                             <li class="">
-                                <a href="./">FAQ</a>
+                                <a asp-action="FAQ" asp-controller="Home" asp-area="">FAQ</a>
                             </li>
                             <li class="">
-                                <a href="./">Blogs</a>
+                                <a asp-action="Index" asp-controller="Blog">Blogs</a>
                             </li>
                             <li class="">
                                 <a href="./">Gallery</a>
@@ -319,18 +320,6 @@
                                     <time datetime="2016" class="small">December 28, 2016</time>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-lg-3">
-                            <h6 class="text-ubold">Newsletter</h6>
-                            <p class="text-gray">Enter your email address to receive all news, updates on new arrivals, special offers and other information.</p>
-                            <!-- RD Mailform-->
-                            <form data-form-output="form-output-global" data-form-type="subscribe" method="post" action="bat/rd-mailform.php" class="rd-mailform text-left subscribe">
-                                <div class="form-group">
-                                    <label for="email-sub" class="form-label"></label>
-                                    <input id="email-sub" type="email" name="email" data-constraints="" placeholder="Enter e-mail" class="form-control">
-                                </div>
-                                <button class="btn btn-sushi btn-sm">subscribe</button>
-                            </form>
                         </div>
                     </div>
                 </div>

@@ -37,8 +37,7 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             ExteriorType item = _mapper.Map<ExteriorType>(create);
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-            item.CreatedBy = user.UserName;
+            //item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
@@ -227,8 +226,7 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             _mapper.Map(update, item);
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-            item.CreatedBy = user.UserName;
+            //item.CreatedBy = user.UserName;
             _repository.Update(item);
             await _repository.SaveChanceAsync();
             return true;

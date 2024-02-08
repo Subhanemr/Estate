@@ -55,7 +55,7 @@ namespace Estate.Persistance.Implementations.Services
             }
             Client item = _mapper.Map<Client>(create);
 
-            item.CreatedBy = _http.HttpContext.User.Identity.Name;
+            //item.CreatedBy = _http.HttpContext.User.Identity.Name;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();

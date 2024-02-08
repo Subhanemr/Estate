@@ -96,8 +96,7 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             item.Value = update.Value;
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-            item.CreatedBy = user.UserName;
+            //item.CreatedBy = user.UserName;
             _repository.Update(item);
             await _repository.SaveChanceAsync();
             return true;

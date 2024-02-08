@@ -135,7 +135,7 @@ namespace Estate.Persistance.Implementations.Services
             }
             ProductImage mainImage = new ProductImage
             {
-                CreatedBy = _http.HttpContext.User.Identity.Name,
+                //CreatedBy = _http.HttpContext.User.Identity.Name,
                 IsPrimary = true,
                 Url = await _cLoud.FileCreateAsync(create.MainPhoto)
                 //Url = await create.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -165,7 +165,7 @@ namespace Estate.Persistance.Implementations.Services
 
                 item.ProductImages.Add(new ProductImage
                 {
-                    CreatedBy = _http.HttpContext.User.Identity.Name,
+                    //CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = null,
                     Url = await _cLoud.FileCreateAsync(photo)
                     //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -173,7 +173,7 @@ namespace Estate.Persistance.Implementations.Services
             }
             AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
             item.AppUserId = user.Id;
-            item.CreatedBy = user.UserName;
+            //item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
@@ -469,7 +469,8 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.FeatureIds.Contains(ps.FeaturesId)).ToList();
             foreach (var featureRemove in featureToRemove)
             {
-                _repository.DeleteFeatures(featureRemove);
+                item.ProductFeatures.Remove(featureRemove);
+                //_repository.DeleteFeatures(featureRemove);
             }
 
             ICollection<ProductFeatures> featureToAdd = update.FeatureIds
@@ -485,7 +486,8 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.ExteriorTypeIds.Contains(ps.ExteriorTypeId)).ToList();
             foreach (var exteriorTypeRemove in exteriorTypeToRemove)
             {
-                _repository.DeleteExteriorType(exteriorTypeRemove);
+                item.ProductExteriorTypes.Remove(exteriorTypeRemove);
+                //_repository.DeleteExteriorType(exteriorTypeRemove);
             }
 
             ICollection<ProductExteriorType> exteriorTypeToAdd = update.ExteriorTypeIds
@@ -501,7 +503,8 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.ParkingTypeIds.Contains(ps.ParkingTypeId)).ToList();
             foreach (var parkingTypeRemove in parkingTypeToRemove)
             {
-                _repository.DeleteParkingType(parkingTypeRemove);
+                item.ProductParkingTypes.Remove(parkingTypeRemove);
+                //_repository.DeleteParkingType(parkingTypeRemove);
             }
 
             ICollection<ProductParkingType> parkingTypeToAdd = update.ParkingTypeIds
@@ -517,7 +520,8 @@ namespace Estate.Persistance.Implementations.Services
                     .Where(ps => !update.RoofTypeIds.Contains(ps.RoofTypeId)).ToList();
             foreach (var roofTyperemove in roofTypeToRemove)
             {
-                _repository.DeleteRoofType(roofTyperemove);
+                item.ProductRoofTypes.Remove(roofTyperemove);
+                //_repository.DeleteRoofType(roofTyperemove);
             }
 
             ICollection<ProductRoofType> roofTypeToAdd = update.RoofTypeIds
@@ -533,7 +537,8 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.ViewTypeIds.Contains(ps.ViewTypeId)).ToList();
             foreach (var viewTypeRemove in viewTypeToRemove)
             {
-                _repository.DeleteViewType(viewTypeRemove);
+                item.ProductViewTypes.Remove(viewTypeRemove);
+                //_repository.DeleteViewType(viewTypeRemove);
             }
 
             ICollection<ProductViewType> viewTypeToAdd = update.ViewTypeIds
@@ -566,7 +571,7 @@ namespace Estate.Persistance.Implementations.Services
                 //main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
                 item.ProductImages.Add(new ProductImage
                 {
-                    CreatedBy = _http.HttpContext.User.Identity.Name,
+                    //CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = true,
                     Url = await _cLoud.FileCreateAsync(update.MainPhoto)
                     //Url = await update.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -607,7 +612,7 @@ namespace Estate.Persistance.Implementations.Services
 
                     item.ProductImages.Add(new ProductImage
                     {
-                        CreatedBy = _http.HttpContext.User.Identity.Name,
+                        //CreatedBy = _http.HttpContext.User.Identity.Name,
                         IsPrimary = null,
                         Url = await _cLoud.FileCreateAsync(photo)
                         //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")

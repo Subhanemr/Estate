@@ -17,5 +17,13 @@ namespace Estate.MVC.Controllers
             }
             return View(model: error);
         }
+        public IActionResult TermsService()
+        {
+            return View();
+        }
+        public IActionResult FAQ()
+        {
+            return View();
+        }
     }
 }

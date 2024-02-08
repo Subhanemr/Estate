@@ -37,8 +37,7 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             ViewType item = _mapper.Map<ViewType>(create);
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-            item.CreatedBy = user.UserName;
+            //item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
@@ -225,7 +224,7 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             _mapper.Map(update, item);
-            item.CreatedBy = _http.HttpContext.User.Identity.Name;
+            //item.CreatedBy = _http.HttpContext.User.Identity.Name;
             _repository.Update(item);
             await _repository.SaveChanceAsync();
             return true;

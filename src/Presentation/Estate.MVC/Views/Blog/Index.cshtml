@@ -1,0 +1,89 @@
+﻿@model PaginationVM<ItemBlogVM>
+
+<section class="section-full text-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Blogs</h1>
+                <p></p>
+                <ol class="breadcrumb">
+                    <li>
+                        <a asp-action="Index" asp-controller="Home">Home</a>
+                    </li>
+                    <li class="active">Blog</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section 3 Columns Blog-->
+<section class="section-md bg-dark text-left">
+    <div class="container">
+        <div style="display: flex; justify-content: flex-end;">
+            <div style="margin-right: 15px;">
+                <form asp-action="Index" asp-controller="Blog"
+                      asp-route-order="@Model.Search" style="margin-right: 15px; margin-top:10px;">
+                    <input type="text" style="width: 200px;" placeholder="Search now" name="search" value="@(Model.Search == null? "":Model.Search)">
+                </form>
+            </div>
+            <form asp-action="Index" asp-controller="Blog"
+                  asp-route-order="@Model.Search" style="width: 200px;">
+                <select  onchange="this.form.submit()" name="Order">
+                    <option value="1">Name</option>
+                    <option value="2">Create At</option>
+                    <option value="3">Name Descending</option>
+                    <option value="4">Create At by Descending</option>
+                </select>
+            </form>
+        </div>
+
+        <div class="row clearleft-custom-3">
+            @foreach (var blog in Model.Items)
+            {
+                <div class="col-xs-12 col-sm-6 col-lg-4">
+                    <article class="thumbnail thumbnail-2 thumbnail-2-mod-1">
+                        <div class="img-wrap">
+                            <a asp-action="Detail" asp-controller="Blog" asp-route-id="@blog.Id" class="img-block">
+                                <img src="@blog.Images.FirstOrDefault(x => x.IsPrimary == true).Url" alt="@blog.Name" width="370" height="250">
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <h5>
+                                <a asp-action="Detail" asp-controller="Blog" asp-route-id="@blog.Id" class="text-sushi">@blog.Name</a>
+                            </h5>
+                            <div class="caption-meta">
+                                <time datetime="2016">
+                                    <span class="mdi mdi-calendar"></span>
+                                    <span>@blog.CreateAt.ToString("MMM dd, yyyy 'at' h:mm tt")</span>
+                                </time>
+                                <a asp-action="Detail" asp-controller="Agent" asp-route-id="@blog.CreatedBy">
+                                    <span class="mdi mdi-account"></span>
+                                    <span>@blog.CreatedBy</span>
+                                </a>
+                            </div>
+                            <p>
+                                @(blog.Description.Length > 45 ? blog.Description.Substring(0, 45) + " ..." : blog.Description)
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            }
+            <div class="col-xs-12 offset-11">
+                <ul class="pagination">
+                    <li class="@(Model.CurrentPage <= 1 ? "disabled" : "")">
+                        <a class="fa-chevron-left" asp-route-page="@(Model.CurrentPage -1)" asp-action="Index" asp-controller="Blog"></a>
+                    </li>
+                    @for (int i = 1; i <= Model.TotalPage; i++)
+                    {
+                        <li class="@(Model.CurrentPage == i ? "active" : "")">
+                            <a asp-action="Index" asp-route-page="@i" asp-controller="Blog">@i</a>
+                        </li>
+                    }
+                    <li class="@(Model.CurrentPage >= Model.TotalPage ? "disabled" : "")">
+                        <a class="fa-chevron-right" asp-route-page="@(Model.CurrentPage +1)" asp-action="Index" asp-controller="Blog"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -65,7 +65,7 @@
                     </select>
                 </div>
                 <div class="d-flex" style="display:flex;margin-top: 10px; margin-right: 10px;">
-                    <label asp-for="TermsConditions" style="margin-right: 5px; margin-bottom: 3px;"><b>Terms&Conditions</b></label>
+                    <label asp-for="TermsConditions" style="margin-right: 5px; margin-bottom: 3px;"><a asp-action="TermsService" asp-controller="Home"><b>Terms&Conditions</b></a></label>
                     <input asp-for="TermsConditions">
                     <span asp-validation-for="TermsConditions" class="m-1 text-danger"></span>
                 </div>

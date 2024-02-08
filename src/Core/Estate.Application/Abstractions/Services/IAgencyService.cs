@@ -7,8 +7,9 @@ namespace Estate.Application.Abstractions.Services
 {
     public interface IAgencyService
     {
-        Task<ICollection<ItemAgencyVM>> GetAllWhereAsync(int take, int page = 1);
-        Task<ICollection<ItemAgencyVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Agency, object>>? orderExpression, int page = 1);
+        Task<ICollection<ItemAgencyVM>> GetAllAsync();
+        Task<ICollection<ItemAgencyVM>> GetAllWhereAsync(int take, int page);
+        Task<ICollection<ItemAgencyVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Agency, object>>? orderExpression, int page);
         Task<PaginationVM<ItemAgencyVM>> GetFilteredAsync(string? search, int take, int page, int order);
         Task<PaginationVM<ItemAgencyVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order);
         Task<GetAgencyVM> GetByIdAsync(int id);

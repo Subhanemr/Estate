@@ -39,7 +39,7 @@ namespace Estate.Application.Validators.Blog
             RuleFor(x => x.MainPhoto)
                 .NotEmpty().WithMessage("Main Image is required");
 
-            RuleFor(x => x.Photos)
+            RuleFor(x => x.HoverPhoto)
                 .NotEmpty().WithMessage("Images is required");
         }
     }

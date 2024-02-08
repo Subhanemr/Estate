@@ -37,8 +37,7 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             Agency item = _mapper.Map<Agency>(create);
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-            item.CreatedBy = user.UserName;
+            //item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
@@ -56,7 +55,18 @@ namespace Estate.Persistance.Implementations.Services
             await _repository.SaveChanceAsync();
         }
 
-        public async Task<ICollection<ItemAgencyVM>> GetAllWhereAsync(int take, int page = 1)
+
+        public async Task<ICollection<ItemAgencyVM>> GetAllAsync()
+        {
+            ICollection<Agency> items = await _repository
+                .GetAll(false).ToListAsync();
+
+            ICollection<ItemAgencyVM> vMs = _mapper.Map<ICollection<ItemAgencyVM>>(items);
+
+            return vMs;
+        }
+
+        public async Task<ICollection<ItemAgencyVM>> GetAllWhereAsync(int take, int page)
         {
             ICollection<Agency> items = await _repository
                 .GetAllWhere(skip: (page - 1) * take, take: take, IsTracking: false).ToListAsync();
@@ -229,8 +239,7 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             _mapper.Map(update, item);
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
-            item.CreatedBy = user.UserName;
+            //item.CreatedBy = user.UserName;
             _repository.Update(item);
             await _repository.SaveChanceAsync();
             return true;

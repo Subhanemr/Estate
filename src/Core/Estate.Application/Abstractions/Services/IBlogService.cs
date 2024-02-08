@@ -13,9 +13,9 @@ namespace Estate.Application.Abstractions.Services
         Task<PaginationVM<ItemBlogVM>> GetFilteredAsync(string? search, int take, int page, int order);
         Task<PaginationVM<ItemBlogVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order);
         Task<GetBlogVM> GetByIdAsync(int id);
-        Task<bool> CreateAsync(CreateBlogVM create, ModelStateDictionary model, ITempDataDictionary tempData);
+        Task<bool> CreateAsync(CreateBlogVM create, ModelStateDictionary model);
         Task<UpdateBlogVM> UpdateAsync(int id);
-        Task<bool> UpdatePostAsync(int id, UpdateBlogVM update, ModelStateDictionary model, ITempDataDictionary tempData);
+        Task<bool> UpdatePostAsync(int id, UpdateBlogVM update, ModelStateDictionary model);
         Task DeleteAsync(int id);
         Task SoftDeleteAsync(int id);
         Task ReverseSoftDeleteAsync(int id);

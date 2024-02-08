@@ -3,19 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Estate.MVC.ViewComponents
 {
-    public class RegisterViewComponent : ViewComponent
+    public class AgencyViewComponent : ViewComponent
     {
-        private readonly IAccountService _service;
+        private readonly IAgencyService _service;
 
-        public RegisterViewComponent(IAccountService service)
+        public AgencyViewComponent(IAgencyService service)
         {
             _service = service;
         }
-
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            return View(await _service.GetAllAsync());
         }
-
     }
 }

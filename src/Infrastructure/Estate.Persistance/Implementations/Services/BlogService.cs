@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -22,18 +21,22 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IHttpContextAccessor _http;
         private readonly IWebHostEnvironment _env;
         private readonly ICLoudService _cLoud;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly IProductRepository _productRepository;
 
         public BlogService(IMapper mapper, IBlogRepository repository, IHttpContextAccessor http,
-            IWebHostEnvironment env, ICLoudService cLoud)
+            IWebHostEnvironment env, ICLoudService cLoud, UserManager<AppUser> userManager, IProductRepository productRepository)
         {
             _mapper = mapper;
             _repository = repository;
             _http = http;
             _env = env;
             _cLoud = cLoud;
+            _userManager = userManager;
+            _productRepository = productRepository;
         }
 
-        public async Task<bool> CreateAsync(CreateBlogVM create, ModelStateDictionary model, ITempDataDictionary tempData)
+        public async Task<bool> CreateAsync(CreateBlogVM create, ModelStateDictionary model)
         {
             if (!model.IsValid) return false;
             if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == create.Name.ToLower().Trim()))
@@ -54,42 +57,33 @@ namespace Estate.Persistance.Implementations.Services
             }
             BlogImage mainImage = new BlogImage
             {
-                CreatedBy = _http.HttpContext.User.Identity.Name,
+                //CreatedBy = _http.HttpContext.User.Identity.Name,
                 IsPrimary = true,
                 Url = await _cLoud.FileCreateAsync(create.MainPhoto)
-            //Url = await create.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
-        };
+                //Url = await create.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
+            };
+            if (!create.HoverPhoto.ValidateType())
+            {
+                model.AddModelError("HoverPhoto", "File Not supported");
+                return false;
+            }
+            if (!create.HoverPhoto.ValidataSize())
+            {
+                model.AddModelError("HoverPhoto", "Image should not be larger than 10 mb");
+                return false;
+            }
+            BlogImage hoverImage = new BlogImage
+            {
+                //CreatedBy = _http.HttpContext.User.Identity.Name,
+                IsPrimary = false,
+                Url = await _cLoud.FileCreateAsync(create.HoverPhoto)
+                //Url = await create.HoverPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
+            };
             Blog item = _mapper.Map<Blog>(create);
 
-            item.BlogImages = new List<BlogImage> { mainImage };
+            item.BlogImages = new List<BlogImage> { mainImage, hoverImage };
 
-            if (item.BlogImages == null) item.BlogImages = new List<BlogImage>();
-
-            tempData["Message"] = "";
-
-            foreach (var photo in create.Photos)
-            {
-                if (!photo.ValidateType())
-                {
-                    tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} type is not suitable</p>";
-                    continue;
-                }
-
-                if (!photo.ValidataSize(10))
-                {
-                    tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} the size is not suitable</p>";
-                    continue;
-                }
-
-                item.BlogImages.Add(new BlogImage
-                {
-                    CreatedBy = _http.HttpContext.User.Identity.Name,
-                    IsPrimary = null,
-                    Url = await _cLoud.FileCreateAsync(photo)
-                    //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")
-                });
-            }
-            item.CreatedBy = _http.HttpContext.User.Identity.Name;
+            //item.CreatedBy = _http.HttpContext.User.Identity.Name;
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();
@@ -208,7 +202,7 @@ namespace Estate.Persistance.Implementations.Services
                     break;
                 case 2:
                     items = await _repository
-                     .GetAllWhereByOrder( x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.CreateAt, false, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 3:
@@ -218,7 +212,7 @@ namespace Estate.Persistance.Implementations.Services
                     break;
                 case 4:
                     items = await _repository
-                     .GetAllWhereByOrder( x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => x.IsDeleted == true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.CreateAt, true, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
             }
@@ -272,7 +266,7 @@ namespace Estate.Persistance.Implementations.Services
             await _repository.SaveChanceAsync();
         }
 
-        public async Task<bool> UpdatePostAsync(int id, UpdateBlogVM update, ModelStateDictionary model, ITempDataDictionary tempData)
+        public async Task<bool> UpdatePostAsync(int id, UpdateBlogVM update, ModelStateDictionary model)
         {
             if (!model.IsValid) return false;
 
@@ -306,53 +300,36 @@ namespace Estate.Persistance.Implementations.Services
                 //main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
                 item.BlogImages.Add(new BlogImage
                 {
-                    CreatedBy = _http.HttpContext.User.Identity.Name,
+                    //CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = true,
                     Url = await _cLoud.FileCreateAsync(update.MainPhoto)
                     //Url = await update.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
                 });
             }
 
-            if (item.BlogImages == null) item.BlogImages = new List<BlogImage>();
 
-            if (update.ImageIds == null) update.ImageIds = new List<int>();
-
-            ICollection<BlogImage> remove = item.BlogImages
-                    .Where(pi => pi.IsPrimary == null && !update.ImageIds.Exists(imgId => imgId == pi.Id)).ToList();
-
-            foreach (var image in remove)
+            if (update.HoverPhoto != null)
             {
-                await _cLoud.FileDeleteAsync(image.Url);
-                //image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
-                item.BlogImages.Remove(image);
-            }
-
-            tempData["Message"] = "";
-
-            if (update.Photos != null)
-            {
-                foreach (var photo in update.Photos)
+                if (!update.HoverPhoto.ValidateType())
                 {
-                    if (!photo.ValidateType())
-                    {
-                        tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} type is not suitable</p>";
-                        continue;
-                    }
-
-                    if (!photo.ValidataSize(10))
-                    {
-                        tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} the size is not suitable</p>";
-                        continue;
-                    }
-
-                    item.BlogImages.Add(new BlogImage
-                    {
-                        CreatedBy = _http.HttpContext.User.Identity.Name,
-                        IsPrimary = null,
-                        Url = await _cLoud.FileCreateAsync(photo)
-                        //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")
-                    });
+                    model.AddModelError("HoverPhoto", "File Not supported");
+                    return false;
                 }
+                if (!update.HoverPhoto.ValidataSize())
+                {
+                    model.AddModelError("HoverPhoto", "Image should not be larger than 10 mb");
+                    return false;
+                }
+                BlogImage hover = item.BlogImages.FirstOrDefault(x => x.IsPrimary == false);
+                await _cLoud.FileDeleteAsync(hover.Url);
+                //main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
+                item.BlogImages.Add(new BlogImage
+                {
+                    //CreatedBy = _http.HttpContext.User.Identity.Name,
+                    IsPrimary = false,
+                    Url = await _cLoud.FileCreateAsync(update.HoverPhoto)
+                    //Url = await update.HoverPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
+                });
             }
 
             var config = new MapperConfiguration(cfg =>

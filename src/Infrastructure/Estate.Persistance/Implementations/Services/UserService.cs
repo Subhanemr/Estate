@@ -348,7 +348,7 @@ namespace Estate.Persistance.Implementations.Services
             }
             AppUserImage mainImage = new AppUserImage
             {
-                CreatedBy = _http.HttpContext.User.Identity.Name,
+                //CreatedBy = _http.HttpContext.User.Identity.Name,
                 IsPrimary = true,
                 Url = await _cLoud.FileCreateAsync(create.MainPhoto)
                 //Url = await create.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -378,7 +378,7 @@ namespace Estate.Persistance.Implementations.Services
 
                 user.AppUserImages.Add(new AppUserImage
                 {
-                    CreatedBy = _http.HttpContext.User.Identity.Name,
+                    //CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = null,
                     Url = await _cLoud.FileCreateAsync(photo)
                     //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -447,7 +447,7 @@ namespace Estate.Persistance.Implementations.Services
                 }
                 AppUserImage mainImage = new AppUserImage
                 {
-                    CreatedBy = _http.HttpContext.User.Identity.Name,
+                    //CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = true,
                     Url = await _cLoud.FileCreateAsync(update.MainPhoto)
                     //Url = await create.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -489,7 +489,7 @@ namespace Estate.Persistance.Implementations.Services
 
                     user.AppUserImages.Add(new AppUserImage
                     {
-                        CreatedBy = _http.HttpContext.User.Identity.Name,
+                        //CreatedBy = _http.HttpContext.User.Identity.Name,
                         IsPrimary = null,
                         Url = await _cLoud.FileCreateAsync(photo)
                         //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")

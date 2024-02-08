@@ -34,7 +34,7 @@ namespace Estate.MVC.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateBlogVM create)
         {
-            bool result = await _service.CreateAsync(create, ModelState, TempData);
+            bool result = await _service.CreateAsync(create, ModelState);
             if (!result)
             {
                 return View(create);
@@ -48,7 +48,7 @@ namespace Estate.MVC.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(int id, UpdateBlogVM update)
         {
-            bool result = await _service.UpdatePostAsync(id, update, ModelState, TempData);
+            bool result = await _service.UpdatePostAsync(id, update, ModelState);
             if (!result)
             {
                 return View(update);
