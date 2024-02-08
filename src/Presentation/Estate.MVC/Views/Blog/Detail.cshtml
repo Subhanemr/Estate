@@ -4,16 +4,16 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h1>Post Page</h1>
+                <h1>Blog Detail</h1>
                 <p></p>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a asp-action="Index" asp-controller="Home">Home</a>
                     </li>
                     <li>
-                        <a href="#">Blog</a>
+                        <a asp-action="Index" asp-controller="Blog">Blogs</a>
                     </li>
-                    <li class="active">Post Page</li>
+                    <li class="active">Blog Detail</li>
                 </ol>
             </div>
         </div>
@@ -25,51 +25,42 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="blog-post">
-                    <h2>Being a magnet for your, Berlin's Housing Problems Boil Over</h2>
+                    <h2>@Model.Name</h2>
                     <hr>
                     <div class="caption-meta">
                         <time datetime="2016">
                             <span class="mdi mdi-calendar"></span>
-                            <span>May 24, 2016 at 7:52 pm</span>
+                            <span>@Model.CreateAt.ToString("MMM dd, yyyy 'at' h:mm tt")</span>
                         </time>
-                        <a href="#">
+                        <a asp-action="Detail" asp-controller="Agent" asp-route-id="@Model.CreatedBy">
                             <span class="mdi mdi-account"></span>
-                            <span>Admin</span>
+                            <span>@Model.CreatedBy</span>
                         </a>
                         <a href="post-page.html" class="comment">
                             <span class="mdi mdi-comment-multiple-outline"></span>
-                            <span>3</span>
+                            <span>@Model.Commnets.Count</span>
                         </a>
-                        <div class="post-meta">
-                            <span class="mdi mdi-folder-outline"></span>
-                            <a href="post-page.html" class="meta-link">Real Estate</a>, &nbsp;
-                            <a href="post-page.html" class="meta-link">News</a>, &nbsp;
-                            <a href="post-page.html" class="meta-link">Berlin</a>
-                        </div>
                     </div>
-                    <img src="images/left_sidebar_blog-5.jpg" alt="" width="770" height="520">
+                    <img src="@Model.Images.FirstOrDefault(x => x.IsPrimary == true)?.Url" alt="@Model.Name" width="770" height="520">
                     <p>
-                        When a German property developer tried to hold a meet-and-greet barbecue for neighbors of its new 68-unit condominium in August, protesters flooded the site, waving signs and dumping piles of garbage before police clad in bulletproof vests
-                        halted further unrest. The demonstrators were protesting soaring apartment rents and the increasing gentrification of the leafy working-class neighborhood of the area.
+                        @Model.Description
                     </p>
-                    <p>"It will change a lot of the area - we are afraid," said Tom Brown, an artist who leases space for his art gallery nearby and brought a large fake pig to register his disgust.</p>
-                    <img src="images/post_page-2.jpg" alt="" width="770" height="520">
-                    <p>
-                        Major global cities like San Francisco, New York and London are groaning under the stress of fast-increasing populations that are far outpacing the creation of new housing. But few cities face a quandary as difficult as Berlin's. More than
-                        40,000 new residents a year have been piling in recently, as Berlin has become a magnet for European youth.
-                    </p>
-                    <p>Yet no more than 8,000 housing units a year were added through 2014, according to real-estate firm, a yawning gap that lies at the heart of Berlin's housing problems today.</p>
+                    <img src="@Model.Images.FirstOrDefault(x => x.IsPrimary == false)?.Url" alt="@Model.Name" width="770" height="520">
                     <div class="blog-post-footer">
                         <h4 class="border-bottom">Share</h4>
                         <div class="icon-group">
-                            <a href="#" class="icon icon-sm icon-social fa-facebook"></a>
-                            <a href="#" class="icon icon-sm icon-social fa-twitter"></a>
-                            <a href="#" class="icon icon-sm icon-social fa-google-plus"></a>
-                            <a href="#" class="icon icon-sm icon-social fa-linkedin"></a>
-                            <a href="#" class="icon icon-sm icon-social fa-instagram"></a>
+                            <a href="@Model.FaceLink" class="icon icon-sm icon-social fa-facebook"></a>
+                            <a href="@Model.TwitLink" class="icon icon-sm icon-social fa-twitter"></a>
+                            @if (Model.GoogleLink != null)
+                            {
+                                <a href="@Model.GoogleLink" class="icon icon-sm icon-social fa-google-plus"></a>
+                            }
+                            <a href="@Model.LinkedLink" class="icon icon-sm icon-social fa-linkedin"></a>
+                            <a href="@Model.InstaLink" class="icon icon-sm icon-social fa-instagram"></a>
                         </div>
                     </div>
                     <h4 class="text-center text-sm-left border-bottom">Posted By</h4>
+
                     <div class="media media-mod-2">
                         <div class="media-left">
                             <img src="images/post_page-3.jpg" alt="" width="170" height="170">
@@ -82,8 +73,10 @@
                             </p>
                         </div>
                     </div>
+
                     <h4 class="border-bottom">Related Posts</h4>
                     <div class="row">
+
                         <div class="col-xs-12 col-sm-6">
                             <article class="thumbnail thumbnail-2 thumbnail-2-mod-1">
                                 <div class="img-wrap">
@@ -117,6 +110,7 @@
                                 </div>
                             </article>
                         </div>
+
                         <div class="col-xs-12 col-sm-6">
                             <article class="thumbnail thumbnail-2 thumbnail-2-mod-1">
                                 <div class="img-wrap">
@@ -153,6 +147,7 @@
                             <div class="text-center text-sm-left">
                                 <h4 class="border-bottom">Comments</h4>
                             </div>
+
                             <div class="media media-mod-2 comment">
                                 <div class="media-left round">
                                     <img src="images/post_page-4.jpg" alt="" width="70" height="70" class="round">
@@ -167,6 +162,7 @@
                                     </a>
                                 </div>
                             </div>
+
                             <div class="media media-mod-2 comment comment-repost">
                                 <div class="media-left round">
                                     <img src="images/post_page-5.jpg" alt="" width="70" height="70" class="round">
@@ -181,6 +177,7 @@
                                     </a>
                                 </div>
                             </div>
+
                             <h4 class="border-bottom">Send a Comment</h4>
                             <!-- RD Mailform-->
                             <form class="text-left offset-11">
