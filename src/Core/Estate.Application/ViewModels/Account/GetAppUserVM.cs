@@ -1,4 +1,6 @@
-﻿namespace Estate.Application.ViewModels
+﻿using Estate.Domain.Entities;
+
+namespace Estate.Application.ViewModels
 {
     public record GetAppUserVM(string Id, string Name, string Surname, string UserName, string Img, string Email,  string? PhoneSecond,
         string? Address, string? About, string? FaceLink, string? TwitLink, string? GoogleLink, string? LinkedLink, string? InstaLink, 
@@ -8,6 +10,7 @@
 
         public int AgencyId { get; set; }
         public IncludeAgencyVM Agency { get; init; }
+        public ICollection<IncludeProductVM>? Favorites { get; init; }
         public ICollection<IncludeProductVM> Products { get; init; }
         public ICollection<IncludeAppUserImage> Images { get; init; }
     }

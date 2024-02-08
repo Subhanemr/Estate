@@ -6,5 +6,8 @@
         bool HighSchool, bool MiddleSchool, bool ElementarySchool, int CategoryId, IncludeCategoryVM Category,
         ICollection<IncludeProductImageVM> Images, List<IncludeProductCommentVM>? Comments,
         List<IncludeFeaturesVM>? Features, List<IncludeExteriorTypeVM>? ExteriorTypes,
-        List<IncludeParkingTypeVM>? ParkingTypes, List<IncludeRoofTypeVM>? RoofTypes, List<IncludeViewTypeVM>? ViewTypes);
+        List<IncludeParkingTypeVM>? ParkingTypes, List<IncludeRoofTypeVM>? RoofTypes, List<IncludeViewTypeVM>? ViewTypes)
+    {
+        public string OrderDayOrMoth { get; init; }
+    }
 }

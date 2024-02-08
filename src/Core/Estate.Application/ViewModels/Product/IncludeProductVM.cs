@@ -4,5 +4,8 @@
         byte Garages, short YearBuilt, byte RoomCount, string? SchoolDistrict, string? SchoolDistrictPhone,
         string Address, string Description, string FaceLink, string TwitLink, string? GoogleLink,
         bool HighSchool, bool MiddleSchool, bool ElementarySchool, int CategoryId, IncludeCategoryVM Category,
-        ICollection<IncludeProductImageVM> Images);
+        ICollection<IncludeProductImageVM> Images)
+    {
+        public string OrderDayOrMoth { get; init; }
+    }
 }

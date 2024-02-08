@@ -105,6 +105,9 @@ namespace Estate.Application.Validators.Product
 
             RuleFor(x => x.Photos)
                 .NotEmpty().WithMessage("Images is required");
+
+            RuleFor(x => x.OrderDayOrMoth)
+                .NotEmpty().WithMessage("Order Day or Moth is required");
         }
     }
 }

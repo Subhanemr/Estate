@@ -145,6 +145,7 @@ namespace Estate.Persistance.Implementations.Services
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
             AppUser user = await _userManager.Users
                 .Include(x => x.AppUserImages).Include(x => x.Agency)
+                .Include(x => x.Favorites).ThenInclude(x => x.Product)
                 .Include(x => x.Products).ThenInclude(x => x.Category)
                 .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
             if (user == null) throw new NotFoundException("Your request was not found");
@@ -159,6 +160,7 @@ namespace Estate.Persistance.Implementations.Services
             if (string.IsNullOrWhiteSpace(userName)) throw new WrongRequestException("The request sent does not exist");
             AppUser user = await _userManager.Users
                 .Include(x => x.AppUserImages).Include(x => x.Agency)
+                .Include(x=> x.Favorites).ThenInclude(x => x.Product)
                 .Include(x => x.Products).ThenInclude(x => x.Category)
                 .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.UserName == userName);
             if (user == null) throw new NotFoundException("Your request was not found");

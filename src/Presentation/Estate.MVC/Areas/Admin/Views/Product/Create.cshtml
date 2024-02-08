@@ -118,6 +118,17 @@
                     <span asp-validation-for="CategoryId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label asp-for="OrderDayOrMoth">Order Day or Moth</label>
+                    <select asp-for="OrderDayOrMoth" class="form-control">
+                        <option selected disabled>Choose Order</option>
+                        @foreach (var order in Enum.GetNames(typeof(OrderDayOrMoth)))
+                        {
+                            <option value="@order">@order</option>
+                        }
+                    </select>
+                    <span asp-validation-for="OrderDayOrMoth" class="text-danger"></span>
+                </div>
+                <div class="form-group">
                     <label asp-for="FeatureIds">Features</label>
                     <select asp-for="FeatureIds" asp-items="new SelectList(Model.Features, nameof(IncludeFeaturesVM.Id), nameof(IncludeFeaturesVM.Name))" class="form-control">
                     </select>

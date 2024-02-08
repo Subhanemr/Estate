@@ -83,5 +83,9 @@ namespace Estate.MVC.Controllers
             }
             return RedirectToAction("Index", "Home", new { Area = "" });
         }
+        public async Task<IActionResult> Products(string id)
+        {
+            return View(await _service.GetByIdAsync(id));
+        }
     }
 }

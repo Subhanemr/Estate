@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using System.Security.Principal;
 
 namespace Estate.Application.ViewModels
 {
@@ -24,6 +25,9 @@ namespace Estate.Application.ViewModels
         public bool MiddleSchool { get; init; }
         public bool ElementarySchool { get; init; }
         public int CategoryId { get; init; }
+        public string OrderDayOrMoth { get; init; }
+
+
         public IFormFile MainPhoto { get; init; }
         public ICollection<IFormFile>? Photos { get; init; }
 

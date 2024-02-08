@@ -23,6 +23,7 @@
         public bool HighSchool { get; set; }
         public bool MiddleSchool { get; set; }
         public bool ElementarySchool { get; set; }
+        public string OrderDayOrMoth { get; set; } = null!;
 
         public int CategoryId { get; set; }
         public string AppUserId { get; set; } = null!;

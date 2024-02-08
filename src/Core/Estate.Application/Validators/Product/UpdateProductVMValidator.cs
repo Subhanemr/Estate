@@ -99,6 +99,9 @@ namespace Estate.Application.Validators.Product
                 .NotEmpty().WithMessage("Description is required")
                 .Length(25, 1500).WithMessage("Description max characters is 25-1500")
                 .Matches(@"^[A-Za-z0-9\s"",.]+$").WithMessage("Description can only contain letters, numbers, spaces, double quotes, commas, and periods.");
+
+            RuleFor(x => x.OrderDayOrMoth)
+                .NotEmpty().WithMessage("Order Day or Moth is required");
         }
     }
 }
