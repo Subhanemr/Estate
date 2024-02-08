@@ -2,5 +2,7 @@
 {
     public interface IFavoriteService
     {
+        Task AddWishList(int id);
+        Task DeleteItem(int id);
     }
 }

@@ -58,7 +58,7 @@ namespace Estate.Persistance.ServiceRegistrations
             services.AddScoped<IClientRepository, ClientRepository>();
             services.AddScoped<ICorporateRepository, CorporateRepository>();
             services.AddScoped<IExteriorTypeRepository, ExteriorTypeRepository>();
-            services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+            services.AddScoped<IFavoriteService, FavoriteService>();
             services.AddScoped<IFeaturesRepository, FeaturesRepository>();
             services.AddScoped<IParkingTypeRepository, ParkingTypeRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
