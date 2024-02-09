@@ -12,6 +12,5 @@
 
         public ICollection<BlogImage> BlogImages { get; set; } = null!;
         public ICollection<BlogComment>? BlogComments { get; set; }
-
     }
 }

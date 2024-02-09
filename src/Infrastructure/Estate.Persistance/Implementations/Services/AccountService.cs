@@ -133,24 +133,20 @@ namespace Estate.Persistance.Implementations.Services
                     return false;
                 }
             }
-
-            var confirmationLink = url.Action("ChangePassword", "Account", new { account.UserNameOrEmail, Email = user.Email }, _http.HttpContext.Request.Scheme);
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var confirmationLink = url.Action("ChangePassword", "Account", new { Id = user.Id, Token = token }, _http.HttpContext.Request.Scheme);
             await _emailService.SendMailAsync(user.Email, "Password Reset", confirmationLink);
 
             return true;
         }
 
-        public async Task<bool> ChangePassword(string userNameOrEmail, FogotPasswordVM fogotPassword, ModelStateDictionary model)
+        public async Task<bool> ChangePassword(string id, string token, FogotPasswordVM fogotPassword, ModelStateDictionary model)
         {
-            AppUser user = await _userManager.FindByNameAsync(userNameOrEmail);
+            if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(token)) throw new NotFoundException("Your request was not found");
+            AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null)
             {
-                user = await _userManager.FindByEmailAsync(userNameOrEmail);
-                if (user == null)
-                {
-                    if (user == null) throw new NotFoundException("Your request was not found");
-                    return false;
-                }
+                if (user == null) throw new NotFoundException("Your request was not found");
             }
 
             var result = await _userManager.ChangePasswordAsync(user, fogotPassword.Password, fogotPassword.NewPassword);
@@ -161,7 +157,8 @@ namespace Estate.Persistance.Implementations.Services
                 {
                     errors += error.Description;
                 }
-                throw new WrongRequestException(errors);
+                model.AddModelError("Error", "Username, Email or Password is wrong");
+                return false;
             }
             _http.HttpContext.Response.Cookies.Delete("FavoriteEstate");
 

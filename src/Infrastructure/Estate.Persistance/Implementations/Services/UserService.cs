@@ -6,7 +6,6 @@ using Estate.Domain.Entities;
 using Estate.Domain.Enums;
 using Estate.Infrastructure.Exceptions;
 using Estate.Infrastructure.Implementations;
-using Estate.Persistance.Implementations.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,7 +13,6 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Estate.Persistance.Implementations.Services
 {
@@ -160,7 +158,7 @@ namespace Estate.Persistance.Implementations.Services
             if (string.IsNullOrWhiteSpace(userName)) throw new WrongRequestException("The request sent does not exist");
             AppUser user = await _userManager.Users
                 .Include(x => x.AppUserImages).Include(x => x.Agency)
-                .Include(x=> x.Favorites).ThenInclude(x => x.Product)
+                .Include(x => x.Favorites).ThenInclude(x => x.Product)
                 .Include(x => x.Products).ThenInclude(x => x.Category)
                 .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.UserName == userName);
             if (user == null) throw new NotFoundException("Your request was not found");
@@ -277,14 +275,15 @@ namespace Estate.Persistance.Implementations.Services
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
             AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null) throw new NotFoundException("Your request was not found");
-
-            var confirmationLink = url.Action("ChangePassword", "User", new { Email = user.Email }, _http.HttpContext.Request.Scheme);
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var confirmationLink = url.Action("ChangePassword", "User", new { Id = user.Id, Token = token }, _http.HttpContext.Request.Scheme);
             await _emailService.SendMailAsync(user.Email, "Password Reset", confirmationLink);
         }
 
-        public async Task<bool> ChangePassword(FogotPasswordVM fogotPassword, ModelStateDictionary model)
+        public async Task<bool> ChangePassword(string id, string token, FogotPasswordVM fogotPassword, ModelStateDictionary model)
         {
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
+            if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(token)) throw new NotFoundException("Your request was not found");
+            AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             var result = await _userManager.ChangePasswordAsync(user, fogotPassword.Password, fogotPassword.NewPassword);

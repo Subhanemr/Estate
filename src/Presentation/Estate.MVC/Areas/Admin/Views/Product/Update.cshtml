@@ -176,3 +176,16 @@
         </div>
     </div>
 </div>
+
+
+@section DeleteImages{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".cus-delete").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    btn.parentElement.remove();
+                });
+            });
+        });
+    </script>
+}

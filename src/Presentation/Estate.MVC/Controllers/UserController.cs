@@ -25,7 +25,7 @@ namespace Estate.MVC.Controllers
         public async Task<IActionResult> EditUser(string id, EditUserVM editUser)
         {
             bool result = await _service.EditUserAsync(id, editUser, ModelState);
-            if(!result)
+            if (!result)
             {
                 return View(editUser);
             }
@@ -36,14 +36,15 @@ namespace Estate.MVC.Controllers
             await _service.FogotPassword(id, Url);
             return View();
         }
-        public IActionResult ChangePassword()
+        public IActionResult ChangePassword(string token)
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(FogotPasswordVM fogotPassword)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePassword(string id, string token, FogotPasswordVM fogotPassword)
         {
-            bool result = await _service.ChangePassword(fogotPassword, ModelState);
+            bool result = await _service.ChangePassword(id, token, fogotPassword, ModelState);
             if (!result)
             {
                 return View(fogotPassword);
@@ -61,12 +62,12 @@ namespace Estate.MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> BeAAgent(string id, CreateAppUserAgentVM create)
         {
-            bool result = await _service.BeAAgentPost(id,create, ModelState, TempData);
+            bool result = await _service.BeAAgentPost(id, create, ModelState, TempData);
             if (!result)
             {
                 return View(create);
             }
-            return RedirectToAction("Index", "Home", new { Area = ""});
+            return RedirectToAction("Index", "Home", new { Area = "" });
         }
 
         public async Task<IActionResult> UpdateAgent(string id)

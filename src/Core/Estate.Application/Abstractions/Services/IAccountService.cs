@@ -11,6 +11,6 @@ namespace Estate.Application.Abstractions.Services
         Task LogOutAsync();
         Task<bool> ConfirmEmail(string token, string email);
         Task<bool> FogotPassword(FindAccountVM account, ModelStateDictionary model, IUrlHelper url);
-        Task<bool> ChangePassword(string userNameOrEmail, FogotPasswordVM fogotPassword, ModelStateDictionary model);
+        Task<bool> ChangePassword(string userNameOrEmail,string token, FogotPasswordVM fogotPassword, ModelStateDictionary model);
     }
 }

@@ -10,7 +10,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Security.Claims;
+using System.Text.RegularExpressions;
 
 namespace Estate.Persistance.Implementations.Services
 {
@@ -22,10 +25,9 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IWebHostEnvironment _env;
         private readonly ICLoudService _cLoud;
         private readonly UserManager<AppUser> _userManager;
-        private readonly IProductRepository _productRepository;
 
         public BlogService(IMapper mapper, IBlogRepository repository, IHttpContextAccessor http,
-            IWebHostEnvironment env, ICLoudService cLoud, UserManager<AppUser> userManager, IProductRepository productRepository)
+            IWebHostEnvironment env, ICLoudService cLoud, UserManager<AppUser> userManager)
         {
             _mapper = mapper;
             _repository = repository;
@@ -33,7 +35,6 @@ namespace Estate.Persistance.Implementations.Services
             _env = env;
             _cLoud = cLoud;
             _userManager = userManager;
-            _productRepository = productRepository;
         }
 
         public async Task<bool> CreateAsync(CreateBlogVM create, ModelStateDictionary model)
@@ -121,7 +122,7 @@ namespace Estate.Persistance.Implementations.Services
             return vMs;
         }
 
-        public async Task<ICollection<ItemBlogVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Blog, bool>>? expression,Expression<Func<Blog, object>>? orderExpression, int page = 1)
+        public async Task<ICollection<ItemBlogVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Blog, bool>>? expression, Expression<Func<Blog, object>>? orderExpression, int page = 1)
         {
             string[] includes = { $"{nameof(Blog.BlogImages)}" };
             ICollection<Blog> items = await _repository
@@ -236,9 +237,10 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes ={
-                $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.BlogReplies)}",
+                $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.BlogReplies)}.{nameof(BlogReply.AppUser)}",
+                $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.AppUser)}",
                 $"{nameof(Blog.BlogImages)}" };
-            Blog item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
+            Blog item = await _repository.GetByIdAsync(id, false, includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetBlogVM get = _mapper.Map<GetBlogVM>(item);
@@ -358,6 +360,63 @@ namespace Estate.Persistance.Implementations.Services
             UpdateBlogVM update = _mapper.Map<UpdateBlogVM>(item);
 
             return update;
+        }
+
+        public async Task<bool> CommentAsync(int blogId, string comment, ModelStateDictionary model)
+        {
+            if (string.IsNullOrWhiteSpace(comment))
+            {
+                model.AddModelError("Error", "Comment is required");
+                return false;
+            }
+            if (comment.Length > 1500)
+            {
+                model.AddModelError("Error", "Comment max characters is 1-1500");
+                return false;
+            }
+            if (!Regex.IsMatch(comment, @"^[A-Za-z0-9\s,\.]+$"))
+            {
+                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                return false;
+            }
+            BlogComment blogComment = new BlogComment
+            {
+                Comment = comment,
+                BlogId = blogId,
+                AppUserId = _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)
+            };
+
+            await _repository.AddComment(blogComment);
+            await _repository.SaveChanceAsync();
+            return true;
+        }
+        public async Task<bool> ReplyAsync(int blogCommnetId, string comment, ModelStateDictionary model)
+        {
+            if (string.IsNullOrWhiteSpace(comment))
+            {
+                model.AddModelError("Error", "Comment is required");
+                return false;
+            }
+            if (comment.Length > 1500)
+            {
+                model.AddModelError("Error", "Comment max characters is 1-1500");
+                return false;
+            }
+            if (!Regex.IsMatch(comment, @"^[A-Za-z0-9\s,\.]+$"))
+            {
+                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                return false;
+            }
+            BlogReply blogComment = new BlogReply
+            {
+                ReplyComment = comment,
+                BlogCommentId = blogCommnetId,
+                AppUserId = _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)
+            };
+
+            await _repository.AddReply(blogComment);
+            await _repository.SaveChanceAsync();
+            return true;
         }
     }
 }

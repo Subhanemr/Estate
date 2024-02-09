@@ -74,6 +74,7 @@ namespace Estate.MVC.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> FogotPassword(FindAccountVM account)
         {
             bool result = await _service.FogotPassword(account, ModelState, Url);
@@ -83,14 +84,14 @@ namespace Estate.MVC.Controllers
             }
             return RedirectToAction(nameof(FogotPasswordSended));
         }
-        public IActionResult ChangePassword(string userNameOrEmail)
+        public IActionResult ChangePassword(string id, string token)
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(string userNameOrEmail, FogotPasswordVM fogotPassword)
+        public async Task<IActionResult> ChangePassword(string id,string token, FogotPasswordVM fogotPassword)
         {
-            bool result = await _service.ChangePassword(userNameOrEmail, fogotPassword, ModelState);
+            bool result = await _service.ChangePassword(id, token, fogotPassword, ModelState);
             if (!result)
             {
                 return View(fogotPassword);
