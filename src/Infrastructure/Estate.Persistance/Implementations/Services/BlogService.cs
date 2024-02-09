@@ -121,11 +121,11 @@ namespace Estate.Persistance.Implementations.Services
             return vMs;
         }
 
-        public async Task<ICollection<ItemBlogVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Blog, object>>? orderExpression, int page = 1)
+        public async Task<ICollection<ItemBlogVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Blog, bool>>? expression,Expression<Func<Blog, object>>? orderExpression, int page = 1)
         {
             string[] includes = { $"{nameof(Blog.BlogImages)}" };
             ICollection<Blog> items = await _repository
-                    .GetAllWhereByOrder(orderException: orderExpression, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                    .GetAllWhereByOrder(expression, orderExpression, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
 
             ICollection<ItemBlogVM> vMs = _mapper.Map<ICollection<ItemBlogVM>>(items);
 
@@ -268,6 +268,14 @@ namespace Estate.Persistance.Implementations.Services
 
         public async Task<bool> UpdatePostAsync(int id, UpdateBlogVM update, ModelStateDictionary model)
         {
+            if (id <= 0) throw new WrongRequestException("The request sent does not exist");
+            string[] includes ={
+                $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.BlogReplies)}",
+                $"{nameof(Blog.BlogImages)}" };
+            Blog item = await _repository.GetByIdAsync(id, includes: includes);
+            update.Images = _mapper.Map<ICollection<IncludeBlogImageVM>>(item.BlogImages);
+            if (item == null) throw new NotFoundException("Your request was not found");
+
             if (!model.IsValid) return false;
 
             if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == update.Name.ToLower().Trim() && x.Id != id))
@@ -275,13 +283,6 @@ namespace Estate.Persistance.Implementations.Services
                 model.AddModelError("Name", "Name is exists");
                 return false;
             }
-
-            if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes ={
-                $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.BlogReplies)}",
-                $"{nameof(Blog.BlogImages)}" };
-            Blog item = await _repository.GetByIdAsync(id, includes: includes);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             if (update.MainPhoto != null)
             {

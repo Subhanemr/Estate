@@ -36,14 +36,27 @@
                             <span class="mdi mdi-account"></span>
                             <span>@Model.CreatedBy</span>
                         </a>
-                        <a href="post-page.html" class="comment">
+                        <a class="comment">
                             <span class="mdi mdi-comment-multiple-outline"></span>
                             <span>@Model.Commnets.Count</span>
                         </a>
                     </div>
                     <img src="@Model.Images.FirstOrDefault(x => x.IsPrimary == true)?.Url" alt="@Model.Name" width="770" height="520">
                     <p>
-                        @Model.Description
+                        @{
+                            for (int i = 0; i < Model.Description.Length; i += 123)
+                            {
+                                int remainingLength = Math.Min(123, Model.Description.Length - i);
+                                string substring = Model.Description.Substring(i, remainingLength);
+
+                                @Html.Raw(substring)
+
+                                if (i + remainingLength < Model.Description.Length)
+                                {
+                                    <br>
+                                }
+                            }
+                        }
                     </p>
                     <img src="@Model.Images.FirstOrDefault(x => x.IsPrimary == false)?.Url" alt="@Model.Name" width="770" height="520">
                     <div class="blog-post-footer">
@@ -61,86 +74,13 @@
                     </div>
                     <h4 class="text-center text-sm-left border-bottom">Posted By</h4>
 
-                    <div class="media media-mod-2">
-                        <div class="media-left">
-                            <img src="images/post_page-3.jpg" alt="" width="170" height="170">
-                        </div>
-                        <div class="media-body">
-                            <h6 class="text-sushi text-ubold">Phillip Sanders</h6>
-                            <p class="text-light">
-                                I am a professional blogger interested in everything taking place in cyberspace. I am running this website and try my best to make it a better place to visit. I post only the articles that are related to the topic and thoroughly analyze
-                                all visitors' comments to cater to their needs better.
-                            </p>
-                        </div>
-                    </div>
+                    @await Component.InvokeAsync("PostedBy", Model.CreatedBy)
 
                     <h4 class="border-bottom">Related Posts</h4>
                     <div class="row">
 
-                        <div class="col-xs-12 col-sm-6">
-                            <article class="thumbnail thumbnail-2 thumbnail-2-mod-1">
-                                <div class="img-wrap">
-                                    <a href="post-page.html" class="img-block">
-                                        <img src="images/three-column-blog-3.jpg" alt="" width="370" height="250">
-                                    </a>
-                                </div>
-                                <div class="caption">
-                                    <h5>
-                                        <a href="post-page.html" class="text-sushi">Moshe Silagi Sells 24-Property Portfolio for $224 Million</a>
-                                    </h5>
-                                    <div class="caption-meta">
-                                        <time datetime="2016">
-                                            <span class="mdi mdi-calendar"></span>
-                                            <span>May 14, 2016 at 7:52 pm</span>
-                                        </time>
-                                        <a href="#">
-                                            <span class="mdi mdi-account"></span>
-                                            <span>Admin</span>
-                                        </a>
-                                    </div>
-                                    <p>
-                                        An Israeli immigrant who built a vast real-estate empire after moving to the U.S. in 1976 has sold a 24-property portfolio in 12 states to a venture of Northstar Commercial Partners and Real Estate funds for $224 million. Moshe Silagi,
-                                        69 years old, said he is greatly reducing his property holdings as part of his plan to "be debt free and enjoy life."
-                                    </p>
-                                    <div class="post-meta-bottom">
-                                        <a href="post-page.html" class="meta-link">Real Estate</a>, &nbsp;
-                                        <a href="post-page.html" class="meta-link">News</a>, &nbsp;
-                                        <a href="post-page.html" class="meta-link">Berlin</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
+                        @await Component.InvokeAsync("Blogs", Model.Id)
 
-                        <div class="col-xs-12 col-sm-6">
-                            <article class="thumbnail thumbnail-2 thumbnail-2-mod-1">
-                                <div class="img-wrap">
-                                    <a href="post-page.html" class="img-block">
-                                        <img src="images/three-column-blog-5.jpg" alt="" width="370" height="250">
-                                    </a>
-                                </div>
-                                <div class="caption">
-                                    <h5>
-                                        <a href="post-page.html" class="text-sushi">3 Easy Ways to Keep Real Estate Agents Motivated</a>
-                                    </h5>
-                                    <div class="caption-meta">
-                                        <time datetime="2016">
-                                            <span class="mdi mdi-calendar"></span>
-                                            <span>May 30, 2016 at 7:52 pm</span>
-                                        </time>
-                                        <a href="#">
-                                            <span class="mdi mdi-account"></span>
-                                            <span>Admin</span>
-                                        </a>
-                                    </div>
-                                    <p>You've done all the prep work. Processes are in place. Leads are flowing in. Everyone has his role. Reaching the end-of-year goal seems like it isn't too far away. You just need time and the perseverance to keep plowing through.</p>
-                                    <div class="post-meta-bottom">
-                                        <a href="post-page.html" class="meta-link">Real Estate</a>, &nbsp;
-                                        <a href="post-page.html" class="meta-link">News</a>, &nbsp;
-                                        <a href="post-page.html" class="meta-link">Berlin</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
@@ -198,11 +138,15 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="sidebar-module">
+                    <h4>Recent Properties</h4>
+                    @await Component.InvokeAsync("BlogProduct")
+                </div>
                 <!-- Sidebar-->
                 <div class="sidebar sidebar-mod-2">
                     <div class="sidebar-module">
                         <div class="banner">
-                            <img src="images/left_sidebar_blog-4.jpg" alt="" width="340" height="500">
+                            <img src="~/assets/images/left_sidebar_blog-4.jpg" alt="" width="340" height="500">
                             <div class="banner-text">
                                 <h4>Banner 340x500</h4>
                             </div>

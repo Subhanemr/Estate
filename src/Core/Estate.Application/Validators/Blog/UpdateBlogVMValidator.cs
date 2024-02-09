@@ -7,9 +7,6 @@ namespace Estate.Application.Validators.Blog
     {
         public UpdateBlogVMValidator()
         {
-            RuleFor(x => x.ImageIds).NotNull().WithMessage("Image was not be emty");
-            RuleForEach(x => x.ImageIds).GreaterThan(0).WithMessage("Image must be greater than 0");
-
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Name is required")
                 .Length(2, 50).WithMessage("Name max characters is 2-50")

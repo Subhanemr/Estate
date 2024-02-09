@@ -414,16 +414,18 @@ namespace Estate.Persistance.Implementations.Services
 
         public async Task<bool> UpdateAgentPostAsync(string id, UpdateAppUserAgentVM update, ModelStateDictionary model, ITempDataDictionary tempData)
         {
+            if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
+            AppUser user = await _userManager.Users
+                .Include(x => x.AppUserImages).Include(x => x.Agency).FirstOrDefaultAsync(x => x.Id == id);
+            update.Images = _mapper.Map<ICollection<IncludeAppUserImage>>(user.AppUserImages);
+            if (user == null) throw new NotFoundException("Your request was not found");
+            if (!model.IsValid) return false;
             if (!update.TermsConditions)
             {
                 update.Agencys = _mapper.Map<ICollection<IncludeAgencyVM>>(await _agencyRepository.GetAll().ToListAsync());
                 model.AddModelError("TermsConditions", "Plese Read and accept rules");
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.Users
-                .Include(x => x.AppUserImages).Include(x => x.Agency).FirstOrDefaultAsync(x => x.Id == id);
-            if (user == null) throw new NotFoundException("Your request was not found");
 
             if (!await _agencyRepository.CheckUniqueAsync(x => x.Id == update.AgencyId))
             {

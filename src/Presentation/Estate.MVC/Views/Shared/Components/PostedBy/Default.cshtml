@@ -1,0 +1,29 @@
+﻿@model GetAppUserVM
+
+<div class="media media-mod-2">
+    <div class="media-left">
+        <img src="@Model.Img" alt="@Model.UserName" style="width:170px; height: 170px; border-radius: 7px;">
+    </div>
+    <div class="media-body">
+        <h6 class="text-sushi text-ubold">@Model.Name @Model.Surname</h6>
+        @if (!string.IsNullOrWhiteSpace(Model.About))
+        {
+            <p class="text-light">
+                @{
+                    for (int i = 0; i < Model.About.Length; i += 132)
+                    {
+                        int remainingLength = Math.Min(132, Model.About.Length - i);
+                        string substring = Model.About.Substring(i, remainingLength);
+
+                        @Html.Raw(substring)
+
+                        if (i + remainingLength < Model.About.Length)
+                        {
+                            <br>
+                        }
+                    }
+                }
+            </p>
+        }
+    </div>
+</div>

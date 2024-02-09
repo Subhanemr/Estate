@@ -1,0 +1,32 @@
+﻿@model ICollection<ItemBlogVM>
+
+@foreach (var blog in Model)
+{
+    <div class="col-xs-12 col-sm-6">
+        <article class="thumbnail thumbnail-2 thumbnail-2-mod-1">
+            <div class="img-wrap">
+                <a asp-action="Detail" asp-controller="Blog" asp-route-id="@blog.Id" class="img-block">
+                    <img src="@blog.Images.FirstOrDefault(x => x.IsPrimary == true).Url" alt="@blog.Name" width="370" height="250">
+                </a>
+            </div>
+            <div class="caption">
+                <h5>
+                    <a asp-action="Detail" asp-controller="Blog" asp-route-id="@blog.Id" class="text-sushi">@blog.Name</a>
+                </h5>
+                <div class="caption-meta">
+                    <time datetime="2016">
+                        <span class="mdi mdi-calendar"></span>
+                        <span>@blog.CreateAt.ToString("MMM dd, yyyy 'at' h:mm tt")</span>
+                    </time>
+                    <a asp-action="Detail" asp-controller="Agent" asp-route-id="@blog.CreatedBy">
+                        <span class="mdi mdi-account"></span>
+                        <span>@blog.CreatedBy</span>
+                    </a>
+                </div>
+                <p>
+                    @(blog.Description.Length > 45 ? blog.Description.Substring(0, 45) + " ..." : blog.Description)
+                </p>
+            </div>
+        </article>
+    </div>
+}

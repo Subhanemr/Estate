@@ -9,6 +9,5 @@ namespace Estate.Application.ViewModels
         public IFormFile? HoverPhoto { get; init; }
 
         public ICollection<IncludeBlogImageVM>? Images { get; set; }
-        public List<int>? ImageIds { get; set; }
     }
 }

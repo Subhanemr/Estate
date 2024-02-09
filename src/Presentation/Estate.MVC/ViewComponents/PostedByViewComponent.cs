@@ -7,22 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Estate.MVC.ViewComponents
 {
-    public class AppUserViewComponent : ViewComponent
+    public class PostedByViewComponent : ViewComponent
     {
-        private readonly IHttpContextAccessor _http;
-        private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IMapper _mapper;
 
-        public AppUserViewComponent(IHttpContextAccessor http, UserManager<AppUser> userManager, IMapper mapper)
+        public PostedByViewComponent(UserManager<AppUser> userManager, IMapper mapper)
         {
-            _http = http;
             _userManager = userManager;
             _mapper = mapper;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(string createdBy)
         {
-            AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
+            if (string.IsNullOrWhiteSpace(createdBy)) throw new WrongRequestException("The request sent does not exist");
+            AppUser user = await _userManager.FindByNameAsync(createdBy);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             GetAppUserVM get = _mapper.Map<GetAppUserVM>(user);

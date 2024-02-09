@@ -223,7 +223,7 @@ namespace Estate.Persistance.Implementations.Services
             return vMs;
         }
 
-        public async Task<ICollection<ItemProductVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Product, object>>? orderExpression, int page = 1)
+        public async Task<ICollection<ItemProductVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Product, object>>? orderExpression, int page)
         {
             string[] includes ={
                 $"{nameof(Product.Category)}",
@@ -408,12 +408,6 @@ namespace Estate.Persistance.Implementations.Services
 
         public async Task<bool> UpdatePostAsync(int id, UpdateProductVM update, ModelStateDictionary model, ITempDataDictionary tempData)
         {
-            if (!model.IsValid)
-            {
-                await UpdatePopulateDropdowns(update);
-                return false;
-            }
-
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes ={
                 $"{nameof(Product.Category)}",
@@ -424,7 +418,14 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.ProductViewTypes)}.{nameof(ProductViewType.ViewType)}",
                 $"{nameof(Product.ProductImages)}" };
             Product item = await _repository.GetByIdAsync(id, includes: includes);
+            update.Images = _mapper.Map<ICollection<IncludeProductImageVM>>(item.ProductImages);
             if (item == null) throw new NotFoundException("Your request was not found");
+
+            if (!model.IsValid)
+            {
+                await UpdatePopulateDropdowns(update);
+                return false;
+            }
 
             if (!await _categoryRepository.CheckUniqueAsync(x => x.Id == update.CategoryId))
             {
