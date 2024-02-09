@@ -7,7 +7,7 @@
         @foreach (var agecy in Model)
         {
             <li>
-                <a asp-action="Index" asp-controller="Agency" asp-route-id="@agecy.Id">@agecy.Name</a>
+                <a asp-action="Detail" asp-controller="Agency" asp-route-id="@agecy.Id">@agecy.Name</a>
             </li>
         }
     </ul>

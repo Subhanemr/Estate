@@ -79,12 +79,12 @@ namespace Estate.MVC.Areas.Admin.Controllers
             return View(await _service.UpdateAsync(id));
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int id, CreateProductVM create)
+        public async Task<IActionResult> Update(int id, UpdateProductVM update)
         {
-            bool result = await _service.CreateAsync(create, ModelState, TempData);
+            bool result = await _service.UpdatePostAsync(id,update, ModelState, TempData);
             if (!result)
             {
-                return View(create);
+                return View(update);
             }
             return RedirectToAction("Index", "Home", new { Area = "" });
         }

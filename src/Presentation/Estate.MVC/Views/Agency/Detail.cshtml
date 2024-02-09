@@ -1,0 +1,43 @@
+﻿@model GetAgencyVM
+
+<section class="section-full text-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Our Team</h1>
+                <p></p>
+                <ol class="breadcrumb">
+                    <li>
+                        <a asp-action="Index" asp-controller="Home">Home</a>
+                    </li>
+                    <li class="active">Agency</li>
+                    <li class="active">@Model.Name</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section Our Team-->
+<!--Section 4 Columns Slider-->
+<section class="section-md text-center text-sm-left text-left">
+    <div class="container">
+        <h2>@Model.Name Agency</h2>
+        <hr>
+        <div class="row offset-11">
+            @foreach (var agent in Model.AppUsers)
+            {
+                <div class="col-xs-12 col-sm-4 col-lg-3">
+                    <article class="thumbnail thumbnail-3">
+                        <div class="img-wrap">
+                            <img src="@agent.Img" alt="@agent.UserName" style="width:270px; height:270px; border-radius:7px;" width="270" height="270">
+                        </div>
+                        <div class="caption">
+                            <a href="personal-page.html" class="h4 text-sushi">@agent.Name @agent.Surname</a>
+                            <p>@(agent.About.Length > 44 ? agent.About.Substring(0, 44) + " ..." : agent.About)</p>
+                        </div>
+                    </article>
+                </div>
+            }
+        </div>
+    </div>
+</section>

@@ -109,14 +109,16 @@
                     <input asp-for="MainPhoto" class="form-control" placeholder="MainImage" accept="image/*">
                     <span asp-validation-for="MainPhoto" class="text-danger"></span>
                 </div>
-                @foreach (var productImage in Model.Images.Where(pi => pi.IsPrimary == null))
-                {
-                    <div class="position-relative m-3 col-3">
-                        <img src="~/img//@productImage.Url" width="150px" height="200px" />
-                        <button type="button" style="left:13px; top:2px;" class="cus-delete btn btn-danger opacity-50 text-white position-absolute">X</button>
-                        <input asp-for="ImageIds" value="@productImage.Id" type="hidden" class="form-control">
-                    </div>
-                }
+                <div class="form-group d-flex container row">
+                    @foreach (var productImage in Model.Images.Where(pi => pi.IsPrimary == null))
+                    {
+                        <div class="position-relative m-3 col-3">
+                            <img src="@productImage.Url" width="150px" height="200px" />
+                            <button type="button" style="left:13px; top:2px;" class="cus-delete btn btn-danger opacity-50 text-white position-absolute">X</button>
+                            <input asp-for="ImageIds" value="@productImage.Id" type="hidden" class="form-control">
+                        </div>
+                    }
+                </div>
                 <div class="form-group">
                     <label asp-for="Photos">Other Images</label>
                     <input asp-for="Photos" class="form-control" placeholder="Photos" accept="image/*">

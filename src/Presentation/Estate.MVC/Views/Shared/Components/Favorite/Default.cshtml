@@ -1,0 +1,5 @@
+﻿@model GetAppUserVM
+
+<li class="">
+    <a asp-action="WishList" asp-controller="User" asp-route-id="@Model.Id"><i class="fa-regular fa-heart"></i> @Model.Favorites.Count</a>
+</li>

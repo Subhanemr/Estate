@@ -20,6 +20,9 @@
                                     $@product.Price
                                     <span class="mon text-regular">@product.OrderDayOrMoth</span>
                                 </span>
+                                <a style="margin-left:135px;" asp-action="DeleteItem" asp-controller="Favorite" asp-route-id="@product.Id">
+                                    <i class="fa-sharp fa-regular fa-trash"></i>
+                                </a>
                                 <ul class="describe-1">
                                     <li>
                                         <span class="icon-square icon-sm">
