@@ -370,8 +370,9 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes ={
+                $"{nameof(Product.ProductComments)}.{nameof(ProductComment.ProductReplies)}.{nameof(BlogReply.AppUser)}",
+                $"{nameof(Product.ProductComments)}.{nameof(ProductComment.AppUser)}",
                 $"{nameof(Product.Category)}",
-                $"{nameof(Product.ProductComments)}.{nameof(ProductComment.ProductReplies)}",
                 $"{nameof(Product.ProductFeatures)}.{nameof(ProductFeatures.Features)}",
                 $"{nameof(Product.ProductExteriorTypes)}.{nameof(ProductExteriorType.ExteriorType)}",
                 $"{nameof(Product.ProductParkingTypes)}.{nameof(ProductParkingType.ParkingType)}",
