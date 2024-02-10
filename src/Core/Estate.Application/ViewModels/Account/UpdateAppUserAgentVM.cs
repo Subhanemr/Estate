@@ -4,8 +4,6 @@ namespace Estate.Application.ViewModels
 {
     public record UpdateAppUserAgentVM
     {
-        public string? Id { get; set; }
-
         public string PhoneNumber { get; init; }
         public string? PhoneSecond { get; init; }
         public string Address { get; init; }

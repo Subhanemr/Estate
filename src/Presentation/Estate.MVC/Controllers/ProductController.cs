@@ -13,12 +13,12 @@ namespace Estate.MVC.Controllers
             _service = service;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string? search, int? categoryId, int order = 1, int page = 1)
         {
-            return View();
+            return View(model: await _service.GetFilteredAsync(search, 10, page, order, categoryId));
         }
         [Authorize(Roles = "Agent")]
-        public async Task<IActionResult> SoftDelete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             await _service.SoftDeleteAsync(id);
 

@@ -5,6 +5,7 @@ using Estate.Infrastructure.Exceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Security.Claims;
 
 namespace Estate.MVC.ViewComponents
@@ -24,12 +25,37 @@ namespace Estate.MVC.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            AppUser user = await _userManager.Users.Include(x => x.Favorites).FirstOrDefaultAsync(x=>x.Id == _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-            if (user == null) throw new NotFoundException("Your request was not found");
+            ICollection<FavoriteItemVM> wishLists = new List<FavoriteItemVM>();
 
-            GetAppUserVM get = _mapper.Map<GetAppUserVM>(user);
+            if (_http.HttpContext.User.Identity.IsAuthenticated)
+            {
+                AppUser user = await _userManager.Users.Include(x => x.Favorites).FirstOrDefaultAsync(x => x.Id == _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                if (user == null) throw new NotFoundException("Your request was not found");
 
-            return View(get);
+                foreach (Favorite item in user.Favorites)
+                {
+                    wishLists.Add(new FavoriteItemVM
+                    {
+                        Id = item.ProductId
+                    });
+                }
+            }
+            else
+            {
+                if (_http.HttpContext.Request.Cookies["FavoriteEstate"] is not null)
+                {
+                    ICollection<FavoriteCookieVM> wishes = JsonConvert.DeserializeObject<ICollection<FavoriteCookieVM>>(_http.HttpContext.Request.Cookies["FavoriteEstate"]);
+                    foreach (FavoriteCookieVM wishListCookieItem in wishes)
+                    {
+                        FavoriteItemVM wish = new FavoriteItemVM
+                        {
+                            Id = wishListCookieItem.Id
+                        };
+                        wishLists.Add(wish);
+                    }
+                }
+            }
+            return View(wishLists);
         }
     }
 }

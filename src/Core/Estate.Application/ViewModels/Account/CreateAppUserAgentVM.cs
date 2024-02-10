@@ -5,8 +5,6 @@ namespace Estate.Application.ViewModels
 {
     public record CreateAppUserAgentVM
     {
-        public string? Id { get; set; }
-
         public string PhoneNumber { get; init; }
         public string? PhoneSecond { get; init; }
         public string Address { get; init; }

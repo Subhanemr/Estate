@@ -12,6 +12,11 @@ namespace Estate.MVC.Controllers
             _service = service;
         }
 
+        public async Task<IActionResult> WishList()
+        {
+            return View(await _service.WishList());
+        }
+
         public async Task<IActionResult> AddWishList(int id)
         {
             await _service.AddWishList(id);

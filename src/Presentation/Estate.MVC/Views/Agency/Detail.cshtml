@@ -32,7 +32,7 @@
                             <img src="@agent.Img" alt="@agent.UserName" style="width:270px; height:270px; border-radius:7px;" width="270" height="270">
                         </div>
                         <div class="caption">
-                            <a href="personal-page.html" class="h4 text-sushi">@agent.Name @agent.Surname</a>
+                            <a asp-action="Agent" asp-controller="Agency" asp-route-id="@agent.Id" class="h4 text-sushi">@agent.Name @agent.Surname</a>
                             <p>@(agent.About.Length > 44 ? agent.About.Substring(0, 44) + " ..." : agent.About)</p>
                         </div>
                     </article>

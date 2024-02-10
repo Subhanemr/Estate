@@ -128,7 +128,7 @@
                                 <a asp-action="Index" asp-controller="Home" asp-area="">Home</a>
                             </li>
                             <li class="">
-                                <a href="./">Catalog</a>
+                                <a asp-action="Index" asp-controller="Product">Catalog</a>
                             </li>
                             @await Component.InvokeAsync("Agency")
                             <li class="">

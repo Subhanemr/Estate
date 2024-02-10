@@ -251,32 +251,38 @@ namespace Estate.Persistance.Implementations.Services
             {
                 case 1:
                     items = await _repository
-                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true 
+                    && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                         x => x.Name, false, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 2:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
+                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.CreateAt, false, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 3:
                     items = await _repository
-                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
+                    && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                         x => x.Name, true, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 4:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
+                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.CreateAt, true, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 5:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
+                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.Price, false, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 6:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
+                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.Price, true, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
             }
@@ -317,32 +323,38 @@ namespace Estate.Persistance.Implementations.Services
             {
                 case 1:
                     items = await _repository
-                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
+                    && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                         x => x.Name, false, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 2:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
+                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.CreateAt, false, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 3:
                     items = await _repository
-                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
+                    && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                         x => x.Name, true, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 4:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
+                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.CreateAt, true, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 5:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
+                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.Price, false, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 6:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
+                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
                       x => x.Price, true, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
             }
@@ -350,7 +362,7 @@ namespace Estate.Persistance.Implementations.Services
             ProductFilterVM filtered = new ProductFilterVM
             {
                 Products = _mapper.Map<ICollection<ItemProductVM>>(items),
-                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll().ToListAsync())
+                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll().ToListAsync()),
             };
             PaginationVM<ProductFilterVM> pagination = new PaginationVM<ProductFilterVM>
             {
@@ -477,8 +489,8 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.FeatureIds.Contains(ps.FeaturesId)).ToList();
             foreach (var featureRemove in featureToRemove)
             {
-                item.ProductFeatures.Remove(featureRemove);
-                //_repository.DeleteFeatures(featureRemove);
+                //item.ProductFeatures.Remove(featureRemove);
+                _repository.DeleteFeatures(featureRemove);
             }
 
             ICollection<ProductFeatures> featureToAdd = update.FeatureIds
@@ -494,8 +506,8 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.ExteriorTypeIds.Contains(ps.ExteriorTypeId)).ToList();
             foreach (var exteriorTypeRemove in exteriorTypeToRemove)
             {
-                item.ProductExteriorTypes.Remove(exteriorTypeRemove);
-                //_repository.DeleteExteriorType(exteriorTypeRemove);
+                //item.ProductExteriorTypes.Remove(exteriorTypeRemove);
+                _repository.DeleteExteriorType(exteriorTypeRemove);
             }
 
             ICollection<ProductExteriorType> exteriorTypeToAdd = update.ExteriorTypeIds
@@ -511,8 +523,8 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.ParkingTypeIds.Contains(ps.ParkingTypeId)).ToList();
             foreach (var parkingTypeRemove in parkingTypeToRemove)
             {
-                item.ProductParkingTypes.Remove(parkingTypeRemove);
-                //_repository.DeleteParkingType(parkingTypeRemove);
+                //item.ProductParkingTypes.Remove(parkingTypeRemove);
+                _repository.DeleteParkingType(parkingTypeRemove);
             }
 
             ICollection<ProductParkingType> parkingTypeToAdd = update.ParkingTypeIds
@@ -528,8 +540,8 @@ namespace Estate.Persistance.Implementations.Services
                     .Where(ps => !update.RoofTypeIds.Contains(ps.RoofTypeId)).ToList();
             foreach (var roofTyperemove in roofTypeToRemove)
             {
-                item.ProductRoofTypes.Remove(roofTyperemove);
-                //_repository.DeleteRoofType(roofTyperemove);
+                //item.ProductRoofTypes.Remove(roofTyperemove);
+                _repository.DeleteRoofType(roofTyperemove);
             }
 
             ICollection<ProductRoofType> roofTypeToAdd = update.RoofTypeIds
@@ -545,8 +557,8 @@ namespace Estate.Persistance.Implementations.Services
                 .Where(ps => !update.ViewTypeIds.Contains(ps.ViewTypeId)).ToList();
             foreach (var viewTypeRemove in viewTypeToRemove)
             {
-                item.ProductViewTypes.Remove(viewTypeRemove);
-                //_repository.DeleteViewType(viewTypeRemove);
+                //item.ProductViewTypes.Remove(viewTypeRemove);
+                _repository.DeleteViewType(viewTypeRemove);
             }
 
             ICollection<ProductViewType> viewTypeToAdd = update.ViewTypeIds

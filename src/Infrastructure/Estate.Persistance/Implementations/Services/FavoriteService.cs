@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Estate.Application.Abstractions.Repositories;
+﻿using Estate.Application.Abstractions.Repositories;
 using Estate.Application.Abstractions.Services;
 using Estate.Application.ViewModels;
 using Estate.Domain.Entities;
@@ -18,7 +17,7 @@ namespace Estate.Persistance.Implementations.Services
         private readonly IProductRepository _productRepository;
         private readonly UserManager<AppUser> _userManager;
 
-        public FavoriteService(UserManager<AppUser> userManager, IHttpContextAccessor http, 
+        public FavoriteService(UserManager<AppUser> userManager, IHttpContextAccessor http,
             IProductRepository productRepository)
         {
             _userManager = userManager;
@@ -26,13 +25,45 @@ namespace Estate.Persistance.Implementations.Services
             _productRepository = productRepository;
         }
 
+        public async Task<ICollection<FavoriteItemVM>> WishList()
+        {
+            ICollection<FavoriteItemVM> wishLists = new List<FavoriteItemVM>();
+
+            string[] includes = { $"{nameof(Product.ProductImages)}" };
+            if (_http.HttpContext.Request.Cookies["FavoriteEstate"] is not null)
+            {
+                ICollection<FavoriteCookieVM> wishes = JsonConvert.DeserializeObject<ICollection<FavoriteCookieVM>>(_http.HttpContext.Request.Cookies["FavoriteEstate"]);
+                foreach (FavoriteCookieVM wishListCookieItem in wishes)
+                {
+                    Product product = await _productRepository.GetByIdAsync(wishListCookieItem.Id, false, includes);
+                    if (product is not null)
+                    {
+                        FavoriteItemVM wish = new FavoriteItemVM
+                        {
+                            Id = wishListCookieItem.Id,
+                            Name = product.Name,
+                            Price = product.Price,
+                            Image = product.ProductImages.FirstOrDefault(x => x.IsPrimary == true).Url,
+                            OrderDayOrMoth = product.OrderDayOrMoth,
+                            Description = product.Description,
+                            Area = product.Area,
+                            Bedrooms = product.Bedrooms,
+                            Bathrooms = product.Bathrooms,
+                            Garages = product.Garages
+                        };
+                        wishLists.Add(wish);
+                    }
+                }
+            }
+
+            return wishLists;
+        }
         public async Task AddWishList(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             Product product = await _productRepository.GetByIdAsync(id);
             if (product == null) throw new NotFoundException("Your request was not found");
             ICollection<FavoriteCookieVM> cart;
-            ICollection<IncludeProductVM> cartItems;
 
             if (_http.HttpContext.User.Identity.IsAuthenticated)
             {
