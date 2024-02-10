@@ -289,6 +289,16 @@ namespace Estate.Persistance.Implementations.Services
             user.Surname = user.Surname.Capitalize();
             if (update.Photo != null)
             {
+                if (!update.Photo.ValidateType())
+                {
+                    model.AddModelError("Photo", "File Not supported");
+                    return false;
+                }
+                if (!update.Photo.ValidataSize())
+                {
+                    model.AddModelError("Photo", "Image should not be larger than 10 mb");
+                    return false;
+                }
                 await _cLoud.FileDeleteAsync(user.Img);
                 user.Img = await _cLoud.FileCreateAsync(update.Photo);
             }
