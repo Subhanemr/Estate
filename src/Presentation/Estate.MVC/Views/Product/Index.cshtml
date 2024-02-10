@@ -21,44 +21,19 @@
     <div class="container position-margin-top position-margin-top-mod-1">
         <div class="search-form-wrap bg-white container-shadow">
             <h3>Find Your Home</h3>
-            <form action="#" name="search-form" class="form-variant-1">
+            <form asp-action="Index" asp-controller="Product" asp-route-order="@Model.Order" name="search-form" class="form-variant-1">
                 <div class="form-group">
-                    <label for="keyword" class="form-label">Keyword</label>
-                    <input id="keyword" type="text" name="keyword" placeholder="Any" class="form-control">
+                    <label for="search" class="form-label">Search now</label>
+                    <input type="text" name="search" placeholder="Search now" value="@(Model.Search == null? "":Model.Search)" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="select-search-1" class="form-label">Location</label>
-                    <select id="select-search-1" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                        <option value="Any" selected="selected">Any</option>
-                        <option value="Denver">Denver</option>
-                        <option value="Houston">Houston</option>
-                        <option value="Las Vegas">Las Vegas</option>
-                        <option value="Orlando">Orlando</option>
-                        <option value="Phoenix">Phoenix</option>
-                        <option value="San Diego">San Diego</option>
-                        <option value="Miami">Miami</option>
-                        <option value="Atlanta">Atlanta</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="select-search-2" class="form-label">Property Status</label>
-                    <select id="select-search-2" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                        <option value="Any" selected="selected">Any</option>
-                        <option value="Vacant land">Vacant land</option>
-                        <option value="Commercial">Commercial</option>
-                        <option value="Residential">Residential</option>
-                        <option value="Homes">Homes</option>
-                        <option value="Condos">Condos</option>
-                        <option value="Townhouses">Townhouses</option>
-                        <option value="Foreclosures">Foreclosures</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="select-search-3" class="form-label">Property Type</label>
-                    <select id="select-search-3" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                        <option value="Any" selected="selected">Any</option>
-                        <option value="Under Construction">Under Construction</option>
-                        <option value="Ready to Move">Ready to Move</option>
+                    <label for="select-search-1" class="form-label">Categories</label>
+                    <select name="categoryId" data-minimum-results-for-search="Infinity" class="form-control select-filter">
+                        <option value="" selected="selected">Any</option>
+                        @foreach (var category in Model.Item.Categories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
                     </select>
                 </div>
                 <div class="form-group width-1">
@@ -67,11 +42,10 @@
                         <br>
                     </span>
                     <div class="form-inline-flex-xs">
-                        <input id="range-1" type="text" name="range-2" class="rd-range-input-value rd-range-input-value-1 form-control">
+                        <input placeholder="Min Price" type="number" name="minPrice" value="@(Model.MinPrice == null? 0:Model.MinPrice)" style="width:90%;" class="rd-range-input-value rd-range-input-value-1 form-control">
                         <span class="text-abbey dash">—</span>
-                        <input id="range-2" type="text" name="range-3" class="rd-range-input-value rd-range-input-value-2 form-control">
+                        <input placeholder="Max Price" type="number" name="maxPrice" value="@(Model.MaxPrice == null? 0:Model.MaxPrice)" style="width:90%;" class="rd-range-input-value rd-range-input-value-2 form-control">
                     </div>
-                    <div data-min="100" data-max="10000" data-start="[600, 9500]" data-step="50" data-tooltip="true" data-min-diff="100" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2" class="rd-range"></div>
                 </div>
                 <div class="form-group width-1">
                     <span>
@@ -79,37 +53,21 @@
                         <br>
                     </span>
                     <div class="form-inline-flex-xs">
-                        <input id="range-3" type="text" name="range-2" class="rd-range-input-value rd-range-input-value-3 form-control">
+                        <input placeholder="Min Area" type="number" name="minArea" value="@(Model.MinArea == null? 0:Model.MinArea)" style="width:90%;" class="rd-range-input-value rd-range-input-value-3 form-control">
                         <span class="text-abbey dash">—</span>
-                        <input id="range-4" type="text" name="range-3" class="rd-range-input-value rd-range-input-value-4 form-control">
+                        <input placeholder="Max Area" type="number" name="maxArea" value="@(Model.MaxArea == null? 0:Model.MaxArea)" style="width:90%;" class="rd-range-input-value rd-range-input-value-4 form-control">
                     </div>
-                    <div data-min="500" data-max="22000" data-start="[2000, 20000]" data-step="50" data-tooltip="true" data-min-diff="500" data-input=".rd-range-input-value-3" data-input-2=".rd-range-input-value-4" class="rd-range"></div>
                 </div>
                 <div class="form-group width-2">
                     <label for="select-search-7" class="form-label">Min Beds</label>
-                    <select id="select-search-7" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                        <option value="Any" selected="selected">Any</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
+                    <input type="number" placeholder="Min Beds" name="minBeds" value="@(Model.MinBeds == null? 0:Model.MinBeds)" style="width:90%;" class="rd-range-input-value rd-range-input-value-4 form-control">
+
                 </div>
                 <div class="form-group width-2">
                     <label for="select-search-8" class="form-label">Min Baths</label>
-                    <select id="select-search-8" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                        <option value="Any" selected="selected">Any</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
+                    <input type="number" placeholder="Min Baths" name="minBaths" value="@(Model.MinBaths == null? 0:Model.MinBaths)" style="width:90%;" class="rd-range-input-value rd-range-input-value-4 form-control">
                 </div>
-                <button class="btn btn-sm btn-sushi btn-min-width-sm">Search</button>
+                <button type="submit" class="btn btn-sm btn-sushi btn-min-width-sm">Search</button>
             </form>
         </div>
     </div>
@@ -122,14 +80,20 @@
                 <!-- RD SelectMenu-->
                 <div class="sort-input">
                     <div class="form-group form-group-mod-1">
-                        <label for="sort-1" class="form-label">Sorting</label>
-                        <!--Select 2-->
-                        <select id="sort-1" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                            <option value="By Price" selected="selected">By Price</option>
-                            <option value="By Date">By Date</option>
-                            <option value="By Square">By Square</option>
-                            <option value="By Location">By Location</option>
-                        </select>
+                        <form asp-action="Index" asp-controller="Product" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+                              asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+                              asp-route-order="@Model.Search" asp-route-categoryId="@Model.CategoryId" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice">
+                            <label for="sort-1" class="form-label">Sorting</label>
+                            <!--Select 2-->
+                            <select id="sort-1" data-minimum-results-for-search="Infinity" class="form-control select-filter">
+                                <option value="1">Name</option>
+                                <option value="2">Created at</option>
+                                <option value="5">Price</option>
+                                <option value="3">Name by Descending</option>
+                                <option value="4">Created at by Descending</option>
+                                <option value="6">Price by Descending</option>
+                            </select>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -171,8 +135,8 @@
                                                 <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
                                                 <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
                                                 <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
-                                            </g>
-                                          </svg>
+                                                    </g>
+                                                  </svg>
                                             </span>@product.Area sq ft
                                         </li>
                                         <li>

@@ -56,7 +56,7 @@
               asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-minBeds="@Model.MinBeds" class="row">
             <label for="minBaths">Min Baths</label>
             <div class="d-flex">
-                <input type="number" class="form-control" placeholder="Min Area" name="minBaths" value="@(Model.MinBaths == null? 0:Model.MinBaths)">
+                <input type="number" class="form-control" placeholder="Min Baths" name="minBaths" value="@(Model.MinBaths == null? 0:Model.MinBaths)">
             </div>
         </form>
         <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId"
@@ -65,7 +65,7 @@
               asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-minBaths="@Model.MinBaths" class="row">
             <label for="minBeds">Min Beds</label>
             <div class="d-flex">
-                <input type="number" class="form-control" placeholder="Max Area" name="minBeds" value="@(Model.MinBeds == null? 0:Model.MinBeds)">
+                <input type="number" class="form-control" placeholder="Min Beds" name="minBeds" value="@(Model.MinBeds == null? 0:Model.MinBeds)">
             </div>
         </form>
     </div>
