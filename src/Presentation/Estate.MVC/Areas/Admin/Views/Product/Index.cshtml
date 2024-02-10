@@ -6,13 +6,72 @@
 
 <div class="d-flex justify-content-end">
     <div class="input-group mx-3">
-        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId"
+        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+              asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+        asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
               asp-route-order="@Model.Order">
             <input type="text" class="form-control" placeholder="Search now" name="search" value="@(Model.Search == null? "":Model.Search)">
         </form>
     </div>
-    <form asp-action="Index" asp-controller="Product"
-          asp-route-order="@Model.Search" asp-route-categoryId="@Model.CategoryId" class="my-2 ">
+    <div class="input-group d-flex">
+        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+              asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+              asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-maxPrice="@Model.MaxPrice" class="row">
+            <label for="minPrice">Min Price</label>
+            <div class="d-flex">
+                <input type="number" class="form-control" placeholder="Min Price" name="minPrice" value="@(Model.MinPrice == null? 0:Model.MinPrice)">
+            </div>
+        </form>
+        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+              asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+              asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-minPrice="@Model.MinPrice" class="row">
+            <label for="maxPrice">Max Price</label>
+            <div class="d-flex">
+                <input type="number" class="form-control" placeholder="Max Price" name="maxPrice" value="@(Model.MaxPrice == null? 0:Model.MaxPrice)">
+            </div>
+        </form>
+    </div>
+
+    <div class="input-group d-flex">
+        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+        asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
+              asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-maxArea="@Model.MaxArea" class="row">
+            <label for="minArea">Min Area</label>
+            <div class="d-flex">
+                <input type="number" class="form-control" placeholder="Min Area" name="minArea" value="@(Model.MinArea == null? 0:Model.MinArea)">
+            </div>
+        </form>
+        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+              asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-minArea="@Model.MinArea" class="row">
+            <label for="maxArea">Max Area</label>
+            <div class="d-flex">
+                <input type="number" class="form-control" placeholder="Max Area" name="maxArea" value="@(Model.MaxArea == null? 0:Model.MaxArea)">
+            </div>
+        </form>
+    </div>
+    <div class="input-group d-flex">
+        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId"
+              asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+              asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
+              asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-minBeds="@Model.MinBeds" class="row">
+            <label for="minBaths">Min Baths</label>
+            <div class="d-flex">
+                <input type="number" class="form-control" placeholder="Min Area" name="minBaths" value="@(Model.MinBaths == null? 0:Model.MinBaths)">
+            </div>
+        </form>
+        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId"
+              asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+              asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
+              asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-minBaths="@Model.MinBaths" class="row">
+            <label for="minBeds">Min Beds</label>
+            <div class="d-flex">
+                <input type="number" class="form-control" placeholder="Max Area" name="minBeds" value="@(Model.MinBeds == null? 0:Model.MinBeds)">
+            </div>
+        </form>
+    </div>
+    <form asp-action="Index" asp-controller="Product" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+          asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+          asp-route-order="@Model.Search" asp-route-categoryId="@Model.CategoryId" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice" class="my-2 ">
         <select class="form-control form-control-sm rounded-1" onchange="this.form.submit()" name="Order">
             <option value="1">Name</option>
             <option value="2">Created at</option>
@@ -30,22 +89,24 @@
         </button>
         <ul class="dropdown-menu">
             <li>
-                <a class="dropdown-item" asp-action="Index" asp-controller="Shop"
-                   asp-route-order="@Model.Order"
+                <a class="dropdown-item" asp-action="Index" asp-controller="Shop" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+                   asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+                   asp-route-order="@Model.Order" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
                    asp-route-search="@Model.Search">All</a>
             </li>
             @foreach (var category in Model.Item.Categories)
             {
                 <li>
-                    <a class="dropdown-item" asp-action="Index" asp-controller="Shop" 
-                    asp-route-categoryId="@category.Id"
-                       asp-route-order="@Model.Order"
+                    <a class="dropdown-item" asp-action="Index" asp-controller="Shop"
+                       asp-route-categoryId="@category.Id" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+                       asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+                       asp-route-order="@Model.Order" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
                        asp-route-search="@Model.Search">@category.Name</a>
                 </li>
             }
         </ul>
     </div>
-    <a asp-controller="Product" asp-action="DeletedItems" class="btn btn-danger fw-bold fs-6 text-white w-25 m-2">Deleted Products</a>
+    <a asp-controller="Product" asp-action="DeletedItems" class="btn btn-danger fw-bold fs-6 text-white w-25 m-2" style="height:45%;">Deleted Products</a>
 </div>
 
 <div class="col-lg-12 grid-margin stretch-card">
@@ -70,10 +131,10 @@
                                 Price
                             </th>
                             <th>
-                                Products
+                                Bathrooms
                             </th>
                             <th>
-                                Lot Size
+                                Bedrooms
                             </th>
                             <th>
                                 Area
@@ -109,7 +170,10 @@
                                     @item.Price
                                 </td>
                                 <td>
-                                    @item.LotSize
+                                    @item.Bathrooms
+                                </td>
+                                <td>
+                                    @item.Bedrooms
                                 </td>
                                 <td>
                                     @item.Area
@@ -123,8 +187,8 @@
                                 <td>
                                     @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Moderator.ToString()))
                                     {
-                                        <a asp-action="SoftDelete" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-secondary">
-                                            <i class="mdi mdi-backup-restore text-white"></i>
+                                        <a asp-action="SoftDelete" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-danger">
+                                            <i class="mdi mdi-delete text-white"></i>
                                         </a>
                                     }
                                     <a asp-action="Detail" asp-controller="Product" asp-route-id="@item.Id" class="btn  btn-primary">

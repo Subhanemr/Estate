@@ -16,14 +16,14 @@ namespace Estate.MVC.Areas.Admin.Controllers
             _service = service;
         }
         [Authorize(Roles = "Admin, Moderator")]
-        public async Task<IActionResult> Index(string? search, int? categoryId, int order = 1, int page = 1)
+        public async Task<IActionResult> Index(string? search, int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths, int order = 1, int page = 1)
         {
-            return View(model: await _service.GetFilteredAsync(search, 10, page, order, categoryId));
+            return View(model: await _service.GetFilteredAsync(search, 10, page, order, categoryId, minPrice, maxPrice, minArea, maxArea, minBeds, minBaths));
         }
         [Authorize(Roles = "Admin, Moderator")]
-        public async Task<IActionResult> DeletedItems(string? search, int? categoryId, int order = 1, int page = 1)
+        public async Task<IActionResult> DeletedItems(string? search, int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths, int order = 1, int page = 1)
         {
-            return View(model: await _service.GetDeleteFilteredAsync(search, 10, page, order, categoryId));
+            return View(model: await _service.GetDeleteFilteredAsync(search, 10, page, order, categoryId,minPrice, maxPrice, minArea, maxArea, minBeds, minBaths));
         }
         [Authorize(Roles = "Admin, Moderator")]
         public async Task<IActionResult> SoftDelete(int id)
