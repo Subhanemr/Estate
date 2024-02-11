@@ -10,6 +10,7 @@ namespace Estate.Application.Abstractions.Services
     {
         Task<ICollection<ItemProductVM>> GetAllWhereAsync(int take, int page = 1);
         Task<ICollection<ItemProductVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Product, object>>? orderExpression, int page = 1);
+        Task<ICollection<ItemProductVM>> GetAllWhereByBoolAsync(int take, Expression<Func<Product, bool>>? expression, int page);
         Task<PaginationVM<ProductFilterVM>> GetFilteredAsync(string? search, int take, int page, int order,
             int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths);
         Task<PaginationVM<ProductFilterVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order, 
@@ -23,5 +24,7 @@ namespace Estate.Application.Abstractions.Services
         Task ReverseSoftDeleteAsync(int id);
         Task CreatePopulateDropdowns(CreateProductVM create);
         Task UpdatePopulateDropdowns(UpdateProductVM update);
+        Task<bool> CommentAsync(int productId, string comment, ModelStateDictionary model);
+        Task<bool> ReplyAsync(int productCommnetId, string comment, ModelStateDictionary model);
     }
 }

@@ -3,5 +3,10 @@
 namespace Estate.Application.ViewModels
 {
     public record IncludeProductCommentVM(int Id, string Comment, DateTime CreateAt, string CreatedBy,
-        string AppUserId, IncludeAppUserVM? AppUser, int ProductId, ICollection<IncludeProductReplyVM> Replies);
+        string AppUserId, int ProductId)
+    {
+        
+        public ICollection<IncludeProductReplyVM>? Replies { get; init; }
+        public IncludeAppUserVM? CommentUser { get; init; }
+    }
 }

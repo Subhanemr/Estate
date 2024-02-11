@@ -10,5 +10,7 @@ namespace Estate.Application.Abstractions.Repositories
         void DeleteRoofType(ProductRoofType item);
         void DeleteParkingType(ProductParkingType item);
         void DeleteViewType(ProductViewType item);
+        Task AddComment(ProductComment item);
+        Task AddReply(ProductReply item);
     }
 }

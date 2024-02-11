@@ -2,8 +2,6 @@
 using Estate.Domain.Entities;
 using Estate.Persistance.Contexts;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
-using System.Linq;
 
 namespace Estate.Persistance.Implementations.Repositories
 {
@@ -14,6 +12,9 @@ namespace Estate.Persistance.Implementations.Repositories
         private readonly DbSet<ProductParkingType> _dbParkingType;
         private readonly DbSet<ProductRoofType> _dbRoofType;
         private readonly DbSet<ProductViewType> _dbViewType;
+        private readonly DbSet<ProductComment> _dbproductComments;
+        private readonly DbSet<ProductReply> _dbproductReplies;
+
 
         public ProductRepository(AppDbContext context) : base(context)
         {
@@ -22,6 +23,9 @@ namespace Estate.Persistance.Implementations.Repositories
             _dbParkingType = context.Set<ProductParkingType>();
             _dbRoofType = context.Set<ProductRoofType>();
             _dbViewType = context.Set<ProductViewType>();
+            _dbproductComments = context.Set<ProductComment>();
+            _dbproductReplies = context.Set<ProductReply>();
+
         }
 
         public void DeleteExteriorType(ProductExteriorType item)
@@ -43,6 +47,14 @@ namespace Estate.Persistance.Implementations.Repositories
         public void DeleteViewType(ProductViewType item)
         {
             _dbViewType.Remove(item);
+        }
+        public async Task AddComment(ProductComment item)
+        {
+            await _dbproductComments.AddAsync(item);
+        }
+        public async Task AddReply(ProductReply item)
+        {
+            await _dbproductReplies.AddAsync(item);
         }
     }
 }

@@ -21,6 +21,18 @@ namespace Estate.MVC.Controllers
         {
             return View(await _service.GetByIdAsync(id));
         }
+        public async Task<IActionResult> Comment(int productId, string comment)
+        {
+            await _service.CommentAsync(productId, comment, ModelState);
+
+            return RedirectToAction("Detail", "Product", new { Id = productId });
+        }
+        public async Task<IActionResult> Reply(int productId, int productCommnetId, string comment)
+        {
+            await _service.ReplyAsync(productCommnetId, comment, ModelState);
+
+            return RedirectToAction("Detail", "Product", new { Id = productId });
+        }
         [Authorize(Roles = "Agent")]
         public async Task<IActionResult> Delete(int id)
         {

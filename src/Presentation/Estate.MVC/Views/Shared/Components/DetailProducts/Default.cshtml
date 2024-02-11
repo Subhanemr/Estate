@@ -1,0 +1,15 @@
+﻿@model ICollection<ItemProductVM>
+
+@foreach (var product in Model)
+{
+    <div class="thumbnail-3">
+        <img src="@product.Images.FirstOrDefault(x => x.IsPrimary == true).Url" alt="" style="width: 340px; height: 230px;">
+        <div class="caption">
+            <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="h5 text-sushi">@product.Name</a>
+            <p class="text-abbey">
+                <span class="text-ubold">$@product.Price</span>
+                <span>/@product.OrderDayOrMoth</span>
+            </p>
+        </div>
+    </div>
+}

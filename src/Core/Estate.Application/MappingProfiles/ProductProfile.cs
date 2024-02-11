@@ -12,10 +12,10 @@ namespace Estate.Application.MappingProfiles
             CreateMap<UpdateProductVM, Product>().ReverseMap()
                 .ForMember(x => x.Images, opt => opt.MapFrom(src => src.ProductImages.ToList()));
             CreateMap<GetProductVM, Product>().ReverseMap()
+                .ForMember(x => x.Commnets, opt => opt.MapFrom(src => src.ProductComments.ToList()))
                 .ForMember(x => x.Images, opt => opt.MapFrom(src => src.ProductImages.ToList()))
                 .ForMember(x => x.Category, opt => opt.MapFrom(src => src.Category))
-                .ForMember(x => x.AppUser, opt => opt.MapFrom(src => src.AppUser))
-                .ForMember(x => x.Comments, opt => opt.MapFrom(src => src.ProductComments.ToList()))
+                .ForMember(x => x.ProductUser, opt => opt.MapFrom(src => src.AppUser))
                 .ForMember(x => x.Features, opt => opt.MapFrom(src => src.ProductFeatures.Select(ma => ma.Features).ToList()))
                 .ForMember(x => x.ExteriorTypes, opt => opt.MapFrom(src => src.ProductExteriorTypes.Select(ma => ma.ExteriorType).ToList()))
                 .ForMember(x => x.ParkingTypes, opt => opt.MapFrom(src => src.ProductParkingTypes.Select(ma => ma.ParkingType).ToList()))

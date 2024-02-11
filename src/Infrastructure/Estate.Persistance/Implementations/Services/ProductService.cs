@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Security.Claims;
+using System.Text.RegularExpressions;
 
 namespace Estate.Persistance.Implementations.Services
 {
@@ -230,6 +232,18 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.ProductImages)}" };
             ICollection<Product> items = await _repository
                     .GetAllWhereByOrder(orderException: orderExpression, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+
+            ICollection<ItemProductVM> vMs = _mapper.Map<ICollection<ItemProductVM>>(items);
+
+            return vMs;
+        }
+        public async Task<ICollection<ItemProductVM>> GetAllWhereByBoolAsync(int take, Expression<Func<Product, bool>>? expression, int page)
+        {
+            string[] includes ={
+                $"{nameof(Product.Category)}",
+                $"{nameof(Product.ProductImages)}" };
+            ICollection<Product> items = await _repository
+                    .GetAllWhereByOrder(expression: expression, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
 
             ICollection<ItemProductVM> vMs = _mapper.Map<ICollection<ItemProductVM>>(items);
 
@@ -471,15 +485,15 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes ={
-                $"{nameof(Product.ProductComments)}.{nameof(ProductComment.ProductReplies)}.{nameof(BlogReply.AppUser)}",
+                $"{nameof(Product.ProductComments)}.{nameof(ProductComment.ProductReplies)}.{nameof(ProductReply.AppUser)}",
                 $"{nameof(Product.ProductComments)}.{nameof(ProductComment.AppUser)}",
                 $"{nameof(Product.Category)}",
-                $"{nameof(Product.AppUser)}.{nameof(AppUser.Agency)}",
                 $"{nameof(Product.ProductFeatures)}.{nameof(ProductFeatures.Features)}",
                 $"{nameof(Product.ProductExteriorTypes)}.{nameof(ProductExteriorType.ExteriorType)}",
                 $"{nameof(Product.ProductParkingTypes)}.{nameof(ProductParkingType.ParkingType)}",
                 $"{nameof(Product.ProductRoofTypes)}.{nameof(ProductRoofType.RoofType)}",
                 $"{nameof(Product.ProductViewTypes)}.{nameof(ProductViewType.ViewType)}",
+                $"{nameof(Product.AppUser)}",
                 $"{nameof(Product.ProductImages)}" };
             Product item = await _repository.GetByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
@@ -768,6 +782,62 @@ namespace Estate.Persistance.Implementations.Services
             await UpdatePopulateDropdowns(update);
 
             return update;
+        }
+        public async Task<bool> CommentAsync(int productId, string comment, ModelStateDictionary model)
+        {
+            if (string.IsNullOrWhiteSpace(comment))
+            {
+                model.AddModelError("Error", "Comment is required");
+                return false;
+            }
+            if (comment.Length > 1500)
+            {
+                model.AddModelError("Error", "Comment max characters is 1-1500");
+                return false;
+            }
+            if (!Regex.IsMatch(comment, @"^[A-Za-z0-9\s,\.]+$"))
+            {
+                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                return false;
+            }
+            ProductComment productComment = new ProductComment
+            {
+                Comment = comment,
+                ProductId = productId,
+                AppUserId = _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)
+            };
+
+            await _repository.AddComment(productComment);
+            await _repository.SaveChanceAsync();
+            return true;
+        }
+        public async Task<bool> ReplyAsync(int productCommnetId, string comment, ModelStateDictionary model)
+        {
+            if (string.IsNullOrWhiteSpace(comment))
+            {
+                model.AddModelError("Error", "Comment is required");
+                return false;
+            }
+            if (comment.Length > 1500)
+            {
+                model.AddModelError("Error", "Comment max characters is 1-1500");
+                return false;
+            }
+            if (!Regex.IsMatch(comment, @"^[A-Za-z0-9\s,\.]+$"))
+            {
+                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                return false;
+            }
+            ProductReply productComment = new ProductReply
+            {
+                ReplyComment = comment,
+                ProductCommentId = productCommnetId,
+                AppUserId = _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier)
+            };
+
+            await _repository.AddReply(productComment);
+            await _repository.SaveChanceAsync();
+            return true;
         }
     }
 }
