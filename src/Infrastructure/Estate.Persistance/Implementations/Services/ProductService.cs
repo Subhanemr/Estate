@@ -474,6 +474,7 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.ProductComments)}.{nameof(ProductComment.ProductReplies)}.{nameof(BlogReply.AppUser)}",
                 $"{nameof(Product.ProductComments)}.{nameof(ProductComment.AppUser)}",
                 $"{nameof(Product.Category)}",
+                $"{nameof(Product.AppUser)}.{nameof(AppUser.Agency)}",
                 $"{nameof(Product.ProductFeatures)}.{nameof(ProductFeatures.Features)}",
                 $"{nameof(Product.ProductExteriorTypes)}.{nameof(ProductExteriorType.ExteriorType)}",
                 $"{nameof(Product.ProductParkingTypes)}.{nameof(ProductParkingType.ParkingType)}",

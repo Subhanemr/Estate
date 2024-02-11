@@ -9,12 +9,12 @@
                 <p></p>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a asp-action="Index" asp-controller="Home">Home</a>
                     </li>
                     <li>
-                        <a href="#">Property Catalog</a>
+                        <a asp-action="Index" asp-controller="Product">Catalog</a>
                     </li>
-                    <li class="active">Single Property Page</li>
+                    <li class="active">@Model.Name</li>
                 </ol>
             </div>
         </div>
@@ -26,21 +26,21 @@
         <div class="row flow-offset-7">
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <p>Agent</p>
-                <a href="agent-personal.html" class="h5 text-sushi text-regular">Heather Turner</a>
+                <a asp-action="Agent" asp-controller="Agency" asp-route-id="@Model.AppUser.Id" class="h5 text-sushi text-regular">@Model.AppUser.Name @Model.AppUser.Surname</a>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <p>Agency</p>
-                <a href="#" class="h5 text-sushi text-regular">Modern Estate Inc.</a>
+                <a asp-action="Detail" asp-controller="Agency" asp-route-id="@Model.AppUser.Agency.Id" class="h5 text-sushi text-regular">@Model.AppUser.Agency.Name</a>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                 <p>Location</p>
-                <p class="h5 text-regular">7758 Laguna heights Court, San Francisco, MA 02127</p>
+                <p class="h5 text-regular">@Model.Address</p>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 col-lg-offset-1">
                 <p>Price</p>
                 <p class="thumbnail-price h5">
-                    $2490.00
-                    <span class="mon text-regular">/month</span>
+                    $@Model.Price
+                    <span class="mon text-regular">/@Model.OrderDayOrMoth</span>
                 </p>
             </div>
         </div>
@@ -52,56 +52,22 @@
             <div class="col-xs-12 col-sm-12 col-md-8">
                 <!-- Slick Carousel-->
                 <div data-arrows="true" data-loop="false" data-dots="false" data-swipe="true" data-xs-items="1" data-photo-swipe-gallery="gallery" data-child="#child-carousel" data-for=".thumbnail-carousel" class="slick-slider carousel-parent">
-                    <a data-photo-swipe-item="" data-size="1200x743" href="images/product-single-1_original.jpg" class="item">
-                        <img src="images/product-single-1.jpg" alt="" width="770" height="513">
-                    </a>
-                    <a data-photo-swipe-item="" data-size="1200x900" href="images/product-single-2_original.jpg" class="item">
-                        <img src="images/product-single-2.jpg" alt="" width="770" height="513">
-                    </a>
-                    <a data-photo-swipe-item="" data-size="1200x800" href="images/product-single-3_original.jpg" class="item">
-                        <img src="images/product-single-3.jpg" alt="" width="770" height="513">
-                    </a>
-                    <a data-photo-swipe-item="" data-size="1200x900" href="images/product-single-4_original.jpg" class="item">
-                        <img src="images/product-single-4.jpg" alt="" width="770" height="513">
-                    </a>
-                    <a data-photo-swipe-item="" data-size="1200x905" href="images/product-single-5_original.jpg" class="item">
-                        <img src="images/product-single-5.jpg" alt="" width="770" height="513">
-                    </a>
-                    <a data-photo-swipe-item="" data-size="1200x803" href="images/product-single-6_original.jpg" class="item">
-                        <img src="images/product-single-6.jpg" alt="" width="770" height="513">
-                    </a>
+                    @foreach (var image in Model.Images)
+                    {
+                        <a data-photo-swipe-item="" data-size="1200x743" href="@image.Url" class="item">
+                            <img src="@image.Url" style="width: 770px; height: 513px;" alt="" width="770" height="513">
+                        </a>
+                    }
                 </div>
                 <div id="child-carousel" data-for=".carousel-parent" data-arrows="true" data-loop="false" data-dots="false" data-swipe="true" data-items="2" data-xs-items="4" data-sm-items="4" data-md-items="5" data-lg-items="5" data-slide-to-scroll="1" class="slick-slider thumbnail-carousel">
-                    <div class="item">
-                        <div class="product-thumbnail">
-                            <img src="images/product-thumbnail-1.jpg" alt="" width="130" height="86">
+                    @foreach (var image in Model.Images)
+                    {
+                        <div class="item">
+                            <div class="product-thumbnail">
+                                <img src="@image.Url" alt="@Model.Name" style="width:130px; height:86px;" width="130" height="86">
+                            </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="product-thumbnail">
-                            <img src="images/product-thumbnail-2.jpg" alt="" width="130" height="86">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="product-thumbnail">
-                            <img src="images/product-thumbnail-3.jpg" alt="" width="130" height="86">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="product-thumbnail">
-                            <img src="images/product-thumbnail-4.jpg" alt="" width="130" height="86">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="product-thumbnail">
-                            <img src="images/product-thumbnail-5.jpg" alt="" width="130" height="86">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="product-thumbnail">
-                            <img src="images/product-thumbnail-6.jpg" alt="" width="130" height="86">
-                        </div>
-                    </div>
+                    }
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -111,79 +77,135 @@
                                 <tbody>
                                     <tr>
                                         <td>Area</td>
-                                        <td>1200 sq ft</td>
+                                        <td>@Model.Area sq ft</td>
                                     </tr>
                                     <tr>
                                         <td>Bedrooms</td>
-                                        <td>4</td>
+                                        <td>@Model.Bedrooms</td>
                                     </tr>
                                     <tr>
                                         <td>Bathrooms</td>
-                                        <td>2</td>
+                                        <td>@Model.Bathrooms</td>
                                     </tr>
                                     <tr>
                                         <td>Garages</td>
-                                        <td>2</td>
+                                        <td>@Model.Garages</td>
                                     </tr>
                                     <tr>
                                         <td>Features</td>
-                                        <td>Lawn, Sprinkler System, Marble Floors</td>
+                                        <td>
+                                            @foreach (var features in Model.Features)
+                                            {
+                                                @features.Name
+
+                                                @(features != Model.Features[Model.Features.Count - 1] ? ", " : "")
+                                            }
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Year Built</td>
-                                        <td>1998</td>
+                                        <td>@Model.YearBuilt</td>
                                     </tr>
                                     <tr>
                                         <td>Lot Size</td>
-                                        <td>5.45</td>
+                                        <td>@Model.LotSize</td>
                                     </tr>
-                                    <tr>
-                                        <td>School District</td>
-                                        <td>San Francisco Glen (925) 862-2026</td>
-                                    </tr>
-                                    <tr>
-                                        <td>High School</td>
-                                        <td>Call School District</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Middle School</td>
-                                        <td>Call School District</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Elementary School</td>
-                                        <td>Call School District</td>
-                                    </tr>
+                                    @if (!string.IsNullOrWhiteSpace(Model.SchoolDistrict))
+                                    {
+                                        <tr>
+                                            <td>School District</td>
+                                            <td>@Model.SchoolDistrict @Model.SchoolDistrictPhone</td>
+                                        </tr>
+                                        if (Model.HighSchool)
+                                        {
+                                            <tr>
+                                                <td>High School</td>
+                                                <td>Call School District</td>
+                                            </tr>
+                                        }
+                                        if (Model.MiddleSchool)
+                                        {
+                                            <tr>
+                                                <td>Middle School</td>
+                                                <td>Call School District</td>
+                                            </tr>
+                                        }
+                                        if (Model.ElementarySchool)
+                                        {
+                                            <tr>
+                                                <td>Elementary School</td>
+                                                <td>Call School District</td>
+                                            </tr>
+                                        }
+                                    }
+
                                     <tr>
                                         <td>Parking Type</td>
-                                        <td>Garage - Attached</td>
+                                        <td>
+                                            @foreach (var parkingTypes in Model.ParkingTypes)
+                                            {
+                                                @parkingTypes.Name
+
+                                                @(parkingTypes != Model.ParkingTypes[Model.ParkingTypes.Count - 1] ? ", " : "")
+                                            }
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Room Count</td>
-                                        <td>6</td>
+                                        <td>@Model.RoomCount</td>
                                     </tr>
                                     <tr>
                                         <td>Roof Type</td>
-                                        <td>Tile</td>
+                                        <td>
+                                            @foreach (var roofTypes in Model.RoofTypes)
+                                            {
+                                                @roofTypes.Name
+
+                                                @(roofTypes != Model.RoofTypes[Model.RoofTypes.Count - 1] ? ", " : "")
+                                            }
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>View Type</td>
-                                        <td>Mountain</td>
+                                        <td>
+                                            @foreach (var viewTypes in Model.ViewTypes)
+                                            {
+                                                @viewTypes.Name
+
+                                                @(viewTypes != Model.ViewTypes[Model.ViewTypes.Count - 1] ? ", " : "")
+                                            }
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Exterior Type</td>
-                                        <td>Stucco</td>
+                                        <td>
+                                            @foreach (var exteriorTypes in Model.ExteriorTypes)
+                                            {
+                                                @exteriorTypes.Name
+
+                                                @(exteriorTypes != Model.ExteriorTypes[Model.ExteriorTypes.Count - 1] ? ", " : "")
+                                            }
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <h4 class="border-bottom offset-8">Description</h4>
                         <p>
-                            405 Canyon Vista Dr Spectacular mountain view, sublime privacy &amp; endless flexibility converge right here on 1 of Mt Washington's favorite streets. Sunrise breakfast vistas, discreet gated entry &amp; the luxury of an open loft office/den
-                            plus the 2/2 practicality let you love it just as it is or spend happy veranda hours contemplating expansive Dwell or HGTV dreams. Cars to pamper or creative space high on your list?
-                        </p>
-                        <p>
-                            The enclosed carport is ready and waiting. Longing to build some raised garden beds? The generous Meyer lemon will dress your fresh veggies in style. Contemplating happy gatherings? The indoor ope...n flow welcomes cozy dinners or that
-                            long summer feast under the stars. Lovingly cared for, wonderfully sited for all that brings you to Mt Washington, handy to NELA &amp; beyond.
+                            @{
+                                for (int i = 0; i < Model.Description.Length; i += 123)
+                                {
+                                    int remainingLength = Math.Min(123, Model.Description.Length - i);
+                                    string substring = Model.Description.Substring(i, remainingLength);
+
+                                    @Html.Raw(substring)
+
+                                    if (i + remainingLength < Model.Description.Length)
+                                    {
+                                        <br>
+                                    }
+                                }
+                            }
                         </p>
                         <h4 class="border-bottom offset-8">Reviews</h4>
                         <div class="media media-mod-2 comment">
@@ -262,28 +284,31 @@
                         <h4 class="border-bottom">Agent Information</h4>
                         <div class="media media-mod-3">
                             <div class="media-left img-width-auto">
-                                <img src="images/agency-2.jpg" alt="" width="100" height="100">
+                                <img src="@Model.AppUser.Img"  alt="@Model.AppUser.Name" style="width:100px;height:100px;" width="100" height="100">
                             </div>
                             <div class="media-body">
-                                <h5 class="text-sushi">Heather Turner</h5>
-                                <p>Founder, Listing Agent</p>
+                                <h5 class="text-sushi">@Model.AppUser.Name @Model.AppUser.Surname</h5>
+                                <p>@Model.AppUser.Agency.Name</p>
                                 <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
                                     <dt>tel.</dt>
                                     <dd>
-                                        <a href="callto:#">1-800-1234-567</a>
+                                        <a href="@Model.AppUser.PhoneNumber">@Model.AppUser.PhoneNumber</a>
                                     </dd>
                                 </dl>
                             </div>
                         </div>
-                        <p>She is our leading specialist in everything concerning Real Estate and property management.</p>
-                        <a href="agent-personal.html" class="btn btn-primary btn-sm">get in touch</a>
+                        <p>@(Model.AppUser.About.Length > 44 ? Model.AppUser.About.Substring(0, 44) + " ..." : Model.AppUser.About)</p>
+                        <a asp-action="Agent" asp-controller="Agency" asp-route-id="@Model.AppUser.Id" class="btn btn-primary btn-sm">get in touch</a>
                     </div>
                     <div class="sidebar-module">
                         <h4 class="border-bottom">Share</h4>
                         <div class="icon-group">
-                            <a href="#" class="icon icon-sm icon-social fa-facebook"></a>
-                            <a href="#" class="icon icon-sm icon-social fa-twitter"></a>
-                            <a href="#" class="icon icon-sm icon-social fa-google-plus"></a>
+                            <a href="@Model.FaceLink" class="icon icon-sm icon-social fa-facebook"></a>
+                            <a href="@Model.TwitLink" class="icon icon-sm icon-social fa-twitter"></a>
+                            @if (!string.IsNullOrWhiteSpace(Model.GoogleLink))
+                            {
+                                <a href="#" class="icon icon-sm icon-social fa-google-plus"></a>
+                            }
                         </div>
                     </div>
                     <div class="sidebar-module">
