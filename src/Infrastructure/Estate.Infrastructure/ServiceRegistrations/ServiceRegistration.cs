@@ -10,6 +10,7 @@ namespace Estate.Infrastructure.ServiceRegistrations
         {
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<ICLoudService, CloudService>();
+            services.AddScoped<LayoutServices>();
 
             return services;
         }

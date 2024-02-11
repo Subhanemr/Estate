@@ -1,0 +1,131 @@
+﻿@inject LayoutServices service
+
+@{
+    Dictionary<string, string> setting = await service.GetSettingsAsync();
+}
+
+<footer class="page-foot text-left bg-gray">
+    <section class="footer-content">
+        <div class="container">
+            <div class="row flow-offset-3">
+                <div class="col-xs-12 col-sm-6 col-lg-3">
+                    <div class="rd-navbar-brand">
+                        <a href="index.html" class="brand-name">
+                            <img src="images/logo-2.png" alt="">
+                        </a>
+                    </div>
+                    <p>We believe in Simple, Creative &amp; Flexible Design Standards.</p>
+                    <address class="address">
+                        <dl>
+                            <dt>Headquarters:</dt>
+                            <dd>795 Folsom Ave, Suite 600 San Francisco, CA 94107</dd>
+                        </dl>
+                        <dl class="dl-horizontal-mod-1">
+                            <dt>Phone</dt>
+                            <dd>
+                                <a href="callto:#" class="text-primary">(91) 8547 632521</a>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal-mod-1">
+                            <dt>Fax</dt>
+                            <dd>
+                                <a href="callto:#" class="text-primary">(91) 11 4752 1433</a>
+                            </dd>
+                        </dl>
+                        <dl class="dl-horizontal-mod-1">
+                            <dt>Email</dt>
+                            <dd>
+                                <a href="mailto:#" class="text-primary">info@canvas.com</a>
+                            </dd>
+                        </dl>
+                    </address>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-3">
+                    <h6 class="text-ubold">Blogroll</h6>
+                    <ul class="list-marked well6 text-left">
+                        <li>
+                            <a href="#">Documentation</a>
+                        </li>
+                        <li>
+                            <a href="#">Feedback</a>
+                        </li>
+                        <li>
+                            <a href="#">Plugins</a>
+                        </li>
+                        <li>
+                            <a href="#">Support Forums</a>
+                        </li>
+                        <li>
+                            <a href="#">Themes</a>
+                        </li>
+                        <li>
+                            <a href="#">WordPress Blog</a>
+                        </li>
+                        <li>
+                            <a href="#">WordPress Planet</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-3">
+                    <h6 class="text-ubold">Recent posts</h6>
+                    <div class="blog-post text-left">
+                        <div class="blog-post-title">
+                            <a href="post-page.html" class="text-primary">Believe in the Business of Your Dreams</a>
+                        </div>
+                        <div class="blog-post-time">
+                            <time datetime="2016" class="small">December 28, 2016</time>
+                        </div>
+                    </div>
+                    <div class="blog-post text-left">
+                        <div class="blog-post-title">
+                            <a href="post-page.html" class="text-primary">Establishing Your Brand on College Campuses</a>
+                        </div>
+                        <div class="blog-post-time">
+                            <time datetime="2016" class="small">December 28, 2016</time>
+                        </div>
+                    </div>
+                    <div class="blog-post text-left">
+                        <div class="blog-post-title">
+                            <a href="post-page.html" class="text-primary">Beautiful Rumi Quotes that are Worth Reading</a>
+                        </div>
+                        <div class="blog-post-time">
+                            <time datetime="2016" class="small">December 28, 2016</time>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="copyright">
+        <div class="container">
+            <p class="pull-sm-left">
+                ©
+                <span id="copyright-year"></span> All Rights Reserved
+                <a href="terms-of-service.html">Terms of Use and Privacy Policy</a>
+            </p>
+            <ul class="list-inline pull-sm-right">
+                <li>
+                    <a href="#" class="fa-facebook"></a>
+                </li>
+                <li>
+                    <a href="#" class="fa-twitter"></a>
+                </li>
+                <li>
+                    <a href="#" class="fa-pinterest-p"></a>
+                </li>
+                <li>
+                    <a href="#" class="fa-vimeo"></a>
+                </li>
+                <li>
+                    <a href="#" class="fa-google"></a>
+                </li>
+                <li>
+                    <a href="#" class="fa-rss"></a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!-- Rd Mailform result field-->
+    <div class="rd-mailform-validate"></div>
+</footer>
+<!-- {%FOOTER_LINK}-->

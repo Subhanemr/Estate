@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using System.Security.Claims;
 
 namespace Estate.Persistance.Implementations.Services
 {
@@ -54,8 +55,7 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             Client item = _mapper.Map<Client>(create);
-
-            //item.CreatedBy = _http.HttpContext.User.Identity.Name;
+            item.AppUserId = _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             await _repository.AddAsync(item);
             await _repository.SaveChanceAsync();

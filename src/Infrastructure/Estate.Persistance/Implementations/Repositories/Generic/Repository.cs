@@ -1,4 +1,5 @@
-﻿using Estate.Application.Abstractions.Repositories;
+﻿using CloudinaryDotNet;
+using Estate.Application.Abstractions.Repositories;
 using Estate.Domain.Entities;
 using Estate.Persistance.Contexts;
 using Microsoft.EntityFrameworkCore;

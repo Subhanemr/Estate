@@ -15,6 +15,7 @@ namespace Estate.Application.Abstractions.Services
             int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths);
         Task<PaginationVM<ProductFilterVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order, 
             int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths);
+        Task<PaginationVM<ProductFilterVM>> GetAllWhereByOrderFilterAsync(int take, int page, Expression<Func<Product, object>>? orderExpression);
         Task<GetProductVM> GetByIdAsync(int id);
         Task<bool> CreateAsync(CreateProductVM create, ModelStateDictionary model, ITempDataDictionary tempData);
         Task<UpdateProductVM> UpdateAsync(int id);

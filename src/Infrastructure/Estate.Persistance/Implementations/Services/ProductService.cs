@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using CloudinaryDotNet.Actions;
+using CloudinaryDotNet;
 using Estate.Application.Abstractions.Repositories;
 using Estate.Application.Abstractions.Services;
 using Estate.Application.ViewModels;
@@ -236,6 +238,29 @@ namespace Estate.Persistance.Implementations.Services
             ICollection<ItemProductVM> vMs = _mapper.Map<ICollection<ItemProductVM>>(items);
 
             return vMs;
+        }
+        public async Task<PaginationVM<ProductFilterVM>> GetAllWhereByOrderFilterAsync(int take, int page, Expression<Func<Product, object>>? orderExpression)
+        {
+            string[] includes ={
+                $"{nameof(Product.Category)}",
+                $"{nameof(Product.ProductImages)}" };
+            ICollection<Product> items = await _repository
+                    .GetAllWhereByOrder(orderException: orderExpression, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+
+            ICollection<ItemProductVM> vMs = _mapper.Map<ICollection<ItemProductVM>>(items);
+
+            ProductFilterVM filtered = new ProductFilterVM
+            {
+                Products = _mapper.Map<ICollection<ItemProductVM>>(items),
+                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAllWhereByOrder(orderException: x => x.Products.Count,take: 4).ToListAsync())
+            };
+            PaginationVM<ProductFilterVM> pagination = new PaginationVM<ProductFilterVM>
+            {
+                Take = take,
+                Item = filtered
+            };
+
+            return pagination;
         }
         public async Task<ICollection<ItemProductVM>> GetAllWhereByBoolAsync(int take, Expression<Func<Product, bool>>? expression, int page)
         {

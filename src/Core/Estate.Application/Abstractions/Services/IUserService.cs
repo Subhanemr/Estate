@@ -9,6 +9,7 @@ namespace Estate.Application.Abstractions.Services
     {
         Task<PaginationVM<ItemAppUserVM>> GetFilteredAsync(string? search, int take, int page, int order);
         Task<PaginationVM<ItemAppUserVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order);
+        Task<ICollection<ItemAppUserVM>> GetAllWhereByOrderAsync(int take);
         Task<GetAppUserVM> GetByIdAdminAsync(string id);
         Task<GetAppUserVM> GetByIdAsync(string id);
         Task<GetAppUserVM> GetByUserNameAdminAsync(string userName);

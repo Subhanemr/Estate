@@ -18,10 +18,10 @@
                                 <span class="thumbnail-price h5">
                                     $@product.Price
                                     <span class="mon text-regular">@product.OrderDayOrMoth</span>
+                                    <a style="margin-left:135px;" asp-action="DeleteItem" asp-controller="Favorite" asp-route-id="@product.Id">
+                                        <i class="fa-sharp fa-regular fa-trash"></i>
+                                    </a>
                                 </span>
-                                <a style="margin-left:135px;" asp-action="DeleteItem" asp-controller="Favorite" asp-route-id="@product.Id">
-                                    <i class="fa-sharp fa-regular fa-trash"></i>
-                                </a>
                                 <ul class="describe-1">
                                     <li>
                                         <span class="icon-square icon-sm">
@@ -36,8 +36,8 @@
                                             <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
                                             <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
                                             <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
-                                        </g>
-                                      </svg>
+                                            </g>
+                                          </svg>
                                         </span>@product.Area sq ft
                                     </li>
                                     <li>
@@ -52,7 +52,7 @@
                                         <span class="icon icon-sm icon-primary hotel-icon-26"></span>@product.Garages garages
                                     </li>
                                 </ul>
-                                <p class="text-abbey">@(product.Description.Length > 12 ? product.Description.Substring(0, 167) + " ..." : product.Description)</p>
+                                <p class="text-abbey">@(product.Description.Length > 44 ? product.Description.Substring(0, 44) + " ..." : product.Description)</p>
                             </div>
                         </div>
                     </div>

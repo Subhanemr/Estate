@@ -6,6 +6,7 @@ using Estate.Domain.Entities;
 using Estate.Domain.Enums;
 using Estate.Infrastructure.Exceptions;
 using Estate.Infrastructure.Implementations;
+using Estate.Persistance.Implementations.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Linq.Expressions;
 
 namespace Estate.Persistance.Implementations.Services
 {
@@ -137,7 +139,14 @@ namespace Estate.Persistance.Implementations.Services
 
             return pagination;
         }
+        public async Task<ICollection<ItemAppUserVM>> GetAllWhereByOrderAsync(int take)
+        {
+            ICollection<AppUser> items = await _userManager.Users.Where(x => x.AgencyId != null).OrderBy(x => x.Products.Count).Take(take).ToListAsync();
 
+            ICollection<ItemAppUserVM> vMs = _mapper.Map<ICollection<ItemAppUserVM>>(items);
+
+            return vMs;
+        }
         public async Task<GetAppUserVM> GetByIdAdminAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
@@ -174,7 +183,7 @@ namespace Estate.Persistance.Implementations.Services
             AppUser user = await _userManager.Users
                 .Include(x => x.AppUserImages).Include(x => x.Agency)
                 .Include(x => x.Favorites).ThenInclude(x => x.Product).ThenInclude(x => x.ProductImages)
-                .Include(x => x.Products.Where(a=>a.IsDeleted == false)).ThenInclude(x => x.Category)
+                .Include(x => x.Products.Where(a => a.IsDeleted == false)).ThenInclude(x => x.Category)
                 .Include(x => x.Products.Where(a => a.IsDeleted == false)).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
