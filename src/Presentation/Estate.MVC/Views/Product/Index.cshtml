@@ -21,20 +21,30 @@
     <div class="container position-margin-top position-margin-top-mod-1">
         <div class="search-form-wrap bg-white container-shadow">
             <h3>Find Your Home</h3>
-            <form asp-action="Index" asp-controller="Product" asp-route-order="@Model.Order" name="search-form" class="form-variant-1">
+            <div class="form-variant-1">
                 <div class="form-group">
-                    <label for="search" class="form-label">Search now</label>
-                    <input type="text" name="search" placeholder="Search now" value="@(Model.Search == null? "":Model.Search)" class="form-control">
+                    <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+                          asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+                          asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
+                          asp-route-order="@Model.Order">
+                        <label for="search" class="form-label">Search now</label>
+                        <input type="text" name="search" placeholder="Search now" value="@(Model.Search == null? "":Model.Search)" class="form-control">
+                    </form>
                 </div>
                 <div class="form-group">
-                    <label for="select-search-1" class="form-label">Categories</label>
-                    <select name="categoryId" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                        <option value="" selected="selected">Any</option>
-                        @foreach (var category in Model.Item.Categories)
-                        {
-                            <option value="@category.Id">@category.Name</option>
-                        }
-                    </select>
+                    <form asp-action="Index" asp-controller="Shop" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+                          asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+                          asp-route-order="@Model.Order" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
+                          asp-route-search="@Model.Search">
+                        <label for="categoryId" class="form-label">Categories</label>
+                        <select name="categoryId" class="form-control select-filter">
+                            <option value="">Any</option>
+                            @foreach (var category in Model.Item.Categories)
+                            {
+                                <option value="@category.Id">@category.Name</option>
+                            }
+                        </select>
+                    </form>
                 </div>
                 <div class="form-group width-1">
                     <span>
@@ -42,9 +52,18 @@
                         <br>
                     </span>
                     <div class="form-inline-flex-xs">
-                        <input placeholder="Min Price" type="number" name="minPrice" value="@(Model.MinPrice == null? 0:Model.MinPrice)" style="width:90%;" class="rd-range-input-value rd-range-input-value-1 form-control">
+                        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+                              asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+                              asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-maxPrice="@Model.MaxPrice" class="">
+                            <input placeholder="Min Price" type="number" name="minPrice" value="@(Model.MinPrice == null? 0:Model.MinPrice)" style="width:90%;" class="form-control">
+                        </form>
                         <span class="text-abbey dash">—</span>
-                        <input placeholder="Max Price" type="number" name="maxPrice" value="@(Model.MaxPrice == null? 0:Model.MaxPrice)" style="width:90%;" class="rd-range-input-value rd-range-input-value-2 form-control">
+                        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+                              asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+                              asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-minPrice="@Model.MinPrice" class="">
+                            <input placeholder="Max Price" type="number" name="maxPrice" value="@(Model.MaxPrice == null? 0:Model.MaxPrice)" style="width:90%;" class="form-control">
+                        </form>
+
                     </div>
                 </div>
                 <div class="form-group width-1">
@@ -53,22 +72,37 @@
                         <br>
                     </span>
                     <div class="form-inline-flex-xs">
-                        <input placeholder="Min Area" type="number" name="minArea" value="@(Model.MinArea == null? 0:Model.MinArea)" style="width:90%;" class="rd-range-input-value rd-range-input-value-3 form-control">
+                        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+                              asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
+                              asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-maxArea="@Model.MaxArea" class="">
+                            <input placeholder="Min Area" type="number" name="minArea" value="@(Model.MinArea == null? 0:Model.MinArea)" style="width:90%;" class="form-control">
+                        </form>
                         <span class="text-abbey dash">—</span>
-                        <input placeholder="Max Area" type="number" name="maxArea" value="@(Model.MaxArea == null? 0:Model.MaxArea)" style="width:90%;" class="rd-range-input-value rd-range-input-value-4 form-control">
+                        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+                              asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-minArea="@Model.MinArea" class="">
+                            <input placeholder="Max Area" type="number" name="maxArea" value="@(Model.MaxArea == null? 0:Model.MaxArea)" style="width:90%;" class="form-control">
+                        </form>
                     </div>
                 </div>
                 <div class="form-group width-2">
-                    <label for="select-search-7" class="form-label">Min Beds</label>
-                    <input type="number" placeholder="Min Beds" name="minBeds" value="@(Model.MinBeds == null? 0:Model.MinBeds)" style="width:90%;" class="rd-range-input-value rd-range-input-value-4 form-control">
-
+                    <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId"
+                          asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+                          asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
+                          asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-minBeds="@Model.MinBeds" class="">
+                        <label for="minBeds" class="form-label">Min Beds</label>
+                        <input type="number" placeholder="Min Beds" name="minBeds" value="@(Model.MinBeds == null? 0:Model.MinBeds)" style="width:90%;" class="form-control">
+                    </form>
                 </div>
                 <div class="form-group width-2">
-                    <label for="select-search-8" class="form-label">Min Baths</label>
-                    <input type="number" placeholder="Min Baths" name="minBaths" value="@(Model.MinBaths == null? 0:Model.MinBaths)" style="width:90%;" class="rd-range-input-value rd-range-input-value-4 form-control">
+                    <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.CategoryId"
+                          asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
+                          asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
+                          asp-route-order="@Model.Order" asp-route-search="@Model.Search" asp-route-minBaths="@Model.MinBaths" class="">
+                        <label for="minBaths" class="form-label">Min Baths</label>
+                        <input type="number" placeholder="Min Baths" name="minBaths" value="@(Model.MinBaths == null? 0:Model.MinBaths)" style="width:90%;" class="form-control">
+                    </form>
                 </div>
-                <button type="submit" class="btn btn-sm btn-sushi btn-min-width-sm">Search</button>
-            </form>
+            </div>
         </div>
     </div>
 </section>
@@ -110,7 +144,7 @@
                                 </a>
                                 <div class="caption">
                                     <h4>
-                                        <a href="single-property-page.html" class="text-sushi">@product.Name</a>
+                                        <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="text-sushi">@product.Name</a>
                                     </h4>
                                     <span class="thumbnail-price h5">
                                         $@product.Price
@@ -135,8 +169,8 @@
                                                 <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
                                                 <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
                                                 <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
-                                                    </g>
-                                                  </svg>
+                                                                                    </g>
+                                                                                  </svg>
                                             </span>@product.Area sq ft
                                         </li>
                                         <li>

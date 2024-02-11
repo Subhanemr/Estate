@@ -2,6 +2,8 @@
 using Estate.Domain.Entities;
 using Estate.Persistance.Contexts;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace Estate.Persistance.Implementations.Repositories
 {

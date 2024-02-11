@@ -71,7 +71,7 @@
     </div>
     <form asp-action="Index" asp-controller="Product" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
           asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
-          asp-route-order="@Model.Search" asp-route-categoryId="@Model.CategoryId" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice" class="my-2 ">
+          asp-route-order="@Model.Search" asp-route-categoryId="@Model.CategoryId" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice" class="my-2 w-75">
         <select class="form-control form-control-sm rounded-1" onchange="this.form.submit()" name="Order">
             <option value="1">Name</option>
             <option value="2">Created at</option>

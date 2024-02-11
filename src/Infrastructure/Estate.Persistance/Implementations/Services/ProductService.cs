@@ -252,56 +252,77 @@ namespace Estate.Persistance.Implementations.Services
             {
                 case 1:
                     items = await _repository
-                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                    && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                        x => x.Name, false, false, (page - 1) * take, take, false, includes).ToListAsync();
+                        .GetAllWhereByOrder(
+                            x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
+                            x => x.Name, false, false, (page - 1) * take, take, false, includes)
+                        .ToListAsync();
+
                     break;
                 case 2:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
                       x => x.CreateAt, false, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 3:
                     items = await _repository
-                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                    && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                    .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
                         x => x.Name, true, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 4:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
                       x => x.CreateAt, true, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 5:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
                       x => x.Price, false, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 6:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
                       x => x.Price, true, false, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
             }
@@ -349,56 +370,74 @@ namespace Estate.Persistance.Implementations.Services
             {
                 case 1:
                     items = await _repository
-                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                    && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                    .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
                         x => x.Name, false, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 2:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
                       x => x.CreateAt, false, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 3:
                     items = await _repository
-                    .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                    && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                    .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
                         x => x.Name, true, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 4:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
                       x => x.CreateAt, true, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 5:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
                       x => x.Price, false, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 6:
                     items = await _repository
-                     .GetAllWhereByOrder(x => categoryId != null ? x.CategoryId == categoryId : true
-                    && minPrice != null ? x.Price >= minPrice : true && maxPrice != null ? x.Price <= maxPrice : true
-                    && minArea != null ? x.Area >= minArea : true && maxArea != null ? x.Area <= maxArea : true
-                    && minBeds != null ? x.Bedrooms >= minBeds : true && minBaths != null ? x.Bathrooms >= minBaths : true
-                     && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
+                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
                       x => x.Price, true, true, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
             }

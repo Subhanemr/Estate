@@ -17,6 +17,10 @@ namespace Estate.MVC.Controllers
         {
             return View(model: await _service.GetFilteredAsync(search, 10, page, order, categoryId, minPrice, maxPrice, minArea, maxArea, minBeds, minBaths));
         }
+        public async Task<IActionResult> Detail(int id)
+        {
+            return View(await _service.GetByIdAsync(id));
+        }
         [Authorize(Roles = "Agent")]
         public async Task<IActionResult> Delete(int id)
         {

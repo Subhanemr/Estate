@@ -1,4 +1,5 @@
 ﻿using Estate.Domain.Entities;
+using System.Linq.Expressions;
 
 namespace Estate.Application.Abstractions.Repositories
 {
