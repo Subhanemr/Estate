@@ -1,5 +1,4 @@
-﻿using AspNetCore;
-using Estate.Application.Abstractions.Services;
+﻿using Estate.Application.Abstractions.Services;
 using Estate.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 

@@ -141,7 +141,7 @@ namespace Estate.Persistance.Implementations.Services
         }
         public async Task<ICollection<ItemAppUserVM>> GetAllWhereByOrderAsync(int take)
         {
-            ICollection<AppUser> items = await _userManager.Users.Where(x => x.AgencyId != null).OrderBy(x => x.Products.Count).Take(take).ToListAsync();
+            ICollection<AppUser> items = await _userManager.Users.Include(x => x.Products).Where(x => x.AgencyId != null).OrderBy(x => x.Products.Count).Take(take).ToListAsync();
 
             ICollection<ItemAppUserVM> vMs = _mapper.Map<ICollection<ItemAppUserVM>>(items);
 

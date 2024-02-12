@@ -1,57 +1,32 @@
-﻿@Html.Raw(TempData["Message"])
+﻿@model HomeVM
+
+@Html.Raw(TempData["Message"])
 
 <section>
     <!--Swiper-->
     <div data-height="" data-min-height="600px" class="swiper-container swiper-slider">
         <div class="swiper-wrapper">
-            <div data-slide-bg="@Url.Content("~/assets/images/slide-1.jpg")" class="swiper-slide">
-                <div class="swiper-slide-caption">
-                    <div class="container">
-                        <div data-caption-animate="fadeInDown" class="swiper-caption-wrap">
-                            <p data-caption-animate="fadeIn" data-caption-delay="800" class="h3">1530-2 Liberty Ave 4</p>
-                            <hr data-caption-animate="fadeIn" data-caption-delay="800">
-                            <p data-caption-animate="fadeIn" data-caption-delay="800" class="hidden-xs">This is a 3 bedroom, 2.0 bathroom multi family home. It is located at 1530 Liberty Ave Hillside.</p>
-                            <div data-caption-animate="fadeIn" data-caption-delay="800" class="price text-ubold">
-                                $309.00
-                                <span>/day</span>
+            @foreach (var slider in Model.Pagination.Item.Products.Take(3))
+            {
+                <div data-slide-bg="@Url.Content($"{slider.Images.FirstOrDefault(x=> x.IsPrimary == true).Url}")" class="swiper-slide">
+                    <div class="swiper-slide-caption">
+                        <div class="container">
+                            <div data-caption-animate="fadeInDown" class="swiper-caption-wrap">
+                                <p data-caption-animate="fadeIn" data-caption-delay="800" class="h3">@slider.Name</p>
+                                <hr data-caption-animate="fadeIn" data-caption-delay="800">
+                                <p data-caption-animate="fadeIn" data-caption-delay="800" class="hidden-xs">
+                                    @(slider.Description.Length > 44 ? slider.Description.Substring(0, 44) + " ..." : slider.Description)
+                                </p>
+                                <div data-caption-animate="fadeIn" data-caption-delay="800" class="price text-ubold">
+                                    $@slider.Price
+                                    <span>/@slider.OrderDayOrMoth</span>
+                                </div>
+                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@slider.Id" data-caption-animate="fadeIn" data-caption-delay="800" class="btn btn-sm btn-sushi">book now</a>
                             </div>
-                            <a href="single-property-page.html" data-caption-animate="fadeIn" data-caption-delay="800" class="btn btn-sm btn-sushi">book now</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div data-slide-bg="@Url.Content("~/assets/images/slide-2.jpg")" class="swiper-slide">
-                <div class="swiper-slide-caption">
-                    <div class="container">
-                        <div data-caption-animate="fadeInDown" class="swiper-caption-wrap">
-                            <p data-caption-animate="fadeIn" data-caption-delay="800" class="h3">53 Rachel Ct 53</p>
-                            <hr data-caption-animate="fadeIn" data-caption-delay="800">
-                            <p data-caption-animate="fadeIn" data-caption-delay="800" class="hidden-xs">A renovated apartment for rent by owner. 2 bedroom, 2 full bath living and dining room</p>
-                            <div data-caption-animate="fadeIn" data-caption-delay="800" class="price text-ubold">
-                                $216.00
-                                <span>/day</span>
-                            </div>
-                            <a href="single-property-page.html" data-caption-animate="fadeIn" data-caption-delay="800" class="btn btn-sm btn-sushi">book now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div data-slide-bg="@Url.Content("~/assets/images/slide-3.jpg")" class="swiper-slide">
-                <div class="swiper-slide-caption">
-                    <div class="container">
-                        <div data-caption-animate="fadeInDown" class="swiper-caption-wrap">
-                            <p data-caption-animate="fadeIn" data-caption-delay="800" class="h3">Modera Loft</p>
-                            <hr data-caption-animate="fadeIn" data-caption-delay="800">
-                            <p data-caption-animate="fadeIn" data-caption-delay="800" class="hidden-xs">Make Modera Loft your home and reside in historic Jersey City style.</p>
-                            <div data-caption-animate="fadeIn" data-caption-delay="800" class="price text-ubold">
-                                $239.00
-                                <span>/day</span>
-                            </div>
-                            <a href="single-property-page.html" data-caption-animate="fadeIn" data-caption-delay="800" class="btn btn-sm btn-sushi">book now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
         <!-- Swiper Navigation-->
         <div class="swiper-button-prev"></div>
@@ -63,45 +38,30 @@
     <div class="container position-margin-top undefined">
         <div class="search-form-wrap bg-white container-shadow">
             <h3>Find Your Home</h3>
-            <form action="#" name="search-form" class="form-variant-1">
+            <div class="form-variant-1">
                 <div class="form-group">
-                    <label for="keyword" class="form-label">Keyword</label>
-                    <input id="keyword" type="text" name="keyword" placeholder="Any" class="form-control">
+                    <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.Pagination.CategoryId" asp-route-minBaths="@Model.Pagination.MinBaths" asp-route-minBeds="@Model.Pagination.MinBeds"
+                          asp-route-minArea="@Model.Pagination.MinArea" asp-route-maxArea="@Model.Pagination.MaxArea"
+                          asp-route-minPrice="@Model.Pagination.MinPrice" asp-route-maxPrice="@Model.Pagination.MaxPrice"
+                          asp-route-order="1">
+                        <label for="search" class="form-label">Search now</label>
+                        <input type="text" name="search" placeholder="Search now" value="@(Model.Pagination.Search == null? "":Model.Pagination.Search)" class="form-control">
+                    </form>
                 </div>
                 <div class="form-group">
-                    <label for="select-search-1" class="form-label">Location</label>
-                    <select id="select-search-1" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                        <option value="Any" selected="selected">Any</option>
-                        <option value="Denver">Denver</option>
-                        <option value="Houston">Houston</option>
-                        <option value="Las Vegas">Las Vegas</option>
-                        <option value="Orlando">Orlando</option>
-                        <option value="Phoenix">Phoenix</option>
-                        <option value="San Diego">San Diego</option>
-                        <option value="Miami">Miami</option>
-                        <option value="Atlanta">Atlanta</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="select-search-2" class="form-label">Property Status</label>
-                    <select id="select-search-2" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                        <option value="Any" selected="selected">Any</option>
-                        <option value="Vacant land">Vacant land</option>
-                        <option value="Commercial">Commercial</option>
-                        <option value="Residential">Residential</option>
-                        <option value="Homes">Homes</option>
-                        <option value="Condos">Condos</option>
-                        <option value="Townhouses">Townhouses</option>
-                        <option value="Foreclosures">Foreclosures</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="select-search-3" class="form-label">Property Type</label>
-                    <select id="select-search-3" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                        <option value="Any" selected="selected">Any</option>
-                        <option value="Under Construction">Under Construction</option>
-                        <option value="Ready to Move">Ready to Move</option>
-                    </select>
+                    <form asp-action="Index" asp-controller="Shop" asp-route-minBaths="@Model.Pagination.MinBaths" asp-route-minBeds="@Model.Pagination.MinBeds"
+                          asp-route-minArea="@Model.Pagination.MinArea" asp-route-maxArea="@Model.Pagination.MaxArea"
+                          asp-route-order="1" asp-route-minPrice="@Model.Pagination.MinPrice" asp-route-maxPrice="@Model.Pagination.MaxPrice"
+                          asp-route-search="@Model.Pagination.Search">
+                        <label for="categoryId" class="form-label">Categories</label>
+                        <select name="categoryId" class="form-control select-filter">
+                            <option value="">Any</option>
+                            @foreach (var category in Model.Pagination.Item.Categories)
+                            {
+                                <option value="@category.Id">@category.Name</option>
+                            }
+                        </select>
+                    </form>
                 </div>
                 <div class="form-group width-1">
                     <span>
@@ -109,11 +69,19 @@
                         <br>
                     </span>
                     <div class="form-inline-flex-xs">
-                        <input id="range-1" type="text" name="range-2" class="rd-range-input-value rd-range-input-value-1 form-control">
+                        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.Pagination.CategoryId" asp-route-minBaths="@Model.Pagination.MinBaths" asp-route-minBeds="@Model.Pagination.MinBeds"
+                              asp-route-minArea="@Model.Pagination.MinArea" asp-route-maxArea="@Model.Pagination.MaxArea"
+                              asp-route-order="1" asp-route-search="@Model.Pagination.Search" asp-route-maxPrice="@Model.Pagination.MaxPrice" class="">
+                            <input placeholder="Min Price" type="number" name="minPrice" value="@(Model.Pagination.MinPrice == null? 0:Model.Pagination.MinPrice)" style="width:90%;" class="form-control">
+                        </form>
                         <span class="text-abbey dash">—</span>
-                        <input id="range-2" type="text" name="range-3" class="rd-range-input-value rd-range-input-value-2 form-control">
+                        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.Pagination.CategoryId" asp-route-minBaths="@Model.Pagination.MinBaths" asp-route-minBeds="@Model.Pagination.MinBeds"
+                              asp-route-minArea="@Model.Pagination.MinArea" asp-route-maxArea="@Model.Pagination.MaxArea"
+                              asp-route-order="1" asp-route-search="@Model.Pagination.Search" asp-route-minPrice="@Model.Pagination.MinPrice" class="">
+                            <input placeholder="Max Price" type="number" name="maxPrice" value="@(Model.Pagination.MaxPrice == null? 0:Model.Pagination.MaxPrice)" style="width:90%;" class="form-control">
+                        </form>
+
                     </div>
-                    <div data-min="100" data-max="10000" data-start="[600, 9500]" data-step="50" data-tooltip="true" data-min-diff="100" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2" class="rd-range"></div>
                 </div>
                 <div class="form-group width-1">
                     <span>
@@ -121,81 +89,37 @@
                         <br>
                     </span>
                     <div class="form-inline-flex-xs">
-                        <input id="range-3" type="text" name="range-2" class="rd-range-input-value rd-range-input-value-3 form-control">
+                        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.Pagination.CategoryId" asp-route-minBaths="@Model.Pagination.MinBaths" asp-route-minBeds="@Model.Pagination.MinBeds"
+                              asp-route-minPrice="@Model.Pagination.MinPrice" asp-route-maxPrice="@Model.Pagination.MaxPrice"
+                              asp-route-order="1" asp-route-search="@Model.Pagination.Search" asp-route-maxArea="@Model.Pagination.MaxArea" class="">
+                            <input placeholder="Min Area" type="number" name="minArea" value="@(Model.Pagination.MinArea == null? 0:Model.Pagination.MinArea)" style="width:90%;" class="form-control">
+                        </form>
                         <span class="text-abbey dash">—</span>
-                        <input id="range-4" type="text" name="range-3" class="rd-range-input-value rd-range-input-value-4 form-control">
+                        <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.Pagination.CategoryId" asp-route-minBaths="@Model.Pagination.MinBaths" asp-route-minBeds="@Model.Pagination.MinBeds"
+                              asp-route-order="1" asp-route-search="@Model.Pagination.Search" asp-route-minArea="@Model.Pagination.MinArea" class="">
+                            <input placeholder="Max Area" type="number" name="maxArea" value="@(Model.Pagination.MaxArea == null? 0:Model.Pagination.MaxArea)" style="width:90%;" class="form-control">
+                        </form>
                     </div>
-                    <div data-min="500" data-max="22000" data-start="[2000, 20000]" data-step="50" data-tooltip="true" data-min-diff="500" data-input=".rd-range-input-value-3" data-input-2=".rd-range-input-value-4" class="rd-range"></div>
                 </div>
                 <div class="form-group width-2">
-                    <label for="select-search-7" class="form-label">Min Beds</label>
-                    <select id="select-search-7" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                        <option value="Any" selected="selected">Any</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
+                    <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.Pagination.CategoryId"
+                          asp-route-minArea="@Model.Pagination.MinArea" asp-route-maxArea="@Model.Pagination.MaxArea"
+                          asp-route-minPrice="@Model.Pagination.MinPrice" asp-route-maxPrice="@Model.Pagination.MaxPrice"
+                          asp-route-order="1" asp-route-search="@Model.Pagination.Search" asp-route-minBeds="@Model.Pagination.MinBeds" class="">
+                        <label for="minBeds" class="form-label">Min Beds</label>
+                        <input type="number" placeholder="Min Beds" name="minBeds" value="@(Model.Pagination.MinBeds == null? 0:Model.Pagination.MinBeds)" style="width:90%;" class="form-control">
+                    </form>
                 </div>
                 <div class="form-group width-2">
-                    <label for="select-search-8" class="form-label">Min Baths</label>
-                    <select id="select-search-8" data-minimum-results-for-search="Infinity" class="form-control select-filter">
-                        <option value="Any" selected="selected">Any</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                    </select>
+                    <form asp-action="Index" asp-controller="Product" asp-route-categoryId="@Model.Pagination.CategoryId"
+                          asp-route-minArea="@Model.Pagination.MinArea" asp-route-maxArea="@Model.Pagination.MaxArea"
+                          asp-route-minPrice="@Model.Pagination.MinPrice" asp-route-maxPrice="@Model.Pagination.MaxPrice"
+                          asp-route-order="1" asp-route-search="@Model.Pagination.Search" asp-route-minBaths="@Model.Pagination.MinBaths" class="">
+                        <label for="minBaths" class="form-label">Min Baths</label>
+                        <input type="number" placeholder="Min Baths" name="minBaths" value="@(Model.Pagination.MinBaths == null? 0:Model.Pagination.MinBaths)" style="width:90%;" class="form-control">
+                    </form>
                 </div>
-                <button class="btn btn-sm btn-sushi btn-min-width-sm">Search</button>
-                <div class="features">
-                    <a href="" onclick="return false" class="btn-features">
-                        <span></span>Look for certain features
-                    </a>
-                    <ul class="checkbox-list list-inline">
-                        <li>
-                            <label class="checkbox-inline">
-                                <input name="input-group-radio" value="checkbox-1" type="checkbox" checked="checked">
-                                <span>Central Heating (7)</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="checkbox-inline">
-                                <input name="input-group-radio" value="checkbox-2" type="checkbox">
-                                <span>Lawn (6)</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="checkbox-inline">
-                                <input name="input-group-radio" value="checkbox-3" type="checkbox">
-                                <span>Marble Floors (8)</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="checkbox-inline">
-                                <input name="input-group-radio" value="checkbox-4" type="checkbox">
-                                <span>Fire Alarm (5)</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="checkbox-inline">
-                                <input name="input-group-radio" value="checkbox-5" type="checkbox">
-                                <span>Home Theater (3)</span>
-                            </label>
-                        </li>
-                        <li>
-                            <label class="checkbox-inline">
-                                <input name="input-group-radio" value="checkbox-6" type="checkbox">
-                                <span>Hurricane Shutters (1)</span>
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </section>
@@ -205,42 +129,18 @@
         <h2>Popular categories</h2>
         <hr>
         <div class="row offset-11">
-            <div class="col-xs-12 col-sm-6">
-                <a href="single-property-page.html" class="img-thumbnail-variant-1">
-                    <img src="~/assets/images/categories-1.jpg" alt="" width="570" height="380">
-                    <div class="caption">
-                        <h4 class="text-white">Studio Apartments</h4>
-                        <p>54 properties</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <a href="single-property-page.html" class="img-thumbnail-variant-1">
-                    <img src="~/assets/images/categories-2.jpg" alt="" width="570" height="380">
-                    <div class="caption">
-                        <h4 class="text-white">Luxury Houses</h4>
-                        <p>36 properties</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <a href="single-property-page.html" class="img-thumbnail-variant-1">
-                    <img src="~/assets/images/categories-3.jpg" alt="" width="570" height="380">
-                    <div class="caption">
-                        <h4 class="text-white">Cozy Houses</h4>
-                        <p>61 properties</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-                <a href="single-property-page.html" class="img-thumbnail-variant-1">
-                    <img src="~/assets/images/categories-4.jpg" alt="" width="570" height="380">
-                    <div class="caption">
-                        <h4 class="text-white">With Swimming Pool</h4>
-                        <p>24 properties</p>
-                    </div>
-                </a>
-            </div>
+            @foreach (var ctgr in Model.Pagination.Item.Categories)
+            {
+                <div class="col-xs-12 col-sm-6">
+                    <a asp-action="Index" asp-controller="Product" asp-route-categoryId="@ctgr.Id" class="img-thumbnail-variant-1">
+                        <img src="~/assets/images/categories-1.jpg" alt="@ctgr.Name" style="width: 570px; height:380px;" width="570" height="380">
+                        <div class="caption">
+                            <h4 class="text-white">@ctgr.Name</h4>
+                            <p>@ctgr.Products.Count@(ctgr.Products.Count <= 1 ? " Produt" : " Products")</p>
+                        </div>
+                    </a>
+                </div>
+            }
         </div>
     </div>
 </section>
@@ -251,291 +151,63 @@
         <h2>Recent Properties</h2>
         <hr>
         <div class="row clearleft-custom">
-
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="thumbnail thumbnail-3">
-                    <a href="single-property-page.html" class="img-link">
-                        <img src="~/assets/images/index-6.jpg" alt="" width="370" height="250">
-                    </a>
-                    <div class="caption">
-                        <h4>
-                            <a href="single-property-page.html" class="text-sushi">Building: 123 on the Park</a>
-                        </h4>
-                        <span class="thumbnail-price h5">
-                            $4,339.00/
-                            <span class="mon text-regular">month</span>
-                        </span>
-                        <ul class="describe-1">
-                            <li>
-                                <span class="icon-square icon-sm">
-                                    <svg x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve">
-                                    <g>
-                                    <path d="M3.6,75.7h3.6V7.3l85.7-0.1v85.3l-16.7-0.1l0-16.7c0-0.9-0.4-1.9-1-2.5c-0.7-0.7-1.6-1-2.5-1h-69V75.7h3.6                          H3.6v3.6H69L69,96c0,2,1.6,3.6,3.6,3.6l23.8,0.1c1,0,1.9-0.4,2.5-1c0.7-0.7,1-1.6,1-2.5V3.6c0-1-0.4-1.9-1-2.5                          c-0.7-0.7-1.6-1-2.5-1L3.6,0.1C1.6,0.2,0,1.7,0,3.7v72c0,0.9,0.4,1.9,1,2.5c0.7,0.7,1.6,1,2.5,1V75.7z"></path>
-                                    <path d="M38.1,76.9v-9.5c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v9.5c0,1.3,1.1,2.4,2.4,2.4                          C37,79.3,38.1,78.2,38.1,76.9"></path>
-                                    <path d="M38.1,50.7V15c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v35.7c0,1.3,1.1,2.4,2.4,2.4                          C37,53.1,38.1,52.1,38.1,50.7"></path>
-                                    <path d="M2.4,38.8h33.3c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H2.4c-1.3,0-2.4,1.1-2.4,2.4                          C0,37.8,1.1,38.8,2.4,38.8"></path>
-                                    <path d="M35.7,46h31c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4h-31c-1.3,0-2.4,1.1-2.4,2.4                          C33.3,44.9,34.4,46,35.7,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
-                        </g>
-                      </svg>
-                                </span>1200 sq ft
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-10"></span>2 bathrooms
-                            </li>
-                        </ul>
-                        <ul class="describe-2">
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-05"></span>4 bedrooms
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-26"></span>2 garages
-                            </li>
-                        </ul>
-                        <p class="text-abbey">Introducing Brooklyn's most unique and genteel address: 123 on the Park. A stately, one-of-a-kind rental residence directly overlooking Brooklyn's famed Prospect Park.</p>
+            @foreach (var product in Model.Pagination.Item.Products.Skip(3).Take(6))
+            {
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="thumbnail thumbnail-3">
+                        <a href="single-property-page.html" class="img-link">
+                            <img src="@product.Images.FirstOrDefault(x => x.IsPrimary == true).Url" alt="@product.Name" width="370" height="250">
+                        </a>
+                        <div class="caption">
+                            <h4>
+                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="text-sushi">@product.Name</a>
+                            </h4>
+                            <span class="thumbnail-price h5">
+                                $@product.Price
+                                <span class="mon text-regular">/@product.OrderDayOrMoth</span>
+                                <a style="margin-left:145px;" asp-action="AddWishList" asp-controller="Favorite" asp-route-id="@product.Id">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                        <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                    </svg>
+                                </a>
+                            </span>
+                            <ul class="describe-1">
+                                <li>
+                                    <span class="icon-square icon-sm">
+                                        <svg x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve">
+                                        <g>
+                                        <path d="M3.6,75.7h3.6V7.3l85.7-0.1v85.3l-16.7-0.1l0-16.7c0-0.9-0.4-1.9-1-2.5c-0.7-0.7-1.6-1-2.5-1h-69V75.7h3.6                          H3.6v3.6H69L69,96c0,2,1.6,3.6,3.6,3.6l23.8,0.1c1,0,1.9-0.4,2.5-1c0.7-0.7,1-1.6,1-2.5V3.6c0-1-0.4-1.9-1-2.5                          c-0.7-0.7-1.6-1-2.5-1L3.6,0.1C1.6,0.2,0,1.7,0,3.7v72c0,0.9,0.4,1.9,1,2.5c0.7,0.7,1.6,1,2.5,1V75.7z"></path>
+                                        <path d="M38.1,76.9v-9.5c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v9.5c0,1.3,1.1,2.4,2.4,2.4                          C37,79.3,38.1,78.2,38.1,76.9"></path>
+                                        <path d="M38.1,50.7V15c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v35.7c0,1.3,1.1,2.4,2.4,2.4                          C37,53.1,38.1,52.1,38.1,50.7"></path>
+                                        <path d="M2.4,38.8h33.3c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H2.4c-1.3,0-2.4,1.1-2.4,2.4                          C0,37.8,1.1,38.8,2.4,38.8"></path>
+                                        <path d="M35.7,46h31c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4h-31c-1.3,0-2.4,1.1-2.4,2.4                          C33.3,44.9,34.4,46,35.7,46"></path>
+                                        <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
+                                        <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
+                                        <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
+                                        <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
+                                                                                        </g>
+                                                                                      </svg>
+                                    </span>@product.Area sq ft
+                                </li>
+                                <li>
+                                    <span class="icon icon-sm icon-primary hotel-icon-10"></span>@product.Bathrooms bathrooms
+                                </li>
+                            </ul>
+                            <ul class="describe-2">
+                                <li>
+                                    <span class="icon icon-sm icon-primary hotel-icon-05"></span>@product.Bedrooms bedrooms
+                                </li>
+                                <li>
+                                    <span class="icon icon-sm icon-primary hotel-icon-26"></span>@product.Garages garages
+                                </li>
+                            </ul>
+                            <p class="text-abbey">@(product.Description.Length > 44 ? product.Description.Substring(0, 44) + " ..." : product.Description)</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="thumbnail thumbnail-3">
-                    <a href="single-property-page.html" class="img-link">
-                        <img src="~/assets/images/index-7.jpg" alt="" width="370" height="250">
-                    </a>
-                    <div class="caption">
-                        <h4>
-                            <a href="single-property-page.html" class="text-sushi">225 Maywood Dr, San Francisco, CA 94127</a>
-                        </h4>
-                        <span class="thumbnail-price h5">
-                            $2,229.00/
-                            <span class="mon text-regular">month</span>
-                        </span>
-                        <ul class="describe-1">
-                            <li>
-                                <span class="icon-square icon-sm">
-                                    <svg x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve">
-                                    <g>
-                                    <path d="M3.6,75.7h3.6V7.3l85.7-0.1v85.3l-16.7-0.1l0-16.7c0-0.9-0.4-1.9-1-2.5c-0.7-0.7-1.6-1-2.5-1h-69V75.7h3.6                          H3.6v3.6H69L69,96c0,2,1.6,3.6,3.6,3.6l23.8,0.1c1,0,1.9-0.4,2.5-1c0.7-0.7,1-1.6,1-2.5V3.6c0-1-0.4-1.9-1-2.5                          c-0.7-0.7-1.6-1-2.5-1L3.6,0.1C1.6,0.2,0,1.7,0,3.7v72c0,0.9,0.4,1.9,1,2.5c0.7,0.7,1.6,1,2.5,1V75.7z"></path>
-                                    <path d="M38.1,76.9v-9.5c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v9.5c0,1.3,1.1,2.4,2.4,2.4                          C37,79.3,38.1,78.2,38.1,76.9"></path>
-                                    <path d="M38.1,50.7V15c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v35.7c0,1.3,1.1,2.4,2.4,2.4                          C37,53.1,38.1,52.1,38.1,50.7"></path>
-                                    <path d="M2.4,38.8h33.3c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H2.4c-1.3,0-2.4,1.1-2.4,2.4                          C0,37.8,1.1,38.8,2.4,38.8"></path>
-                                    <path d="M35.7,46h31c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4h-31c-1.3,0-2.4,1.1-2.4,2.4                          C33.3,44.9,34.4,46,35.7,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
-                        </g>
-                      </svg>
-                                </span>1200 sq ft
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-10"></span>2 bathrooms
-                            </li>
-                        </ul>
-                        <ul class="describe-2">
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-05"></span>4 bedrooms
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-26"></span>2 garages
-                            </li>
-                        </ul>
-                        <p class="text-abbey">One of the original homes built at Ocean Beach.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="thumbnail thumbnail-3">
-                    <a href="single-property-page.html" class="img-link">
-                        <img src="~/assets/images/index-8.jpg" alt="" width="370" height="250">
-                    </a>
-                    <div class="caption">
-                        <h4>
-                            <a href="single-property-page.html" class="text-sushi">2266 48th Ave</a>
-                        </h4>
-                        <span class="thumbnail-price h5">
-                            $1,339.00/
-                            <span class="mon text-regular">month</span>
-                        </span>
-                        <ul class="describe-1">
-                            <li>
-                                <span class="icon-square icon-sm">
-                                    <svg x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve">
-                                    <g>
-                                    <path d="M3.6,75.7h3.6V7.3l85.7-0.1v85.3l-16.7-0.1l0-16.7c0-0.9-0.4-1.9-1-2.5c-0.7-0.7-1.6-1-2.5-1h-69V75.7h3.6                          H3.6v3.6H69L69,96c0,2,1.6,3.6,3.6,3.6l23.8,0.1c1,0,1.9-0.4,2.5-1c0.7-0.7,1-1.6,1-2.5V3.6c0-1-0.4-1.9-1-2.5                          c-0.7-0.7-1.6-1-2.5-1L3.6,0.1C1.6,0.2,0,1.7,0,3.7v72c0,0.9,0.4,1.9,1,2.5c0.7,0.7,1.6,1,2.5,1V75.7z"></path>
-                                    <path d="M38.1,76.9v-9.5c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v9.5c0,1.3,1.1,2.4,2.4,2.4                          C37,79.3,38.1,78.2,38.1,76.9"></path>
-                                    <path d="M38.1,50.7V15c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v35.7c0,1.3,1.1,2.4,2.4,2.4                          C37,53.1,38.1,52.1,38.1,50.7"></path>
-                                    <path d="M2.4,38.8h33.3c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H2.4c-1.3,0-2.4,1.1-2.4,2.4                          C0,37.8,1.1,38.8,2.4,38.8"></path>
-                                    <path d="M35.7,46h31c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4h-31c-1.3,0-2.4,1.1-2.4,2.4                          C33.3,44.9,34.4,46,35.7,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
-                        </g>
-                      </svg>
-                                </span>1200 sq ft
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-10"></span>2 bathrooms
-                            </li>
-                        </ul>
-                        <ul class="describe-2">
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-05"></span>4 bedrooms
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-26"></span>2 garages
-                            </li>
-                        </ul>
-                        <p class="text-abbey">Classic architectural detail, truly superb floor plan &amp; strong upside potential for the next steward to restore this forever home to greatness.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="thumbnail thumbnail-3">
-                    <a href="single-property-page.html" class="img-link">
-                        <img src="~/assets/images/index-9.jpg" alt="" width="370" height="250">
-                    </a>
-                    <div class="caption">
-                        <h4>
-                            <a href="single-property-page.html" class="text-sushi">1336 N Occidental Blvd</a>
-                        </h4>
-                        <span class="thumbnail-price h5">
-                            $4,339.00/
-                            <span class="mon text-regular">month</span>
-                        </span>
-                        <ul class="describe-1">
-                            <li>
-                                <span class="icon-square icon-sm">
-                                    <svg x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve">
-                                    <g>
-                                    <path d="M3.6,75.7h3.6V7.3l85.7-0.1v85.3l-16.7-0.1l0-16.7c0-0.9-0.4-1.9-1-2.5c-0.7-0.7-1.6-1-2.5-1h-69V75.7h3.6                          H3.6v3.6H69L69,96c0,2,1.6,3.6,3.6,3.6l23.8,0.1c1,0,1.9-0.4,2.5-1c0.7-0.7,1-1.6,1-2.5V3.6c0-1-0.4-1.9-1-2.5                          c-0.7-0.7-1.6-1-2.5-1L3.6,0.1C1.6,0.2,0,1.7,0,3.7v72c0,0.9,0.4,1.9,1,2.5c0.7,0.7,1.6,1,2.5,1V75.7z"></path>
-                                    <path d="M38.1,76.9v-9.5c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v9.5c0,1.3,1.1,2.4,2.4,2.4                          C37,79.3,38.1,78.2,38.1,76.9"></path>
-                                    <path d="M38.1,50.7V15c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v35.7c0,1.3,1.1,2.4,2.4,2.4                          C37,53.1,38.1,52.1,38.1,50.7"></path>
-                                    <path d="M2.4,38.8h33.3c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H2.4c-1.3,0-2.4,1.1-2.4,2.4                          C0,37.8,1.1,38.8,2.4,38.8"></path>
-                                    <path d="M35.7,46h31c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4h-31c-1.3,0-2.4,1.1-2.4,2.4                          C33.3,44.9,34.4,46,35.7,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
-                        </g>
-                      </svg>
-                                </span>1200 sq ft
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-10"></span>2 bathrooms
-                            </li>
-                        </ul>
-                        <ul class="describe-2">
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-05"></span>4 bedrooms
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-26"></span>2 garages
-                            </li>
-                        </ul>
-                        <p class="text-abbey">Located in the heart of Silver Lake, this magnificently re-imagined Spanish bungalow is not to be missed.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="thumbnail thumbnail-3">
-                    <a href="single-property-page.html" class="img-link">
-                        <img src="~/assets/images/index-10.jpg" alt="" width="370" height="250">
-                    </a>
-                    <div class="caption">
-                        <h4>
-                            <a href="single-property-page.html" class="text-sushi">650 Kelton Ave #201</a>
-                        </h4>
-                        <span class="thumbnail-price h5">
-                            $2,229.00/
-                            <span class="mon text-regular">month</span>
-                        </span>
-                        <ul class="describe-1">
-                            <li>
-                                <span class="icon-square icon-sm">
-                                    <svg x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve">
-                                    <g>
-                                    <path d="M3.6,75.7h3.6V7.3l85.7-0.1v85.3l-16.7-0.1l0-16.7c0-0.9-0.4-1.9-1-2.5c-0.7-0.7-1.6-1-2.5-1h-69V75.7h3.6                          H3.6v3.6H69L69,96c0,2,1.6,3.6,3.6,3.6l23.8,0.1c1,0,1.9-0.4,2.5-1c0.7-0.7,1-1.6,1-2.5V3.6c0-1-0.4-1.9-1-2.5                          c-0.7-0.7-1.6-1-2.5-1L3.6,0.1C1.6,0.2,0,1.7,0,3.7v72c0,0.9,0.4,1.9,1,2.5c0.7,0.7,1.6,1,2.5,1V75.7z"></path>
-                                    <path d="M38.1,76.9v-9.5c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v9.5c0,1.3,1.1,2.4,2.4,2.4                          C37,79.3,38.1,78.2,38.1,76.9"></path>
-                                    <path d="M38.1,50.7V15c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v35.7c0,1.3,1.1,2.4,2.4,2.4                          C37,53.1,38.1,52.1,38.1,50.7"></path>
-                                    <path d="M2.4,38.8h33.3c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H2.4c-1.3,0-2.4,1.1-2.4,2.4                          C0,37.8,1.1,38.8,2.4,38.8"></path>
-                                    <path d="M35.7,46h31c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4h-31c-1.3,0-2.4,1.1-2.4,2.4                          C33.3,44.9,34.4,46,35.7,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
-                        </g>
-                      </svg>
-                                </span>1200 sq ft
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-10"></span>2 bathrooms
-                            </li>
-                        </ul>
-                        <ul class="describe-2">
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-05"></span>4 bedrooms
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-26"></span>2 garages
-                            </li>
-                        </ul>
-                        <p class="text-abbey">Front-facing, single level, well-designed floor plan. Secure building in a highly DESIRABLE location!</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-                <div class="thumbnail thumbnail-3">
-                    <a href="single-property-page.html" class="img-link">
-                        <img src="~/assets/images/index-11.jpg" alt="" width="370" height="250">
-                    </a>
-                    <div class="caption">
-                        <h4>
-                            <a href="single-property-page.html" class="text-sushi">1735 N Fuller Ave #124</a>
-                        </h4>
-                        <span class="thumbnail-price h5">
-                            $1,339.00/
-                            <span class="mon text-regular">month</span>
-                        </span>
-                        <ul class="describe-1">
-                            <li>
-                                <span class="icon-square icon-sm">
-                                    <svg x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve">
-                                    <g>
-                                    <path d="M3.6,75.7h3.6V7.3l85.7-0.1v85.3l-16.7-0.1l0-16.7c0-0.9-0.4-1.9-1-2.5c-0.7-0.7-1.6-1-2.5-1h-69V75.7h3.6                          H3.6v3.6H69L69,96c0,2,1.6,3.6,3.6,3.6l23.8,0.1c1,0,1.9-0.4,2.5-1c0.7-0.7,1-1.6,1-2.5V3.6c0-1-0.4-1.9-1-2.5                          c-0.7-0.7-1.6-1-2.5-1L3.6,0.1C1.6,0.2,0,1.7,0,3.7v72c0,0.9,0.4,1.9,1,2.5c0.7,0.7,1.6,1,2.5,1V75.7z"></path>
-                                    <path d="M38.1,76.9v-9.5c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v9.5c0,1.3,1.1,2.4,2.4,2.4                          C37,79.3,38.1,78.2,38.1,76.9"></path>
-                                    <path d="M38.1,50.7V15c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v35.7c0,1.3,1.1,2.4,2.4,2.4                          C37,53.1,38.1,52.1,38.1,50.7"></path>
-                                    <path d="M2.4,38.8h33.3c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H2.4c-1.3,0-2.4,1.1-2.4,2.4                          C0,37.8,1.1,38.8,2.4,38.8"></path>
-                                    <path d="M35.7,46h31c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4h-31c-1.3,0-2.4,1.1-2.4,2.4                          C33.3,44.9,34.4,46,35.7,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
-                                    <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
-                        </g>
-                      </svg>
-                                </span>1200 sq ft
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-10"></span>2 bathrooms
-                            </li>
-                        </ul>
-                        <ul class="describe-2">
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-05"></span>4 bedrooms
-                            </li>
-                            <li>
-                                <span class="icon icon-sm icon-primary hotel-icon-26"></span>2 garages
-                            </li>
-                        </ul>
-                        <p class="text-abbey">This charming 2 bed and 2 bath townhome has been beautifully renovated and ready for its next owners.</p>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
-        <a href="property-catalog-grid.html" class="btn btn-sm btn-sushi offset-11">view all properties</a>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-sm btn-sushi offset-11">view all properties</a>
     </div>
 </section>
 <!--Section Our Advantages-->
@@ -600,195 +272,30 @@
         <hr>
         <!-- Owl Carousel-->
         <div data-items="1" data-xs-items="2" data-sm-items="2" data-md-items="3" data-stage-padding="0" data-loop="false" data-margin="30" data-dots="true" data-autoplay="true" class="owl-carousel owl-carousel-mod-3">
-            <div class="owl-item">
-                <div class="team-member">
-                    <div class="media media-mod-3">
-                        <div class="media-left img-width-auto">
-                            <img src="~/assets/images/agency-2.jpg" alt="" width="100" height="100">
+            @foreach (var agent in Model.Agents)
+            {
+                <div class="owl-item">
+                    <div class="team-member">
+                        <div class="media media-mod-3">
+                            <div class="media-left img-width-auto">
+                                <img src="@agent.Img" alt="@agent.Name" style="width:100px; height:100px;" width="100" height="100">
+                            </div>
+                            <div class="media-body">
+                                <h5 class="text-sushi">Heather Turner</h5>
+                                <p>@agent.Name @agent.Surname</p>
+                                <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
+                                    <dt>tel.</dt>
+                                    <dd>
+                                        <a href="@agent.PhoneNumber">@agent.PhoneNumber</a>
+                                    </dd>
+                                </dl>
+                            </div>
                         </div>
-                        <div class="media-body">
-                            <h5 class="text-sushi">Heather Turner</h5>
-                            <p>Listing Agent</p>
-                            <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
-                                <dt>tel.</dt>
-                                <dd>
-                                    <a href="callto:#">1-800-1234-567</a>
-                                </dd>
-                            </dl>
-                        </div>
+                        <p>@(agent.About.Length > 44 ? agent.About.Substring(0, 44) + " ..." : agent.About)</p>
+                        <a asp-action="Agent" asp-controller="Agency" asp-route-id="@agent.Id" class="btn btn-sm btn-primary">Get in touch</a>
                     </div>
-                    <p>She is our leading specialist in everything concerning Real Estate and property management.</p>
-                    <a href="personal-page.html" class="btn btn-sm btn-primary">Get in touch</a>
                 </div>
-            </div>
-            <div class="owl-item">
-                <div class="team-member">
-                    <div class="media media-mod-3">
-                        <div class="media-left img-width-auto">
-                            <img src="~/assets/images/agency-3.jpg" alt="" width="100" height="100">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="text-sushi">Keith Howard</h5>
-                            <p>Listing Agent</p>
-                            <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
-                                <dt>tel.</dt>
-                                <dd>
-                                    <a href="callto:#">1-800-1234-567</a>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <p>He is our leading specialist in everything concerning Real Estate and property management.</p>
-                    <a href="personal-page.html" class="btn btn-sm btn-primary">Get in touch</a>
-                </div>
-            </div>
-            <div class="owl-item">
-                <div class="team-member">
-                    <div class="media media-mod-3">
-                        <div class="media-left img-width-auto">
-                            <img src="~/assets/images/agency-4.jpg" alt="" width="100" height="100">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="text-sushi">Keith Howard</h5>
-                            <p>Listing Agent</p>
-                            <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
-                                <dt>tel.</dt>
-                                <dd>
-                                    <a href="callto:#">1-800-1234-567</a>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <p>He is our leading specialist in everything concerning Real Estate and property management.</p>
-                    <a href="personal-page.html" class="btn btn-sm btn-primary">Get in touch</a>
-                </div>
-            </div>
-            <div class="owl-item">
-                <div class="team-member">
-                    <div class="media media-mod-3">
-                        <div class="media-left img-width-auto">
-                            <img src="~/assets/images/agency-5.jpg" alt="" width="100" height="100">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="text-sushi">Crystal Martinez</h5>
-                            <p>Listing Agent</p>
-                            <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
-                                <dt>tel.</dt>
-                                <dd>
-                                    <a href="callto:#">1-800-1234-567</a>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <p>She is our leading specialist in everything concerning Real Estate and property management.</p>
-                    <a href="personal-page.html" class="btn btn-sm btn-primary">Get in touch</a>
-                </div>
-            </div>
-            <div class="owl-item">
-                <div class="team-member">
-                    <div class="media media-mod-3">
-                        <div class="media-left img-width-auto">
-                            <img src="~/assets/images/agency-6.jpg" alt="" width="100" height="100">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="text-sushi">Brittany Long</h5>
-                            <p>Listing Agent</p>
-                            <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
-                                <dt>tel.</dt>
-                                <dd>
-                                    <a href="callto:#">1-800-1234-567</a>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <p>She is our leading specialist in everything concerning Real Estate and property management.</p>
-                    <a href="personal-page.html" class="btn btn-sm btn-primary">Get in touch</a>
-                </div>
-            </div>
-            <div class="owl-item">
-                <div class="team-member">
-                    <div class="media media-mod-3">
-                        <div class="media-left img-width-auto">
-                            <img src="~/assets/images/agency-7.jpg" alt="" width="100" height="100">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="text-sushi">Rebecca King</h5>
-                            <p>Listing Agent</p>
-                            <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
-                                <dt>tel.</dt>
-                                <dd>
-                                    <a href="callto:#">1-800-1234-567</a>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <p>She is our leading specialist in everything concerning Real Estate and property management.</p>
-                    <a href="personal-page.html" class="btn btn-sm btn-primary">Get in touch</a>
-                </div>
-            </div>
-            <div class="owl-item">
-                <div class="team-member">
-                    <div class="media media-mod-3">
-                        <div class="media-left img-width-auto">
-                            <img src="~/assets/images/agency-2.jpg" alt="" width="100" height="100">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="text-sushi">Heather Turner</h5>
-                            <p>Listing Agent</p>
-                            <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
-                                <dt>tel.</dt>
-                                <dd>
-                                    <a href="callto:#">1-800-1234-567</a>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <p>She is our leading specialist in everything concerning Real Estate and property management.</p>
-                    <a href="personal-page.html" class="btn btn-sm btn-primary">Get in touch</a>
-                </div>
-            </div>
-            <div class="owl-item">
-                <div class="team-member">
-                    <div class="media media-mod-3">
-                        <div class="media-left img-width-auto">
-                            <img src="~/assets/images/agency-3.jpg" alt="" width="100" height="100">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="text-sushi">Keith Howard</h5>
-                            <p>Listing Agent</p>
-                            <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
-                                <dt>tel.</dt>
-                                <dd>
-                                    <a href="callto:#">1-800-1234-567</a>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <p>He is our leading specialist in everything concerning Real Estate and property management.</p>
-                    <a href="personal-page.html" class="btn btn-sm btn-primary">Get in touch</a>
-                </div>
-            </div>
-            <div class="owl-item">
-                <div class="team-member">
-                    <div class="media media-mod-3">
-                        <div class="media-left img-width-auto">
-                            <img src="~/assets/images/agency-4.jpg" alt="" width="100" height="100">
-                        </div>
-                        <div class="media-body">
-                            <h5 class="text-sushi">Keith Howard</h5>
-                            <p>Listing Agent</p>
-                            <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
-                                <dt>tel.</dt>
-                                <dd>
-                                    <a href="callto:#">1-800-1234-567</a>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <p>He is our leading specialist in everything concerning Real Estate and property management.</p>
-                    <a href="personal-page.html" class="btn btn-sm btn-primary">Get in touch</a>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>

@@ -243,6 +243,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             string[] includes ={
                 $"{nameof(Product.Category)}",
+                $"{nameof(Product.ProductComments)}",
                 $"{nameof(Product.ProductImages)}" };
             ICollection<Product> items = await _repository
                     .GetAllWhereByOrder(orderException: orderExpression, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
@@ -252,7 +253,7 @@ namespace Estate.Persistance.Implementations.Services
             ProductFilterVM filtered = new ProductFilterVM
             {
                 Products = _mapper.Map<ICollection<ItemProductVM>>(items),
-                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAllWhereByOrder(orderException: x => x.Products.Count,take: 4).ToListAsync())
+                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAllWhereByOrder(orderException: x => x.Products.Count).ToListAsync())
             };
             PaginationVM<ProductFilterVM> pagination = new PaginationVM<ProductFilterVM>
             {
@@ -282,7 +283,7 @@ namespace Estate.Persistance.Implementations.Services
 
             string[] includes ={
                 $"{nameof(Product.Category)}",
-                $"{nameof(Product.ProductComments)}.{nameof(ProductComment.ProductReplies)}",
+                $"{nameof(Product.ProductComments)}",
                 $"{nameof(Product.ProductImages)}" };
             double count = await _repository.CountAsync();
 
@@ -399,7 +400,7 @@ namespace Estate.Persistance.Implementations.Services
 
             string[] includes ={
                 $"{nameof(Product.Category)}",
-                $"{nameof(Product.ProductComments)}.{nameof(ProductComment.ProductReplies)}",
+                $"{nameof(Product.ProductComments)}",
                 $"{nameof(Product.ProductImages)}" };
             double count = await _repository.CountAsync();
 
