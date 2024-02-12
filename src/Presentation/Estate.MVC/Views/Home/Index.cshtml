@@ -21,7 +21,7 @@
                                     $@slider.Price
                                     <span>/@slider.OrderDayOrMoth</span>
                                 </div>
-                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@slider.Id" data-caption-animate="fadeIn" data-caption-delay="800" class="btn btn-sm btn-sushi">book now</a>
+                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@slider.Id" data-caption-animate="fadeIn" data-caption-delay="800" class="btn btn-sm btn-sushi">More</a>
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
             {
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="thumbnail thumbnail-3">
-                        <a href="single-property-page.html" class="img-link">
+                        <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="img-link">
                             <img src="@product.Images.FirstOrDefault(x => x.IsPrimary == true).Url" alt="@product.Name" width="370" height="250">
                         </a>
                         <div class="caption">

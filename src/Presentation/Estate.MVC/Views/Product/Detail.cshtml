@@ -24,6 +24,8 @@
 <section class="bg-dark section-sm section-sm-mod-1 text-left">
     <div class="container">
         <div class="row flow-offset-7">
+            <div asp-validation-summary="All" class="m-1 text-danger"></div>
+
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <p>Agent</p>
                 <a asp-action="Agent" asp-controller="Agency" asp-route-id="@Model.ProductUser.Id" class="h5 text-sushi text-regular">@Model.ProductUser.Name @Model.ProductUser.Surname</a>
@@ -204,8 +206,6 @@
                             }
                         </p>
                         <h4 class="border-bottom offset-8">Comments</h4>
-                        <div asp-validation-summary="All" class="m-1 text-danger"></div>
-
 
                         @foreach (var productComment in Model.Commnets)
                         {
@@ -312,19 +312,30 @@
                         <h4 class="border-bottom">Request a Showing</h4>
                         <p>You can contact us any way that is convenient for you. We would be happy to answer your questions.</p>
                         <!-- RD Mailform-->
-                        <form data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php" class="rd-mailform text-left offset-11">
+
+
+                        <form asp-action="AgentMessage" asp-controller="Product" asp-route-productId="@Model.Id" asp-route-agentId="@Model.ProductUser.Id" class="rd-mailform text-left offset-11">
                             <div class="form-group">
-                                <label for="contact-message2" class="form-label">Message</label>
-                                <textarea id="contact-message2" name="message" placeholder="Hello! I`m interested in 7758 Laguna heights Court, San Francisco, MA 02127. Please contact me with more information." class="form-control min-height"></textarea>
+                                <label for="message" class="form-label">Message</label>
+                                <textarea name="message" placeholder="Hello! I`m interested in 7758 Laguna heights Court, San Francisco, MA 02127. Please contact me with more information." class="form-control min-height"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-sushi btn-sm">Send message</button>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <button type="submit" class="btn btn-sushi btn-sm">Send message</button>
+                            }
+                            else
+                            {
+                                <a asp-action="Login" asp-controller="Account" class="btn btn-sushi btn-sm">Send message</a>
+                            }
                         </form>
+
+
                     </div>
                     <div class="sidebar-module">
                         <h4 class="border-bottom">Agent Information</h4>
                         <div class="media media-mod-3">
                             <div class="media-left img-width-auto">
-                                <img src="@Model.ProductUser.Img" alt="@Model.ProductUser.Name" style="width:100px;height:100px;" width="100" height="100">
+                                <img src="@Model.ProductUser.Img" alt="@Model.ProductUser.Name" style="width:100px;height:100px; border-radius: 7px;" width="100" height="100">
                             </div>
                             <div class="media-body">
                                 <h5 class="text-sushi">@Model.ProductUser.Name @Model.ProductUser.Surname</h5>

@@ -29,5 +29,6 @@ namespace Estate.Application.Abstractions.Services
         Task<bool> BeAAgentPost(string id, CreateAppUserAgentVM create, ModelStateDictionary model, ITempDataDictionary tempData);
         Task<UpdateAppUserAgentVM> UpdateAgentAsync(string id);
         Task<bool> UpdateAgentPostAsync(string id, UpdateAppUserAgentVM update, ModelStateDictionary model, ITempDataDictionary tempData);
+        Task<bool> AgentMessage(string agentId, string message, ModelStateDictionary model);
     }
 }

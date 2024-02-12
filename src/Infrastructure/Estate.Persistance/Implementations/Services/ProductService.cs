@@ -16,12 +16,15 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace Estate.Persistance.Implementations.Services
 {
     public class ProductService : IProductService
     {
         private readonly IMapper _mapper;
+        private readonly IEmailService _email;
         private readonly IProductRepository _repository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IFeaturesRepository _featuresRepository;
@@ -37,7 +40,7 @@ namespace Estate.Persistance.Implementations.Services
         public ProductService(IMapper mapper, IProductRepository repository,
             ICategoryRepository categoryRepository, IFeaturesRepository featuresRepository, IExteriorTypeRepository exteriorTypeRepository,
             IParkingTypeRepository parkingTypeRepository, IRoofTypeRepository roofTypeRepository, IViewTypeRepository viewTypeRepository,
-            IHttpContextAccessor http, IWebHostEnvironment env, UserManager<AppUser> userManager, ICLoudService cLoud)
+            IHttpContextAccessor http, IWebHostEnvironment env, UserManager<AppUser> userManager, ICLoudService cLoud, IEmailService email)
         {
             _mapper = mapper;
             _repository = repository;
@@ -51,6 +54,7 @@ namespace Estate.Persistance.Implementations.Services
             _env = env;
             _userManager = userManager;
             _cLoud = cLoud;
+            _email = email;
         }
 
         public async Task CreatePopulateDropdowns(CreateProductVM create)
@@ -863,6 +867,33 @@ namespace Estate.Persistance.Implementations.Services
 
             await _repository.AddReply(productComment);
             await _repository.SaveChanceAsync();
+            return true;
+        }
+        public async Task<bool> AgentMessage(int productId, string agentId, string message, ModelStateDictionary model)
+        {
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                model.AddModelError("Error", "Comment is required");
+                return false;
+            }
+            if (message.Length > 1500)
+            {
+                model.AddModelError("Error", "Comment max characters is 1-1500");
+                return false;
+            }
+            if (!Regex.IsMatch(message, @"^[A-Za-z0-9\s,\.]+$"))
+            {
+                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(agentId)) throw new WrongRequestException("The request sent does not exist");
+            AppUser user = await _userManager.FindByIdAsync(agentId);
+            if (user == null) throw new NotFoundException("Your request was not found");
+            if (productId <= 0) throw new WrongRequestException("The request sent does not exist");
+            Product item = await _repository.GetByIdAsync(productId);
+            if (item == null) throw new NotFoundException("Your request was not found");
+            await _email.SendMailAsync(user.Email, $"{_http.HttpContext.User.FindFirstValue(ClaimTypes.Name)} {_http.HttpContext.User.FindFirstValue(ClaimTypes.Surname)} sent a message from the {item.Name} product", 
+                $"{message}");
             return true;
         }
     }

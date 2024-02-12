@@ -33,6 +33,11 @@ namespace Estate.MVC.Controllers
 
             return RedirectToAction("Detail", "Product", new { Id = productId });
         }
+        public async Task<IActionResult> AgentMessage(int productId, string agentId, string message)
+        {
+            await _service.AgentMessage(productId, agentId, message, ModelState);
+            return RedirectToAction("Detail", "Product", new { Id = productId });
+        }
         [Authorize(Roles = "Agent")]
         public async Task<IActionResult> Delete(int id)
         {

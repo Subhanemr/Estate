@@ -8,12 +8,12 @@
                 {
                     <div class="col-xs-12 col-sm-6 col-md-4">
                         <div class="thumbnail thumbnail-3">
-                            <a href="single-property-page.html" class="img-link">
+                            <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="img-link">
                                 <img src="@product.Image" alt="@product.Name" width="370" height="250">
                             </a>
                             <div class="caption">
                                 <h4>
-                                    <a href="single-property-page.html" class="text-sushi">Building: 123 on the Park</a>
+                                    <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="text-sushi">@product.Name</a>
                                 </h4>
                                 <span class="thumbnail-price h5">
                                     $@product.Price

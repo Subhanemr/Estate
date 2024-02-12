@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Linq.Expressions;
+using System.Security.Claims;
+using System.Text.RegularExpressions;
 
 namespace Estate.Persistance.Implementations.Services
 {
@@ -565,6 +567,30 @@ namespace Estate.Persistance.Implementations.Services
             await _userManager.AddToRoleAsync(user, UserRoles.Agent.ToString());
             await _signInManager.SignOutAsync();
 
+            return true;
+        }
+        public async Task<bool> AgentMessage(string agentId, string message, ModelStateDictionary model)
+        {
+            if (string.IsNullOrWhiteSpace(message))
+            {
+                model.AddModelError("Error", "Comment is required");
+                return false;
+            }
+            if (message.Length > 1500)
+            {
+                model.AddModelError("Error", "Comment max characters is 1-1500");
+                return false;
+            }
+            if (!Regex.IsMatch(message, @"^[A-Za-z0-9\s,\.]+$"))
+            {
+                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(agentId)) throw new WrongRequestException("The request sent does not exist");
+            AppUser user = await _userManager.FindByIdAsync(agentId);
+            if (user == null) throw new NotFoundException("Your request was not found");
+            await _emailService.SendMailAsync(user.Email, $"{_http.HttpContext.User.FindFirstValue(ClaimTypes.Name)} {_http.HttpContext.User.FindFirstValue(ClaimTypes.Surname)} send message",
+                $"{message}");
             return true;
         }
     }

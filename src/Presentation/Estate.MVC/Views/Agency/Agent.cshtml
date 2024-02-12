@@ -30,12 +30,21 @@
                 <h4 class="border-bottom offset-8">Get in Touch</h4>
                 <p class="offset-10">You can contact us any way that is convenient for you. We would be happy to answer your questions.</p>
                 <!-- RD Mailform-->
-                <form data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php" class="rd-mailform text-left offset-10">
+
+                <div asp-validation-summary="All" class="m-1 text-danger"></div>
+                <form asp-action="AgentMessage" asp-controller="Agency" asp-route-agentId="@Model.Id" class="rd-mailform text-left offset-10">
                     <div class="form-group">
-                        <label for="contact-message" class="form-label">Message</label>
-                        <textarea id="contact-message" name="message" placeholder="Hello, Heather! I`d like..." class="form-control min-height"></textarea>
+                        <label for="message" class="form-label">Message</label>
+                        <textarea name="message" placeholder="Hello! I`m interested in 7758 Laguna heights Court, San Francisco, MA 02127. Please contact me with more information." class="form-control min-height"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-sushi btn-sm">Send</button>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <button type="submit" class="btn btn-sushi btn-sm">Send message</button>
+                    }
+                    else
+                    {
+                        <a asp-action="Login" asp-controller="Account" class="btn btn-sushi btn-sm">Send message</a>
+                    }
                 </form>
             </div>
             <div class="col-xs-12 col-md-8 offset-5">
@@ -131,12 +140,12 @@
                     {
                         <div class="col-sm-6">
                             <div class="thumbnail thumbnail-3">
-                                <a href="single-property-page.html" class="img-link">
+                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="img-link">
                                     <img src="@product.Images.FirstOrDefault(x => x.IsPrimary == true).Url" alt="@product.Name" width="370" height="250">
                                 </a>
                                 <div class="caption">
                                     <h4>
-                                        <a href="single-property-page.html" class="text-sushi">@product.Name</a>
+                                        <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="text-sushi">@product.Name</a>
                                     </h4>
                                     <span class="thumbnail-price h5">
                                         $@product.Price

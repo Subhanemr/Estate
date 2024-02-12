@@ -27,5 +27,6 @@ namespace Estate.Application.Abstractions.Services
         Task UpdatePopulateDropdowns(UpdateProductVM update);
         Task<bool> CommentAsync(int productId, string comment, ModelStateDictionary model);
         Task<bool> ReplyAsync(int productCommnetId, string comment, ModelStateDictionary model);
+        Task<bool> AgentMessage(int productId, string agentId, string message, ModelStateDictionary model);
     }
 }
