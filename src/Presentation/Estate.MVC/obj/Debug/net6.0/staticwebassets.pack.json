@@ -253,6 +253,10 @@
       "PackagePath": "staticwebassets\\admin\\js\\Chart.min.js"
     },
     {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\Favotite.js",
+      "PackagePath": "staticwebassets\\admin\\js\\Favotite.js"
+    },
+    {
       "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\chart.js",
       "PackagePath": "staticwebassets\\admin\\js\\chart.js"
     },

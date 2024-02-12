@@ -187,7 +187,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<GetAgencyVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes = { $"{nameof(Agency.AppUsers)}" };
+            string[] includes = { $"{nameof(Agency.AppUsers)}.{nameof(AppUser.AppUserImages)}" };
             Agency item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 

@@ -173,7 +173,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<GetParkingTypeVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes = { $"{nameof(ParkingType.ProductParkingTypes)}" };
+            string[] includes = { $"{nameof(ParkingType.ProductParkingTypes)}.{nameof(ProductParkingType.Product)}.{nameof(Product.ProductImages)}" };
             ParkingType item = await _repository.GetByIdPaginatedAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 

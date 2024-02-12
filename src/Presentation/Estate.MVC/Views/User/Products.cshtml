@@ -19,12 +19,12 @@
                                 <span class="thumbnail-price h5">
                                     $@product.Price
                                     <span class="mon text-regular">/@product.OrderDayOrMoth</span>
-                                    <a style="margin-left:120px;" asp-action="Update" asp-controller="Product" asp-area="Admin" asp-route-id="@product.Id">
+                                    <a style="margin-left:120px;" asp-action="Update" asp-controller="Product" asp-area="Admin" asp-route-id="@product.Id" asp-route-returnurl="@Context.Request.Path.Value">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
                                             <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z" />
                                         </svg>
                                     </a>
-                                    <a style="margin-left:6px;" asp-action="Delete" asp-controller="Product" asp-route-id="@product.Id">
+                                    <a style="margin-left:6px;" asp-action="Delete" asp-controller="Product" asp-route-id="@product.Id" asp-route-returnurl="@Context.Request.Path.Value">
                                         <i class="fa-sharp fa-regular fa-trash"></i>
                                     </a>
                                 </span>
@@ -71,17 +71,17 @@
         <div style="background-color: #6c757d; border-radius: 0.3rem;" class="bg-secondary border rounded-3">
             <ul style="padding: 15px 15px 65px 15px; color: #fff;">
                 <li><a asp-action="Index" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Profile Info</a></li>
-                <li><a asp-action="EditUser" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
-                <li><a asp-action="WishList" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
-                <li><a asp-action="FogotPassword" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Forgot Password</a></li>
+                <li><a asp-action="EditUser" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
+                <li><a asp-action="WishList" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
+                <li><a asp-action="FogotPassword" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Forgot Password</a></li>
                 @if (User.IsInRole(UserRoles.Agent.ToString()))
                 {
-                    <li><a asp-action="UpdateAgent" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Update Agent Info</a></li>
-                    <li><a asp-action="Products" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Products</a></li>
+                    <li><a asp-action="UpdateAgent" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Update Agent Info</a></li>
+                    <li><a asp-action="Products" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Products</a></li>
                 }
                 else
                 {
-                    <li><a asp-action="BeAAgent" asp-controller="User" asp-route-id="@Model.Id" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
+                    <li><a asp-action="BeAAgent" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
                 }
             </ul>
         </div>

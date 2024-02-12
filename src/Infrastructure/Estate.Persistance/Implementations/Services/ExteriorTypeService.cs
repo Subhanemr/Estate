@@ -174,7 +174,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<GetExteriorTypeVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes = { $"{nameof(ExteriorType.ProductExteriorTypes)}" };
+            string[] includes = { $"{nameof(ExteriorType.ProductExteriorTypes)}.{nameof(ProductExteriorType.Product)}.{nameof(Product.ProductImages)}" };
             ExteriorType item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 

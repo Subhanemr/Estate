@@ -18,22 +18,31 @@ namespace Estate.MVC.Areas.Admin.Controllers
             _service = service;
         }
 
-        public async Task<IActionResult> Index(string? search, int order = 1, int page = 1)
+        public async Task<IActionResult> Index(string? search, string? returnUrl, int order = 1, int page = 1)
         {
+            if (!string.IsNullOrWhiteSpace(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
             return View(model: await _service.GetFilteredAsync(search, 10, page, order));
         }
 
-        public async Task<IActionResult> Update(int id)
+        public async Task<IActionResult> Update(int id, string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View(await _service.UpdateAsync(id));
         }
         [HttpPost]
-        public async Task<IActionResult> Update(int id, UpdateSettingsVM update)
+        public async Task<IActionResult> Update(int id, string? returnUrl, UpdateSettingsVM update)
         {
             bool result = await _service.UpdatePostAsync(id, update, ModelState);
             if (!result)
             {
                 return View(update);
+            }
+            if (!string.IsNullOrWhiteSpace(returnUrl))
+            {
+                return Redirect(returnUrl);
             }
             return RedirectToAction(nameof(Index));
         }

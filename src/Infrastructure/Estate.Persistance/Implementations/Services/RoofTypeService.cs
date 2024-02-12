@@ -173,7 +173,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<GetRoofTypeVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes = { $"{nameof(RoofType.ProductRoofTypes)}" };
+            string[] includes = { $"{nameof(RoofType.ProductRoofTypes)}.{nameof(ProductRoofType.Product)}.{nameof(Product.ProductImages)}" };
             RoofType item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 

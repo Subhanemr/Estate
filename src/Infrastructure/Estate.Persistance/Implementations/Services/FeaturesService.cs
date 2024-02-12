@@ -173,7 +173,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<GetFeaturesVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes = { $"{nameof(Features.ProductFeatures)}" };
+            string[] includes = { $"{nameof(Features.ProductFeatures)}.{nameof(ProductFeatures.Product)}.{nameof(Product.ProductImages)}" };
             Features item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 

@@ -16,7 +16,7 @@
                     <span asp-validation-for="Value" class="text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-primary me-2">Submit</button>
-                <a asp-action="Index" asp-controller="Settings" class="btn btn-light">Cancel</a>
+                <a asp-action="Index" asp-controller="Settings" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="btn btn-light">Cancel</a>
             </form>
         </div>
     </div>

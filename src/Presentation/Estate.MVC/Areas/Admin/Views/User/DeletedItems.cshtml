@@ -93,16 +93,16 @@
                                     @(user.SoulOfAgency ? "Yes":"No")
                                 </td>
                                 <td>
-                                    <a asp-action="ReverseSoftDelete" asp-controller="User" asp-route-id="@user.Id" class="btn btn-secondary">
+                                    <a asp-action="ReverseSoftDelete" asp-controller="User" asp-route-id="@user.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-secondary">
                                         <i class="mdi mdi-backup-restore text-white"></i>
                                     </a>
                                     @if (User.IsInRole(UserRoles.Admin.ToString()))
                                     {
-                                        <a asp-action="Delete" asp-controller="User" asp-route-id="@user.Id" class="btn btn-danger btn-info">
+                                        <a asp-action="Delete" asp-controller="User" asp-route-id="@user.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-danger btn-info">
                                             <i class="mdi mdi-delete-forever text-white"></i>
                                         </a>
                                     }
-                                    <a asp-action="Detail" asp-controller="User" asp-route-id="@user.Id" class="btn  btn-primary">
+                                    <a asp-action="Detail" asp-controller="User" asp-route-id="@user.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn  btn-primary">
                                         <i class="mdi mdi-open-in-new text-white"></i>
                                     </a>
                                 </td>

@@ -27,7 +27,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Corporates table</h4>
-            <a asp-controller="Corporate" asp-action="Create" class="btn btn-warning fw-bold fs-6 text-white">Create Corporate</a>
+            <a asp-controller="Corporate" asp-action="Create" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-warning fw-bold fs-6 text-white">Create Corporate</a>
             <div class="table-responsive pt-3">
                 <table class="table table-bordered">
                     <thead>
@@ -68,16 +68,16 @@
                                     @Corporate.Clients.Count
                                 </td>
                                 <td>
-                                    <a asp-action="Update" asp-controller="Corporate" asp-route-id="@Corporate.Id" class="btn btn-primary btn-info">
+                                    <a asp-action="Update" asp-controller="Corporate" asp-route-id="@Corporate.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-primary btn-info">
                                         <i class="mdi mdi-pencil text-white"></i>
                                     </a>
                                     @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Moderator.ToString()))
                                     {
-                                        <a asp-action="SoftDelete" asp-controller="Corporate" asp-route-id="@Corporate.Id" class="btn btn-danger btn-info">
+                                        <a asp-action="SoftDelete" asp-controller="Corporate" asp-route-id="@Corporate.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-danger btn-info">
                                             <i class="mdi mdi-delete text-white"></i>
                                         </a>
                                     }
-                                    <a asp-action="Detail" asp-controller="Corporate" asp-route-id="@Corporate.Id" class="btn  btn-primary">
+                                    <a asp-action="Detail" asp-controller="Corporate" asp-route-id="@Corporate.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn  btn-primary">
                                         <i class="mdi mdi-open-in-new text-white"></i>
                                     </a>
                                 </td>

@@ -1,6 +1,7 @@
 ﻿using Estate.Application.Abstractions.Services;
 using Estate.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Estate.MVC.Controllers
 {
@@ -15,25 +16,25 @@ namespace Estate.MVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _service.GetByUserNameAsync(User.Identity.Name));
+            return View(await _service.GetByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)));
         }
-        public async Task<IActionResult> EditUser(string id)
+        public async Task<IActionResult> EditUser()
         {
-            return View(await _service.EditUser(id));
+            return View(await _service.EditUser(User.FindFirstValue(ClaimTypes.NameIdentifier)));
         }
         [HttpPost]
-        public async Task<IActionResult> EditUser(string id, EditUserVM editUser)
+        public async Task<IActionResult> EditUser(EditUserVM editUser)
         {
-            bool result = await _service.EditUserAsync(id, editUser, ModelState);
+            bool result = await _service.EditUserAsync(User.FindFirstValue(ClaimTypes.NameIdentifier), editUser, ModelState);
             if (!result)
             {
                 return View(editUser);
             }
             return RedirectToAction(nameof(Index));
         }
-        public async Task<IActionResult> FogotPassword(string id)
+        public async Task<IActionResult> FogotPassword()
         {
-            await _service.FogotPassword(id, Url);
+            await _service.FogotPassword(User.FindFirstValue(ClaimTypes.NameIdentifier), Url);
             return View();
         }
         public IActionResult ChangePassword(string token)
@@ -42,27 +43,27 @@ namespace Estate.MVC.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ChangePassword(string id, string token, FogotPasswordVM fogotPassword)
+        public async Task<IActionResult> ChangePassword(string token, FogotPasswordVM fogotPassword)
         {
-            bool result = await _service.ChangePassword(id, token, fogotPassword, ModelState);
+            bool result = await _service.ChangePassword(User.FindFirstValue(ClaimTypes.NameIdentifier), token, fogotPassword, ModelState);
             if (!result)
             {
                 return View(fogotPassword);
             }
             return RedirectToAction(nameof(Index));
         }
-        public async Task<IActionResult> WishList(string id)
+        public async Task<IActionResult> WishList()
         {
-            return View(await _service.GetByIdAsync(id));
+            return View(await _service.GetByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)));
         }
-        public async Task<IActionResult> BeAAgent(string id)
+        public async Task<IActionResult> BeAAgent()
         {
-            return View(await _service.BeAAgent(id));
+            return View(await _service.BeAAgent(User.FindFirstValue(ClaimTypes.NameIdentifier)));
         }
         [HttpPost]
-        public async Task<IActionResult> BeAAgent(string id, CreateAppUserAgentVM create)
+        public async Task<IActionResult> BeAAgent(CreateAppUserAgentVM create)
         {
-            bool result = await _service.BeAAgentPost(id, create, ModelState, TempData);
+            bool result = await _service.BeAAgentPost(User.FindFirstValue(ClaimTypes.NameIdentifier), create, ModelState, TempData);
             if (!result)
             {
                 return View(create);
@@ -70,23 +71,23 @@ namespace Estate.MVC.Controllers
             return RedirectToAction("Index", "Home", new { Area = "" });
         }
 
-        public async Task<IActionResult> UpdateAgent(string id)
+        public async Task<IActionResult> UpdateAgent()
         {
-            return View(await _service.UpdateAgentAsync(id));
+            return View(await _service.UpdateAgentAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)));
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateAgent(string id, UpdateAppUserAgentVM update)
+        public async Task<IActionResult> UpdateAgent(UpdateAppUserAgentVM update)
         {
-            bool result = await _service.UpdateAgentPostAsync(id, update, ModelState, TempData);
+            bool result = await _service.UpdateAgentPostAsync(User.FindFirstValue(ClaimTypes.NameIdentifier), update, ModelState, TempData);
             if (!result)
             {
                 return View(update);
             }
             return RedirectToAction("Index", "Home", new { Area = "" });
         }
-        public async Task<IActionResult> Products(string id)
+        public async Task<IActionResult> Products()
         {
-            return View(await _service.GetByIdAsync(id));
+            return View(await _service.GetByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)));
         }
     }
 }

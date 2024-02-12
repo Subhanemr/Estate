@@ -187,11 +187,11 @@
                                 <td>
                                     @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Moderator.ToString()))
                                     {
-                                        <a asp-action="SoftDelete" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-danger">
+                                        <a asp-action="SoftDelete" asp-controller="Product" asp-route-returnurl="@Context.Request.Path.Value" asp-route-id="@item.Id" class="btn btn-danger">
                                             <i class="mdi mdi-delete text-white"></i>
                                         </a>
                                     }
-                                    <a asp-action="Detail" asp-controller="Product" asp-route-id="@item.Id" class="btn  btn-primary">
+                                    <a asp-action="Detail" asp-controller="Product" asp-route-id="@item.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn  btn-primary">
                                         <i class="mdi mdi-open-in-new text-white"></i>
                                     </a>
                                 </td>

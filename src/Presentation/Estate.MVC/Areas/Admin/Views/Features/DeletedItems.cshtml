@@ -27,7 +27,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Deleted Features table</h4>
-            <a asp-controller="Features" asp-action="Create" class="btn btn-warning fw-bold fs-6 text-white">Create Feature</a>
+            <a asp-controller="Features" asp-action="Create" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-warning fw-bold fs-6 text-white">Create Feature</a>
             <div class="table-responsive pt-3">
                 <table class="table table-bordered">
                     <thead>
@@ -62,19 +62,19 @@
                                     @item.Products.Count
                                 </td>
                                 <td>
-                                    <a asp-action="Update" asp-controller="Features" asp-route-id="@item.Id" class="btn btn-primary btn-info">
+                                    <a asp-action="Update" asp-controller="Features" asp-route-id="@item.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-primary btn-info">
                                         <i class="mdi mdi-pencil text-white"></i>
                                     </a>
                                     @if (User.IsInRole(UserRoles.Admin.ToString()))
                                     {
-                                        <a asp-action="ReverseSoftDelete" asp-controller="Features" asp-route-id="@item.Id" class="btn btn-secondary">
+                                        <a asp-action="ReverseSoftDelete" asp-controller="Features" asp-route-id="@item.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-secondary">
                                             <i class="mdi mdi-backup-restore text-white"></i>
                                         </a>
-                                        <a asp-action="Delete" asp-controller="Features" asp-route-id="@item.Id" class="btn btn-danger btn-info">
+                                        <a asp-action="Delete" asp-controller="Features" asp-route-id="@item.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-danger btn-info">
                                             <i class="mdi mdi-delete-forever text-white"></i>
                                         </a>
                                     }
-                                    <a asp-action="Detail" asp-controller="Features" asp-route-id="@item.Id" class="btn  btn-primary">
+                                    <a asp-action="Detail" asp-controller="Features" asp-route-id="@item.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-primary">
                                         <i class="mdi mdi-open-in-new text-white"></i>
                                     </a>
                                 </td>

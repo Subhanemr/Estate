@@ -4,19 +4,32 @@
     <h3 class="fw-bold m-3">@Model.Name Products</h3>
     <h4 class="fw-normal mx-5 my-3">Users Count: @Model.AppUsers.Count</h4>
 </div>
-<div class="card-group">
+<div class="row row-cols-1 row-cols-md-3 g-4">
     @foreach (var user in Model.AppUsers)
     {
-
-        <div class="card m-1 bg-primary text-white rounded-3">
-            <img src="@user.Img"
-                 alt="@user.UserName" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title text-white">Username:<a></a> @user.UserName</h5>
-                <p class="card-text">Name: @user.Name</p>
-                <p class="card-text">Surname: @user.Surname</p>
+        <div class="col">
+            <div class="card bg-secondary">
+                <img src="@user.Img" alt="@user.UserName" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title text-white">Username:<a></a> @user.UserName</h5>
+                    <p class="card-text text-white">Name: @user.Name</p>
+                    <p class="card-text text-white">Surname: @user.Surname</p>
+                    <p class="card-text text-white">Address: @user.Address</p>
+                    <p class="card-text text-white">About: @user.About</p>
+                    <p class="card-text text-white">Facebook: <a href="@(user.FaceLink != null ? user.FaceLink : "")">@(user.FaceLink != null ? user.FaceLink : "N/A")</a> </p>
+                    <p class="card-text text-white">Twitter: <a href="@(user.TwitLink != null ? user.TwitLink : "")">@(user.TwitLink != null ? user.TwitLink : "N/A")</a> </p>
+                    <p class="card-text text-white">GoogleLink: <a href="@(user.GoogleLink != null ? user.GoogleLink : "")">@(user.GoogleLink != null ? user.GoogleLink : "N/A")</a> </p>
+                    <p class="card-text text-white">Linked-In: <a href="@(user.LinkedLink != null ? user.LinkedLink : "")">@(user.LinkedLink != null ? user.LinkedLink : "N/A")</a> </p>
+                    <p class="card-text text-white">Instagram: <a href="@(user.InstaLink != null ? user.InstaLink : "")">@(user.InstaLink != null ? user.InstaLink : "N/A")</a> </p>
+                    @foreach (var productImage in user.Images)
+                    {
+                        <p class="card-text fw-bold m-2 text-white">Certificate Images</p>
+                        <img src="@productImage.Url" class="img-fluid rounded-start w-25"  alt="@Model.Name">
+                    }
+                </div>
             </div>
         </div>
     }
 </div>
-<a class="btn btn-light fw-bold fs-4" asp-action="Index" asp-controller="Features">Back</a>
+
+<a class="btn btn-light fw-bold fs-4" asp-action="Index" asp-controller="Agency" asp-route-returnUrl="@ViewData["ReturnUrl"]">Back</a>

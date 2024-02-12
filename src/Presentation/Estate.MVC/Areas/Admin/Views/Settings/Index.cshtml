@@ -60,7 +60,7 @@
                                     @Settings.Value
                                 </td>
                                 <td>
-                                    <a asp-action="Update" asp-controller="Settings" asp-route-id="@Settings.Id" class="btn btn-primary btn-info">
+                                    <a asp-action="Update" asp-controller="Settings" asp-route-id="@Settings.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-primary btn-info">
                                         <i class="mdi mdi-pencil text-white"></i>
                                     </a>
                                 </td>

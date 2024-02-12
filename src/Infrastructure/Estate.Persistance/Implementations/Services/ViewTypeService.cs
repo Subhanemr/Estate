@@ -172,7 +172,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<GetViewTypeVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes = { $"{nameof(ViewType.ProductViewTypes)}" };
+            string[] includes = { $"{nameof(ViewType.ProductViewTypes)}.{nameof(ProductViewType.Product)}.{nameof(Product.ProductImages)}" };
             ViewType item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 

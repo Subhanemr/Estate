@@ -20,7 +20,7 @@
                         @if (User.IsInRole(UserRoles.Agent.ToString()))
                         {
                             <dd>
-                                <a asp-action="Create" asp-controller="Product" asp-area="Admin" class="text-sushi">Create Product</a>
+                                <a asp-action="Create" asp-controller="Product" asp-area="Admin" asp-route-returnurl="@Context.Request.Path.Value" class="text-sushi">Create Product</a>
                             </dd>
                         }
                         @if (User.IsInRole(UserRoles.Admin.ToString()) || User.IsInRole(UserRoles.Moderator.ToString()))
@@ -137,7 +137,7 @@
                                     @if (User.IsInRole(UserRoles.Agent.ToString()))
                                     {
                                         <dd>
-                                            <a asp-action="Create" asp-controller="Product" class="text-sushi">Create Product</a>
+                                            <a asp-action="Create" asp-controller="Product" asp-route-returnurl="@Context.Request.Path.Value" class="text-sushi">Create Product</a>
                                         </dd>
                                     }
                                     <br>

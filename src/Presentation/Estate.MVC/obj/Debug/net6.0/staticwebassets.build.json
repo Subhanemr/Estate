@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WxUmGLblXFjerK3hI2rgsVUd4LSzDCZ/4JvxIfxozUE=",
+  "Hash": "SP8rawMdmkKJ8LF8ncTMVXdreTpQKKEMqqCWHpESfdg=",
   "Source": "Estate.MVC",
   "BasePath": "_content/Estate.MVC",
   "Mode": "Default",
@@ -1171,6 +1171,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\admin\\js\\documentation.js"
+    },
+    {
+      "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\Favotite.js",
+      "SourceId": "Estate.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\",
+      "BasePath": "_content/Estate.MVC",
+      "RelativePath": "admin/js/Favotite.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\admin\\js\\Favotite.js"
     },
     {
       "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\file-upload.js",
