@@ -12,12 +12,17 @@ namespace Estate.MVC.Controllers
             _service = service;
         }
 
-        public async Task<IActionResult> Index(string? search, int order = 1, int page = 1)
+        public async Task<IActionResult> Index(string? search, string? returnUrl, int order = 1, int page = 1)
         {
+            if (!string.IsNullOrWhiteSpace(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
             return View(await _service.GetFilteredAsync(search, 6, page, order));
         }
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult> Detail(int id, string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View(await _service.GetByIdAsync(id));
         }
         public async Task<IActionResult> Comment(int blogId, string comment)

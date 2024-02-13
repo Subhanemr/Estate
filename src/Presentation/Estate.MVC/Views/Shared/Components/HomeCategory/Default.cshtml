@@ -1,0 +1,14 @@
+﻿@model ICollection<ItemCategoryVM>
+
+@foreach (var ctgr in Model)
+{
+    <div class="col-xs-12 col-sm-6">
+        <a asp-action="Index" asp-controller="Product" asp-route-categoryId="@ctgr.Id" class="img-thumbnail-variant-1">
+            <img src="~/assets/images/categories-1.jpg" alt="@ctgr.Name" style="width: 570px; height:380px;" width="570" height="380">
+            <div class="caption">
+                <h4 class="text-white">@ctgr.Name</h4>
+                <p>@ctgr.Products.Count@(ctgr.Products.Count <= 1 ? " Produt" : " Products")</p>
+            </div>
+        </a>
+    </div>
+}

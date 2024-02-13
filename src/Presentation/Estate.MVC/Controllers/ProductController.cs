@@ -13,12 +13,17 @@ namespace Estate.MVC.Controllers
             _service = service;
         }
 
-        public async Task<IActionResult> Index(string? search, int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths, int order = 1, int page = 1)
+        public async Task<IActionResult> Index(string? search, string? returnUrl, int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths, int order = 1, int page = 1)
         {
+            if (!string.IsNullOrWhiteSpace(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
             return View(model: await _service.GetFilteredAsync(search, 10, page, order, categoryId, minPrice, maxPrice, minArea, maxArea, minBeds, minBaths));
         }
-        public async Task<IActionResult> Detail(int id)
+        public async Task<IActionResult> Detail(int id, string? returnUrl)
         {
+            ViewData["ReturnUrl"] = returnUrl;
             return View(await _service.GetByIdAsync(id));
         }
         public async Task<IActionResult> Comment(int productId, string comment)
@@ -39,7 +44,7 @@ namespace Estate.MVC.Controllers
             return RedirectToAction("Detail", "Product", new { Id = productId });
         }
         [Authorize(Roles = "Agent")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(int id, string? returnUrl)
         {
             await _service.SoftDeleteAsync(id);
 

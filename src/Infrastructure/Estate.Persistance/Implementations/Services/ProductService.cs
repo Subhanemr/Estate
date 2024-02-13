@@ -374,7 +374,7 @@ namespace Estate.Persistance.Implementations.Services
             ProductFilterVM filtered = new ProductFilterVM
             {
                 Products = _mapper.Map<ICollection<ItemProductVM>>(items),
-                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll().ToListAsync())
+                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll(false).ToListAsync())
             };
             PaginationVM<ProductFilterVM> pagination = new PaginationVM<ProductFilterVM>
             {
@@ -489,7 +489,7 @@ namespace Estate.Persistance.Implementations.Services
             ProductFilterVM filtered = new ProductFilterVM
             {
                 Products = _mapper.Map<ICollection<ItemProductVM>>(items),
-                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll().ToListAsync()),
+                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll(false).ToListAsync()),
             };
             PaginationVM<ProductFilterVM> pagination = new PaginationVM<ProductFilterVM>
             {

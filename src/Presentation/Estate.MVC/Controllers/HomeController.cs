@@ -21,7 +21,6 @@ namespace Estate.MVC.Controllers
             {
                 Pagination = await _productService.GetAllWhereByOrderFilterAsync(6, 1, x => x.ProductComments.Count),
                 Agents = await _userService.GetAllWhereByOrderAsync(6)
-                
             };
             return View(home);
         }

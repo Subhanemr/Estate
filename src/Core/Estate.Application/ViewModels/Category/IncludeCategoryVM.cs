@@ -1,7 +1,10 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record IncludeCategoryVM(int Id,string Name, string Img)
+    public record IncludeCategoryVM
     {
-        public ICollection<IncludeProductVM> Products { get; set; }
+        public int Id { get; init; }
+        public string Name { get; init; }
+        public string Img { get; init; }
+        public ICollection<IncludeProductVM> Products { get; init; }
     }
 }

@@ -11,7 +11,7 @@
                         <a asp-action="Index" asp-controller="Home">Home</a>
                     </li>
                     <li>
-                        <a asp-action="Index" asp-controller="Blog">Blogs</a>
+                        <a asp-action="Index" asp-controller="Blog" asp-route-returnUrl="@ViewData["ReturnUrl"]">Blogs</a>
                     </li>
                     <li class="active">Blog Detail</li>
                 </ol>

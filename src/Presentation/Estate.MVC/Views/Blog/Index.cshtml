@@ -43,7 +43,7 @@
                 <div class="col-xs-12 col-sm-6 col-lg-4">
                     <article class="thumbnail thumbnail-2 thumbnail-2-mod-1">
                         <div class="img-wrap">
-                            <a asp-action="Detail" asp-controller="Blog" asp-route-id="@blog.Id" class="img-block">
+                            <a asp-action="Detail" asp-controller="Blog" asp-route-id="@blog.Id" asp-route-returnurl="@Context.Request.Path.Value" class="img-block">
                                 <img src="@blog.Images.FirstOrDefault(x => x.IsPrimary == true).Url" alt="@blog.Name" width="370" height="250">
                             </a>
                         </div>
@@ -56,7 +56,7 @@
                                     <span class="mdi mdi-calendar"></span>
                                     <span>@blog.CreateAt.ToString("MMM dd, yyyy 'at' h:mm tt")</span>
                                 </time>
-                                <a asp-action="Detail" asp-controller="Agent" asp-route-id="@blog.CreatedBy">
+                                <a asp-action="Detail" asp-controller="Agent" asp-route-id="@blog.CreatedBy" asp-route-returnurl="@Context.Request.Path.Value">
                                     <span class="mdi mdi-account"></span>
                                     <span>@blog.CreatedBy</span>
                                 </a>

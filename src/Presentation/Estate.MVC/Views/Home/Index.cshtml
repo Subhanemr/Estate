@@ -129,18 +129,7 @@
         <h2>Popular categories</h2>
         <hr>
         <div class="row offset-11">
-            @foreach (var ctgr in Model.Pagination.Item.Categories)
-            {
-                <div class="col-xs-12 col-sm-6">
-                    <a asp-action="Index" asp-controller="Product" asp-route-categoryId="@ctgr.Id" class="img-thumbnail-variant-1">
-                        <img src="~/assets/images/categories-1.jpg" alt="@ctgr.Name" style="width: 570px; height:380px;" width="570" height="380">
-                        <div class="caption">
-                            <h4 class="text-white">@ctgr.Name</h4>
-                            <p>@ctgr.Products.Count@(ctgr.Products.Count <= 1 ? " Produt" : " Products")</p>
-                        </div>
-                    </a>
-                </div>
-            }
+            @await Component.InvokeAsync("HomeCategory")
         </div>
     </div>
 </section>
@@ -281,7 +270,7 @@
                                 <img src="@agent.Img" alt="@agent.Name" style="width:100px; height:100px;" width="100" height="100">
                             </div>
                             <div class="media-body">
-                                <h5 class="text-sushi">Heather Turner</h5>
+                                <h5 class="text-sushi">@agent.Name @agent.Surname</h5>
                                 <p>@agent.Name @agent.Surname</p>
                                 <dl class="dl-horizontal-mod-1 text-ubold text-abbey">
                                     <dt>tel.</dt>
