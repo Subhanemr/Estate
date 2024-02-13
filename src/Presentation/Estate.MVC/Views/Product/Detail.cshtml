@@ -12,7 +12,7 @@
                         <a asp-action="Index" asp-controller="Home">Home</a>
                     </li>
                     <li>
-                        <a asp-action="Index" asp-controller="Product">Catalog</a>
+                        <a asp-action="Index" asp-controller="Product" asp-route-returnUrl="@ViewData["ReturnUrl"]">Catalog</a>
                     </li>
                     <li class="active">@Model.Name</li>
                 </ol>
