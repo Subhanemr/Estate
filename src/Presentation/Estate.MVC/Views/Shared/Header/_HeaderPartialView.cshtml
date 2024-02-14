@@ -47,7 +47,7 @@
                 <div class="top-panel-inner">
                     <dl class="dl-horizontal-mod-1">
                         <dt>
-                            <span class="material-icons-local_phone icon-xxs-mod-2"></span>
+                            <span class="@setting["PhoneIcon"]"></span>
                         </dt>
                         <dd>
                             <a href="@setting["Phone"]">@setting["Phone"]</a>
@@ -55,41 +55,35 @@
                     </dl>
                     <dl class="dl-horizontal-mod-1">
                         <dt>
-                            <span class="material-icons-drafts icon-xxs-mod-2"></span>
+                            <span class="@setting["EmailIcon"]"></span>
                         </dt>
                         <dd>
-                            <a href="mailto:#">info@demolink.org</a>
+                            <a href="@setting["Email"]">@setting["Email"]</a>
                         </dd>
                     </dl>
                     <address>
                         <dl class="dl-horizontal-mod-1">
                             <dt>
-                                <span class="mdi mdi-map-marker-radius icon-xxs-mod-2"></span>
+                                <span class="@setting["AddressIcon"]"></span>
                             </dt>
                             <dd>
-                                <a href="#" class="inset-11">795 Folsom Ave, Suite 600 San Francisco, CA 94107</a>
+                                <a href="@setting["Address"]" class="inset-11">@setting["Address"]</a>
                             </dd>
                         </dl>
                     </address>
                 </div>
                 <ul class="list-inline">
                     <li>
-                        <a href="#" class="fa-facebook"></a>
+                        <a href="@setting["Facebook"]" class="@setting["FacebookIcon"]"></a>
                     </li>
                     <li>
-                        <a href="#" class="fa-twitter"></a>
+                        <a href="@setting["Twitter"]" class="@setting["TwitterIcon"]"></a>
                     </li>
                     <li>
-                        <a href="#" class="fa-pinterest-p"></a>
+                        <a href="@setting["Pinterest"]" class="@setting["PinterestIcon"]"></a>
                     </li>
                     <li>
-                        <a href="#" class="fa-vimeo"></a>
-                    </li>
-                    <li>
-                        <a href="#" class="fa-google"></a>
-                    </li>
-                    <li>
-                        <a href="#" class="fa-rss"></a>
+                        <a href="@setting["GooglePlus"]" class="@setting["GooglePlusIcon"]"></a>
                     </li>
                 </ul>
             </div>
@@ -102,8 +96,8 @@
                 </button>
                 <!-- RD Navbar Brand-->
                 <div class="rd-navbar-brand">
-                    <a href="index.html" class="brand-name">
-                        <img src="images/logo-1.png" alt="">
+                    <a asp-action="Index" asp-controller="Home" asp-area="" class="brand-name">
+                        <img src="~/assets/images/@setting["Logo"]" alt="Logo">
                     </a>
                 </div>
             </div>
@@ -122,9 +116,6 @@
                     </li>
                     <li class="">
                         <a asp-action="Index" asp-controller="Blog">Blogs</a>
-                    </li>
-                    <li class="">
-                        <a href="./">Gallery</a>
                     </li>
                     @await Component.InvokeAsync("Favorite")
                     <li class="rd-navbar-bottom-panel">
@@ -164,49 +155,43 @@
                             <div class="top-panel-inner">
                                 <dl class="dl-horizontal-mod-1">
                                     <dt>
-                                        <span class="icon-xxs-mod-2 material-icons-local_phone"></span>
+                                        <span class="@setting["PhoneIcon"]"></span>
                                     </dt>
                                     <dd>
-                                        <a href="callto:#">1-800-1234-567</a>
+                                        <a href="@setting["Phone"]">@setting["Phone"]</a>
                                     </dd>
                                 </dl>
                                 <dl class="dl-horizontal-mod-1">
                                     <dt>
-                                        <span class="material-icons-drafts icon-xxs-mod-2"></span>
+                                        <span class="@setting["EmailIcon"]"></span>
                                     </dt>
                                     <dd>
-                                        <a href="mailto:#">info@demolink.org</a>
+                                        <a href="@setting["Email"]">@setting["Email"]</a>
                                     </dd>
                                 </dl>
                                 <address>
                                     <dl class="dl-horizontal-mod-1">
                                         <dt>
-                                            <span class="icon-xxs-mod-2 mdi mdi-map-marker-radius"></span>
+                                            <span class="@setting["AddressIcon"]"></span>
                                         </dt>
                                         <dd>
-                                            <a href="#" class="inset-11">795 Folsom Ave, Suite 600 San Francisco, CA 94107</a>
+                                            <a href="@setting["Address"]" class="inset-11">@setting["Address"]</a>
                                         </dd>
                                     </dl>
                                 </address>
                             </div>
                             <ul class="list-inline">
                                 <li>
-                                    <a href="#" class="fa-facebook"></a>
+                                    <a href="@setting["Facebook"]" class="@setting["FacebookIcon"]"></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="fa-twitter"></a>
+                                    <a href="@setting["Twitter"]" class="@setting["TwitterIcon"]"></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="fa-pinterest-p"></a>
+                                    <a href="@setting["Pinterest"]" class="@setting["PinterestIcon"]"></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="fa-vimeo"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fa-google"></a>
-                                </li>
-                                <li>
-                                    <a href="#" class="fa-rss"></a>
+                                    <a href="@setting["GooglePlus"]" class="@setting["GooglePlusIcon"]"></a>
                                 </li>
                             </ul>
                         </div>
