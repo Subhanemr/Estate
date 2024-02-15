@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CloudinaryDotNet.Actions;
 using Estate.Application.Abstractions.Repositories;
 using Estate.Application.Abstractions.Services;
 using Estate.Application.ViewModels;
@@ -340,12 +341,10 @@ namespace Estate.Persistance.Implementations.Services
             var result = await _userManager.ChangePasswordAsync(user, fogotPassword.Password, fogotPassword.NewPassword);
             if (!result.Succeeded)
             {
-                string errors = "";
                 foreach (var error in result.Errors)
                 {
-                    errors += error.Description;
+                    model.AddModelError(string.Empty, error.Description);
                 }
-                throw new WrongRequestException(errors);
             }
 
             await _signInManager.SignOutAsync();
@@ -573,17 +572,17 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (string.IsNullOrWhiteSpace(message))
             {
-                model.AddModelError("Error", "Comment is required");
+                model.AddModelError(string.Empty, "Comment is required");
                 return false;
             }
             if (message.Length > 1500)
             {
-                model.AddModelError("Error", "Comment max characters is 1-1500");
+                model.AddModelError(string.Empty, "Comment max characters is 1-1500");
                 return false;
             }
             if (!Regex.IsMatch(message, @"^[A-Za-z0-9\s,\.]+$"))
             {
-                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                model.AddModelError(string.Empty, "Comment can only contain letters, numbers, spaces, commas, and periods.");
                 return false;
             }
             if (string.IsNullOrWhiteSpace(agentId)) throw new WrongRequestException("The request sent does not exist");

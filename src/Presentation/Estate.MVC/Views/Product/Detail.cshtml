@@ -23,9 +23,8 @@
 <!-- Section Catalog Single Left-->
 <section class="bg-dark section-sm section-sm-mod-1 text-left">
     <div class="container">
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div class="row flow-offset-7">
-            <div asp-validation-summary="All" class="m-1 text-danger"></div>
-
             <div class="col-xs-12 col-sm-6 col-md-3">
                 <p>Agent</p>
                 <a asp-action="Agent" asp-controller="Agency" asp-route-id="@Model.ProductUser.Id" class="h5 text-sushi text-regular">@Model.ProductUser.Name @Model.ProductUser.Surname</a>
@@ -206,6 +205,7 @@
                             }
                         </p>
                         <h4 class="border-bottom offset-8">Comments</h4>
+                        @Html.Raw(TempData["Reply"])
 
                         @foreach (var productComment in Model.Commnets)
                         {
@@ -228,7 +228,7 @@
                                             }
                                             else
                                             {
-                                                <a asp-action="Login" asp-controller="Account" style="border:none;">
+                                                <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" style="border:none;">
                                                     <span class="fa-mail-reply icon"></span>
                                                     <span class="text-sushi">Reply</span>
                                                 </a>
@@ -237,6 +237,7 @@
                                                 <label name="comment" class="form-label">Enter your message</label>
                                                 <textarea name="comment" class="form-control" value="comment"
                                                           pattern="^[A-Za-z0-9\s,.]+$" title="Comment can only contain letters, numbers, spaces, commas, and periods."></textarea>
+                                                
                                             </div>
                                         </div>
                                     </form>
@@ -263,7 +264,7 @@
                                                 }
                                                 else
                                                 {
-                                                    <a asp-action="Login" asp-controller="Account" style="border:none;">
+                                                    <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" style="border:none;">
                                                         <span class="fa-mail-reply icon"></span>
                                                         <span class="text-sushi">Reply</span>
                                                     </a>
@@ -288,6 +289,7 @@
                                         <label name="comment" class="form-label">Enter your message</label>
                                         <textarea name="comment" class="form-control" value="comment"
                                                   pattern="^[A-Za-z0-9\s,.]+$" title="Comment can only contain letters, numbers, spaces, commas, and periods."></textarea>
+                                        @Html.Raw(TempData["Comment"])
                                     </div>
                                 </div>
                                 <div class="col-xs-12">
@@ -297,7 +299,7 @@
                                     }
                                     else
                                     {
-                                        <a asp-action="Login" asp-controller="Account" class="btn btn-sushi btn-sm">Comment</a>
+                                        <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-sushi btn-sm">Comment</a>
                                     }
                                 </div>
                             </div>
@@ -312,12 +314,11 @@
                         <h4 class="border-bottom">Request a Showing</h4>
                         <p>You can contact us any way that is convenient for you. We would be happy to answer your questions.</p>
                         <!-- RD Mailform-->
-
-
-                        <form asp-action="AgentMessage" asp-controller="Product" asp-route-productId="@Model.Id" asp-route-agentId="@Model.ProductUser.Id" class="rd-mailform text-left offset-11">
+                        <form asp-action="AgentMessage" asp-controller="Product" asp-route-productId="@Model.Id" class="rd-mailform text-left offset-11">
                             <div class="form-group">
                                 <label for="message" class="form-label">Message</label>
                                 <textarea name="message" placeholder="Hello! I`m interested in 7758 Laguna heights Court, San Francisco, MA 02127. Please contact me with more information." class="form-control min-height"></textarea>
+                                @Html.Raw(TempData["AgentMessage"])
                             </div>
                             @if (User.Identity.IsAuthenticated)
                             {
@@ -325,10 +326,9 @@
                             }
                             else
                             {
-                                <a asp-action="Login" asp-controller="Account" class="btn btn-sushi btn-sm">Send message</a>
+                                <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-sushi btn-sm">Send message</a>
                             }
                         </form>
-
 
                     </div>
                     <div class="sidebar-module">

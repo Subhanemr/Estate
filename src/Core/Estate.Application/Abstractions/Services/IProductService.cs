@@ -25,8 +25,8 @@ namespace Estate.Application.Abstractions.Services
         Task ReverseSoftDeleteAsync(int id);
         Task CreatePopulateDropdowns(CreateProductVM create);
         Task UpdatePopulateDropdowns(UpdateProductVM update);
-        Task<bool> CommentAsync(int productId, string comment, ModelStateDictionary model);
-        Task<bool> ReplyAsync(int productCommnetId, string comment, ModelStateDictionary model);
-        Task<bool> AgentMessage(int productId, string agentId, string message, ModelStateDictionary model);
+        Task<bool> CommentAsync(int productId, string comment, ITempDataDictionary tempData);
+        Task<bool> ReplyAsync(int productCommnetId, string comment, ITempDataDictionary tempData);
+        Task<bool> AgentMessage(int productId, string message, ITempDataDictionary tempData);
     }
 }

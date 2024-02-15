@@ -8,8 +8,6 @@ namespace Estate.Application.MappingProfiles
     {
         public BlogCommentProfile()
         {
-            CreateMap<CreateBlogCommentVM, BlogComment>().ReverseMap();
-            CreateMap<UpdateBlogCommentVM, BlogComment>().ReverseMap();
             CreateMap<GetBlogCommentVM, BlogComment>().ReverseMap()
                 .ForMember(x => x.Replies, opt => opt.MapFrom(src => src.BlogReplies.ToList()))
                 .ForMember(x => x.Blog, opt => opt.MapFrom(src => src.Blog))

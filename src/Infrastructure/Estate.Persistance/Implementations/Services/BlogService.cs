@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -362,21 +363,23 @@ namespace Estate.Persistance.Implementations.Services
             return update;
         }
 
-        public async Task<bool> CommentAsync(int blogId, string comment, ModelStateDictionary model)
+        public async Task<bool> CommentAsync(int blogId, string comment, ITempDataDictionary tempData)
         {
+            tempData["Comment"] = "";
+
             if (string.IsNullOrWhiteSpace(comment))
             {
-                model.AddModelError("Error", "Comment is required");
+                tempData["Comment"] += $"<p class=\"text-danger\" style=\"color: red;\">Comment is required</p>";
                 return false;
             }
             if (comment.Length > 1500)
             {
-                model.AddModelError("Error", "Comment max characters is 1-1500");
+                tempData["Comment"] += $"<p class=\"text-danger\" style=\"color: red;\">Comment max characters is 1-1500</p>";
                 return false;
             }
             if (!Regex.IsMatch(comment, @"^[A-Za-z0-9\s,\.]+$"))
             {
-                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                tempData["Comment"] += $"<p class=\"text-danger\" style=\" color: red;\">Comment can only contain letters, numbers, spaces, commas, and periods.</p>";
                 return false;
             }
             BlogComment blogComment = new BlogComment
@@ -390,21 +393,23 @@ namespace Estate.Persistance.Implementations.Services
             await _repository.SaveChanceAsync();
             return true;
         }
-        public async Task<bool> ReplyAsync(int blogCommnetId, string comment, ModelStateDictionary model)
+        public async Task<bool> ReplyAsync(int blogCommnetId, string comment, ITempDataDictionary tempData)
         {
+            tempData["Reply"] = "";
+
             if (string.IsNullOrWhiteSpace(comment))
             {
-                model.AddModelError("Error", "Comment is required");
+                tempData["Reply"] += $"<p class=\"text-danger\" style=\"color: red;\">Comment is required</p>";
                 return false;
             }
             if (comment.Length > 1500)
             {
-                model.AddModelError("Error", "Comment max characters is 1-1500");
+                tempData["Reply"] += $"<p class=\"text-danger\" style=\"color: red;\">Comment max characters is 1-1500</p>";
                 return false;
             }
             if (!Regex.IsMatch(comment, @"^[A-Za-z0-9\s,\.]+$"))
             {
-                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                tempData["Reply"] += $"<p class=\"text-danger\" style=\" color: red;\">Comment can only contain letters, numbers, spaces, commas, and periods.</p>";
                 return false;
             }
             BlogReply blogComment = new BlogReply

@@ -1,6 +1,7 @@
 ﻿using Estate.Application.ViewModels;
 using Estate.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Linq.Expressions;
 
 namespace Estate.Application.Abstractions.Services
@@ -18,7 +19,7 @@ namespace Estate.Application.Abstractions.Services
         Task DeleteAsync(int id);
         Task SoftDeleteAsync(int id);
         Task ReverseSoftDeleteAsync(int id);
-        Task<bool> CommentAsync(int blogId, string comment, ModelStateDictionary model);
-        Task<bool> ReplyAsync(int blogCommnetId, string comment, ModelStateDictionary model);
+        Task<bool> CommentAsync(int blogId, string comment, ITempDataDictionary tempData);
+        Task<bool> ReplyAsync(int blogCommnetId, string comment, ITempDataDictionary tempData);
     }
 }

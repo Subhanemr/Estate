@@ -45,18 +45,18 @@ namespace Estate.Persistance.Implementations.Services
             }
             if (user.IsActivate == true)
             {
-                model.AddModelError("Error", "Your account is not active");
+                model.AddModelError(string.Empty, "Your account is not active");
                 return false;
             }
             var result = await _signInManager.PasswordSignInAsync(user, login.Password, login.IsRemembered, true);
             if (result.IsLockedOut)
             {
-                model.AddModelError("Error", "Your Account is locked-out please wait");
+                model.AddModelError(string.Empty, "Your Account is locked-out please wait");
                 return false;
             }
             if (!result.Succeeded)
             {
-                model.AddModelError("Error", "Username, Email or Password is wrong");
+                model.AddModelError(string.Empty, "Username, Email or Password is wrong");
                 return false;
             }
 
@@ -81,7 +81,7 @@ namespace Estate.Persistance.Implementations.Services
             {
                 foreach (var error in result.Errors)
                 {
-                    model.AddModelError("Error", error.Description);
+                    model.AddModelError(string.Empty, error.Description);
                 }
                 return false;
             }
@@ -119,7 +119,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (string.IsNullOrWhiteSpace(account.UserNameOrEmail))
             {
-                model.AddModelError("Error", "Username, Email or Password is wrong");
+                model.AddModelError(string.Empty, "Username, Email or Password is wrong");
                 return false;
 
             }
@@ -129,7 +129,7 @@ namespace Estate.Persistance.Implementations.Services
                 user = await _userManager.FindByEmailAsync(account.UserNameOrEmail);
                 if (user == null)
                 {
-                    model.AddModelError("Error", "Username, Email or Password is wrong");
+                    model.AddModelError(string.Empty, "Username, Email or Password is wrong");
                     return false;
                 }
             }
@@ -157,7 +157,7 @@ namespace Estate.Persistance.Implementations.Services
                 {
                     errors += error.Description;
                 }
-                model.AddModelError("Error", "Username, Email or Password is wrong");
+                model.AddModelError(string.Empty, "Username, Email or Password is wrong");
                 return false;
             }
             _http.HttpContext.Response.Cookies.Delete("FavoriteEstate");

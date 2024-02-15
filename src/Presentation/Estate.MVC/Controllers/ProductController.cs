@@ -1,4 +1,5 @@
 ﻿using Estate.Application.Abstractions.Services;
+using Estate.Application.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,26 +29,29 @@ namespace Estate.MVC.Controllers
         }
         public async Task<IActionResult> Comment(int productId, string comment)
         {
-            await _service.CommentAsync(productId, comment, ModelState);
+            await _service.CommentAsync(productId, comment, TempData);
 
             return RedirectToAction("Detail", "Product", new { Id = productId });
         }
         public async Task<IActionResult> Reply(int productId, int productCommnetId, string comment)
         {
-            await _service.ReplyAsync(productCommnetId, comment, ModelState);
+            await _service.ReplyAsync(productCommnetId, comment, TempData);
 
             return RedirectToAction("Detail", "Product", new { Id = productId });
         }
-        public async Task<IActionResult> AgentMessage(int productId, string agentId, string message)
+        public async Task<IActionResult> AgentMessage(int productId, string message)
         {
-            await _service.AgentMessage(productId, agentId, message, ModelState);
+            await _service.AgentMessage(productId, message, TempData);
             return RedirectToAction("Detail", "Product", new { Id = productId });
         }
         [Authorize(Roles = "Agent")]
         public async Task<IActionResult> Delete(int id, string? returnUrl)
         {
             await _service.SoftDeleteAsync(id);
-
+            if (!string.IsNullOrWhiteSpace(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
             return RedirectToAction("Index", "Home", new { Area = "" });
         }
     }

@@ -8,8 +8,6 @@ namespace Estate.Application.MappingProfiles
     {
         public ProductCommentProfile()
         {
-            CreateMap<CreateProductCommentVM, ProductComment>().ReverseMap();
-            CreateMap<UpdateProductCommentVM, ProductComment>().ReverseMap();
             CreateMap<GetProductCommentVM, ProductComment>().ReverseMap()
                 .ForMember(x => x.Replies, opt => opt.MapFrom(src => src.ProductReplies.ToList()))
                 .ForMember(x => x.Product, opt => opt.MapFrom(src => src.Product))

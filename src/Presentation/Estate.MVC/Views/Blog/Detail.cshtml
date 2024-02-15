@@ -87,7 +87,7 @@
                             <div class="text-center text-sm-left">
                                 <h4 class="border-bottom">Comments</h4>
                             </div>
-                            <div asp-validation-summary="All" class="m-1 text-danger"></div>
+                            @Html.Raw(TempData["Reply"])
 
                             @foreach (var blogComment in Model.Commnets)
                             {
@@ -110,7 +110,7 @@
                                                 }
                                                 else
                                                 {
-                                                    <a asp-action="Login" asp-controller="Account" style="border:none;">
+                                                    <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" style="border:none;">
                                                         <span class="fa-mail-reply icon"></span>
                                                         <span class="text-sushi">Reply</span>
                                                     </a>
@@ -145,7 +145,7 @@
                                                     }
                                                     else
                                                     {
-                                                        <a asp-action="Login" asp-controller="Account" style="border:none;">
+                                                        <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" style="border:none;">
                                                             <span class="fa-mail-reply icon"></span>
                                                             <span class="text-sushi">Reply</span>
                                                         </a>
@@ -170,6 +170,7 @@
                                             <label name="comment" class="form-label">Enter your message</label>
                                             <textarea name="comment" class="form-control" value="comment"
                                                       pattern="^[A-Za-z0-9\s,.]+$" title="Comment can only contain letters, numbers, spaces, commas, and periods."></textarea>
+                                            @Html.Raw(TempData["Comment"])
                                         </div>
                                     </div>
                                     <div class="col-xs-12">
@@ -179,7 +180,7 @@
                                         }
                                         else
                                         {
-                                            <a asp-action="Login" asp-controller="Account" class="btn btn-sushi btn-sm">Comment</a>
+                                            <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-sushi btn-sm">Comment</a>
                                         }
                                     </div>
                                 </div>

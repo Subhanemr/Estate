@@ -1,6 +1,4 @@
 ﻿using AutoMapper;
-using CloudinaryDotNet.Actions;
-using CloudinaryDotNet;
 using Estate.Application.Abstractions.Repositories;
 using Estate.Application.Abstractions.Services;
 using Estate.Application.ViewModels;
@@ -16,8 +14,6 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace Estate.Persistance.Implementations.Services
 {
@@ -167,13 +163,13 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!photo.ValidateType())
                 {
-                    tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} type is not suitable</p>";
+                    tempData["Message"] += $"<h5 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} type is not suitable</h5>";
                     continue;
                 }
 
                 if (!photo.ValidataSize(10))
                 {
-                    tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} the size is not suitable</p>";
+                    tempData["Message"] += $"<h5 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} the size is not suitable</h5>";
                     continue;
                 }
 
@@ -754,13 +750,13 @@ namespace Estate.Persistance.Implementations.Services
                 {
                     if (!photo.ValidateType())
                     {
-                        tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} type is not suitable</p>";
+                        tempData["Message"] += $"<h5 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} type is not suitable</h5>";
                         continue;
                     }
 
                     if (!photo.ValidataSize(10))
                     {
-                        tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} the size is not suitable</p>";
+                        tempData["Message"] += $"<h5 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} the size is not suitable</h5>";
                         continue;
                     }
 
@@ -813,21 +809,23 @@ namespace Estate.Persistance.Implementations.Services
 
             return update;
         }
-        public async Task<bool> CommentAsync(int productId, string comment, ModelStateDictionary model)
+        public async Task<bool> CommentAsync(int productId, string comment, ITempDataDictionary tempData)
         {
+            tempData["Comment"] = "";
+
             if (string.IsNullOrWhiteSpace(comment))
             {
-                model.AddModelError("Error", "Comment is required");
+                tempData["Comment"] += $"<p class=\"text-danger\" style=\"color: red;\">Comment is required</p>";
                 return false;
             }
             if (comment.Length > 1500)
             {
-                model.AddModelError("Error", "Comment max characters is 1-1500");
+                tempData["Comment"] += $"<p class=\"text-danger\" style=\"color: red;\">Comment max characters is 1-1500</p>";
                 return false;
             }
             if (!Regex.IsMatch(comment, @"^[A-Za-z0-9\s,\.]+$"))
             {
-                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                tempData["Comment"] += $"<p class=\"text-danger\" style=\" color: red;\">Comment can only contain letters, numbers, spaces, commas, and periods.</p>";
                 return false;
             }
             ProductComment productComment = new ProductComment
@@ -841,21 +839,23 @@ namespace Estate.Persistance.Implementations.Services
             await _repository.SaveChanceAsync();
             return true;
         }
-        public async Task<bool> ReplyAsync(int productCommnetId, string comment, ModelStateDictionary model)
+        public async Task<bool> ReplyAsync(int productCommnetId, string comment, ITempDataDictionary tempData)
         {
+            tempData["Reply"] = "";
+
             if (string.IsNullOrWhiteSpace(comment))
             {
-                model.AddModelError("Error", "Comment is required");
+                tempData["Reply"] += $"<p class=\"text-danger\" style=\"color: red;\">Comment is required</p>";
                 return false;
             }
             if (comment.Length > 1500)
             {
-                model.AddModelError("Error", "Comment max characters is 1-1500");
+                tempData["Reply"] += $"<p class=\"text-danger\" style=\"color: red;\">Comment max characters is 1-1500</p>";
                 return false;
             }
             if (!Regex.IsMatch(comment, @"^[A-Za-z0-9\s,\.]+$"))
             {
-                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                tempData["Reply"] += $"<p class=\"text-danger\" style=\" color: red;\">Comment can only contain letters, numbers, spaces, commas, and periods.</p>";
                 return false;
             }
             ProductReply productComment = new ProductReply
@@ -869,30 +869,30 @@ namespace Estate.Persistance.Implementations.Services
             await _repository.SaveChanceAsync();
             return true;
         }
-        public async Task<bool> AgentMessage(int productId, string agentId, string message, ModelStateDictionary model)
+        public async Task<bool> AgentMessage(int productId, string message, ITempDataDictionary tempData)
         {
+            tempData["AgentMessage"] = "";
+
             if (string.IsNullOrWhiteSpace(message))
             {
-                model.AddModelError("Error", "Comment is required");
+                tempData["AgentMessage"] += $"<p class=\"text-danger\" style=\"color: red;\">Message is required</p>";
                 return false;
             }
             if (message.Length > 1500)
             {
-                model.AddModelError("Error", "Comment max characters is 1-1500");
+                tempData["AgentMessage"] += $"<p class=\"text-danger\" style=\"color: red;\">Message max characters is 1-1500</p>";
                 return false;
             }
             if (!Regex.IsMatch(message, @"^[A-Za-z0-9\s,\.]+$"))
             {
-                model.AddModelError("Error", "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                tempData["AgentMessage"] += $"<p class=\"text-danger\" style=\" color: red;\">Message can only contain letters, numbers, spaces, commas, and periods.</p>";
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(agentId)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(agentId);
-            if (user == null) throw new NotFoundException("Your request was not found");
+
             if (productId <= 0) throw new WrongRequestException("The request sent does not exist");
-            Product item = await _repository.GetByIdAsync(productId);
+            Product item = await _repository.GetByIdAsync(productId, false,$"{nameof(Product.AppUser)}");
             if (item == null) throw new NotFoundException("Your request was not found");
-            await _email.SendMailAsync(user.Email, $"{_http.HttpContext.User.FindFirstValue(ClaimTypes.Name)} {_http.HttpContext.User.FindFirstValue(ClaimTypes.Surname)} sent a message from the {item.Name} product", 
+            await _email.SendMailAsync(item.AppUser.Email, $"{_http.HttpContext.User.FindFirstValue(ClaimTypes.GivenName)} {_http.HttpContext.User.FindFirstValue(ClaimTypes.Surname)} sent a message from the {item.Name} product", 
                 $"{message}");
             return true;
         }
