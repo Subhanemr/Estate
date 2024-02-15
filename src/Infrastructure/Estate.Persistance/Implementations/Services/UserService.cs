@@ -568,21 +568,23 @@ namespace Estate.Persistance.Implementations.Services
 
             return true;
         }
-        public async Task<bool> AgentMessage(string agentId, string message, ModelStateDictionary model)
+        public async Task<bool> AgentMessage(string agentId, string message, ITempDataDictionary tempData)
         {
+            tempData["AgentMessage"] = "";
+
             if (string.IsNullOrWhiteSpace(message))
             {
-                model.AddModelError(string.Empty, "Comment is required");
+                tempData["AgentMessage"] += $"<p class=\"text-danger\" style=\"color: red;\">Message is required</p>";
                 return false;
             }
             if (message.Length > 1500)
             {
-                model.AddModelError(string.Empty, "Comment max characters is 1-1500");
+                tempData["AgentMessage"] += $"<p class=\"text-danger\" style=\"color: red;\">Message max characters is 1-1500</p>";
                 return false;
             }
             if (!Regex.IsMatch(message, @"^[A-Za-z0-9\s,\.]+$"))
             {
-                model.AddModelError(string.Empty, "Comment can only contain letters, numbers, spaces, commas, and periods.");
+                tempData["AgentMessage"] += $"<p class=\"text-danger\" style=\" color: red;\">Message can only contain letters, numbers, spaces, commas, and periods.</p>";
                 return false;
             }
             if (string.IsNullOrWhiteSpace(agentId)) throw new WrongRequestException("The request sent does not exist");
