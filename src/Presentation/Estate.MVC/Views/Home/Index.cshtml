@@ -1,5 +1,11 @@
 ﻿@model HomeVM
 
+@inject LayoutServices service
+
+@{
+    Dictionary<string, string> setting = await service.GetSettingsAsync();
+}
+
 @Html.Raw(TempData["Message"])
 
 <section>
@@ -174,8 +180,8 @@
                                         <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
                                         <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
                                         <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
-                                                                                        </g>
-                                                                                      </svg>
+                                                                                            </g>
+                                                                                          </svg>
                                     </span>@product.Area sq ft
                                 </li>
                                 <li>
@@ -209,44 +215,44 @@
             <div class="col-sm-6 col-md-3">
                 <div class="media media-mod-6">
                     <div class="media-left">
-                        <span class="linecons-location4 icon icon-lg bg-primary"></span>
+                        <span class="@setting["Service1Icon"]"></span>
                     </div>
                     <div class="media-body">
-                        <h4>Various Locations</h4>
-                        <p>Search by state then by city to find an apartment overlooking the lake in Chicago, within walking distance of the beach in Los Angeles or in the heart of Atlanta.</p>
+                        <h4>@setting["Service1"]</h4>
+                        <p>@setting["Service1Text"]</p>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="media media-mod-6">
                     <div class="media-left">
-                        <span class="linecons-camera7 icon icon-lg bg-primary"></span>
+                        <span class="@setting["Service2Icon"]"></span>
                     </div>
                     <div class="media-body">
-                        <h4>View Apartments</h4>
-                        <p>View apartment listings with photos, HD videos, InsideView virtual tours, 3D floor plans, and more, while also choosing the apartment and community features that you want.</p>
+                        <h4>@setting["Service2"]</h4>
+                        <p>@setting["Service2Text"]</p>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="media media-mod-6">
                     <div class="media-left">
-                        <span class="linecons-blockade icon icon-lg bg-primary"></span>
+                        <span class="@setting["Service3Icon"]"></span>
                     </div>
                     <div class="media-body">
-                        <h4>Privacy and Security</h4>
-                        <p>Renters insurance helps keep your belongings secure, whether they're on your desk, under your couch, or in some cases, even in your car's glove box.</p>
+                        <h4>@setting["Service3"]</h4>
+                        <p>@setting["Service3Text"]</p>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="media media-mod-6">
                     <div class="media-left">
-                        <span class="linecons-banknote icon icon-lg bg-primary"></span>
+                        <span class="@setting["Service4Icon"]"></span>
                     </div>
                     <div class="media-body">
-                        <h4>No Commission</h4>
-                        <p>You will therefore appreciate this opportunity to acquire a high-quality apartment for rent without having to pay any commission to our real estate agency.</p>
+                        <h4>@setting["Service4"]</h4>
+                        <p>@setting["Service4Text"]</p>
                     </div>
                 </div>
             </div>
