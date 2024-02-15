@@ -43,7 +43,7 @@ namespace Estate.Application.Abstractions.Repositories
         void Delete(T entity);
         void SoftDelete(T entity);
         void ReverseSoftDelete(T entity);
-        Task SaveChanceAsync();
+        Task SaveChangeAsync();
         Task<bool> CheckUniqueAsync(Expression<Func<T, bool>> expression);
     }
 }

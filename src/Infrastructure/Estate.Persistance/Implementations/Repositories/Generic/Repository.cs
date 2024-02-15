@@ -129,7 +129,7 @@ namespace Estate.Persistance.Implementations.Repositories
             entity.IsDeleted = false;
         }
 
-        public async Task SaveChanceAsync()
+        public async Task SaveChangeAsync()
         {
             await _context.SaveChangesAsync();
         }

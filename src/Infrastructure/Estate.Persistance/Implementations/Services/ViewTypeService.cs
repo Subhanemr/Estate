@@ -40,7 +40,7 @@ namespace Estate.Persistance.Implementations.Services
             //item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
 
             return true;
         }
@@ -52,7 +52,7 @@ namespace Estate.Persistance.Implementations.Services
             if (item == null) throw new NotFoundException("Your request was not found");
 
             _repository.Delete(item);
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
         }
 
         public async Task<ICollection<ItemViewTypeVM>> GetAllWhereAsync(int take, int page = 1)
@@ -188,7 +188,7 @@ namespace Estate.Persistance.Implementations.Services
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
         }
 
         public async Task SoftDeleteAsync(int id)
@@ -198,7 +198,7 @@ namespace Estate.Persistance.Implementations.Services
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
         }
 
         public async Task<UpdateViewTypeVM> UpdateAsync(int id)
@@ -226,7 +226,7 @@ namespace Estate.Persistance.Implementations.Services
             _mapper.Map(update, item);
             //item.CreatedBy = _http.HttpContext.User.Identity.Name;
             _repository.Update(item);
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
             return true;
         }
     }

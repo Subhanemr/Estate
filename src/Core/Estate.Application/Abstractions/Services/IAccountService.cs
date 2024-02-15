@@ -10,7 +10,7 @@ namespace Estate.Application.Abstractions.Services
         Task<bool> LogInAsync(LoginVM login, ModelStateDictionary model);
         Task LogOutAsync();
         Task<bool> ConfirmEmail(string token, string email);
-        Task<bool> FogotPassword(FindAccountVM account, ModelStateDictionary model, IUrlHelper url);
-        Task<bool> ChangePassword(string userNameOrEmail,string token, FogotPasswordVM fogotPassword, ModelStateDictionary model);
+        Task<bool> ForgotPassword(FindAccountVM account, ModelStateDictionary model, IUrlHelper url);
+        Task<bool> ResetPassword(string id, string token, ResetPasswordVM resetPassword, ModelStateDictionary model);
     }
 }

@@ -98,7 +98,7 @@ namespace Estate.Persistance.Implementations.Services
             item.Value = update.Value;
             //item.CreatedBy = user.UserName;
             _repository.Update(item);
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
             return true;
         }
     }

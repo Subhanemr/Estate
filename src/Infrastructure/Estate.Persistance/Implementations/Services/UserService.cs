@@ -322,17 +322,17 @@ namespace Estate.Persistance.Implementations.Services
             return true;
         }
 
-        public async Task FogotPassword(string id, IUrlHelper url)
+        public async Task ForgotPassword(string id, IUrlHelper url)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
             AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null) throw new NotFoundException("Your request was not found");
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var confirmationLink = url.Action("ChangePassword", "User", new { Id = user.Id, Token = token }, _http.HttpContext.Request.Scheme);
-            await _emailService.SendMailAsync(user.Email, "Password Reset", confirmationLink);
+            await _emailService.SendMailAsync(user.Email, "Change Password", confirmationLink);
         }
 
-        public async Task<bool> ChangePassword(string id, string token, FogotPasswordVM fogotPassword, ModelStateDictionary model)
+        public async Task<bool> ChangePassword(string id, string token, ChangePasswordVM fogotPassword, ModelStateDictionary model)
         {
             if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(token)) throw new NotFoundException("Your request was not found");
             AppUser user = await _userManager.FindByIdAsync(id);

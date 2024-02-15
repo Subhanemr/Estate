@@ -23,8 +23,8 @@ namespace Estate.Application.Abstractions.Services
         Task IsSoulOfAgencyAsync(string id);
         Task<EditUserVM> EditUser(string id);
         Task<bool> EditUserAsync(string id, EditUserVM update, ModelStateDictionary model);
-        Task FogotPassword(string id, IUrlHelper url);
-        Task<bool> ChangePassword(string id, string token, FogotPasswordVM fogotPassword, ModelStateDictionary model);
+        Task ForgotPassword(string id, IUrlHelper url);
+        Task<bool> ChangePassword(string id, string token, ChangePasswordVM fogotPassword, ModelStateDictionary model);
         Task<CreateAppUserAgentVM> BeAAgent(string id);
         Task<bool> BeAAgentPost(string id, CreateAppUserAgentVM create, ModelStateDictionary model, ITempDataDictionary tempData);
         Task<UpdateAppUserAgentVM> UpdateAgentAsync(string id);

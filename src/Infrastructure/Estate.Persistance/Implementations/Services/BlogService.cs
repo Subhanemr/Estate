@@ -88,7 +88,7 @@ namespace Estate.Persistance.Implementations.Services
             //item.CreatedBy = _http.HttpContext.User.Identity.Name;
 
             await _repository.AddAsync(item);
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
 
             return true;
         }
@@ -107,7 +107,7 @@ namespace Estate.Persistance.Implementations.Services
                 //image.Url.DeleteFile(_env.WebRootPath, "assets", "images");
             }
             _repository.Delete(item);
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
         }
 
         public async Task<ICollection<ItemBlogVM>> GetAllWhereAsync(int take, int page = 1)
@@ -256,7 +256,7 @@ namespace Estate.Persistance.Implementations.Services
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
         }
 
         public async Task SoftDeleteAsync(int id)
@@ -266,7 +266,7 @@ namespace Estate.Persistance.Implementations.Services
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
         }
 
         public async Task<bool> UpdatePostAsync(int id, UpdateBlogVM update, ModelStateDictionary model)
@@ -344,7 +344,7 @@ namespace Estate.Persistance.Implementations.Services
             var mapper = config.CreateMapper();
 
             mapper.Map(update, item);
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
 
             return true;
         }
@@ -390,7 +390,7 @@ namespace Estate.Persistance.Implementations.Services
             };
 
             await _repository.AddComment(blogComment);
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
             return true;
         }
         public async Task<bool> ReplyAsync(int blogCommnetId, string comment, ITempDataDictionary tempData)
@@ -420,7 +420,7 @@ namespace Estate.Persistance.Implementations.Services
             };
 
             await _repository.AddReply(blogComment);
-            await _repository.SaveChanceAsync();
+            await _repository.SaveChangeAsync();
             return true;
         }
     }

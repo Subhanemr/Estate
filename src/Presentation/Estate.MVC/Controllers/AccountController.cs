@@ -65,36 +65,36 @@ namespace Estate.MVC.Controllers
             }
             return View();
         }
-        public IActionResult FogotPasswordSended()
+        public IActionResult ForgotPasswordSended()
         {
             return View();
         }
-        public IActionResult FogotPassword()
+        public IActionResult ForgotPassword()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> FogotPassword(FindAccountVM account)
+        public async Task<IActionResult> ForgotPassword(FindAccountVM account)
         {
-            bool result = await _service.FogotPassword(account, ModelState, Url);
+            bool result = await _service.ForgotPassword(account, ModelState, Url);
             if (!result)
             {
                 return View(account);
             }
-            return RedirectToAction(nameof(FogotPasswordSended));
+            return RedirectToAction(nameof(ForgotPasswordSended));
         }
-        public IActionResult ChangePassword(string id, string token)
+        public IActionResult ResetPassword(string id, string token)
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(string id,string token, FogotPasswordVM fogotPassword)
+        public async Task<IActionResult> ResetPassword(string id,string token, ResetPasswordVM resetPassword)
         {
-            bool result = await _service.ChangePassword(id, token, fogotPassword, ModelState);
+            bool result = await _service.ResetPassword(id, token, resetPassword, ModelState);
             if (!result)
             {
-                return View(fogotPassword);
+                return View(resetPassword);
             }
             return RedirectToAction(nameof(Login));
         }

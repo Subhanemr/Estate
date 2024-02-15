@@ -4,7 +4,6 @@
     <div style="flex: 3;" class="profile">
         <div style="padding: 20px;" class="card-body">
             <div class="row clearleft-custom">
-
                 @foreach (var product in Model.Products)
                 {
                     <div class="col-xs-12 col-sm-6 col-md-4">
@@ -73,7 +72,7 @@
                 <li><a asp-action="Index" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Profile Info</a></li>
                 <li><a asp-action="EditUser" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
                 <li><a asp-action="WishList" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
-                <li><a asp-action="FogotPassword" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Forgot Password</a></li>
+                <li><a asp-action="ForgotPassword" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Change Password</a></li>
                 @if (User.IsInRole(UserRoles.Agent.ToString()))
                 {
                     <li><a asp-action="UpdateAgent" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Update Agent Info</a></li>
