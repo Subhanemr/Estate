@@ -15,8 +15,12 @@ namespace Estate.MVC.Controllers
             _userService = userService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? returnUrl)
         {
+            if (!string.IsNullOrWhiteSpace(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
             HomeVM home = new HomeVM
             {
                 Pagination = await _productService.GetAllWhereByOrderFilterAsync(6, 1, x => x.ProductComments.Count),

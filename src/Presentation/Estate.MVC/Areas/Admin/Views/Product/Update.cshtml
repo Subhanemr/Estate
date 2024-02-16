@@ -156,19 +156,19 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="ParkingTypeIds">Parking Types</label>
-                    <select asp-for="ParkingTypeIds" asp-items="new SelectList(Model.Features, nameof(IncludeParkingTypeVM.Id), nameof(IncludeParkingTypeVM.Name))" class="form-control">
+                    <select asp-for="ParkingTypeIds" asp-items="new SelectList(Model.ParkingTypes, nameof(IncludeParkingTypeVM.Id), nameof(IncludeParkingTypeVM.Name))" class="form-control">
                     </select>
                     <span asp-validation-for="ParkingTypeIds" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="RoofTypeIds">Roof Types</label>
-                    <select asp-for="RoofTypeIds" asp-items="new SelectList(Model.Features, nameof(IncludeRoofTypeVM.Id), nameof(IncludeRoofTypeVM.Name))" class="form-control">
+                    <select asp-for="RoofTypeIds" asp-items="new SelectList(Model.RoofTypes, nameof(IncludeRoofTypeVM.Id), nameof(IncludeRoofTypeVM.Name))" class="form-control">
                     </select>
                     <span asp-validation-for="RoofTypeIds" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="ViewTypeIds">View Types</label>
-                    <select asp-for="ViewTypeIds" asp-items="new SelectList(Model.Features, nameof(IncludeViewTypeVM.Id), nameof(IncludeViewTypeVM.Name))" class="form-control">
+                    <select asp-for="ViewTypeIds" asp-items="new SelectList(Model.ViewTypes, nameof(IncludeViewTypeVM.Id), nameof(IncludeViewTypeVM.Name))" class="form-control">
                     </select>
                     <span asp-validation-for="ViewTypeIds" class="text-danger"></span>
                 </div>
