@@ -1,0 +1,17 @@
+﻿@model int
+
+<form asp-action="AgentMessage" asp-controller="Product" asp-route-productId="@Model" class="rd-mailform text-left offset-11">
+    <div class="form-group">
+        <label for="message" class="form-label">Message</label>
+        <textarea name="message" placeholder="Hello! I`m interested in 7758 Laguna heights Court, San Francisco, MA 02127. Please contact me with more information." class="form-control min-height"></textarea>
+        @Html.Raw(TempData["AgentMessage"])
+    </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <button type="submit" class="btn btn-sushi btn-sm">Send message</button>
+    }
+    else
+    {
+        <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-sushi btn-sm">Send message</a>
+    }
+</form>

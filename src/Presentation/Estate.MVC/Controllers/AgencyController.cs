@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Estate.MVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class AgencyController : Controller
     {
         private readonly IAgencyService _service;

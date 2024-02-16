@@ -205,106 +205,9 @@
                             }
                         </p>
                         <h4 class="border-bottom offset-8">Comments</h4>
-                        @Html.Raw(TempData["Reply"])
-
-                        @foreach (var productComment in Model.Commnets)
-                        {
-                            <div class="media media-mod-2 comment">
-                                <div class="media-left round">
-                                    <img src="@productComment.CommentUser.Img" alt="@productComment.CommentUser.Name" style="width:70px;height:70px;" width="70" height="70" class="round">
-                                </div>
-                                <div class="media-body">
-                                    <p class="h6 text-sushi text-ubold">@productComment.CommentUser.Name @productComment.CommentUser.Surname</p>
-                                    <time datetime="2016" class="fa-calendar">@productComment.CreateAt.ToString("MMM dd, yyyy 'at' h:mm tt")</time>
-                                    <p class="text-light">@productComment.Comment</p>
-                                    <form class="text-left offset-11" asp-action="Reply" asp-controller="Product" asp-route-productId="@Model.Id" asp-route-productCommnetId="@productComment.Id">
-                                        <div class="col-xs-9">
-                                            @if (User.Identity.IsAuthenticated)
-                                            {
-                                                <button type="submit" style="border:none;">
-                                                    <span class="fa-mail-reply icon"></span>
-                                                    <span class="text-sushi">Reply</span>
-                                                </button>
-                                            }
-                                            else
-                                            {
-                                                <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" style="border:none;">
-                                                    <span class="fa-mail-reply icon"></span>
-                                                    <span class="text-sushi">Reply</span>
-                                                </a>
-                                            }
-                                            <div class="form-group">
-                                                <label name="comment" class="form-label">Enter your message</label>
-                                                <textarea name="comment" class="form-control" value="comment"
-                                                          pattern="^[A-Za-z0-9\s,.]+$" title="Comment can only contain letters, numbers, spaces, commas, and periods."></textarea>
-                                                
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            foreach (var productReply in productComment.Replies)
-                            {
-                                <div class="media media-mod-2 comment comment-repost">
-                                    <div class="media-left round">
-                                        <img src="@productReply.ReplyUser.Img" alt="@productReply.ReplyUser.Name" style="width:70px;height:70px;" width="70" height="70" class="round">
-                                    </div>
-                                    <div class="media-body">
-                                        <p class="h6 text-sushi text-ubold">@productReply.ReplyUser.Name @productReply.ReplyUser.Surname</p>
-                                        <time datetime="2016" class="fa-calendar">@productReply.CreateAt.ToString("MMM dd, yyyy 'at' h:mm tt")</time>
-                                        <p class="text-light">@productReply.ReplyComment</p>
-                                        <form class="text-left offset-11" asp-action="Reply" asp-controller="Product" asp-route-productId="@Model.Id" asp-route-productCommnetId="@productReply.Id">
-                                            <div class="col-xs-9">
-                                                @if (User.Identity.IsAuthenticated)
-                                                {
-                                                    <button type="submit" style="border:none;">
-                                                        <span class="fa-mail-reply icon"></span>
-                                                        <span class="text-sushi">Reply</span>
-                                                    </button>
-                                                }
-                                                else
-                                                {
-                                                    <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" style="border:none;">
-                                                        <span class="fa-mail-reply icon"></span>
-                                                        <span class="text-sushi">Reply</span>
-                                                    </a>
-                                                }
-                                                <div class="form-group">
-                                                    <label name="comment" class="form-label">Enter your message</label>
-                                                    <textarea name="comment" class="form-control" value="comment"
-                                                              pattern="^[A-Za-z0-9\s,.]+$" title="Comment can only contain letters, numbers, spaces, commas, and periods."></textarea>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            }
+                        @{
+                            await Html.RenderPartialAsync("ProductComment/_ProductCommentPartialView", Model);
                         }
-                        <h4 class="border-bottom offset-8">Send a Comment</h4>
-                        <!-- RD Mailform-->
-                        <form class="text-left offset-11" asp-action="Comment" asp-controller="Product" asp-route-productId="@Model.Id">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="form-group">
-                                        <label name="comment" class="form-label">Enter your message</label>
-                                        <textarea name="comment" class="form-control" value="comment"
-                                                  pattern="^[A-Za-z0-9\s,.]+$" title="Comment can only contain letters, numbers, spaces, commas, and periods."></textarea>
-                                        @Html.Raw(TempData["Comment"])
-                                    </div>
-                                </div>
-                                <div class="col-xs-12">
-                                    @if (User.Identity.IsAuthenticated)
-                                    {
-                                        <button type="submit" class="btn btn-sushi btn-sm">Comment</button>
-                                    }
-                                    else
-                                    {
-                                        <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-sushi btn-sm">Comment</a>
-                                    }
-                                </div>
-                            </div>
-                        </form>
-
                     </div>
                 </div>
             </div>
@@ -314,22 +217,9 @@
                         <h4 class="border-bottom">Request a Showing</h4>
                         <p>You can contact us any way that is convenient for you. We would be happy to answer your questions.</p>
                         <!-- RD Mailform-->
-                        <form asp-action="AgentMessage" asp-controller="Product" asp-route-productId="@Model.Id" class="rd-mailform text-left offset-11">
-                            <div class="form-group">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea name="message" placeholder="Hello! I`m interested in 7758 Laguna heights Court, San Francisco, MA 02127. Please contact me with more information." class="form-control min-height"></textarea>
-                                @Html.Raw(TempData["AgentMessage"])
-                            </div>
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <button type="submit" class="btn btn-sushi btn-sm">Send message</button>
-                            }
-                            else
-                            {
-                                <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-sushi btn-sm">Send message</a>
-                            }
-                        </form>
-
+                        @{
+                            await Html.RenderPartialAsync("ProductAgentMessage/_ProductAgentMessagePartialView", Model.Id);
+                        }
                     </div>
                     <div class="sidebar-module">
                         <h4 class="border-bottom">Agent Information</h4>

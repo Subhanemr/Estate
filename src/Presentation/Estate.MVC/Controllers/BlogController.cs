@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Estate.MVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class BlogController : Controller
     {
         private readonly IBlogService _service;

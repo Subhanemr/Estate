@@ -340,6 +340,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/T x/Desktop/Estate/src/Presentation/Estate.MVC/Views/Shared/AgentMessage/_AgentMessagePartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEFnZW50TWVzc2FnZVxfQWdlbnRNZXNzYWdlUGFydGlhbFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/T x/Desktop/Estate/src/Presentation/Estate.MVC/Views/Shared/BlogComment/_BlogCommentPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEJsb2dDb21tZW50XF9CbG9nQ29tbWVudFBhcnRpYWxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/T x/Desktop/Estate/src/Presentation/Estate.MVC/Views/Shared/Components/Agency/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQWdlbmN5XERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -372,12 +380,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUG9zdGVkQnlcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/T x/Desktop/Estate/src/Presentation/Estate.MVC/Views/Shared/Favorite/_FavoritePartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEZhdm9yaXRlXF9GYXZvcml0ZVBhcnRpYWxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/T x/Desktop/Estate/src/Presentation/Estate.MVC/Views/Shared/Footer/_FooterPartialView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEZvb3RlclxfRm9vdGVyUGFydGlhbFZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/T x/Desktop/Estate/src/Presentation/Estate.MVC/Views/Shared/Header/_HeaderPartialView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEhlYWRlclxfSGVhZGVyUGFydGlhbFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/T x/Desktop/Estate/src/Presentation/Estate.MVC/Views/Shared/ProductAgentMessage/_ProductAgentMessagePartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFByb2R1Y3RBZ2VudE1lc3NhZ2VcX1Byb2R1Y3RBZ2VudE1lc3NhZ2VQYXJ0aWFsVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/T x/Desktop/Estate/src/Presentation/Estate.MVC/Views/Shared/ProductComment/_ProductCommentPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFByb2R1Y3RDb21tZW50XF9Qcm9kdWN0Q29tbWVudFBhcnRpYWxWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/T x/Desktop/Estate/src/Presentation/Estate.MVC/Views/Shared/_Layout.cshtml]

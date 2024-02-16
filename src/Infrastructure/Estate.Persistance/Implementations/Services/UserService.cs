@@ -588,9 +588,11 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             if (string.IsNullOrWhiteSpace(agentId)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(agentId);
+            AppUser agent = await _userManager.FindByIdAsync(agentId);
+            if (agent == null) throw new NotFoundException("Your request was not found");
+            AppUser user = await _userManager.FindByIdAsync(_http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             if (user == null) throw new NotFoundException("Your request was not found");
-            await _emailService.SendMailAsync(user.Email, $"{_http.HttpContext.User.FindFirstValue(ClaimTypes.Name)} {_http.HttpContext.User.FindFirstValue(ClaimTypes.Surname)} send message",
+            await _emailService.SendMailAsync(agent.Email, $"{user.Name} {user.Surname} send message",
                 $"{message}");
             return true;
         }

@@ -5,6 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Estate.MVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class AccountController : Controller
     {
         private readonly IAccountService _service;

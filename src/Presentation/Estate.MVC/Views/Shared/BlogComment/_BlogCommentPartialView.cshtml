@@ -1,0 +1,99 @@
+﻿@model GetBlogVM
+@Html.Raw(TempData["Reply"])
+
+@foreach (var blogComment in Model.Commnets)
+{
+    <div class="media media-mod-2 comment">
+        <div class="media-left round">
+            <img src="@blogComment.AppUser.Img" alt="@blogComment.AppUser.Name" style="width:70px;height:70px;" width="70" height="70" class="round">
+        </div>
+        <div class="media-body">
+            <p class="h6 text-sushi text-ubold">@blogComment.AppUser.Name @blogComment.AppUser.Surname</p>
+            <time datetime="2016" class="fa-calendar">@blogComment.CreateAt.ToString("MMM dd, yyyy 'at' h:mm tt")</time>
+            <p class="text-light">@blogComment.Comment</p>
+            <form class="text-left offset-11" asp-action="Reply" asp-controller="Blog" asp-route-blogId="@Model.Id" asp-route-blogCommnetId="@blogComment.Id">
+                <div class="col-xs-9">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <button type="submit" style="border:none;">
+                            <span class="fa-mail-reply icon"></span>
+                            <span class="text-sushi">Reply</span>
+                        </button>
+                    }
+                    else
+                    {
+                        <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" style="border:none;">
+                            <span class="fa-mail-reply icon"></span>
+                            <span class="text-sushi">Reply</span>
+                        </a>
+                    }
+                    <div class="form-group">
+                        <label name="comment" class="form-label">Enter your message</label>
+                        <textarea name="comment" class="form-control" value="comment"
+                                  pattern="^[A-Za-z0-9\s,.]+$" title="Comment can only contain letters, numbers, spaces, commas, and periods."></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    foreach (var blogReply in blogComment.Replies)
+    {
+        <div class="media media-mod-2 comment comment-repost">
+            <div class="media-left round">
+                <img src="@blogReply.AppUser.Img" alt="@blogReply.AppUser.Name" style="width:70px;height:70px;" width="70" height="70" class="round">
+            </div>
+            <div class="media-body">
+                <p class="h6 text-sushi text-ubold">@blogReply.AppUser.Name @blogReply.AppUser.Surname</p>
+                <time datetime="2016" class="fa-calendar">@blogReply.CreateAt.ToString("MMM dd, yyyy 'at' h:mm tt")</time>
+                <p class="text-light">@blogReply.ReplyComment</p>
+                <form class="text-left offset-11" asp-action="Reply" asp-controller="Blog" asp-route-blogId="@Model.Id" asp-route-blogCommnetId="@blogComment.Id">
+                    <div class="col-xs-9">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <button type="submit" style="border:none;">
+                                <span class="fa-mail-reply icon"></span>
+                                <span class="text-sushi">Reply</span>
+                            </button>
+                        }
+                        else
+                        {
+                            <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" style="border:none;">
+                                <span class="fa-mail-reply icon"></span>
+                                <span class="text-sushi">Reply</span>
+                            </a>
+                        }
+                        <div class="form-group">
+                            <label name="comment" class="form-label">Enter your message</label>
+                            <textarea name="comment" class="form-control" value="comment"
+                                      pattern="^[A-Za-z0-9\s,.]+$" title="Comment can only contain letters, numbers, spaces, commas, and periods."></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+}
+<h4 class="border-bottom">Send a Comment</h4>
+<!-- RD Mailform-->
+<form class="text-left offset-11" asp-action="Comment" asp-controller="Blog" asp-route-blogId="@Model.Id">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label name="comment" class="form-label">Enter your message</label>
+                <textarea name="comment" class="form-control" value="comment"
+                          pattern="^[A-Za-z0-9\s,.]+$" title="Comment can only contain letters, numbers, spaces, commas, and periods."></textarea>
+                @Html.Raw(TempData["Comment"])
+            </div>
+        </div>
+        <div class="col-xs-12">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <button type="submit" class="btn btn-sushi btn-sm">Comment</button>
+            }
+            else
+            {
+                <a asp-action="Login" asp-controller="Account" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-sushi btn-sm">Comment</a>
+            }
+        </div>
+    </div>
+</form>

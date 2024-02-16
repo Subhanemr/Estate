@@ -892,7 +892,9 @@ namespace Estate.Persistance.Implementations.Services
             if (productId <= 0) throw new WrongRequestException("The request sent does not exist");
             Product item = await _repository.GetByIdAsync(productId, false,$"{nameof(Product.AppUser)}");
             if (item == null) throw new NotFoundException("Your request was not found");
-            await _email.SendMailAsync(item.AppUser.Email, $"{_http.HttpContext.User.FindFirstValue(ClaimTypes.GivenName)} {_http.HttpContext.User.FindFirstValue(ClaimTypes.Surname)} sent a message from the {item.Name} product", 
+            AppUser user = await _userManager.FindByIdAsync(_http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            if (user == null) throw new NotFoundException("Your request was not found");
+            await _email.SendMailAsync(item.AppUser.Email, $"{user.Name} {user.Surname} sent a message from the {item.Name} product", 
                 $"{message}");
             return true;
         }

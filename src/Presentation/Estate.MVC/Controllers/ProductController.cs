@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Estate.MVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class ProductController : Controller
     {
         private readonly IProductService _service;

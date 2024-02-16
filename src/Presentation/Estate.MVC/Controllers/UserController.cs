@@ -5,6 +5,7 @@ using System.Security.Claims;
 
 namespace Estate.MVC.Controllers
 {
+    [AutoValidateAntiforgeryToken]
     public class UserController : Controller
     {
         private readonly IUserService _service;
