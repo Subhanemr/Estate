@@ -3,7 +3,7 @@
 <li class="">
     @if (User.Identity.IsAuthenticated)
     {
-        <a asp-action="WishList" asp-controller="User" asp-route-id="@User.FindFirstValue(ClaimTypes.NameIdentifier)"><i class="fa-regular fa-heart"></i> @Model.Count</a>
+        <a asp-action="WishList" asp-controller="User"><i class="fa-regular fa-heart"></i> @Model.Count</a>
     }
     else
     {

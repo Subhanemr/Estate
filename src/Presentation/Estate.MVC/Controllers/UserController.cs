@@ -9,10 +9,12 @@ namespace Estate.MVC.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _service;
+        private readonly IFavoriteService _favoriteService;
 
-        public UserController(IUserService service)
+        public UserController(IUserService service, IFavoriteService favoriteService)
         {
             _service = service;
+            _favoriteService = favoriteService;
         }
 
         public async Task<IActionResult> Index()
@@ -55,7 +57,7 @@ namespace Estate.MVC.Controllers
         }
         public async Task<IActionResult> WishList()
         {
-            return View(await _service.GetByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)));
+            return View(await _favoriteService.WishList());
         }
         public async Task<IActionResult> BeAAgent()
         {

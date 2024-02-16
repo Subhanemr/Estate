@@ -28,33 +28,57 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<ICollection<FavoriteItemVM>> WishList()
         {
             ICollection<FavoriteItemVM> wishLists = new List<FavoriteItemVM>();
-
-            string[] includes = { $"{nameof(Product.ProductImages)}" };
-            if (_http.HttpContext.Request.Cookies["FavoriteEstate"] is not null)
+            if (_http.HttpContext.User.Identity.IsAuthenticated)
             {
-                ICollection<FavoriteCookieVM> wishes = JsonConvert.DeserializeObject<ICollection<FavoriteCookieVM>>(_http.HttpContext.Request.Cookies["FavoriteEstate"]);
-                foreach (FavoriteCookieVM wishListCookieItem in wishes)
+                AppUser appUser = await _userManager.Users
+                    .Include(b => b.Favorites).ThenInclude(p => p.Product).ThenInclude(pi => pi.ProductImages.Where(pi => pi.IsPrimary == true))
+                    .FirstOrDefaultAsync(u => u.Id == _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                foreach (var item in appUser.Favorites)
                 {
-                    Product product = await _productRepository.GetByIdAsync(wishListCookieItem.Id, false, includes);
-                    if (product is not null)
+                    wishLists.Add(new FavoriteItemVM
                     {
-                        FavoriteItemVM wish = new FavoriteItemVM
+                        Id = item.Product.Id,
+                        Name = item.Product.Name,
+                        Price = item.Product.Price,
+                        Image = item.Product.ProductImages.FirstOrDefault().Url,
+                        OrderDayOrMoth = item.Product.OrderDayOrMoth,
+                        Description = item.Product.Description,
+                        Area = item.Product.Area,
+                        Bedrooms = item.Product.Bedrooms,
+                        Bathrooms = item.Product.Bathrooms,
+                        Garages = item.Product.Garages
+                    });
+                }
+            }
+            else
+            {
+                if (_http.HttpContext.Request.Cookies["FavoriteEstate"] is not null)
+                {
+                    ICollection<FavoriteCookieVM> wishes = JsonConvert.DeserializeObject<ICollection<FavoriteCookieVM>>(_http.HttpContext.Request.Cookies["FavoriteEstate"]);
+                    foreach (FavoriteCookieVM wishListCookieItem in wishes)
+                    {
+                        Product product = await _productRepository.GetByIdAsync(wishListCookieItem.Id, false, $"{nameof(Product.ProductImages)}");
+                        if (product is not null)
                         {
-                            Id = wishListCookieItem.Id,
-                            Name = product.Name,
-                            Price = product.Price,
-                            Image = product.ProductImages.FirstOrDefault(x => x.IsPrimary == true).Url,
-                            OrderDayOrMoth = product.OrderDayOrMoth,
-                            Description = product.Description,
-                            Area = product.Area,
-                            Bedrooms = product.Bedrooms,
-                            Bathrooms = product.Bathrooms,
-                            Garages = product.Garages
-                        };
-                        wishLists.Add(wish);
+                            FavoriteItemVM wish = new FavoriteItemVM
+                            {
+                                Id = wishListCookieItem.Id,
+                                Name = product.Name,
+                                Price = product.Price,
+                                Image = product.ProductImages.FirstOrDefault(x => x.IsPrimary == true).Url,
+                                OrderDayOrMoth = product.OrderDayOrMoth,
+                                Description = product.Description,
+                                Area = product.Area,
+                                Bedrooms = product.Bedrooms,
+                                Bathrooms = product.Bathrooms,
+                                Garages = product.Garages
+                            };
+                            wishLists.Add(wish);
+                        }
                     }
                 }
             }
+
 
             return wishLists;
         }
