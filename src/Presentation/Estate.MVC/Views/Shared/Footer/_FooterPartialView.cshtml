@@ -16,19 +16,19 @@
                             <dd>@setting["Address"]</dd>
                         </dl>
                         <dl class="dl-horizontal-mod-1">
-                            <dt>Phone</dt>
+                            <dt>Phone:</dt>
                             <dd>
                                 <a href="@setting["Phone"]" class="text-primary">@setting["Phone"]</a>
                             </dd>
                         </dl>
                         <dl class="dl-horizontal-mod-1">
-                            <dt>Fax</dt>
+                            <dt>Fax:</dt>
                             <dd>
                                 <a href="@setting["Fax"]" class="text-primary">@setting["Fax"]</a>
                             </dd>
                         </dl>
                         <dl class="dl-horizontal-mod-1">
-                            <dt>Email</dt>
+                            <dt>Email:</dt>
                             <dd>
                                 <a href="@setting["Email"]" class="text-primary">@setting["Email"]</a>
                             </dd>
@@ -51,6 +51,10 @@
                             <a asp-action="Index" asp-controller="Blog">Blogs</a>
                         </li>
                     </ul>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-lg-3">
+                    <h6 class="text-ubold">Recent Blogs</h6>
+                    @await Component.InvokeAsync("FooterBlog")
                 </div>
             </div>
         </div>

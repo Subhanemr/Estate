@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SP8rawMdmkKJ8LF8ncTMVXdreTpQKKEMqqCWHpESfdg=",
+  "Hash": "i505frxzMAX+yoXRGlwu4sfW53qvqzfRIYPvD1eKO58=",
   "Source": "Estate.MVC",
   "BasePath": "_content/Estate.MVC",
   "Mode": "Default",
@@ -5253,6 +5253,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\core.min.js"
     },
     {
+      "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\js\\favorite.js",
+      "SourceId": "Estate.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\",
+      "BasePath": "_content/Estate.MVC",
+      "RelativePath": "assets/js/favorite.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\favorite.js"
+    },
+    {
       "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\js\\html5shiv.min.js",
       "SourceId": "Estate.MVC",
       "SourceType": "Discovered",
@@ -5268,6 +5285,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\html5shiv.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\js\\message.js",
+      "SourceId": "Estate.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\",
+      "BasePath": "_content/Estate.MVC",
+      "RelativePath": "assets/js/message.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\message.js"
     },
     {
       "Identity": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\js\\pointer-events.min.js",

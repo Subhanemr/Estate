@@ -415,13 +415,13 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!photo.ValidateType())
                 {
-                    tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} type is not suitable</p>";
+                    tempData["Message"] += $"<h6 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} type is not suitable</h6>";
                     continue;
                 }
 
                 if (!photo.ValidataSize(10))
                 {
-                    tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} the size is not suitable</p>";
+                    tempData["Message"] += $"<h6 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} the size is not suitable</h6>";
                     continue;
                 }
 
@@ -528,13 +528,13 @@ namespace Estate.Persistance.Implementations.Services
                 {
                     if (!photo.ValidateType())
                     {
-                        tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} type is not suitable</p>";
+                        tempData["Message"] += $"<h6 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} type is not suitable</h6>";
                         continue;
                     }
 
                     if (!photo.ValidataSize(10))
                     {
-                        tempData["Message"] += $"<p class=\"text-danger\">{photo.Name} the size is not suitable</p>";
+                        tempData["Message"] += $"<h6 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} the size is not suitable</h6>";
                         continue;
                     }
 
@@ -594,7 +594,7 @@ namespace Estate.Persistance.Implementations.Services
             if (user == null) throw new NotFoundException("Your request was not found");
             await _emailService.SendMailAsync(agent.Email, $"{user.Name} {user.Surname} send message",
                 $"{message}");
-            tempData["AgentMessage"] += "<p style=\"color: blue;\">We sent a message to the agent</p>";
+            tempData["AgentMessage"] += "<p style=\"color: blue;\">Your message is sent to the agent</p>";
 
             return true;
         }

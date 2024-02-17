@@ -123,7 +123,7 @@ namespace Estate.Persistance.Implementations.Services
             return vMs;
         }
 
-        public async Task<ICollection<ItemBlogVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Blog, bool>>? expression, Expression<Func<Blog, object>>? orderExpression, int page = 1)
+        public async Task<ICollection<ItemBlogVM>> GetAllWhereByOrderAsync(int take, int page, Expression<Func<Blog, object>>? orderExpression, Expression<Func<Blog, bool>>? expression = null)
         {
             string[] includes = { $"{nameof(Blog.BlogImages)}" };
             ICollection<Blog> items = await _repository

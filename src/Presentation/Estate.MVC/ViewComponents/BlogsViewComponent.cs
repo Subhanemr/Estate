@@ -15,7 +15,7 @@ namespace Estate.MVC.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(int id)
         {
-            ICollection<ItemBlogVM> items = await _service.GetAllWhereByOrderAsync(3, x => x.Id != id, x => x.BlogComments.Count, 1);
+            ICollection<ItemBlogVM> items = await _service.GetAllWhereByOrderAsync(3, 1, x => x.BlogComments.Count, x => x.Id != id);
             return View(items);
         }
     }

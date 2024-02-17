@@ -1,0 +1,13 @@
+﻿@model ICollection<ItemBlogVM>
+
+@foreach (var blog in Model)
+{
+    <div class="blog-post text-left">
+        <div class="blog-post-title">
+            <a asp-action="Detail" asp-controller="Blog" asp-route-id="@blog.Id" class="text-primary">@blog.Name</a>
+        </div>
+        <div class="blog-post-time">
+            <time datetime="2016" class="small">@blog.CreateAt.ToString("MMM dd, yyyy 'at' h:mm tt")</time>
+        </div>
+    </div>
+}

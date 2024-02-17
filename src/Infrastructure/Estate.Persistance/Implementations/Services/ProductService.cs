@@ -163,13 +163,13 @@ namespace Estate.Persistance.Implementations.Services
             {
                 if (!photo.ValidateType())
                 {
-                    tempData["Message"] += $"<h5 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} type is not suitable</h5>";
+                    tempData["Message"] += $"<h6 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} type is not suitable</h6>";
                     continue;
                 }
 
                 if (!photo.ValidataSize(10))
                 {
-                    tempData["Message"] += $"<h5 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} the size is not suitable</h5>";
+                    tempData["Message"] += $"<h6 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} the size is not suitable</h6>";
                     continue;
                 }
 
@@ -750,13 +750,13 @@ namespace Estate.Persistance.Implementations.Services
                 {
                     if (!photo.ValidateType())
                     {
-                        tempData["Message"] += $"<h5 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} type is not suitable</h5>";
+                        tempData["Message"] += $"<h6 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} type is not suitable</h6>";
                         continue;
                     }
 
                     if (!photo.ValidataSize(10))
                     {
-                        tempData["Message"] += $"<h5 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} the size is not suitable</h5>";
+                        tempData["Message"] += $"<h6 class=\"text-danger\" style=\"margin-left: 100px; color: red;\">{photo.Name} the size is not suitable</h6>";
                         continue;
                     }
 

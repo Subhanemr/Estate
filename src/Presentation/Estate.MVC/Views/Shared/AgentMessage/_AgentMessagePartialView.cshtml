@@ -1,4 +1,4 @@
-﻿@model int
+﻿@model string
 
 @Html.Raw(TempData["AgentMessage"])
 <form asp-action="AgentMessage" asp-controller="Agency" asp-route-agentId="@Model" class="rd-mailform text-left offset-10">
