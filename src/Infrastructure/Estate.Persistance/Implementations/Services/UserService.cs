@@ -594,6 +594,8 @@ namespace Estate.Persistance.Implementations.Services
             if (user == null) throw new NotFoundException("Your request was not found");
             await _emailService.SendMailAsync(agent.Email, $"{user.Name} {user.Surname} send message",
                 $"{message}");
+            tempData["AgentMessage"] += "<p style=\"color: blue;\">We sent a message to the agent</p>";
+
             return true;
         }
     }
