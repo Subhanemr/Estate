@@ -281,10 +281,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<EditUserVM> EditUser(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.Users
-                .Include(x => x.AppUserImages).Include(x => x.Agency)
-                .Include(x => x.Products).ThenInclude(x => x.Category)
-                .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             EditUserVM get = _mapper.Map<EditUserVM>(user);
