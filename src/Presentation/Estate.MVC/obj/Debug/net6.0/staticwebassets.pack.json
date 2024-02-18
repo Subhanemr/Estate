@@ -1229,6 +1229,10 @@
       "PackagePath": "staticwebassets\\assets\\images\\warning_bar_0000_us.jpg"
     },
     {
+      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\js\\comment.js",
+      "PackagePath": "staticwebassets\\assets\\js\\comment.js"
+    },
+    {
       "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\assets\\js\\core.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\core.min.js"
     },

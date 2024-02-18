@@ -78,7 +78,7 @@ namespace Estate.Persistance.Implementations.Services
             await _repository.SaveChangeAsync();
         }
 
-        public async Task<ICollection<ItemCategoryVM>> GetAllWhereAsync(int take, int page = 1)
+        public async Task<ICollection<ItemCategoryVM>> GetAllWhereAsync(int take, int page)
         {
             string[] includes = { $"{nameof(Category.Products)}" };
 
@@ -147,6 +147,7 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
+            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -196,6 +197,7 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
+            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }

@@ -7,8 +7,8 @@ namespace Estate.Application.Abstractions.Services
 {
     public interface IParkingTypeService
     {
-        Task<ICollection<ItemParkingTypeVM>> GetAllWhereAsync(int take, int page = 1);
-        Task<ICollection<ItemParkingTypeVM>> GetAllWhereByOrderAsync(int take, Expression<Func<ParkingType, object>>? orderExpression, int page = 1);
+        Task<ICollection<ItemParkingTypeVM>> GetAllWhereAsync(int take, int page);
+        Task<ICollection<ItemParkingTypeVM>> GetAllWhereByOrderAsync(int take, Expression<Func<ParkingType, object>>? orderExpression, int page);
         Task<PaginationVM<ItemParkingTypeVM>> GetFilteredAsync(string? search, int take, int page, int order);
         Task<PaginationVM<ItemParkingTypeVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order);
         Task<GetParkingTypeVM> GetByIdAsync(int id);

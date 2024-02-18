@@ -8,8 +8,8 @@ namespace Estate.Application.Abstractions.Services
 {
     public interface IProductService
     {
-        Task<ICollection<ItemProductVM>> GetAllWhereAsync(int take, int page = 1);
-        Task<ICollection<ItemProductVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Product, object>>? orderExpression, int page = 1);
+        Task<ICollection<ItemProductVM>> GetAllWhereAsync(int take, int page);
+        Task<ICollection<ItemProductVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Product, object>>? orderExpression, int page);
         Task<ICollection<ItemProductVM>> GetAllWhereByBoolAsync(int take, Expression<Func<Product, bool>>? expression, int page);
         Task<PaginationVM<ProductFilterVM>> GetFilteredAsync(string? search, int take, int page, int order,
             int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths);

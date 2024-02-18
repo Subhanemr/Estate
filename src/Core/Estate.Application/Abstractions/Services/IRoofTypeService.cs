@@ -7,8 +7,8 @@ namespace Estate.Application.Abstractions.Services
 {
     public interface IRoofTypeService
     {
-        Task<ICollection<ItemRoofTypeVM>> GetAllWhereAsync(int take, int page = 1);
-        Task<ICollection<ItemRoofTypeVM>> GetAllWhereByOrderAsync(int take, Expression<Func<RoofType, object>>? orderExpression, int page = 1);
+        Task<ICollection<ItemRoofTypeVM>> GetAllWhereAsync(int take, int page);
+        Task<ICollection<ItemRoofTypeVM>> GetAllWhereByOrderAsync(int take, Expression<Func<RoofType, object>>? orderExpression, int page);
         Task<PaginationVM<ItemRoofTypeVM>> GetFilteredAsync(string? search, int take, int page, int order);
         Task<PaginationVM<ItemRoofTypeVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order);
         Task<GetRoofTypeVM> GetByIdAsync(int id);

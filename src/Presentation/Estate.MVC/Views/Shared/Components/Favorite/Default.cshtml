@@ -1,12 +1,5 @@
 ﻿@model ICollection<FavoriteItemVM>
 
 <li class="">
-    @if (User.Identity.IsAuthenticated)
-    {
-        <a asp-action="WishList" asp-controller="User"><i class="fa-regular fa-heart"></i> @Model.Count</a>
-    }
-    else
-    {
-        <a asp-action="WishList" asp-controller="Favorite"><i class="fa-regular fa-heart"></i> @Model.Count</a>
-    }
+    <a class="" asp-action="WishList" asp-controller="Favorite"><i class="fa-regular fa-heart"></i><span class="wishlistcounter">@Model.Count</span></a>
 </li>

@@ -16,25 +16,20 @@ namespace Estate.MVC.Controllers
         {
             return View(await _service.WishList());
         }
-
-        public async Task<IActionResult> AddWishList(int id, string? returnUrl)
+        public async Task<IActionResult> WishListJson()
+        {
+            return Json(await _service.WishList());
+        }
+        public async Task<IActionResult> AddWishList(int id)
         {
             await _service.AddWishList(id);
-            if (!string.IsNullOrWhiteSpace(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            return RedirectToAction("Index", "Home", new { Area = ""});
+            return PartialView("Favorite/_FavoritePartialView", await _service.WishList());
         }
 
-        public async Task<IActionResult> DeleteItem(int id, string? returnUrl)
+        public async Task<IActionResult> DeleteItem(int id)
         {
             await _service.DeleteItem(id);
-            if (!string.IsNullOrWhiteSpace(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            return RedirectToAction("Index", "Home", new { Area = "" });
+            return PartialView("Favorite/_FavoritePartialView", await _service.WishList());
         }
     }
 }

@@ -78,7 +78,7 @@ namespace Estate.Persistance.Implementations.Services
             await _repository.SaveChangeAsync();
         }
 
-        public async Task<ICollection<ItemCorporateVM>> GetAllWhereAsync(int take, int page = 1)
+        public async Task<ICollection<ItemCorporateVM>> GetAllWhereAsync(int take, int page)
         {
             string[] includes = { $"{nameof(Corporate.Clients)}.{nameof(Client.AppUser)}" };
             ICollection<Corporate> items = await _repository
@@ -89,7 +89,7 @@ namespace Estate.Persistance.Implementations.Services
             return vMs;
         }
 
-        public async Task<ICollection<ItemCorporateVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Corporate, object>>? orderExpression, int page = 1)
+        public async Task<ICollection<ItemCorporateVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Corporate, object>>? orderExpression, int page)
         {
             string[] includes = { $"{nameof(Corporate.Clients)}.{nameof(Client.AppUser)}" };
             ICollection<Corporate> items = await _repository
@@ -145,6 +145,7 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
+            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -194,6 +195,7 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
+            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }

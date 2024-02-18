@@ -7,8 +7,8 @@ namespace Estate.Application.Abstractions.Services
 {
     public interface IExteriorTypeService
     {
-        Task<ICollection<ItemExteriorTypeVM>> GetAllWhereAsync(int take, int page = 1);
-        Task<ICollection<ItemExteriorTypeVM>> GetAllWhereByOrderAsync(int take, Expression<Func<ExteriorType, object>>? orderExpression, int page = 1);
+        Task<ICollection<ItemExteriorTypeVM>> GetAllWhereAsync(int take, int page);
+        Task<ICollection<ItemExteriorTypeVM>> GetAllWhereByOrderAsync(int take, Expression<Func<ExteriorType, object>>? orderExpression, int page);
         Task<PaginationVM<ItemExteriorTypeVM>> GetFilteredAsync(string? search, int take, int page, int order);
         Task<PaginationVM<ItemExteriorTypeVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order);
         Task<GetExteriorTypeVM> GetByIdAsync(int id);

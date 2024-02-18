@@ -8,7 +8,7 @@ namespace Estate.Application.Abstractions.Services
 {
     public interface IBlogService
     {
-        Task<ICollection<ItemBlogVM>> GetAllWhereAsync(int take, int page = 1);
+        Task<ICollection<ItemBlogVM>> GetAllWhereAsync(int take, int page);
         Task<ICollection<ItemBlogVM>> GetAllWhereByOrderAsync(int take, int page, Expression<Func<Blog, object>>? orderExpression, Expression<Func<Blog, bool>>? expression = null);
         Task<PaginationVM<ItemBlogVM>> GetFilteredAsync(string? search, int take, int page, int order);
         Task<PaginationVM<ItemBlogVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order);
