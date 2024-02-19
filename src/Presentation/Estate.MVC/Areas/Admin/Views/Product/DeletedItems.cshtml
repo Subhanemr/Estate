@@ -77,6 +77,7 @@
           asp-route-categoryId="@Model.CategoryId" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
           asp-route-order="@Model.Search" class="my-2 ">
         <select class="form-control form-control-sm rounded-1" onchange="this.form.submit()" name="Order">
+            <option selected disabled>Sort by Default</option>
             <option value="1">Name</option>
             <option value="2">Created at</option>
             <option value="5">Price</option>

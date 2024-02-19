@@ -14,6 +14,7 @@
     <form asp-action="DeletedItems" asp-controller="ParkingType"
           asp-route-order="@Model.Search" class="my-2 ">
         <select class="form-control form-control-sm rounded-1" onchange="this.form.submit()" name="Order">
+            <option selected disabled>Sort by Default</option>
             <option value="1">Name</option>
             <option value="2">Created at</option>
             <option value="3">Name by Descending</option>

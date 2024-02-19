@@ -14,7 +14,7 @@ namespace Estate.MVC.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            ICollection<ItemCategoryVM> items = await _service.GetAllWhereByOrderAsync(3, x => x.Products.Count, 1);
+            ICollection<ItemCategoryVM> items = await _service.GetAllWhereAsync(3, 1, x => x.Products.Count > 0);
             return View(items);
         }
     }

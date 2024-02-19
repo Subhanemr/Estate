@@ -78,12 +78,12 @@ namespace Estate.Persistance.Implementations.Services
             await _repository.SaveChangeAsync();
         }
 
-        public async Task<ICollection<ItemCategoryVM>> GetAllWhereAsync(int take, int page)
+        public async Task<ICollection<ItemCategoryVM>> GetAllWhereAsync(int take, int page, Expression<Func<Category, bool>>? expression = null)
         {
             string[] includes = { $"{nameof(Category.Products)}" };
 
             ICollection<Category> items = await _repository
-                    .GetAllWhere(skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
+                    .GetAllWhere(expression,(page - 1) * take, take, false, includes).ToListAsync();
 
             ICollection<ItemCategoryVM> vMs = _mapper.Map<ICollection<ItemCategoryVM>>(items);
 

@@ -2,12 +2,13 @@
 using Estate.Domain.Entities;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Estate.Application.Abstractions.Services
 {
     public interface ICategoryService
     {
-        Task<ICollection<ItemCategoryVM>> GetAllWhereAsync(int take, int page);
+        Task<ICollection<ItemCategoryVM>> GetAllWhereAsync(int take, int page, Expression<Func<Category, bool>>? expression = null);
         Task<ICollection<ItemCategoryVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Category, object>>? orderExpression, int page);
         Task<PaginationVM<ItemCategoryVM>> GetFilteredAsync(string? search, int take, int page, int order);
         Task<PaginationVM<ItemCategoryVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order);
