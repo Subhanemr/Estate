@@ -26,6 +26,8 @@ namespace Estate.MVC.Controllers
         public async Task<IActionResult> AgentMessage(string agentId, string message)
         {
             await _userService.AgentMessage(agentId, message, TempData);
+            //return PartialView("AgentMessage/_AgentMessagePartialView", await _service.GetByIdAsync(agentId));
+
             return RedirectToAction("Agent", "Agency", new { Id = agentId });
         }
     }

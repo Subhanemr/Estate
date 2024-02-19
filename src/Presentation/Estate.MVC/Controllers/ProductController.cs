@@ -43,6 +43,7 @@ namespace Estate.MVC.Controllers
         public async Task<IActionResult> AgentMessage(int productId, string message)
         {
             await _service.AgentMessage(productId, message, TempData);
+
             return RedirectToAction("Detail", "Product", new { Id = productId });
         }
         [Authorize(Roles = "Agent")]

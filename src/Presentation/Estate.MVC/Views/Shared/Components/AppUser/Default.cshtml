@@ -2,5 +2,5 @@
 
 <dd>
     <img src="@Model.Img" style="width: 25px; height: 25px; border-radius: 50%;">
-    <a asp-action="Index" asp-controller="User" class="text-sushi">@User.Identity.Name</a>
+    <a asp-action="Index" asp-controller="User" class="text-sushi">@Model.Name @Model.Surname</a>
 </dd>

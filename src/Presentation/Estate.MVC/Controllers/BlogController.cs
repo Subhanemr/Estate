@@ -29,13 +29,13 @@ namespace Estate.MVC.Controllers
         public async Task<IActionResult> Comment(int blogId, string comment)
         {
             await _service.CommentAsync(blogId, comment, TempData);
-
+            //return PartialView("BlogComment/_BlogCommentPartialView", await _service.GetByIdAsync(blogId));
             return RedirectToAction("Detail", "Blog", new { Id = blogId });
         }
         public async Task<IActionResult> Reply(int blogId, int blogCommnetId, string comment)
         {
             await _service.ReplyAsync(blogCommnetId, comment, TempData);
-
+            //return PartialView("BlogComment/_BlogCommentPartialView", await _service.GetByIdAsync(blogId));
             return RedirectToAction("Detail", "Blog", new { Id = blogId });
         }
     }

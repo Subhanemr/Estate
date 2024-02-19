@@ -70,22 +70,21 @@
 
     <script>
 
-        let wishlistCounters = document.getElementsByClassName('wishlistcounter')
+        let wishlistCounters = document.querySelector('.wishlistcounter')
         async function handleDeleteButtonClick(button) {
             let wishlistCard = button.closest(".wishlist_card");
             let id = button.id;
             await fetch(`https://localhost:7093/Favorite/DeleteItem/${id}`)
             if (wishlistCard) {
                 wishlistCard.remove();
-                for (let i = 0; i < wishlistCounters.length; i++) {
-                    let currentValue = parseInt(wishlistCounters[i].innerText, 10);
+                    let currentValue = parseInt(wishlistCounters.innerText, 10);
 
                     if (!isNaN(currentValue)) {
-                        wishlistCounters[i].innerText = currentValue - 1;
+                        wishlistCounters.innerText = currentValue - 1;
                     } else {
-                        console.error('Invalid number found in wishlistcounter span:', wishlistCounters[i].innerText);
+                        console.error('Invalid number found in wishlistcounter span:', wishlistCounters.innerText);
                     }
-                }
+                
             }
         }
         async function AddWishlistButton(button) {
@@ -93,7 +92,6 @@
 
             const wishlistResponse = await fetch('https://localhost:7093/Favorite/WishListJson');
             const wishlistData = await wishlistResponse.json();
-            console.log(wishlistData);
 
             // Check if the item with the given ID is already in the wishlist
             if (wishlistData.some(item => item.id === id)) {
@@ -104,23 +102,18 @@
             // If the item is not in the wishlist, proceed with the fetch request
             await fetch(`https://localhost:7093/Favorite/AddWishList/${id}`);
 
-            // Update the wishlist counters only if the item.id is not equal to the provided id
-            for (let i = 0; i < wishlistCounters.length; i++) {
-                let currentValue = parseInt(wishlistCounters[i].innerText, 10);
+            const response = await fetch('https://localhost:7093/Favorite/WishListJson');
+            const afterData = await response.json();
 
-                if (!isNaN(currentValue) && wishlistData.some(item => item.id !== id)) {
-                    wishlistCounters[i].innerText = currentValue + 1;
+            // Update the wishlist counters only if the item.id is not equal to the provided 
+            console.log(afterData)
+                if (afterData.some(item => item.id !== id)) {
+                    wishlistCounters.innerText = afterData.length;
                 } else {
-                    console.error('Invalid number found in wishlistcounter span:', wishlistCounters[i].innerText);
+                    console.error('Invalid number found in wishlistcounter span:', wishlistCounters.innerText);
                 }
-            }
-        }
-
-
-
-
-
-
+            
+        }          
     </script>
 
 </body>
