@@ -3,7 +3,7 @@
 <div class="col-md-6 grid-margin stretch-card form-control-color-bg-gray">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Create Product</h4>
+            <h4 class="card-title">Update Product</h4>
             <form class="forms-sample" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label asp-for="Name">Product Name</label>
@@ -101,15 +101,16 @@
                     <span asp-validation-for="GoogleLink" class="text-danger"></span>
                 </div>
                 <div class="form-group">
+                    <label asp-for="MainPhoto">Main Image</label><br>
                     <img src="@Model.Images.FirstOrDefault(pi => pi.IsPrimary == true).Url" style="width:25%;" />
                     <input asp-for="MainPhoto" type="hidden" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label asp-for="MainPhoto">Main Image</label>
                     <input asp-for="MainPhoto" class="form-control" placeholder="MainImage" accept="image/*">
                     <span asp-validation-for="MainPhoto" class="text-danger"></span>
                 </div>
                 <div class="form-group d-flex container row">
+                    <label asp-for="Photos">Other Images</label>
                     @foreach (var productImage in Model.Images.Where(pi => pi.IsPrimary == null))
                     {
                         <div class="position-relative m-3 col-3">
@@ -120,7 +121,6 @@
                     }
                 </div>
                 <div class="form-group">
-                    <label asp-for="Photos">Other Images</label>
                     <input asp-for="Photos" class="form-control" placeholder="Photos" accept="image/*">
                     <span asp-validation-for="Photos" class="text-danger"></span>
                 </div>

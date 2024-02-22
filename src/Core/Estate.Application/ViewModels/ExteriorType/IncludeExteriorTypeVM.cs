@@ -1,4 +1,8 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record IncludeExteriorTypeVM(int Id, string Name);
+    public record IncludeExteriorTypeVM
+    {
+        public int Id { get; init; }
+        public string Name { get; init; }
+    }
 }

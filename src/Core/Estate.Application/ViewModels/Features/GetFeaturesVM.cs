@@ -1,7 +1,10 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record GetFeaturesVM(int Id, string Name)
+    public record GetFeaturesVM
     {
+        public int Id { get; init; }
+        public string Name { get; init; }
+
         public ICollection<IncludeProductVM> Products { get; set; }
     }
 }

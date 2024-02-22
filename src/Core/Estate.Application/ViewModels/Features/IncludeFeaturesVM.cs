@@ -1,4 +1,8 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record IncludeFeaturesVM(int Id, string Name);
+    public record IncludeFeaturesVM
+    {
+        public int Id { get; init; }
+        public string Name { get; init; }
+    }
 }

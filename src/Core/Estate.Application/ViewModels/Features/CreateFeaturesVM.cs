@@ -1,4 +1,7 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record CreateFeaturesVM(string Name);
+    public record CreateFeaturesVM
+    {
+        public string Name { get; init; }
+    }
 }

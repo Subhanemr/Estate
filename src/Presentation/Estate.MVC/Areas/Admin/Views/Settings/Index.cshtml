@@ -58,7 +58,20 @@
                                     @Settings.Key
                                 </td>
                                 <td>
-                                    @Settings.Value
+                                    @{
+                                        for (int i = 0; i < Settings.Value.Length; i += 123)
+                                        {
+                                            int remainingLength = Math.Min(123, Settings.Value.Length - i);
+                                            string substring = Settings.Value.Substring(i, remainingLength);
+
+                                            @Html.Raw(substring)
+
+                                            if (i + remainingLength < Settings.Value.Length)
+                                            {
+                                                <br>
+                                            }
+                                        }
+                                    }
                                 </td>
                                 <td>
                                     <a asp-action="Update" asp-controller="Settings" asp-route-id="@Settings.Id" asp-route-returnurl="@Context.Request.Path.Value" class="btn btn-primary btn-info">

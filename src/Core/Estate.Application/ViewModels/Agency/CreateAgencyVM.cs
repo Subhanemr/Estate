@@ -1,4 +1,7 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record CreateAgencyVM(string Name);
+    public record CreateAgencyVM
+    {
+        public string Name { get; init; }
+    }
 }

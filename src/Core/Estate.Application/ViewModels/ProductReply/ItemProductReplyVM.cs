@@ -2,6 +2,15 @@
 
 namespace Estate.Application.ViewModels
 {
-    public record ItemProductReplyVM(int Id, string Comment, DateTime CreateAt, string CreatedBy,
-        string AppUserId, IncludeAppUserVM AppUser, int ProductCommentId, IncludeProductCommentVM? ProductComment);
+    public record ItemProductReplyVM
+    {
+        public int Id { get; init; }
+        public string ReplyComment { get; init; }
+        public DateTime CreateAt { get; init; }
+        public string CreatedBy { get; init; }
+        public string AppUserId { get; init; }
+        public IncludeAppUserVM AppUser { get; init; }
+        public int ProductCommentId { get; init; }
+        public IncludeProductCommentVM? ProductComment { get; init; }
+    }
 }

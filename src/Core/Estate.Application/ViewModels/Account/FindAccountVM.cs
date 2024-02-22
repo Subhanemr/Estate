@@ -1,4 +1,7 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record FindAccountVM(string UserNameOrEmail);
+    public record FindAccountVM
+    {
+        public string UserNameOrEmail { get; init; }
+    }
 }

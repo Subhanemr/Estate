@@ -1,4 +1,8 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record IncludeViewTypeVM(int Id, string Name);
+    public record IncludeViewTypeVM
+    {
+        public int Id { get; init; }
+        public string Name { get; init; }
+    }
 }

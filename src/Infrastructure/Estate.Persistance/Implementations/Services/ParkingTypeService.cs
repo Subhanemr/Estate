@@ -176,7 +176,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(ParkingType.ProductParkingTypes)}.{nameof(ProductParkingType.Product)}.{nameof(Product.ProductImages)}" };
-            ParkingType item = await _repository.GetByIdPaginatedAsync(id, IsTracking: false, includes: includes);
+            ParkingType item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetParkingTypeVM get = _mapper.Map<GetParkingTypeVM>(item);

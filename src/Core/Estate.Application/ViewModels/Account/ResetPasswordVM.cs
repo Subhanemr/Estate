@@ -1,4 +1,9 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record ResetPasswordVM(string NewPassword, string NewConfirmPassword);
+    public record ResetPasswordVM
+    {
+        public string NewPassword { get; init; }
+        public string NewConfirmPassword { get; init; }
+
+    }
 }

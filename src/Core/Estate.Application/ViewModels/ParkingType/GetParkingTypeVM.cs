@@ -1,4 +1,10 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record GetParkingTypeVM(int Id, string Name, ICollection<IncludeProductVM> Products);
+    public record GetParkingTypeVM
+    {
+        public int Id { get; init; }
+        public string Name { get; init; }
+
+        public ICollection<IncludeProductVM> Products { get; init; }
+    }
 }

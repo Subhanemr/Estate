@@ -1,10 +1,29 @@
 ﻿namespace Estate.Application.ViewModels
 {
-    public record IncludeProductVM(int Id, string Name, double Price, float LotSize, float Area, byte Bedrooms, byte Bathrooms,
-        byte Garages, short YearBuilt, byte RoomCount, string? SchoolDistrict, string? SchoolDistrictPhone,
-        string Address, string Description, string FaceLink, string TwitLink, string? GoogleLink,
-        bool HighSchool, bool MiddleSchool, bool ElementarySchool, int CategoryId)
+    public record IncludeProductVM
     {
+        public int Id { get; init; }
+        public string Name { get; init; }
+        public double Price { get; init; }
+        public float LotSize { get; init; }
+        public float Area { get; init; }
+        public int Bedrooms { get; init; }
+        public int Bathrooms { get; init; }
+        public int Garages { get; init; }
+        public int YearBuilt { get; init; }
+        public int RoomCount { get; init; }
+        public string? SchoolDistrict { get; init; }
+        public string? SchoolDistrictPhone { get; init; }
+        public string Address { get; init; }
+        public string Description { get; init; }
+        public string FaceLink { get; init; }
+        public string TwitLink { get; init; }
+        public string? GoogleLink { get; init; }
+        public bool HighSchool { get; init; }
+        public bool MiddleSchool { get; init; }
+        public bool ElementarySchool { get; init; }
+        public int CategoryId { get; init; }
+
         public string OrderDayOrMoth { get; init; }
 
         public IncludeCategoryVM Category { get; init; }

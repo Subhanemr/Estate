@@ -9,32 +9,32 @@
     {
         <div class="col">
             <div class="card bg-secondary">
-            <img src="~/assets/images/website-images/@product.Images.FirstOrDefault(pi => pi.IsPrimary == true).Url"
+            <img src="@product.Images.FirstOrDefault(pi => pi.IsPrimary == true).Url"
                  alt="@product.Name" class="card-img-top">
             <div class="card-body">
                 <h5 class="card-title text-white">Name: @product.Name</h5>
-                <p class="card-text">Description: @product.Description</p>
-                <p class="card-text">Price: $@product.Price</p>
-                <p class="card-text">Area: @product.Area</p>
-                <p class="card-text">Lot Size: @product.LotSize</p>
+                <p class="card-text text-white">Description: @product.Description</p>
+                <p class="card-text text-white">Price: $@product.Price</p>
+                <p class="card-text text-white">Area: @product.Area</p>
+                <p class="card-text text-white">Lot Size: @product.LotSize</p>
 
-                <p class="card-text">Bedrooms: @product.Bedrooms</p>
-                <p class="card-text">Bathrooms: @product.Bathrooms</p>
-                <p class="card-text">Garages: @product.Garages</p>
-                <p class="card-text">YearBuilt: @product.YearBuilt</p>
-                <p class="card-text">Room Count: @product.RoomCount</p>
-                <p class="card-text">Garages: @product.Garages</p>
+                <p class="card-text text-white">Bedrooms: @product.Bedrooms</p>
+                <p class="card-text text-white">Bathrooms: @product.Bathrooms</p>
+                <p class="card-text text-white">Garages: @product.Garages</p>
+                <p class="card-text text-white">YearBuilt: @product.YearBuilt</p>
+                <p class="card-text text-white">Room Count: @product.RoomCount</p>
+                <p class="card-text text-white">Garages: @product.Garages</p>
                 @if (product.SchoolDistrict != null)
                 {
-                    <p class="card-text">School District: @product.SchoolDistrict</p>
-                    <p class="card-text">School District Phone: @product.SchoolDistrictPhone</p>
-                    <p class="card-text">High School: @(product.HighSchool != true ? product.HighSchool : "N/A")</p>
-                    <p class="card-text">Middle School: @(product.MiddleSchool != true ? product.MiddleSchool : "N/A")</p>
-                    <p class="card-text">Elementary School: @(product.ElementarySchool != true ? product.ElementarySchool : "N/A")</p>
+                    <p class="card-text text-white">School District: @product.SchoolDistrict</p>
+                    <p class="card-text text-white">School District Phone: @product.SchoolDistrictPhone</p>
+                    <p class="card-text text-white">High School: @(product.HighSchool != true ? product.HighSchool : "N/A")</p>
+                    <p class="card-text text-white">Middle School: @(product.MiddleSchool != true ? product.MiddleSchool : "N/A")</p>
+                    <p class="card-text text-white">Elementary School: @(product.ElementarySchool != true ? product.ElementarySchool : "N/A")</p>
                 }
-                <p class="card-text">Facebook: <a href="@(product.FaceLink != null ? product.FaceLink : "")">@(product.FaceLink != null ? product.FaceLink : "N/A")</a> </p>
-                <p class="card-text">Twitter: <a href="@(product.TwitLink != null ? product.TwitLink : "")">@(product.TwitLink != null ? product.TwitLink : "N/A")</a> </p>
-                <p class="card-text">GoogleLink: <a href="@(product.GoogleLink != null ? product.GoogleLink : "")">@(product.GoogleLink != null ? product.GoogleLink : "N/A")</a> </p>
+                <p class="card-text text-white">Facebook: <a href="@(product.FaceLink != null ? product.FaceLink : "")">@(product.FaceLink != null ? product.FaceLink : "N/A")</a> </p>
+                <p class="card-text text-white">Twitter: <a href="@(product.TwitLink != null ? product.TwitLink : "")">@(product.TwitLink != null ? product.TwitLink : "N/A")</a> </p>
+                <p class="card-text text-white">GoogleLink: <a href="@(product.GoogleLink != null ? product.GoogleLink : "")">@(product.GoogleLink != null ? product.GoogleLink : "N/A")</a> </p>
                 </div>
             </div>
         </div>

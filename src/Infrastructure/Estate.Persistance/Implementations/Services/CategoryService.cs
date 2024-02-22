@@ -80,7 +80,7 @@ namespace Estate.Persistance.Implementations.Services
 
         public async Task<ICollection<ItemCategoryVM>> GetAllWhereAsync(int take, int page, Expression<Func<Category, bool>>? expression = null)
         {
-            string[] includes = { $"{nameof(Category.Products)}" };
+            string[] includes = { $"{nameof(Category.Products)}.{nameof(Product.ProductImages)}" };
 
             ICollection<Category> items = await _repository
                     .GetAllWhere(expression,(page - 1) * take, take, false, includes).ToListAsync();
@@ -92,7 +92,7 @@ namespace Estate.Persistance.Implementations.Services
 
         public async Task<ICollection<ItemCategoryVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Category, object>>? orderExpression, int page)
         {
-            string[] includes = { $"{nameof(Category.Products)}" };
+            string[] includes = { $"{nameof(Category.Products)}.{nameof(Product.ProductImages)}" };
 
             ICollection<Category> items = await _repository
                     .GetAllWhereByOrder(orderException: orderExpression, skip: (page - 1) * take, take: take, IsTracking: false, includes: includes).ToListAsync();
@@ -107,7 +107,7 @@ namespace Estate.Persistance.Implementations.Services
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
-            string[] includes = { $"{nameof(Category.Products)}" };
+            string[] includes = { $"{nameof(Category.Products)}.{nameof(Product.ProductImages)}" };
             double count = await _repository.CountAsync();
 
             ICollection<Category> items = new List<Category>();
@@ -157,7 +157,7 @@ namespace Estate.Persistance.Implementations.Services
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
-            string[] includes = { $"{nameof(Category.Products)}" };
+            string[] includes = { $"{nameof(Category.Products)}.{nameof(Product.ProductImages)}" };
             double count = await _repository.CountAsync();
 
             ICollection<Category> items = new List<Category>();
@@ -205,7 +205,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<GetCategoryVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes = { $"{nameof(Category.Products)}" };
+            string[] includes = { $"{nameof(Category.Products)}.{nameof(Product.ProductImages)}" };
 
             Category item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
@@ -244,7 +244,7 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            string[] includes = { $"{nameof(Category.Products)}" };
+            string[] includes = { $"{nameof(Category.Products)}.{nameof(Product.ProductImages)}" };
 
             Category item = await _repository.GetByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");

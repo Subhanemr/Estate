@@ -2,6 +2,16 @@
 
 namespace Estate.Application.ViewModels
 {
-    public record ItemBlogCommentVM(int Id, string Comment, DateTime CreateAt, string CreatedBy,
-        string AppUserId, IncludeAppUserVM AppUser, int BlogId, IncludeBlogVM? Blog, ICollection<IncludeBlogReply>? Replies);
+    public record ItemBlogCommentVM
+    {
+        public int Id { get; init; }
+        public string Comment { get; init; }
+        public DateTime CreateAt { get; init; }
+        public string CreatedBy { get; init; }
+        public string AppUserId { get; init; }
+        public IncludeAppUserVM AppUser { get; init; }
+        public int BlogId { get; init; }
+        public IncludeBlogVM Blog { get; init; }
+        public ICollection<IncludeBlogReply> Replies { get; init; }
+    }
 }

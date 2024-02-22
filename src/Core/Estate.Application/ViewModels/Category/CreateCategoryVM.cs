@@ -2,5 +2,9 @@
 
 namespace Estate.Application.ViewModels
 {
-    public record CreateCategoryVM(string Name, IFormFile Photo);
+    public record CreateCategoryVM
+    {
+        public string Name { get; init; }
+        public IFormFile Photo { get; init; }
+    }
 }
