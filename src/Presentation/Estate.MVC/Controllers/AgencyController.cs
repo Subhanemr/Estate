@@ -23,6 +23,10 @@ namespace Estate.MVC.Controllers
         {
             return View(await _userService.GetByIdAsync(id));
         }
+        public async Task<IActionResult> AgentN(string name)
+        {
+            return View(await _userService.GetByUserNameAsync(name));
+        }
         public async Task<IActionResult> AgentMessage(string agentId, string message)
         {
             await _userService.AgentMessage(agentId, message, TempData);

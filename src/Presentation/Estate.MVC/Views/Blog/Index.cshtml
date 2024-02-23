@@ -56,7 +56,7 @@
                                     <span class="mdi mdi-calendar"></span>
                                     <span>@blog.CreateAt.ToString("MMM dd, yyyy 'at' h:mm tt")</span>
                                 </time>
-                                <a asp-action="Detail" asp-controller="Agent" asp-route-id="@blog.CreatedBy" asp-route-returnurl="@Context.Request.Path.Value">
+                                <a>
                                     <span class="mdi mdi-account"></span>
                                     <span>@blog.CreatedBy</span>
                                 </a>

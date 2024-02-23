@@ -1,0 +1,185 @@
+﻿@model GetAppUserVM
+
+<section class="section-full text-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-lg-8 col-lg-offset-4">
+                <h1>@Model.Name @Model.Surname</h1>
+                <p></p>
+                <ol class="breadcrumb">
+                    <li>
+                        <a asp-action="Index" asp-controller="Home">Home</a>
+                    </li>
+                    <li>
+                        <a asp-action="Detail" asp-controller="Agency" asp-route-id="@Model.Agency.Id">@Model.Agency.Name</a>
+                    </li>
+                    <li class="active">@Model.Name @Model.Surname</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section Description-->
+<section class="section-sm bg-dark text-left">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 col-md-offset-0 col-md-4 inset-8">
+                <div class="img-wrap-mod-1">
+                    <img src="@Model.Img" alt="@Model.Name" style="width:320px;height:320px; " width="320" height="320">
+                </div>
+                <h4 class="border-bottom offset-8">Get in Touch</h4>
+                <p class="offset-10">You can contact us any way that is convenient for you. We would be happy to answer your questions.</p>
+                <!-- RD Mailform-->
+                @{
+                    await Html.RenderPartialAsync("AgentMessage/_AgentMessagePartialView", Model.Id);
+                }
+            </div>
+            <div class="col-xs-12 col-md-8 offset-5">
+                <div class="row row-mod-1">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <dl class="contact-info">
+                            <dt>
+                                <span class="@Model.PhoneNumber">Phones</span>
+                            </dt>
+                            <dd>
+                                <a href="callto:#" class="text-light">
+                                    @Model.PhoneNumber
+                                    <br>
+                                </a>
+                                @if (!string.IsNullOrWhiteSpace(Model.PhoneNumber))
+                                {
+                                    <a href="@Model.PhoneSecond" class="text-light">@Model.PhoneSecond</a>
+                                }
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <dl class="contact-info">
+                            <dt>
+                                <span class="h6 text-ubold">E-mail</span>
+                            </dt>
+                            <dd>
+                                <a href="@Model.Email" class="text-sushi">@Model.Email</a>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-xs-12 col-sm-4 col-md-4">
+                        <address class="address">
+                            <span class="h6 text-ubold">Address</span>
+                            <p>@Model.Address</p>
+                        </address>
+                    </div>
+                </div>
+                <h4 class="offset-8 border-bottom">About @Model.Name</h4>
+                <p>
+                    @{
+                        for (int i = 0; i < Model.About.Length; i += 123)
+                        {
+                            int remainingLength = Math.Min(123, Model.About.Length - i);
+                            string substring = Model.About.Substring(i, remainingLength);
+
+                            @Html.Raw(substring)
+
+                            if (i + remainingLength < Model.About.Length)
+                            {
+                                <br>
+                            }
+                        }
+                    }
+                </p>
+                <h4 class="offset-8 border-bottom">Certificates and Awards</h4>
+                <!-- PhotoSwipe-->
+                <div data-photo-swipe-gallery="gallery" class="row offset-11 gallery-wrap">
+                    @foreach (var image in Model.Images)
+                    {
+                        <div class="col-xs-6 col-sm-3 col-md-2">
+                            <a data-photo-swipe-item="" data-size="847x1200" href="@image.Url" data-author="Michael Hull" class="img-wrap-mod-2">
+                                <span class="icon icon-xs fa-search-plus icon-white"></span>
+                                <img width="105" height="150" src="@image.Url" alt="@Model.Name" style="width:105px; height:150px;">
+                            </a>
+                        </div>
+                    }
+                </div>
+                <h4 class="border-bottom offset-8">Social Connections</h4>
+                <div class="icon-group">
+                    <a href="@Model.FaceLink" class="icon icon-sm icon-social fa-facebook"></a>
+                    <a href="@Model.TwitLink" class="icon icon-sm icon-social fa-twitter"></a>
+                    @if (!string.IsNullOrWhiteSpace(Model.GoogleLink))
+                    {
+                        <a href="@Model.GoogleLink" class="icon icon-sm icon-social fa-google-plus"></a>
+                    }
+                    <a href="@Model.LinkedLink" class="icon icon-sm icon-social fa-linkedin"></a>
+                    <a href="@Model.InstaLink" class="icon icon-sm icon-social fa-instagram"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section Heather Turner’s Properties-->
+<section class="section-md text-left">
+    <div class="container text-center text-sm-left">
+        <h2>@Model.Name @Model.Surname’s Offerings</h2>
+        <hr>
+        <div class="row relative text-left offset-10">
+            <div class="col-xs-12 col-sm-12 col-md-8">
+                <div class="row clearleft-custom-5">
+                    @foreach (var product in Model.Products)
+                    {
+                        <div class="col-sm-6">
+                            <div class="thumbnail thumbnail-3">
+                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="img-link">
+                                    <img src="@product.Images.FirstOrDefault(x => x.IsPrimary == true).Url" alt="@product.Name" width="370" height="250">
+                                </a>
+                                <div class="caption">
+                                    <h4>
+                                        <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="text-sushi">@product.Name</a>
+                                    </h4>
+                                    <span class="thumbnail-price h5">
+                                        $@product.Price
+                                        <span class="mon text-regular">/@product.OrderDayOrMoth</span>
+                                        <a style="margin-left:145px;" asp-action="AddWishList" asp-controller="Favorite" asp-route-id="@product.Id">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                            </svg>
+                                        </a>
+                                    </span>
+                                    <ul class="describe-1">
+                                        <li>
+                                            <span class="icon-square icon-sm">
+                                                <svg x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve">
+                                                <g>
+                                                <path d="M3.6,75.7h3.6V7.3l85.7-0.1v85.3l-16.7-0.1l0-16.7c0-0.9-0.4-1.9-1-2.5c-0.7-0.7-1.6-1-2.5-1h-69V75.7h3.6                          H3.6v3.6H69L69,96c0,2,1.6,3.6,3.6,3.6l23.8,0.1c1,0,1.9-0.4,2.5-1c0.7-0.7,1-1.6,1-2.5V3.6c0-1-0.4-1.9-1-2.5                          c-0.7-0.7-1.6-1-2.5-1L3.6,0.1C1.6,0.2,0,1.7,0,3.7v72c0,0.9,0.4,1.9,1,2.5c0.7,0.7,1.6,1,2.5,1V75.7z"></path>
+                                                <path d="M38.1,76.9v-9.5c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v9.5c0,1.3,1.1,2.4,2.4,2.4                          C37,79.3,38.1,78.2,38.1,76.9"></path>
+                                                <path d="M38.1,50.7V15c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v35.7c0,1.3,1.1,2.4,2.4,2.4                          C37,53.1,38.1,52.1,38.1,50.7"></path>
+                                                <path d="M2.4,38.8h33.3c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H2.4c-1.3,0-2.4,1.1-2.4,2.4                          C0,37.8,1.1,38.8,2.4,38.8"></path>
+                                                <path d="M35.7,46h31c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4h-31c-1.3,0-2.4,1.1-2.4,2.4                          C33.3,44.9,34.4,46,35.7,46"></path>
+                                                <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
+                                                <path d="M78.6,46h16.7c1.3,0,2.4-1.1,2.4-2.4c0-1.3-1.1-2.4-2.4-2.4H78.6c-1.3,0-2.4,1.1-2.4,2.4                          C76.2,44.9,77.3,46,78.6,46"></path>
+                                                <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                          C79.9,46,81,44.9,81,43.6"></path>
+                                                <path d="M81,43.6v-7.1c0-1.3-1.1-2.4-2.4-2.4c-1.3,0-2.4,1.1-2.4,2.4v7.1c0,1.3,1.1,2.4,2.4,2.4                            C79.9,46,81,44.9,81,43.6"></path>
+                                            </g>
+                                          </svg>
+                                            </span>@product.Area sq ft
+                                        </li>
+                                        <li>
+                                            <span class="icon icon-sm icon-primary hotel-icon-10"></span>@product.Bathrooms bathrooms
+                                        </li>
+                                    </ul>
+                                    <ul class="describe-2">
+                                        <li>
+                                            <span class="icon icon-sm icon-primary hotel-icon-05"></span>@product.Bedrooms bedrooms
+                                        </li>
+                                        <li>
+                                            <span class="icon icon-sm icon-primary hotel-icon-26"></span>@product.Garages garages
+                                        </li>
+                                    </ul>
+                                    <p class="text-abbey">@(product.Description.Length > 44 ? product.Description.Substring(0, 44) + " ..." : product.Description)</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
