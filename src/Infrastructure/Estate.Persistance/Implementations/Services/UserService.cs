@@ -333,6 +333,7 @@ namespace Estate.Persistance.Implementations.Services
 
         public async Task<bool> ChangePassword(string id, string token, ChangePasswordVM fogotPassword, ModelStateDictionary model)
         {
+            if (!model.IsValid) return false;
             if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(token)) throw new NotFoundException("Your request was not found");
             AppUser user = await _userManager.FindByIdAsync(id);
             if (user == null) throw new NotFoundException("Your request was not found");
