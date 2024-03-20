@@ -123,7 +123,8 @@ namespace Estate.Persistance.Implementations.Services
             return vMs;
         }
 
-        public async Task<ICollection<ItemBlogVM>> GetAllWhereByOrderAsync(int take, int page, Expression<Func<Blog, object>>? orderExpression, Expression<Func<Blog, bool>>? expression = null)
+        public async Task<ICollection<ItemBlogVM>> GetAllWhereByOrderAsync(int take, int page, Expression<Func<Blog, object>>? orderExpression,
+            Expression<Func<Blog, bool>>? expression = null)
         {
             string[] includes = { $"{nameof(Blog.BlogImages)}" };
             ICollection<Blog> items = await _repository
@@ -141,7 +142,8 @@ namespace Estate.Persistance.Implementations.Services
 
             string[] includes = { $"{nameof(Blog.BlogImages)}" };
 
-            double count = await _repository.CountAsync();
+            double count = await _repository
+                .CountAsync(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, false);
 
             ICollection<Blog> items = new List<Blog>();
 
@@ -192,7 +194,8 @@ namespace Estate.Persistance.Implementations.Services
 
             string[] includes = { $"{nameof(Blog.BlogImages)}" };
 
-            double count = await _repository.CountAsync();
+            double count = await _repository
+                .CountAsync(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, true);
 
             ICollection<Blog> items = new List<Blog>();
 

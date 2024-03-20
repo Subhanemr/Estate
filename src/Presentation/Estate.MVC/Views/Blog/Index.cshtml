@@ -29,6 +29,7 @@
             <form asp-action="Index" asp-controller="Blog"
                   asp-route-order="@Model.Search" style="width: 200px;">
                 <select onchange="this.form.submit()" name="Order">
+                    <option selected disabled>Sort by Default</option>
                     <option value="1">Name</option>
                     <option value="2">Create At</option>
                     <option value="3">Name Descending</option>

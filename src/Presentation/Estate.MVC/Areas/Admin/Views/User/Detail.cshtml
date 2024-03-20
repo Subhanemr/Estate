@@ -29,9 +29,12 @@
         <p class="card-text">About: @(Model.About != null ? Model.About : "N/A")</p>
         <p class="card-text">Address: @(Model.Address != null ? Model.Address : "N/A")</p>
 
-        <p class="card-text">
-            Agency: @Model.Agency.Name
-        </p>
+        @if (Model.Agency != null)
+        {
+            <p class="card-text">
+                Agency: @Model.Agency.Name
+            </p>
+        }
 
         <p class="card-text">Facebook: <a href="@(Model.FaceLink != null ? Model.FaceLink : "")">@(Model.FaceLink != null ? Model.FaceLink : "N/A")</a> </p>
         <p class="card-text">Twitter: <a href="@(Model.TwitLink != null ? Model.TwitLink : "")">@(Model.TwitLink != null ? Model.TwitLink : "N/A")</a> </p>
@@ -40,9 +43,9 @@
         <p class="card-text">Twiiter: <a href="@(Model.TwitLink != null ? Model.TwitLink : "")">@(Model.TwitLink != null ? Model.TwitLink : "N/A")</a> </p>
     </div>
 </div>
-<h3>Products: </h3>
 @foreach (var product in Model.Products)
 {
+    <h3>Products: </h3>
     <div class="container">
         <div class="row row-cols-1 row-cols-md-3 g-3 m-1 w-50">
 

@@ -73,10 +73,10 @@ namespace Estate.MVC.Areas.Admin.Controllers
         }
 
         [Authorize(Roles = "Agent")]
-        public IActionResult Create(string? returnUrl)
+        public async Task<IActionResult> Create(string? returnUrl)
         {
             CreateProductVM create = new CreateProductVM();
-            _service.CreatePopulateDropdowns(create);
+            await _service.CreatePopulateDropdowns(create);
             ViewData["ReturnUrl"] = returnUrl;
             return View(create);
         }

@@ -1,4 +1,4 @@
-﻿ @inject LayoutServices service
+﻿@inject LayoutServices service
 
  @{
      Dictionary<string, string> setting = await service.GetSettingsAsync();
@@ -19,6 +19,7 @@
 
                         @if (User.IsInRole(UserRoles.Agent.ToString()))
                         {
+                            <br>
                             <dd>
                                 <a asp-action="Create" asp-controller="Product" asp-area="Admin" asp-route-returnurl="@Context.Request.Path.Value" class="text-sushi">Create Product</a>
                             </dd>
@@ -127,6 +128,7 @@
 
                                     @if (User.IsInRole(UserRoles.Agent.ToString()))
                                     {
+                                        <br>
                                         <dd>
                                             <a asp-action="Create" asp-controller="Product" asp-route-returnurl="@Context.Request.Path.Value" class="text-sushi">Create Product</a>
                                         </dd>

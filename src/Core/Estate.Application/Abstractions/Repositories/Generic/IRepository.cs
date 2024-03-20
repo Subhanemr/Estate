@@ -27,16 +27,11 @@ namespace Estate.Application.Abstractions.Repositories
             bool IsTracking = true,
             params string[] includes);
 
-        Task<T> GetByIdPaginatedAsync(int id,
-            bool IsTracking = true,
-            int take = 0, int skip = 0,
-            params string[] includes);
-
         Task<T> GetByExpressionAsync(Expression<Func<T, bool>> expression,
             bool IsTracking = true,
             params string[] includes);
 
-        Task<double> CountAsync();
+        Task<double> CountAsync(Expression<Func<T, bool>>? expression = null, bool IsDeleted = false);
 
         Task AddAsync(T entity);
         void Update(T entity);

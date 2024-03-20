@@ -30,7 +30,8 @@ namespace Estate.Persistance.Implementations.Services
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
-            double count = await _repository.CountAsync();
+            double count = await _repository
+                .CountAsync(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Key.ToLower().Contains(search.ToLower()) : true, false);
 
             ICollection<Settings> items = new List<Settings>();
 

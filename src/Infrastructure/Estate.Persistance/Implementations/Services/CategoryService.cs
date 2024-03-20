@@ -108,7 +108,8 @@ namespace Estate.Persistance.Implementations.Services
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(Category.Products)}.{nameof(Product.ProductImages)}" };
-            double count = await _repository.CountAsync();
+            double count = await _repository
+                .CountAsync(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, false);
 
             ICollection<Category> items = new List<Category>();
 
@@ -158,7 +159,8 @@ namespace Estate.Persistance.Implementations.Services
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(Category.Products)}.{nameof(Product.ProductImages)}" };
-            double count = await _repository.CountAsync();
+            double count = await _repository
+                .CountAsync(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, true);
 
             ICollection<Category> items = new List<Category>();
 

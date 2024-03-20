@@ -70,12 +70,10 @@ namespace Estate.Application.Validators.Product
                 .LessThanOrEqualTo(255).WithMessage("Room Count must not be more than 255");
 
             RuleFor(x => x.SchoolDistrict)
-                .NotEmpty().WithMessage("School District is required")
                 .Length(25, 200).WithMessage("School District max characters is 25-200")
                 .Matches(@"^[A-Za-z0-9\s"",.]+$").WithMessage("School District can only contain letters, numbers, spaces, double quotes, commas, and periods.");
 
             RuleFor(x => x.SchoolDistrictPhone)
-                .NotEmpty().WithMessage("Phone is required")
                 .Length(5, 25).WithMessage("Phone max characters is 5-25")
                 .Matches(@"^\+?[0-9]*$").WithMessage("Invalid phone number format");
 

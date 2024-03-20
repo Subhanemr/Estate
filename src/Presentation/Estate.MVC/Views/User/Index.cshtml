@@ -28,15 +28,15 @@
                     <div style="margin-bottom: 15px;">
                         <p style="width: 100%;">Agency:  <b>@Model.Agency.Name</b></p>
                     </div>
-                    foreach (var image in Model.Images)
-                    {
-                        <div style="margin-bottom: 15px;">
-                            <p style="width: 100%;"><b>Certificates:</b></p>
-                        </div>
-                        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="margin-bottom: 15px;">
+                        <p style="width: 100%;"><b>Certificates:</b></p>
+                    </div>
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        @foreach (var image in Model.Images)
+                        {
                             <img src="@image.Url" style="width: 25%; border-radius:7px;" />
-                        </div>
-                    }
+                        }
+                    </div>
                 }
             </div>
         </div>
@@ -46,17 +46,17 @@
         <div style="background-color: #6c757d; border-radius: 0.3rem;" class="bg-secondary border rounded-3">
             <ul style="padding: 15px 15px 65px 15px; color: #fff;">
                 <li><a asp-action="Index" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Profile Info</a></li>
-                <li><a asp-action="EditUser" asp-controller="User"  style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
-                <li><a asp-action="WishList" asp-controller="User"  style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
-                <li><a asp-action="ForgotPassword" asp-controller="User"  style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Change Password</a></li>
+                <li><a asp-action="EditUser" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Edit Profile</a></li>
+                <li><a asp-action="WishList" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Wish List</a></li>
+                <li><a asp-action="ForgotPassword" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Change Password</a></li>
                 @if (User.IsInRole(UserRoles.Agent.ToString()))
                 {
-                    <li><a asp-action="UpdateAgent" asp-controller="User"  style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Update Agent Info</a></li>
-                    <li><a asp-action="Products" asp-controller="User"  style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Products</a></li>
+                    <li><a asp-action="UpdateAgent" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Update Agent Info</a></li>
+                    <li><a asp-action="Products" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Products</a></li>
                 }
                 else
                 {
-                    <li><a asp-action="BeAAgent" asp-controller="User"  style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
+                    <li><a asp-action="BeAAgent" asp-controller="User" style="color: #fff; text-decoration: none;" onmouseover="this.style.backgroundColor='#28a745'" onmouseout="this.style.backgroundColor='#6c757d'">Be an Agent</a></li>
                 }
             </ul>
         </div>

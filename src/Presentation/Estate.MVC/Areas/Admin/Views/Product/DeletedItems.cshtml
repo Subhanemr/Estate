@@ -92,7 +92,7 @@
         </button>
         <ul class="dropdown-menu">
             <li>
-                <a class="dropdown-item" asp-action="Index" asp-controller="Shop"
+                <a class="dropdown-item" asp-action="DeletedItems" asp-controller="Product"
                    asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
                    asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
                    asp-route-order="@Model.Order" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
@@ -101,7 +101,7 @@
             @foreach (var category in Model.Item.Categories)
             {
                 <li>
-                    <a class="dropdown-item" asp-action="Index" asp-controller="Shop"
+                    <a class="dropdown-item" asp-action="DeletedItems" asp-controller="Product"
                        asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
                        asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
                        asp-route-categoryId="@category.Id" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"

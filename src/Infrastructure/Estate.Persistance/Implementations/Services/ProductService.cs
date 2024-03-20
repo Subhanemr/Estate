@@ -285,7 +285,14 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.Category)}",
                 $"{nameof(Product.ProductComments)}",
                 $"{nameof(Product.ProductImages)}" };
-            double count = await _repository.CountAsync();
+            double count = await _repository.CountAsync(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true), false);
 
             ICollection<Product> items = new List<Product>();
             switch (order)
@@ -403,7 +410,14 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.Category)}",
                 $"{nameof(Product.ProductComments)}",
                 $"{nameof(Product.ProductImages)}" };
-            double count = await _repository.CountAsync();
+            double count = await _repository.CountAsync(x => (categoryId != null ? x.CategoryId == categoryId : true)
+                                && (minPrice != null ? x.Price >= minPrice : true)
+                                && (maxPrice != null ? x.Price <= maxPrice : true)
+                                && (minArea != null ? x.Area >= minArea : true)
+                                && (maxArea != null ? x.Area <= maxArea : true)
+                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
+                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
+                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true), true);
 
             ICollection<Product> items = new List<Product>();
 

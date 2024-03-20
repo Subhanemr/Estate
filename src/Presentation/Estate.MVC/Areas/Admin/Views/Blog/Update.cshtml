@@ -63,6 +63,7 @@
                 </div>
                 <div class="form-group border border-primary">
                     <textarea asp-for="Description" class="form-control" rows="12" placeholder="Description"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <button type="submit" class="btn btn-primary me-2">Submit</button>
                 <a asp-action="Index" asp-controller="Blog" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="btn btn-light">Cancel</a>

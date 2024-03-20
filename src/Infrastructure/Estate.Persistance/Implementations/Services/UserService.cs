@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using CloudinaryDotNet.Actions;
 using Estate.Application.Abstractions.Repositories;
 using Estate.Application.Abstractions.Services;
 using Estate.Application.ViewModels;
@@ -7,7 +6,6 @@ using Estate.Domain.Entities;
 using Estate.Domain.Enums;
 using Estate.Infrastructure.Exceptions;
 using Estate.Infrastructure.Implementations;
-using Estate.Persistance.Implementations.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +13,6 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System.Linq.Expressions;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
 
@@ -52,7 +49,9 @@ namespace Estate.Persistance.Implementations.Services
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
-            double count = await _userManager.Users.CountAsync();
+            double count = await _userManager.Users.Where(x => !string.IsNullOrEmpty(search) ? x.UserName.ToLower().Contains(search.ToLower()) : true)
+                        .Where(x => x.UserName != _configuration["AdminSettings:UserName"] && x.UserName != _configuration["ModeratorSettings:UserName"])
+                        .Where(x => x.IsActivate == false).CountAsync();
 
             ICollection<AppUser> users = new List<AppUser>();
 
@@ -101,7 +100,9 @@ namespace Estate.Persistance.Implementations.Services
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
-            double count = await _userManager.Users.CountAsync();
+            double count = await _userManager.Users.Where(x => !string.IsNullOrEmpty(search) ? x.UserName.ToLower().Contains(search.ToLower()) : true)
+                        .Where(x => x.UserName != _configuration["AdminSettings:UserName"] && x.UserName != _configuration["ModeratorSettings:UserName"])
+                        .Where(x => x.IsActivate == true).CountAsync();
 
             ICollection<AppUser> users = new List<AppUser>();
 
@@ -468,7 +469,11 @@ namespace Estate.Persistance.Implementations.Services
                 .Include(x => x.AppUserImages).Include(x => x.Agency).FirstOrDefaultAsync(x => x.Id == id);
             update.Images = _mapper.Map<ICollection<IncludeAppUserImage>>(user.AppUserImages);
             if (user == null) throw new NotFoundException("Your request was not found");
-            if (!model.IsValid) return false;
+            if (!model.IsValid)
+            {
+                update.Agencys = _mapper.Map<ICollection<IncludeAgencyVM>>(await _agencyRepository.GetAll().ToListAsync());
+                return false;
+            }
             if (!update.TermsConditions)
             {
                 update.Agencys = _mapper.Map<ICollection<IncludeAgencyVM>>(await _agencyRepository.GetAll().ToListAsync());

@@ -79,7 +79,7 @@ namespace Estate.Persistance.Implementations.Services
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(ParkingType.ProductParkingTypes)}" };
-            double count = await _repository.CountAsync();
+            double count = await _repository.CountAsync(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, false);
 
             ICollection<ParkingType> items = new List<ParkingType>();
 
@@ -129,7 +129,8 @@ namespace Estate.Persistance.Implementations.Services
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(ParkingType.ProductParkingTypes)}" };
-            double count = await _repository.CountAsync();
+            double count = await _repository
+                .CountAsync(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, true);
 
             ICollection<ParkingType> items = new List<ParkingType>();
 

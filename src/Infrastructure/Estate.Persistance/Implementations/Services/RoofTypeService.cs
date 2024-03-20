@@ -80,7 +80,8 @@ namespace Estate.Persistance.Implementations.Services
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(RoofType.ProductRoofTypes)}" };
-            double count = await _repository.CountAsync();
+            double count = await _repository
+                .CountAsync(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, false);
 
             ICollection<RoofType> items = new List<RoofType>();
 
@@ -129,7 +130,8 @@ namespace Estate.Persistance.Implementations.Services
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(RoofType.ProductRoofTypes)}" };
-            double count = await _repository.CountAsync();
+            double count = await _repository
+                .CountAsync(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, true);
 
             ICollection<RoofType> items = new List<RoofType>();
 

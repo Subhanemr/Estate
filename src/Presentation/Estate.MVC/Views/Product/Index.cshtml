@@ -33,12 +33,12 @@
                     </form>
                 </div>
                 <div class="form-group">
-                    <form asp-action="Index" asp-controller="Shop" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
+                    <form asp-action="Index" asp-controller="Product" asp-route-minBaths="@Model.MinBaths" asp-route-minBeds="@Model.MinBeds"
                           asp-route-minArea="@Model.MinArea" asp-route-maxArea="@Model.MaxArea"
                           asp-route-order="@Model.Order" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice"
                           asp-route-search="@Model.Search">
                         <label for="categoryId" class="form-label">Categories</label>
-                        <select name="categoryId" class="form-control select-filter">
+                        <select name="categoryId" onchange="this.form.submit()" class="form-control select-filter">
                             <option value="">Any</option>
                             @foreach (var category in Model.Item.Categories)
                             {
@@ -120,7 +120,8 @@
                               asp-route-order="@Model.Search" asp-route-categoryId="@Model.CategoryId" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice">
                             <label for="sort-1" class="form-label">Sorting</label>
                             <!--Select 2-->
-                            <select id="sort-1" data-minimum-results-for-search="Infinity" class="form-control select-filter">
+                            <select id="sort-1" data-minimum-results-for-search="Infinity" onchange="this.form.submit()" name="Order" class="form-control select-filter">
+                                <option selected disabled>Sort by Default</option>
                                 <option value="1">Name</option>
                                 <option value="2">Created at</option>
                                 <option value="5">Price</option>

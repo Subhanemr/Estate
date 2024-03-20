@@ -80,7 +80,8 @@ namespace Estate.Persistance.Implementations.Services
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(ViewType.ProductViewTypes)}" };
-            double count = await _repository.CountAsync();
+            double count = await _repository
+                .CountAsync(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, false);
 
             ICollection<ViewType> items = new List<ViewType>();
 
@@ -128,7 +129,8 @@ namespace Estate.Persistance.Implementations.Services
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
 
             string[] includes = { $"{nameof(ViewType.ProductViewTypes)}" };
-            double count = await _repository.CountAsync();
+            double count = await _repository
+                .CountAsync(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, false);
 
             ICollection<ViewType> items = new List<ViewType>();
 

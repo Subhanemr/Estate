@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h1>Blog Detail</h1>
+                <h1>@Model.Name</h1>
                 <p></p>
                 <ol class="breadcrumb">
                     <li>
@@ -13,7 +13,7 @@
                     <li>
                         <a asp-action="Index" asp-controller="Blog" asp-route-returnUrl="@ViewData["ReturnUrl"]">Blogs</a>
                     </li>
-                    <li class="active">Blog Detail</li>
+                    <li class="active">@Model.Name</li>
                 </ol>
             </div>
         </div>

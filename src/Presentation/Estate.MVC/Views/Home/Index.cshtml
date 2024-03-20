@@ -55,12 +55,12 @@
                     </form>
                 </div>
                 <div class="form-group">
-                    <form asp-action="Index" asp-controller="Shop" asp-route-minBaths="@Model.Pagination.MinBaths" asp-route-minBeds="@Model.Pagination.MinBeds"
+                    <form asp-action="Index" asp-controller="Product" asp-route-minBaths="@Model.Pagination.MinBaths" asp-route-minBeds="@Model.Pagination.MinBeds"
                           asp-route-minArea="@Model.Pagination.MinArea" asp-route-maxArea="@Model.Pagination.MaxArea"
                           asp-route-order="1" asp-route-minPrice="@Model.Pagination.MinPrice" asp-route-maxPrice="@Model.Pagination.MaxPrice"
                           asp-route-search="@Model.Pagination.Search">
                         <label for="categoryId" class="form-label">Categories</label>
-                        <select name="categoryId" class="form-control select-filter">
+                        <select name="categoryId" onchange="this.form.submit()" class="form-control select-filter">
                             <option value="">Any</option>
                             @foreach (var category in Model.Pagination.Item.Categories)
                             {
