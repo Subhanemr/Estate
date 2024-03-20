@@ -78,7 +78,6 @@
                 </div>
                 <div style="margin-bottom: 15px;">
                     <select asp-for="AgencyId" style="margin-bottom: 15px;" asp-items="new SelectList(Model.Agencys, nameof(IncludeAgencyVM.Id), nameof(IncludeAgencyVM.Name))">
-                        <option selected disabled>Choose Agency</option>
                     </select>
                 </div>
                 <div class="d-flex" style="display:flex;margin-top: 10px; margin-right: 10px;">
