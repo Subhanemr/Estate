@@ -152,12 +152,10 @@ namespace Estate.Persistance.Implementations.Services
             var result = await _userManager.ResetPasswordAsync(user, token, resetPassword.NewPassword);
             if (!result.Succeeded)
             {
-                string errors = "";
                 foreach (var error in result.Errors)
                 {
-                    errors += error.Description;
+                    model.AddModelError(string.Empty, error.Description);
                 }
-                model.AddModelError(string.Empty, "Username, Email or Password is wrong");
                 return false;
             }
             _http.HttpContext.Response.Cookies.Delete("FavoriteEstate");
