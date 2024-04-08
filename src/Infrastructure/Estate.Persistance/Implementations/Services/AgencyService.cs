@@ -37,7 +37,6 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             Agency item = _mapper.Map<Agency>(create);
-            //item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
             await _repository.SaveChangeAsync();
@@ -131,7 +130,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -183,7 +181,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -243,7 +240,6 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             _mapper.Map(update, item);
-            //item.CreatedBy = user.UserName;
             _repository.Update(item);
             await _repository.SaveChangeAsync();
             return true;

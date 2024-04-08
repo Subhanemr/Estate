@@ -9,14 +9,6 @@
       "PackagePath": "staticwebassets\\admin\\css\\style.css"
     },
     {
-      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\fonts\\.DS_Store"
-    },
-    {
-      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\.DS_Store"
-    },
-    {
       "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\fonts\\Roboto\\Roboto-Black.eot",
       "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Black.eot"
     },
@@ -97,14 +89,6 @@
       "PackagePath": "staticwebassets\\admin\\fonts\\Roboto\\Roboto-Regular.woff2"
     },
     {
-      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\images\\.DS_Store"
-    },
-    {
-      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\auth\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\images\\auth\\.DS_Store"
-    },
-    {
       "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\auth\\lockscreen-bg.jpg",
       "PackagePath": "staticwebassets\\admin\\images\\auth\\lockscreen-bg.jpg"
     },
@@ -115,10 +99,6 @@
     {
       "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\auth\\register-bg.jpg",
       "PackagePath": "staticwebassets\\admin\\images\\auth\\register-bg.jpg"
-    },
-    {
-      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\images\\faces\\.DS_Store"
     },
     {
       "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\images\\faces\\face1.jpg",
@@ -245,10 +225,6 @@
       "PackagePath": "staticwebassets\\admin\\images\\logo.svg"
     },
     {
-      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\js\\.DS_Store"
-    },
-    {
       "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\Chart.min.js",
       "PackagePath": "staticwebassets\\admin\\js\\Chart.min.js"
     },
@@ -303,10 +279,6 @@
     {
       "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\js\\template.js",
       "PackagePath": "staticwebassets\\admin\\js\\template.js"
-    },
-    {
-      "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\.DS_Store",
-      "PackagePath": "staticwebassets\\admin\\vendors\\.DS_Store"
     },
     {
       "Id": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\wwwroot\\admin\\vendors\\base\\bootstrap.min.js.map",

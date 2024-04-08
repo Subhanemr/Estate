@@ -8,8 +8,9 @@ C:\Users\T x\Desktop\Estate\src\Core\Estate.Application\bin\Debug\net6.0\Estate.
 C:\Users\T x\Desktop\Estate\src\Core\Estate.Application\bin\Debug\net6.0\Estate.Application.pdb
 C:\Users\T x\Desktop\Estate\src\Core\Estate.Application\bin\Debug\net6.0\Estate.Domain.dll
 C:\Users\T x\Desktop\Estate\src\Core\Estate.Application\bin\Debug\net6.0\Estate.Domain.pdb
-C:\Users\T x\Desktop\Estate\src\Core\Estate.Application\obj\Debug\net6.0\Estate.Application.csproj.CopyComplete
 C:\Users\T x\Desktop\Estate\src\Core\Estate.Application\obj\Debug\net6.0\Estate.Application.dll
 C:\Users\T x\Desktop\Estate\src\Core\Estate.Application\obj\Debug\net6.0\refint\Estate.Application.dll
 C:\Users\T x\Desktop\Estate\src\Core\Estate.Application\obj\Debug\net6.0\Estate.Application.pdb
 C:\Users\T x\Desktop\Estate\src\Core\Estate.Application\obj\Debug\net6.0\ref\Estate.Application.dll
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Application\obj\Debug\net6.0\Estate.Application.sourcelink.json
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Application\obj\Debug\net6.0\Estate.A.8DACA027.Up2Date

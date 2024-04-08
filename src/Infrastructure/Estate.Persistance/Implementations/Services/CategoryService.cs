@@ -56,7 +56,6 @@ namespace Estate.Persistance.Implementations.Services
 
             //item.Img = await create.Photo.CreateFileAsync(_env.WebRootPath, "assets", "images");
             item.Img = await _cLoud.FileCreateAsync(create.Photo);
-            //item.CreatedBy = _http.HttpContext.User.Identity.Name;
 
             await _repository.AddAsync(item);
             await _repository.SaveChangeAsync();
@@ -148,7 +147,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -199,7 +197,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }

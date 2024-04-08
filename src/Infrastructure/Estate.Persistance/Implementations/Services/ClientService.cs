@@ -141,7 +141,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -192,7 +191,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }

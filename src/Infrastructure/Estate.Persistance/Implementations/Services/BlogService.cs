@@ -59,7 +59,6 @@ namespace Estate.Persistance.Implementations.Services
             }
             BlogImage mainImage = new BlogImage
             {
-                //CreatedBy = _http.HttpContext.User.Identity.Name,
                 IsPrimary = true,
                 Url = await _cLoud.FileCreateAsync(create.MainPhoto)
                 //Url = await create.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -76,7 +75,6 @@ namespace Estate.Persistance.Implementations.Services
             }
             BlogImage hoverImage = new BlogImage
             {
-                //CreatedBy = _http.HttpContext.User.Identity.Name,
                 IsPrimary = false,
                 Url = await _cLoud.FileCreateAsync(create.HoverPhoto)
                 //Url = await create.HoverPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -84,8 +82,6 @@ namespace Estate.Persistance.Implementations.Services
             Blog item = _mapper.Map<Blog>(create);
 
             item.BlogImages = new List<BlogImage> { mainImage, hoverImage };
-
-            //item.CreatedBy = _http.HttpContext.User.Identity.Name;
 
             await _repository.AddAsync(item);
             await _repository.SaveChangeAsync();
@@ -182,7 +178,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -234,7 +229,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -309,7 +303,6 @@ namespace Estate.Persistance.Implementations.Services
                 //main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
                 item.BlogImages.Add(new BlogImage
                 {
-                    //CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = true,
                     Url = await _cLoud.FileCreateAsync(update.MainPhoto)
                     //Url = await update.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -334,7 +327,6 @@ namespace Estate.Persistance.Implementations.Services
                 //main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
                 item.BlogImages.Add(new BlogImage
                 {
-                    //CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = false,
                     Url = await _cLoud.FileCreateAsync(update.HoverPhoto)
                     //Url = await update.HoverPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")

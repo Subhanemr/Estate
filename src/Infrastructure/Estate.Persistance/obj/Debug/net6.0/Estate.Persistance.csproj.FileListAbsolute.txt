@@ -13,9 +13,10 @@ C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\bin\Debug\net6
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\bin\Debug\net6.0\Estate.Application.pdb
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\bin\Debug\net6.0\Estate.Infrastructure.pdb
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\bin\Debug\net6.0\Estate.Domain.pdb
-C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\obj\Debug\net6.0\Estate.Persistance.csproj.CopyComplete
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\obj\Debug\net6.0\Estate.Persistance.dll
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\obj\Debug\net6.0\refint\Estate.Persistance.dll
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\obj\Debug\net6.0\Estate.Persistance.pdb
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\obj\Debug\net6.0\Estate.Persistance.genruntimeconfig.cache
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\obj\Debug\net6.0\ref\Estate.Persistance.dll
+C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\obj\Debug\net6.0\Estate.Persistance.sourcelink.json
+C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Persistance\obj\Debug\net6.0\Estate.P.A8B0D77C.Up2Date

@@ -26,7 +26,6 @@ C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\staticw
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\scopedcss\bundle\Estate.MVC.styles.css
-C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\Estate.MVC.csproj.CopyComplete
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\Estate.MVC.dll
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\refint\Estate.MVC.dll
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\Estate.MVC.pdb
@@ -85,3 +84,5 @@ C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\bin\Debug\net6.0\runtime
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\bin\Debug\net6.0\CloudinaryDotNet.dll
 C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\Estate.MVC.sourcelink.json
+C:\Users\T x\Desktop\Estate\src\Presentation\Estate.MVC\obj\Debug\net6.0\Estate.MVC.csproj.Up2Date

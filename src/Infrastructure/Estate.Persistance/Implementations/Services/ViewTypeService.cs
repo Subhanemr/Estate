@@ -37,7 +37,6 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             ViewType item = _mapper.Map<ViewType>(create);
-            //item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
             await _repository.SaveChangeAsync();
@@ -119,7 +118,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -227,7 +225,6 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             _mapper.Map(update, item);
-            //item.CreatedBy = _http.HttpContext.User.Identity.Name;
             _repository.Update(item);
             await _repository.SaveChangeAsync();
             return true;

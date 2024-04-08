@@ -10,8 +10,9 @@ C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Infrastructure\bin\Debug\n
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Infrastructure\bin\Debug\net6.0\Estate.Domain.dll
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Infrastructure\bin\Debug\net6.0\Estate.Application.pdb
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Infrastructure\bin\Debug\net6.0\Estate.Domain.pdb
-C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Infrastructure\obj\Debug\net6.0\Estate.Infrastructure.csproj.CopyComplete
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Infrastructure\obj\Debug\net6.0\Estate.Infrastructure.dll
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Infrastructure\obj\Debug\net6.0\refint\Estate.Infrastructure.dll
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Infrastructure\obj\Debug\net6.0\Estate.Infrastructure.pdb
 C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Infrastructure\obj\Debug\net6.0\ref\Estate.Infrastructure.dll
+C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Infrastructure\obj\Debug\net6.0\Estate.Infrastructure.sourcelink.json
+C:\Users\T x\Desktop\Estate\src\Infrastructure\Estate.Infrastructure\obj\Debug\net6.0\Estate.I.4EFABFF1.Up2Date

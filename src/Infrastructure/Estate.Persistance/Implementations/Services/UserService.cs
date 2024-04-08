@@ -90,7 +90,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -141,7 +140,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -329,7 +327,7 @@ namespace Estate.Persistance.Implementations.Services
             if (user == null) throw new NotFoundException("Your request was not found");
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var confirmationLink = url.Action("ChangePassword", "User", new { Id = user.Id, Token = token }, _http.HttpContext.Request.Scheme);
-            await _emailService.SendMailAsync(user.Email, "Change Password", confirmationLink);
+            await _emailService.SendMailAsync(user.Email, "Change Password", $"<a href=\"{confirmationLink}\" style=\"background-color: #4CAF50; /* Green */\r\n  border: none;\r\n  color: white;\r\n  padding: 15px 32px;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 16px;\r\n  margin: 4px 2px;\r\n  cursor: pointer;\r\n  border-radius: 10px;\" >Change Password</a>\r\n", true);
         }
 
         public async Task<bool> ChangePassword(string id, string token, ChangePasswordVM fogotPassword, ModelStateDictionary model)
@@ -398,7 +396,6 @@ namespace Estate.Persistance.Implementations.Services
             }
             AppUserImage mainImage = new AppUserImage
             {
-                //CreatedBy = _http.HttpContext.User.Identity.Name,
                 IsPrimary = true,
                 Url = await _cLoud.FileCreateAsync(create.MainPhoto)
                 //Url = await create.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -428,7 +425,6 @@ namespace Estate.Persistance.Implementations.Services
 
                 user.AppUserImages.Add(new AppUserImage
                 {
-                    //CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = null,
                     Url = await _cLoud.FileCreateAsync(photo)
                     //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -503,7 +499,6 @@ namespace Estate.Persistance.Implementations.Services
                 }
                 AppUserImage mainImage = new AppUserImage
                 {
-                    //CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = true,
                     Url = await _cLoud.FileCreateAsync(update.MainPhoto)
                     //Url = await create.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -545,7 +540,6 @@ namespace Estate.Persistance.Implementations.Services
 
                     user.AppUserImages.Add(new AppUserImage
                     {
-                        //CreatedBy = _http.HttpContext.User.Identity.Name,
                         IsPrimary = null,
                         Url = await _cLoud.FileCreateAsync(photo)
                         //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")

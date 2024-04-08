@@ -70,7 +70,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Items = vMs
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -98,7 +97,6 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             item.Value = update.Value;
-            //item.CreatedBy = user.UserName;
             _repository.Update(item);
             await _repository.SaveChangeAsync();
             return true;

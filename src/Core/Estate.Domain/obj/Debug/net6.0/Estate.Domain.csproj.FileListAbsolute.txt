@@ -10,3 +10,4 @@ C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\Estate.Domai
 C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\refint\Estate.Domain.dll
 C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\Estate.Domain.pdb
 C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\ref\Estate.Domain.dll
+C:\Users\T x\Desktop\Estate\src\Core\Estate.Domain\obj\Debug\net6.0\Estate.Domain.sourcelink.json

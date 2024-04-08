@@ -139,7 +139,6 @@ namespace Estate.Persistance.Implementations.Services
             }
             ProductImage mainImage = new ProductImage
             {
-                //CreatedBy = _http.HttpContext.User.Identity.Name,
                 IsPrimary = true,
                 Url = await _cLoud.FileCreateAsync(create.MainPhoto)
                 //Url = await create.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -175,7 +174,6 @@ namespace Estate.Persistance.Implementations.Services
 
                 item.ProductImages.Add(new ProductImage
                 {
-                    //CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = null,
                     Url = await _cLoud.FileCreateAsync(photo)
                     //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -183,7 +181,6 @@ namespace Estate.Persistance.Implementations.Services
             }
             AppUser user = await _userManager.FindByNameAsync(_http.HttpContext.User.Identity.Name);
             item.AppUserId = user.Id;
-            //item.CreatedBy = user.UserName;
 
             await _repository.AddAsync(item);
             await _repository.SaveChangeAsync();
@@ -395,7 +392,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Item = filtered
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -518,7 +514,6 @@ namespace Estate.Persistance.Implementations.Services
                 TotalPage = Math.Ceiling(count / take),
                 Item = filtered
             };
-            if (pagination.TotalPage < page) throw new NotFoundException("Your request was not found");
 
             return pagination;
         }
@@ -737,7 +732,6 @@ namespace Estate.Persistance.Implementations.Services
                 //main.Url.DeleteFile(_env.WebRootPath, "assets", "images");
                 item.ProductImages.Add(new ProductImage
                 {
-                    //CreatedBy = _http.HttpContext.User.Identity.Name,
                     IsPrimary = true,
                     Url = await _cLoud.FileCreateAsync(update.MainPhoto)
                     //Url = await update.MainPhoto.CreateFileAsync(_env.WebRootPath, "assets", "images")
@@ -778,7 +772,6 @@ namespace Estate.Persistance.Implementations.Services
 
                     item.ProductImages.Add(new ProductImage
                     {
-                        //CreatedBy = _http.HttpContext.User.Identity.Name,
                         IsPrimary = null,
                         Url = await _cLoud.FileCreateAsync(photo)
                         //Url = await photo.CreateFileAsync(_env.WebRootPath, "assets", "images")

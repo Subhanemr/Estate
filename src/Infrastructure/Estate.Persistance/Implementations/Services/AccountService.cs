@@ -88,7 +88,7 @@ namespace Estate.Persistance.Implementations.Services
 
             var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var confirmationLink = url.Action("ConfirmEmail", "Account", new { token, Email = user.Email }, _http.HttpContext.Request.Scheme);
-            await _emailService.SendMailAsync(user.Email, "Email Confirmation", confirmationLink);
+            await _emailService.SendMailAsync(user.Email, "Email Confirmation", $"<a href=\"{confirmationLink}\" style=\"background-color: #4CAF50; /* Green */\r\n  border: none;\r\n  color: white;\r\n  padding: 15px 32px;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 16px;\r\n  margin: 4px 2px;\r\n  cursor: pointer;\r\n  border-radius: 10px;\" >Verify Email</a>\r\n", true);
 
             await _userManager.AddToRoleAsync(user, UserRoles.Member.ToString());
 
@@ -135,7 +135,7 @@ namespace Estate.Persistance.Implementations.Services
             }
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var confirmationLink = url.Action("ResetPassword", "Account", new { Id = user.Id, Token = token }, _http.HttpContext.Request.Scheme);
-            await _emailService.SendMailAsync(user.Email, "Password Reset", confirmationLink);
+            await _emailService.SendMailAsync(user.Email, "Reset Password", $"<a href=\"{confirmationLink}\" style=\"background-color: #4CAF50; /* Green */\r\n  border: none;\r\n  color: white;\r\n  padding: 15px 32px;\r\n  text-align: center;\r\n  text-decoration: none;\r\n  display: inline-block;\r\n  font-size: 16px;\r\n  margin: 4px 2px;\r\n  cursor: pointer;\r\n  border-radius: 10px;\" >Reset Password</a>\r\n", true);
 
             return true;
         }
