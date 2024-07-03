@@ -31,7 +31,7 @@ namespace Estate.MVC.Areas.Admin.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return View(model: await _service.GetDeleteFilteredAsync(search, 10, page, order, categoryId,minPrice, maxPrice, minArea, maxArea, minBeds, minBaths));
+            return View(model: await _service.GetFilteredAsync(search, 10, page, order, categoryId,minPrice, maxPrice, minArea, maxArea, minBeds, minBaths, true));
         }
         [Authorize(Roles = "Admin, Moderator")]
         public async Task<IActionResult> SoftDelete(int id, string? returnUrl)

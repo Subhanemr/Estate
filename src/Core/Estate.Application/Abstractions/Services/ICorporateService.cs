@@ -9,8 +9,7 @@ namespace Estate.Application.Abstractions.Services
     {
         Task<ICollection<ItemCorporateVM>> GetAllWhereAsync(int take, int page);
         Task<ICollection<ItemCorporateVM>> GetAllWhereByOrderAsync(int take, Expression<Func<Corporate, object>>? orderExpression, int page);
-        Task<PaginationVM<ItemCorporateVM>> GetFilteredAsync(string? search, int take, int page, int order);
-        Task<PaginationVM<ItemCorporateVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order);
+        Task<PaginationVM<ItemCorporateVM>> GetFilteredAsync(string? search, int take, int page, int order, bool isDeleted = false);
         Task<GetCorporateVM> GetByIdAsync(int id);
         Task<bool> CreateAsync(CreateCorporateVM create, ModelStateDictionary model);
         Task<UpdateCorporateVM> UpdateAsync(int id);

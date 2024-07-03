@@ -273,7 +273,7 @@ namespace Estate.Persistance.Implementations.Services
             return vMs;
         }
         public async Task<PaginationVM<ProductFilterVM>> GetFilteredAsync(string? search, int take, int page, int order, 
-            int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths)
+            int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths, bool isDeleted = false)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
@@ -305,7 +305,7 @@ namespace Estate.Persistance.Implementations.Services
                                 && (minBeds != null ? x.Bedrooms >= minBeds : true)
                                 && (minBaths != null ? x.Bathrooms >= minBaths : true)
                                 && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                            x => x.Name, false, false, (page - 1) * take, take, false, includes)
+                            x => x.Name, false, isDeleted, (page - 1) * take, take, false, includes)
                         .ToListAsync();
 
                     break;
@@ -319,7 +319,7 @@ namespace Estate.Persistance.Implementations.Services
                                 && (minBeds != null ? x.Bedrooms >= minBeds : true)
                                 && (minBaths != null ? x.Bathrooms >= minBaths : true)
                                 && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                      x => x.CreateAt, false, false, (page - 1) * take, take, false, includes).ToListAsync();
+                      x => x.CreateAt, false, isDeleted, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 3:
                     items = await _repository
@@ -331,7 +331,7 @@ namespace Estate.Persistance.Implementations.Services
                                 && (minBeds != null ? x.Bedrooms >= minBeds : true)
                                 && (minBaths != null ? x.Bathrooms >= minBaths : true)
                                 && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                        x => x.Name, true, false, (page - 1) * take, take, false, includes).ToListAsync();
+                        x => x.Name, true, isDeleted, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 4:
                     items = await _repository
@@ -343,7 +343,7 @@ namespace Estate.Persistance.Implementations.Services
                                 && (minBeds != null ? x.Bedrooms >= minBeds : true)
                                 && (minBaths != null ? x.Bathrooms >= minBaths : true)
                                 && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                      x => x.CreateAt, true, false, (page - 1) * take, take, false, includes).ToListAsync();
+                      x => x.CreateAt, true, isDeleted, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 5:
                     items = await _repository
@@ -355,7 +355,7 @@ namespace Estate.Persistance.Implementations.Services
                                 && (minBeds != null ? x.Bedrooms >= minBeds : true)
                                 && (minBaths != null ? x.Bathrooms >= minBaths : true)
                                 && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                      x => x.Price, false, false, (page - 1) * take, take, false, includes).ToListAsync();
+                      x => x.Price, false, isDeleted, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 6:
                     items = await _repository
@@ -367,7 +367,7 @@ namespace Estate.Persistance.Implementations.Services
                                 && (minBeds != null ? x.Bedrooms >= minBeds : true)
                                 && (minBaths != null ? x.Bathrooms >= minBaths : true)
                                 && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                      x => x.Price, true, false, (page - 1) * take, take, false, includes).ToListAsync();
+                      x => x.Price, true, isDeleted, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
             }
 
@@ -375,128 +375,6 @@ namespace Estate.Persistance.Implementations.Services
             {
                 Products = _mapper.Map<ICollection<ItemProductVM>>(items),
                 Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll(false).ToListAsync())
-            };
-            PaginationVM<ProductFilterVM> pagination = new PaginationVM<ProductFilterVM>
-            {
-                Take = take,
-                Search = search,
-                Order = order,
-                CategoryId = categoryId,
-                MinPrice = minPrice,
-                MaxPrice = maxPrice,
-                MinArea = minArea,
-                MaxArea = maxArea,
-                MinBaths = minBaths,
-                MinBeds = minBeds,
-                CurrentPage = page,
-                TotalPage = Math.Ceiling(count / take),
-                Item = filtered
-            };
-
-            return pagination;
-        }
-
-        public async Task<PaginationVM<ProductFilterVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order, 
-            int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths)
-        {
-            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
-            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
-
-            string[] includes ={
-                $"{nameof(Product.Category)}",
-                $"{nameof(Product.ProductComments)}",
-                $"{nameof(Product.ProductImages)}" };
-            double count = await _repository.CountAsync(x => (categoryId != null ? x.CategoryId == categoryId : true)
-                                && (minPrice != null ? x.Price >= minPrice : true)
-                                && (maxPrice != null ? x.Price <= maxPrice : true)
-                                && (minArea != null ? x.Area >= minArea : true)
-                                && (maxArea != null ? x.Area <= maxArea : true)
-                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
-                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
-                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true), true);
-
-            ICollection<Product> items = new List<Product>();
-
-            switch (order)
-            {
-                case 1:
-                    items = await _repository
-                    .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
-                                && (minPrice != null ? x.Price >= minPrice : true)
-                                && (maxPrice != null ? x.Price <= maxPrice : true)
-                                && (minArea != null ? x.Area >= minArea : true)
-                                && (maxArea != null ? x.Area <= maxArea : true)
-                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
-                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
-                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                        x => x.Name, false, true, (page - 1) * take, take, false, includes).ToListAsync();
-                    break;
-                case 2:
-                    items = await _repository
-                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
-                                && (minPrice != null ? x.Price >= minPrice : true)
-                                && (maxPrice != null ? x.Price <= maxPrice : true)
-                                && (minArea != null ? x.Area >= minArea : true)
-                                && (maxArea != null ? x.Area <= maxArea : true)
-                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
-                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
-                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                      x => x.CreateAt, false, true, (page - 1) * take, take, false, includes).ToListAsync();
-                    break;
-                case 3:
-                    items = await _repository
-                    .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
-                                && (minPrice != null ? x.Price >= minPrice : true)
-                                && (maxPrice != null ? x.Price <= maxPrice : true)
-                                && (minArea != null ? x.Area >= minArea : true)
-                                && (maxArea != null ? x.Area <= maxArea : true)
-                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
-                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
-                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                        x => x.Name, true, true, (page - 1) * take, take, false, includes).ToListAsync();
-                    break;
-                case 4:
-                    items = await _repository
-                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
-                                && (minPrice != null ? x.Price >= minPrice : true)
-                                && (maxPrice != null ? x.Price <= maxPrice : true)
-                                && (minArea != null ? x.Area >= minArea : true)
-                                && (maxArea != null ? x.Area <= maxArea : true)
-                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
-                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
-                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                      x => x.CreateAt, true, true, (page - 1) * take, take, false, includes).ToListAsync();
-                    break;
-                case 5:
-                    items = await _repository
-                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
-                                && (minPrice != null ? x.Price >= minPrice : true)
-                                && (maxPrice != null ? x.Price <= maxPrice : true)
-                                && (minArea != null ? x.Area >= minArea : true)
-                                && (maxArea != null ? x.Area <= maxArea : true)
-                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
-                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
-                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                      x => x.Price, false, true, (page - 1) * take, take, false, includes).ToListAsync();
-                    break;
-                case 6:
-                    items = await _repository
-                     .GetAllWhereByOrder(x => (categoryId != null ? x.CategoryId == categoryId : true)
-                                && (minPrice != null ? x.Price >= minPrice : true)
-                                && (maxPrice != null ? x.Price <= maxPrice : true)
-                                && (minArea != null ? x.Area >= minArea : true)
-                                && (maxArea != null ? x.Area <= maxArea : true)
-                                && (minBeds != null ? x.Bedrooms >= minBeds : true)
-                                && (minBaths != null ? x.Bathrooms >= minBaths : true)
-                                && (!string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true),
-                      x => x.Price, true, true, (page - 1) * take, take, false, includes).ToListAsync();
-                    break;
-            }
-
-            ProductFilterVM filtered = new ProductFilterVM
-            {
-                Products = _mapper.Map<ICollection<ItemProductVM>>(items),
-                Categories = _mapper.Map<ICollection<IncludeCategoryVM>>(await _categoryRepository.GetAll(false).ToListAsync()),
             };
             PaginationVM<ProductFilterVM> pagination = new PaginationVM<ProductFilterVM>
             {

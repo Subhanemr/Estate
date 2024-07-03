@@ -29,14 +29,8 @@ namespace Estate.Persistance.Implementations.Repositories
             var query = _dbSet.AsQueryable();
             if (expression != null) query = query.Where(expression);
 
-            if (IsDeleted)
-            {
-                query = query.Where(x => x.IsDeleted == true);
-            }
-            else
-            {
-                query = query.Where(x => x.IsDeleted == false);
-            }
+            if (IsDeleted) query = query.Where(x => x.IsDeleted == true);
+            else query = query.Where(x => x.IsDeleted == false);
 
             return await query.CountAsync();
         }
@@ -60,7 +54,7 @@ namespace Estate.Persistance.Implementations.Repositories
             return IsTracking ? query : query.AsNoTracking();
         }
 
-        public IQueryable<T> GetAllWhere(Expression<Func<T, bool>>? expression = null, int skip = 0, int take = 0, 
+        public IQueryable<T> GetAllWhere(Expression<Func<T, bool>>? expression = null, int skip = 0, int take = 0,
             bool IsTracking = true, params string[] includes)
         {
             var query = _dbSet.AsQueryable();
@@ -75,7 +69,7 @@ namespace Estate.Persistance.Implementations.Repositories
             return IsTracking ? query : query.AsNoTracking();
         }
 
-        public IQueryable<T> GetAllWhereByOrder(Expression<Func<T, bool>>? expression = null, Expression<Func<T, object>>? orderException = null, 
+        public IQueryable<T> GetAllWhereByOrder(Expression<Func<T, bool>>? expression = null, Expression<Func<T, object>>? orderException = null,
             bool IsDescending = false, bool IsDeleted = false, int skip = 0, int take = 0, bool IsTracking = true, params string[] includes)
         {
             var query = _dbSet.AsQueryable();
@@ -86,14 +80,9 @@ namespace Estate.Persistance.Implementations.Repositories
                 if (IsDescending) query = query.OrderByDescending(orderException);
                 else query = query.OrderBy(orderException);
             }
-            if (IsDeleted)
-            {
-                query = query.Where(x => x.IsDeleted == true);
-            }
-            else
-            {
-                query = query.Where(x => x.IsDeleted == false);
-            }
+            if (IsDeleted) query = query.Where(x => x.IsDeleted == true);
+
+            else query = query.Where(x => x.IsDeleted == false);
 
             if (skip != 0) query = query.Skip(skip);
 
@@ -141,7 +130,7 @@ namespace Estate.Persistance.Implementations.Repositories
             entity.IsDeleted = true;
         }
 
-        public async void Update(T entity)
+        public void Update(T entity)
         {
             _dbSet.Update(entity);
         }

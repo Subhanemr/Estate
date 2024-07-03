@@ -32,7 +32,7 @@ namespace Estate.MVC.Areas.Admin.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return View(model: await _service.GetDeleteFilteredAsync(search, 10, page, order));
+            return View(model: await _service.GetFilteredAsync(search, 10, page, order, true));
         }
 
         public IActionResult Create(string? returnUrl)

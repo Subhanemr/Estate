@@ -23,7 +23,7 @@ namespace Estate.MVC.Areas.Admin.Controllers
 
         public async Task<IActionResult> DeletedItems(string? search, int order = 1, int page = 1)
         {
-            return View(model: await _service.GetDeleteFilteredAsync(search, 10, page, order));
+            return View(model: await _service.GetFilteredAsync(search, 10, page, order, true));
         }
 
         public async Task<IActionResult> Detail(string id)

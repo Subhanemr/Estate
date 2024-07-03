@@ -72,7 +72,7 @@ namespace Estate.Persistance.Implementations.Services
 
             return vMs;
         }
-        public async Task<PaginationVM<ItemParkingTypeVM>> GetFilteredAsync(string? search, int take, int page, int order)
+        public async Task<PaginationVM<ItemParkingTypeVM>> GetFilteredAsync(string? search, int take, int page, int order, bool isDeleted = false)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
             if (order <= 0) throw new WrongRequestException("The request sent does not exist");
@@ -87,22 +87,22 @@ namespace Estate.Persistance.Implementations.Services
                 case 1:
                     items = await _repository
                     .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                        x => x.Name, false, false, (page - 1) * take, take, false, includes).ToListAsync();
+                        x => x.Name, false, isDeleted, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 2:
                     items = await _repository
                      .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                      x => x.CreateAt, false, false, (page - 1) * take, take, false, includes).ToListAsync();
+                      x => x.CreateAt, false, isDeleted, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 3:
                     items = await _repository
                     .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                        x => x.Name, true, false, (page - 1) * take, take, false, includes).ToListAsync();
+                        x => x.Name, true, isDeleted, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
                 case 4:
                     items = await _repository
                      .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                      x => x.CreateAt, true, false, (page - 1) * take, take, false, includes).ToListAsync();
+                      x => x.CreateAt, true, isDeleted, (page - 1) * take, take, false, includes).ToListAsync();
                     break;
             }
 
@@ -120,56 +120,7 @@ namespace Estate.Persistance.Implementations.Services
 
             return pagination;
         }
-
-        public async Task<PaginationVM<ItemParkingTypeVM>> GetDeleteFilteredAsync(string? search, int take, int page, int order)
-        {
-            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
-            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
-
-            string[] includes = { $"{nameof(ParkingType.ProductParkingTypes)}" };
-            double count = await _repository
-                .CountAsync(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true, true);
-
-            ICollection<ParkingType> items = new List<ParkingType>();
-
-            switch (order)
-            {
-                case 1:
-                    items = await _repository
-                    .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                        x => x.Name, false, true, (page - 1) * take, take, false, includes).ToListAsync();
-                    break;
-                case 2:
-                    items = await _repository
-                     .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                      x => x.CreateAt, false, true, (page - 1) * take, take, false, includes).ToListAsync();
-                    break;
-                case 3:
-                    items = await _repository
-                    .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                        x => x.Name, true, true, (page - 1) * take, take, false, includes).ToListAsync();
-                    break;
-                case 4:
-                    items = await _repository
-                     .GetAllWhereByOrder(x => !string.IsNullOrEmpty(search) ? x.Name.ToLower().Contains(search.ToLower()) : true,
-                      x => x.CreateAt, true, true, (page - 1) * take, take, false, includes).ToListAsync();
-                    break;
-            }
-
-            ICollection<ItemParkingTypeVM> vMs = _mapper.Map<ICollection<ItemParkingTypeVM>>(items);
-
-            PaginationVM<ItemParkingTypeVM> pagination = new PaginationVM<ItemParkingTypeVM>
-            {
-                Take = take,
-                Search = search,
-                Order = order,
-                CurrentPage = page,
-                TotalPage = Math.Ceiling(count / take),
-                Items = vMs
-            };
-
-            return pagination;
-        }
+        
         public async Task<GetParkingTypeVM> GetByIdAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
