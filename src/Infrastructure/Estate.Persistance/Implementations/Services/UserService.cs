@@ -128,7 +128,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task IsSoulOfAgencyAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             user.SoulOfAgency = true;
@@ -139,7 +139,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task GiveRoleModeratorAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             await _userManager.AddToRoleAsync(user, UserRoles.Moderator.ToString());
@@ -147,7 +147,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task DeleteRoleModeratorAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             await _userManager.AddToRoleAsync(user, UserRoles.Member.ToString());
@@ -155,7 +155,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task DeleteRoleAgentAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             await _userManager.AddToRoleAsync(user, UserRoles.Member.ToString());
@@ -163,7 +163,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task ReverseSoftDeleteAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             user.IsActivate = false;
@@ -174,7 +174,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task SoftDeleteAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             user.IsActivate = true;
@@ -185,7 +185,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task DeleteAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             await _userManager.DeleteAsync(user);
@@ -194,7 +194,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<EditUserVM> EditUser(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             EditUserVM get = _mapper.Map<EditUserVM>(user);
@@ -205,7 +205,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> EditUserAsync(string id, EditUserVM update, ModelStateDictionary model)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             _mapper.Map(update, user);
@@ -237,7 +237,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task ForgotPassword(string id, IUrlHelper url)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
             var token = await _userManager.GeneratePasswordResetTokenAsync(user);
             var confirmationLink = url.Action("ChangePassword", "User", new { Id = user.Id, Token = token }, _http.HttpContext.Request.Scheme);
@@ -248,7 +248,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (!model.IsValid) return false;
             if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(token)) throw new NotFoundException("Your request was not found");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             var result = await _userManager.ChangePasswordAsync(user, fogotPassword.Password, fogotPassword.NewPassword);
@@ -268,7 +268,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<CreateAppUserAgentVM> BeAAgent(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             CreateAppUserAgentVM create = _mapper.Map<CreateAppUserAgentVM>(user);
@@ -287,7 +287,7 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.FindByIdAsync(id);
+            AppUser user = await _getUserById(id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             if (!await _agencyRepository.CheckUniqueAsync(x => x.Id == create.AgencyId))
@@ -361,7 +361,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<UpdateAppUserAgentVM> UpdateAgentAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.Users
+            AppUser? user = await _userManager.Users
                 .Include(x => x.AppUserImages).Include(x => x.Agency).FirstOrDefaultAsync(x => x.Id == id);
             if (user == null) throw new NotFoundException("Your request was not found");
 
@@ -375,7 +375,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> UpdateAgentPostAsync(string id, UpdateAppUserAgentVM update, ModelStateDictionary model, ITempDataDictionary tempData)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.Users
+            AppUser? user = await _userManager.Users
                 .Include(x => x.AppUserImages).Include(x => x.Agency).FirstOrDefaultAsync(x => x.Id == id);
             update.Images = _mapper.Map<ICollection<IncludeAppUserImage>>(user.AppUserImages);
             if (user == null) throw new NotFoundException("Your request was not found");
@@ -501,15 +501,25 @@ namespace Estate.Persistance.Implementations.Services
                 return false;
             }
             if (string.IsNullOrWhiteSpace(agentId)) throw new WrongRequestException("The request sent does not exist");
-            AppUser agent = await _userManager.FindByIdAsync(agentId);
+            AppUser agent = await _getUserById(agentId);
             if (agent == null) throw new NotFoundException("Your request was not found");
-            AppUser user = await _userManager.FindByIdAsync(_http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            AppUser user = await _getUserById(_http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             if (user == null) throw new NotFoundException("Your request was not found");
             await _emailService.SendMailAsync(agent.Email, $"{user.Name} {user.Surname} send message",
                 $"{message}");
             tempData["AgentMessage"] += "<p style=\"color: blue;\">Your message is sent to the agent</p>";
 
             return true;
+        }
+
+        private async Task<AppUser> _getUserById(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user is null)
+                throw new NotFoundException("This user is not found");
+
+            return user;
         }
 
         private async Task<AppUser> _getByIdAsync(string id, bool isTracking = true, bool includes = false)
