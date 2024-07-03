@@ -68,7 +68,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Corporate.Clients)}" };
-            Corporate item = await _repository.GetByIdAsync(id, includes: includes);
+            Corporate item = await _getByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             await _cLoud.FileDeleteAsync(item.Img);
@@ -153,7 +153,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Corporate.Clients)}.{nameof(Client.AppUser)}" };
-            Corporate item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
+            Corporate item = await _getByIdAsync(id, false, includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetCorporateVM get = _mapper.Map<GetCorporateVM>(item);
@@ -164,7 +164,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task ReverseSoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Corporate item = await _repository.GetByIdAsync(id);
+            Corporate item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
@@ -174,7 +174,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task SoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Corporate item = await _repository.GetByIdAsync(id);
+            Corporate item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
@@ -192,7 +192,7 @@ namespace Estate.Persistance.Implementations.Services
 
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Corporate.Clients)}" };
-            Corporate item = await _repository.GetByIdAsync(id, includes: includes);
+            Corporate item = await _getByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             if (update.Photo != null)
@@ -233,12 +233,21 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Corporate.Clients)}" };
-            Corporate item = await _repository.GetByIdAsync(id, includes: includes);
+            Corporate item = await _getByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateCorporateVM update = _mapper.Map<UpdateCorporateVM>(item);
 
             return update;
+        }
+
+        private async Task<Corporate> _getByIdAsync(int id, bool isTracking = true, params string[] includes)
+        {
+            Corporate corporate = await _repository.GetByIdAsync(id, isTracking, includes);
+            if (corporate is null)
+                throw new NotFoundException($"Corporate not found({id})!");
+
+            return corporate;
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task DeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ParkingType item = await _repository.GetByIdAsync(id);
+            ParkingType item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             _repository.Delete(item);
@@ -125,7 +125,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(ParkingType.ProductParkingTypes)}.{nameof(ProductParkingType.Product)}.{nameof(Product.ProductImages)}" };
-            ParkingType item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
+            ParkingType item = await _getByIdAsync(id, false, includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetParkingTypeVM get = _mapper.Map<GetParkingTypeVM>(item);
@@ -136,7 +136,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task ReverseSoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ParkingType item = await _repository.GetByIdAsync(id);
+            ParkingType item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
@@ -146,7 +146,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task SoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ParkingType item = await _repository.GetByIdAsync(id);
+            ParkingType item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
@@ -156,7 +156,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<UpdateParkingTypeVM> UpdateAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ParkingType item = await _repository.GetByIdAsync(id);
+            ParkingType item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateParkingTypeVM update = _mapper.Map<UpdateParkingTypeVM>(item);
@@ -167,7 +167,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> UpdatePostAsync(int id, UpdateParkingTypeVM update, ModelStateDictionary model)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ParkingType item = await _repository.GetByIdAsync(id);
+            ParkingType item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == update.Name.ToLower().Trim() && x.Id != id))
@@ -179,6 +179,15 @@ namespace Estate.Persistance.Implementations.Services
             _repository.Update(item);
             await _repository.SaveChangeAsync();
             return true;
+        }
+
+        private async Task<ParkingType> _getByIdAsync(int id, bool isTracking = true, params string[] includes)
+        {
+            ParkingType parkingType = await _repository.GetByIdAsync(id, isTracking, includes);
+            if (parkingType is null)
+                throw new NotFoundException($"Parking-Type not found({id})!");
+
+            return parkingType;
         }
     }
 }

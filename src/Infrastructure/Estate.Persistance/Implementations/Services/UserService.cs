@@ -102,44 +102,11 @@ namespace Estate.Persistance.Implementations.Services
 
             return vMs;
         }
-        public async Task<GetAppUserVM> GetByIdAdminAsync(string id)
-        {
-            if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.Users
-                .Include(x => x.AppUserImages).Include(x => x.Agency)
-                .Include(x => x.Favorites).ThenInclude(x => x.Product).ThenInclude(x => x.ProductImages)
-                .Include(x => x.Products).ThenInclude(x => x.Category)
-                .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
-            if (user == null) throw new NotFoundException("Your request was not found");
-
-            GetAppUserVM get = _mapper.Map<GetAppUserVM>(user);
-
-            return get;
-        }
-
-        public async Task<GetAppUserVM> GetByUserNameAdminAsync(string userName)
-        {
-            if (string.IsNullOrWhiteSpace(userName)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.Users
-                .Include(x => x.AppUserImages).Include(x => x.Agency)
-                .Include(x => x.Favorites).ThenInclude(x => x.Product).ThenInclude(x => x.ProductImages)
-                .Include(x => x.Products).ThenInclude(x => x.Category)
-                .Include(x => x.Products).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.UserName == userName);
-            if (user == null) throw new NotFoundException("Your request was not found");
-
-            GetAppUserVM get = _mapper.Map<GetAppUserVM>(user);
-
-            return get;
-        }
 
         public async Task<GetAppUserVM> GetByIdAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.Users
-                .Include(x => x.AppUserImages).Include(x => x.Agency)
-                .Include(x => x.Favorites).ThenInclude(x => x.Product).ThenInclude(x => x.ProductImages)
-                .Include(x => x.Products.Where(a => a.IsDeleted == false)).ThenInclude(x => x.Category)
-                .Include(x => x.Products.Where(a => a.IsDeleted == false)).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            AppUser user = await _getByIdAsync(id, false, true);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             GetAppUserVM get = _mapper.Map<GetAppUserVM>(user);
@@ -150,11 +117,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<GetAppUserVM> GetByUserNameAsync(string userName)
         {
             if (string.IsNullOrWhiteSpace(userName)) throw new WrongRequestException("The request sent does not exist");
-            AppUser user = await _userManager.Users
-                .Include(x => x.AppUserImages).Include(x => x.Agency)
-                .Include(x => x.Favorites).ThenInclude(x => x.Product).ThenInclude(x => x.ProductImages)
-                .Include(x => x.Products.Where(a => a.IsDeleted == false)).ThenInclude(x => x.Category)
-                .Include(x => x.Products.Where(a => a.IsDeleted == false)).ThenInclude(x => x.ProductImages).AsNoTracking().FirstOrDefaultAsync(x => x.UserName == userName);
+            AppUser user = await _getByUserNameAsync(userName, false, true);
             if (user == null) throw new NotFoundException("Your request was not found");
 
             GetAppUserVM get = _mapper.Map<GetAppUserVM>(user);
@@ -547,6 +510,48 @@ namespace Estate.Persistance.Implementations.Services
             tempData["AgentMessage"] += "<p style=\"color: blue;\">Your message is sent to the agent</p>";
 
             return true;
+        }
+
+        private async Task<AppUser> _getByIdAsync(string id, bool isTracking = true, bool includes = false)
+        {
+            IQueryable<AppUser> query = _userManager.Users;
+
+            if (includes)
+                query = query
+                    .Include(x => x.AppUserImages)
+                    .Include(x => x.Agency)
+                    .Include(x => x.Favorites).ThenInclude(x => x.Product).ThenInclude(x => x.ProductImages)
+                    .Include(x => x.Products.Where(a => a.IsDeleted == false)).ThenInclude(x => x.Category)
+                    .Include(x => x.Products.Where(a => a.IsDeleted == false)).ThenInclude(x => x.ProductImages);
+
+            if (!isTracking) query = query.AsNoTracking();
+
+            AppUser? user = await query.FirstOrDefaultAsync(x => x.Id == id);
+            if (user is null)
+                throw new NotFoundException($"User not found({id})!");
+
+            return user;
+        }
+
+        private async Task<AppUser> _getByUserNameAsync(string userName, bool isTracking = true, bool includes = false)
+        {
+            IQueryable<AppUser> query = _userManager.Users;
+
+            if (includes)
+                query = query
+                    .Include(x => x.AppUserImages)
+                    .Include(x => x.Agency)
+                    .Include(x => x.Favorites).ThenInclude(x => x.Product).ThenInclude(x => x.ProductImages)
+                    .Include(x => x.Products.Where(a => a.IsDeleted == false)).ThenInclude(x => x.Category)
+                    .Include(x => x.Products.Where(a => a.IsDeleted == false)).ThenInclude(x => x.ProductImages);
+
+            if (!isTracking) query = query.AsNoTracking();
+
+            AppUser? user = await query.FirstOrDefaultAsync(x => x.UserName == userName);
+            if (user is null)
+                throw new NotFoundException($"User not found({userName})!");
+
+            return user;
         }
     }
 }

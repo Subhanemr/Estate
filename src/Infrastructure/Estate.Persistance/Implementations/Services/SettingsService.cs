@@ -77,7 +77,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<UpdateSettingsVM> UpdateAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Settings item = await _repository.GetByIdAsync(id);
+            Settings item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateSettingsVM update = new UpdateSettingsVM { Key = item.Key, Value = item.Value };
@@ -88,7 +88,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> UpdatePostAsync(int id, UpdateSettingsVM update, ModelStateDictionary model)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Settings item = await _repository.GetByIdAsync(id);
+            Settings item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             if (await _repository.CheckUniqueAsync(x => x.Key.ToLower().Trim() == update.Key.ToLower().Trim() && x.Id != id))
@@ -100,6 +100,15 @@ namespace Estate.Persistance.Implementations.Services
             _repository.Update(item);
             await _repository.SaveChangeAsync();
             return true;
+        }
+
+        private async Task<Settings> _getByIdAsync(int id, bool isTracking = true, params string[] includes)
+        {
+            Settings settings = await _repository.GetByIdAsync(id, isTracking, includes);
+            if (settings is null)
+                throw new NotFoundException($"Setting not found({id})!");
+
+            return settings;
         }
     }
 }

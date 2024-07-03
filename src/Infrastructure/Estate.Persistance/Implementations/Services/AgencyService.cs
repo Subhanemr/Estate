@@ -47,7 +47,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task DeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Agency item = await _repository.GetByIdAsync(id);
+            Agency item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             _repository.Delete(item);
@@ -138,7 +138,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Agency.AppUsers)}.{nameof(AppUser.AppUserImages)}" };
-            Agency item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
+            Agency item = await _getByIdAsync(id, false, includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetAgencyVM get = _mapper.Map<GetAgencyVM>(item);
@@ -149,7 +149,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task ReverseSoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Agency item = await _repository.GetByIdAsync(id);
+            Agency item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
@@ -159,7 +159,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task SoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Agency item = await _repository.GetByIdAsync(id);
+            Agency item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
@@ -169,7 +169,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<UpdateAgencyVM> UpdateAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Agency item = await _repository.GetByIdAsync(id);
+            Agency item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateAgencyVM update = _mapper.Map<UpdateAgencyVM>(item);
@@ -180,7 +180,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> UpdatePostAsync(int id, UpdateAgencyVM update, ModelStateDictionary model)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Agency item = await _repository.GetByIdAsync(id);
+            Agency item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == update.Name.ToLower().Trim() && x.Id != id))
@@ -192,6 +192,15 @@ namespace Estate.Persistance.Implementations.Services
             _repository.Update(item);
             await _repository.SaveChangeAsync();
             return true;
+        }
+
+        private async Task<Agency> _getByIdAsync(int id, bool isTracking = true, params string[] includes)
+        {
+            Agency agency = await _repository.GetByIdAsync(id, isTracking, includes);
+            if (agency is null)
+                throw new NotFoundException($"Agency not found({id})!");
+
+            return agency;
         }
     }
 }

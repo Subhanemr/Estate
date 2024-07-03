@@ -67,7 +67,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Category.Products)}" };
-            Category item = await _repository.GetByIdAsync(id, includes: includes);
+            Category item = await _getByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             await _cLoud.FileDeleteAsync(item.Img);
@@ -156,7 +156,7 @@ namespace Estate.Persistance.Implementations.Services
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Category.Products)}.{nameof(Product.ProductImages)}" };
 
-            Category item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
+            Category item = await _getByIdAsync(id, false, includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetCategoryVM get = _mapper.Map<GetCategoryVM>(item);
@@ -167,7 +167,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task ReverseSoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Category item = await _repository.GetByIdAsync(id);
+            Category item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
@@ -177,7 +177,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task SoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Category item = await _repository.GetByIdAsync(id);
+            Category item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
@@ -195,7 +195,7 @@ namespace Estate.Persistance.Implementations.Services
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Category.Products)}.{nameof(Product.ProductImages)}" };
 
-            Category item = await _repository.GetByIdAsync(id, includes: includes);
+            Category item = await _getByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             if (update.Photo != null)
@@ -232,12 +232,21 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<UpdateCategoryVM> UpdateAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Category item = await _repository.GetByIdAsync(id);
+            Category item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateCategoryVM update = _mapper.Map<UpdateCategoryVM>(item);
 
             return update;
+        }
+
+        private async Task<Category> _getByIdAsync(int id, bool isTracking = true, params string[] includes)
+        {
+            Category category = await _repository.GetByIdAsync(id, isTracking, includes);
+            if (category is null)
+                throw new NotFoundException($"Category not found({id})!");
+
+            return category;
         }
     }
 }

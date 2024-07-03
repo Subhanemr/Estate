@@ -28,7 +28,7 @@ namespace Estate.MVC.Areas.Admin.Controllers
 
         public async Task<IActionResult> Detail(string id)
         {
-            return View(await _service.GetByIdAdminAsync(id));
+            return View(await _service.GetByIdAsync(id));
         }
 
         public async Task<IActionResult> SoftDelete(string id)

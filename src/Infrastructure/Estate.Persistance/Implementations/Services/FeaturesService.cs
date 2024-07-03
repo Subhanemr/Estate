@@ -47,7 +47,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task DeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Features item = await _repository.GetByIdAsync(id);
+            Features item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             _repository.Delete(item);
@@ -127,7 +127,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(Features.ProductFeatures)}.{nameof(ProductFeatures.Product)}.{nameof(Product.ProductImages)}" };
-            Features item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
+            Features item = await _getByIdAsync(id, false, includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetFeaturesVM get = _mapper.Map<GetFeaturesVM>(item);
@@ -138,7 +138,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task ReverseSoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Features item = await _repository.GetByIdAsync(id);
+            Features item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
@@ -148,7 +148,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task SoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Features item = await _repository.GetByIdAsync(id);
+            Features item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
@@ -158,7 +158,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<UpdateFeaturesVM> UpdateAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Features item = await _repository.GetByIdAsync(id);
+            Features item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateFeaturesVM update = _mapper.Map<UpdateFeaturesVM>(item);
@@ -169,7 +169,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> UpdatePostAsync(int id, UpdateFeaturesVM update, ModelStateDictionary model)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Features item = await _repository.GetByIdAsync(id);
+            Features item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == update.Name.ToLower().Trim() && x.Id != id))
@@ -181,6 +181,15 @@ namespace Estate.Persistance.Implementations.Services
             _repository.Update(item);
             await _repository.SaveChangeAsync();
             return true;
+        }
+
+        private async Task<Features> _getByIdAsync(int id, bool isTracking = true, params string[] includes)
+        {
+            Features features = await _repository.GetByIdAsync(id, isTracking, includes);
+            if (features is null)
+                throw new NotFoundException($"Features not found({id})!");
+
+            return features;
         }
     }
 }

@@ -95,7 +95,7 @@ namespace Estate.Persistance.Implementations.Services
             string[] includes ={
                 $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.BlogReplies)}",
                 $"{nameof(Blog.BlogImages)}" };
-            Blog item = await _repository.GetByIdAsync(id, includes: includes);
+            Blog item = await _getByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
             foreach (var image in item.BlogImages)
             {
@@ -189,7 +189,7 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.BlogReplies)}.{nameof(BlogReply.AppUser)}",
                 $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.AppUser)}",
                 $"{nameof(Blog.BlogImages)}" };
-            Blog item = await _repository.GetByIdAsync(id, false, includes);
+            Blog item = await _getByIdAsync(id, false, includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetBlogVM get = _mapper.Map<GetBlogVM>(item);
@@ -200,7 +200,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task ReverseSoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Blog item = await _repository.GetByIdAsync(id);
+            Blog item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
@@ -210,7 +210,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task SoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Blog item = await _repository.GetByIdAsync(id);
+            Blog item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
@@ -223,7 +223,7 @@ namespace Estate.Persistance.Implementations.Services
             string[] includes ={
                 $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.BlogReplies)}",
                 $"{nameof(Blog.BlogImages)}" };
-            Blog item = await _repository.GetByIdAsync(id, includes: includes);
+            Blog item = await _getByIdAsync(id, includes: includes);
             update.Images = _mapper.Map<ICollection<IncludeBlogImageVM>>(item.BlogImages);
             if (item == null) throw new NotFoundException("Your request was not found");
 
@@ -301,7 +301,7 @@ namespace Estate.Persistance.Implementations.Services
             string[] includes ={
                 $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.BlogReplies)}",
                 $"{nameof(Blog.BlogImages)}" };
-            Blog item = await _repository.GetByIdAsync(id, includes: includes);
+            Blog item = await _getByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateBlogVM update = _mapper.Map<UpdateBlogVM>(item);
@@ -368,6 +368,15 @@ namespace Estate.Persistance.Implementations.Services
             await _repository.AddReply(blogComment);
             await _repository.SaveChangeAsync();
             return true;
+        }
+
+        private async Task<Blog> _getByIdAsync(int id, bool isTracking = true, params string[] includes)
+        {
+            Blog blog = await _repository.GetByIdAsync(id, isTracking, includes);
+            if (blog is null)
+                throw new NotFoundException($"Blog not found({id})!");
+
+            return blog;
         }
     }
 }

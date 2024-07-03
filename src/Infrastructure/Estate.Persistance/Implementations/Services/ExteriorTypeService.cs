@@ -47,7 +47,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task DeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ExteriorType item = await _repository.GetByIdAsync(id);
+            ExteriorType item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             _repository.Delete(item);
@@ -127,7 +127,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(ExteriorType.ProductExteriorTypes)}.{nameof(ProductExteriorType.Product)}.{nameof(Product.ProductImages)}" };
-            ExteriorType item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
+            ExteriorType item = await _getByIdAsync(id, false, includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetExteriorTypeVM get = _mapper.Map<GetExteriorTypeVM>(item);
@@ -138,7 +138,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task ReverseSoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ExteriorType item = await _repository.GetByIdAsync(id);
+            ExteriorType item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
@@ -148,7 +148,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task SoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ExteriorType item = await _repository.GetByIdAsync(id);
+            ExteriorType item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
@@ -158,7 +158,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<UpdateExteriorTypeVM> UpdateAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ExteriorType item = await _repository.GetByIdAsync(id);
+            ExteriorType item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateExteriorTypeVM update = _mapper.Map<UpdateExteriorTypeVM>(item);
@@ -169,7 +169,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> UpdatePostAsync(int id, UpdateExteriorTypeVM update, ModelStateDictionary model)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ExteriorType item = await _repository.GetByIdAsync(id);
+            ExteriorType item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == update.Name.ToLower().Trim() && x.Id != id))
@@ -181,6 +181,15 @@ namespace Estate.Persistance.Implementations.Services
             _repository.Update(item);
             await _repository.SaveChangeAsync();
             return true;
+        }
+
+        private async Task<ExteriorType> _getByIdAsync(int id, bool isTracking = true, params string[] includes)
+        {
+            ExteriorType exteriorType = await _repository.GetByIdAsync(id, isTracking, includes);
+            if (exteriorType is null)
+                throw new NotFoundException($"ExteriorType not found({id})!");
+
+            return exteriorType;
         }
     }
 }

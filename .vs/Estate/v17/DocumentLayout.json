@@ -3,6 +3,70 @@
   "WorkspaceRootPath": "C:\\Users\\T x\\Desktop\\Estate\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\agencyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\agencyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D98A399-9482-4195-A71B-9374DD01EF1F}|src\\Presentation\\Estate.MVC\\Estate.MVC.csproj|c:\\users\\t x\\desktop\\estate\\src\\presentation\\estate.mvc\\areas\\admin\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0D98A399-9482-4195-A71B-9374DD01EF1F}|src\\Presentation\\Estate.MVC\\Estate.MVC.csproj|solutionrelative:src\\presentation\\estate.mvc\\areas\\admin\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2DF279B-A61E-47C1-AD26-E66BFFB8E168}|src\\Core\\Estate.Application\\Estate.Application.csproj|c:\\users\\t x\\desktop\\estate\\src\\core\\estate.application\\abstractions\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2DF279B-A61E-47C1-AD26-E66BFFB8E168}|src\\Core\\Estate.Application\\Estate.Application.csproj|solutionrelative:src\\core\\estate.application\\abstractions\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\settingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\settingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\rooftypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\rooftypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\parkingtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\parkingtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\featuresservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\featuresservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\favoriteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\favoriteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\exteriortypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\exteriortypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\corporateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\corporateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\clientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\clientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\blogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\blogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0D98A399-9482-4195-A71B-9374DD01EF1F}|src\\Presentation\\Estate.MVC\\Estate.MVC.csproj|c:\\users\\t x\\desktop\\estate\\src\\presentation\\estate.mvc\\areas\\admin\\controllers\\rooftypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D98A399-9482-4195-A71B-9374DD01EF1F}|src\\Presentation\\Estate.MVC\\Estate.MVC.csproj|solutionrelative:src\\presentation\\estate.mvc\\areas\\admin\\controllers\\rooftypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -43,20 +107,12 @@
       "RelativeMoniker": "D:0:0:{0D98A399-9482-4195-A71B-9374DD01EF1F}|src\\Presentation\\Estate.MVC\\Estate.MVC.csproj|solutionrelative:src\\presentation\\estate.mvc\\areas\\admin\\controllers\\agencycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D98A399-9482-4195-A71B-9374DD01EF1F}|src\\Presentation\\Estate.MVC\\Estate.MVC.csproj|c:\\users\\t x\\desktop\\estate\\src\\presentation\\estate.mvc\\areas\\admin\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0D98A399-9482-4195-A71B-9374DD01EF1F}|src\\Presentation\\Estate.MVC\\Estate.MVC.csproj|solutionrelative:src\\presentation\\estate.mvc\\areas\\admin\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0D98A399-9482-4195-A71B-9374DD01EF1F}|src\\Presentation\\Estate.MVC\\Estate.MVC.csproj|c:\\users\\t x\\desktop\\estate\\src\\presentation\\estate.mvc\\areas\\admin\\controllers\\viewtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0D98A399-9482-4195-A71B-9374DD01EF1F}|src\\Presentation\\Estate.MVC\\Estate.MVC.csproj|solutionrelative:src\\presentation\\estate.mvc\\areas\\admin\\controllers\\viewtypecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B2DF279B-A61E-47C1-AD26-E66BFFB8E168}|src\\Core\\Estate.Application\\Estate.Application.csproj|c:\\users\\t x\\desktop\\estate\\src\\core\\estate.application\\abstractions\\services\\iviewtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B2DF279B-A61E-47C1-AD26-E66BFFB8E168}|src\\Core\\Estate.Application\\Estate.Application.csproj|solutionrelative:src\\core\\estate.application\\abstractions\\services\\iviewtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2DF279B-A61E-47C1-AD26-E66BFFB8E168}|src\\Core\\Estate.Application\\Estate.Application.csproj|c:\\users\\t x\\desktop\\estate\\src\\core\\estate.application\\abstractions\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B2DF279B-A61E-47C1-AD26-E66BFFB8E168}|src\\Core\\Estate.Application\\Estate.Application.csproj|solutionrelative:src\\core\\estate.application\\abstractions\\services\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B2DF279B-A61E-47C1-AD26-E66BFFB8E168}|src\\Core\\Estate.Application\\Estate.Application.csproj|c:\\users\\t x\\desktop\\estate\\src\\core\\estate.application\\abstractions\\services\\isettingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -121,62 +177,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\viewtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\viewtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\settingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\settingsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\rooftypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\rooftypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\parkingtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\parkingtypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\featuresservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\featuresservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\favoriteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\favoriteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\exteriortypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\exteriortypeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\corporateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\corporateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\clientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\clientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\blogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\blogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\agencyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\agencyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.persistance\\implementations\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DFF29CB4-51B3-4378-931E-1B81BECDD385}|src\\Infrastructure\\Estate.Persistance\\Estate.Persistance.csproj|solutionrelative:src\\infrastructure\\estate.persistance\\implementations\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{193AE585-5D5E-401E-96A1-01FCA522238A}|src\\Infrastructure\\Estate.Infrastructure\\Estate.Infrastructure.csproj|c:\\users\\t x\\desktop\\estate\\src\\infrastructure\\estate.infrastructure\\implementations\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -462,414 +462,128 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FeaturesController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\FeaturesController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\FeaturesController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\FeaturesController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\FeaturesController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:57:23.318Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ExteriorTypeController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ExteriorTypeController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ExteriorTypeController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ExteriorTypeController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ExteriorTypeController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCoAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:57:12.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CorporateController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CorporateController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CorporateController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CorporateController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CorporateController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:57:01.973Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ClientController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ClientController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ClientController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ClientController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ClientController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:56:50.583Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ParkingTypeController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ParkingTypeController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ParkingTypeController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ParkingTypeController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ParkingTypeController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T20:23:41.1Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAjwCEAAACgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T20:23:22.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RoofTypeController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\RoofTypeController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\RoofTypeController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\RoofTypeController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\RoofTypeController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAjwBYAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T20:23:21.842Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCEAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:56:38.257Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "BlogController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:56:19.583Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AgencyController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\AgencyController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\AgencyController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\AgencyController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\AgencyController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:56:03.661Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ViewTypeController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ViewTypeController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ViewTypeController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ViewTypeController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ViewTypeController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCUAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:55:26.601Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "IUserService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IUserService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IUserService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IUserService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IUserService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAACAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:54:57.93Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ISettingsService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ISettingsService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\ISettingsService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ISettingsService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\ISettingsService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:54:55.098Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "IRoofTypeService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IRoofTypeService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IRoofTypeService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IRoofTypeService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IRoofTypeService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAACBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:54:47.53Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "IProductService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IProductService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IProductService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IProductService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IProductService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAACKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:54:34.009Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "IParkingTypeService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IParkingTypeService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IParkingTypeService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IParkingTypeService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IParkingTypeService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAACEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:54:27.186Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "IFeaturesService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IFeaturesService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IFeaturesService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IFeaturesService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IFeaturesService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAACBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:54:20.251Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "IFavoriteService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IFavoriteService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IFavoriteService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IFavoriteService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IFavoriteService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:54:18.497Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\UserController.cs",
-              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAABcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T19:09:31.95Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "IViewTypeService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IViewTypeService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IViewTypeService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IViewTypeService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IViewTypeService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:53:05.284Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "IExteriorTypeService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IExteriorTypeService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IExteriorTypeService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IExteriorTypeService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IExteriorTypeService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAACFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:54:12.057Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "IEmailService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IEmailService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IEmailService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IEmailService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IEmailService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:54:11.082Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "ICorporateService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICorporateService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICorporateService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICorporateService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICorporateService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAACCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:54:03.553Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "IClientService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IClientService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IClientService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IClientService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IClientService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAB/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:53:55.785Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "ICategoryService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICategoryService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICategoryService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICategoryService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICategoryService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAACBAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:53:49.617Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "IBlogService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IBlogService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IBlogService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IBlogService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IBlogService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAB9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:53:42.962Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "IAgencyService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IAgencyService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IAgencyService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IAgencyService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IAgencyService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAB/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:53:33.219Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "IAccountService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IAccountService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IAccountService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IAccountService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IAccountService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T06:53:30.898Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
               "Title": "FeaturesService.cs",
               "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\FeaturesService.cs",
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\FeaturesService.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\FeaturesService.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\FeaturesService.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAqwEsAAACOAAAA",
+              "ViewState": "AQIAAJIAAAAAAAAAAAAYwLkAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-19T17:04:21.639Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 7,
               "Title": "ParkingTypeService.cs",
               "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ParkingTypeService.cs",
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ParkingTypeService.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ParkingTypeService.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ParkingTypeService.cs",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAIwEoAAACRAAAA",
+              "ViewState": "AQIAAJAAAAAAAAAAAAAYwK8AAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-08T16:54:45.295Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "ICLoudService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICLoudService.cs",
-              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICLoudService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICLoudService.cs",
-              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICLoudService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "ProductService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ProductService.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ProductService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ProductService.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ProductService.cs",
+              "ViewState": "AQIAAPACAAAAAAAAAAAswBYDAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-24T18:09:32.352Z",
+              "WhenOpened": "2024-02-29T20:23:46.594Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 4,
+              "Title": "SettingsService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\SettingsService.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\SettingsService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\SettingsService.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\SettingsService.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAiwFoAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-19T17:07:48.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RoofTypeService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\RoofTypeService.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\RoofTypeService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\RoofTypeService.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\RoofTypeService.cs",
+              "ViewState": "AQIAAJIAAAAAAAAAAAAYwLkAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-19T17:06:46.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\UserService.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\UserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T19:09:16.358Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IUserService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IUserService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IUserService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IUserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:54:57.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\UserController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\UserController.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAjwB4AAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T19:09:31.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AgencyService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AgencyService.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AgencyService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AgencyService.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AgencyService.cs",
+              "ViewState": "AQIAAHQAAAAAAAAAAADwv8oAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-19T16:56:04.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "FavoriteService.cs",
               "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\FavoriteService.cs",
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\FavoriteService.cs",
@@ -882,159 +596,416 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ProductService.cs",
-              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ProductService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ProductService.cs",
-              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ProductService.cs",
-              "ViewState": "AQIAAP4AAAAAAAAAAAAiwBMBAACKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T20:23:46.594Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "RoofTypeService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\RoofTypeService.cs",
-              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\RoofTypeService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\RoofTypeService.cs",
-              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\RoofTypeService.cs",
-              "ViewState": "AQIAADoAAAAAAAAAAAAiwEsAAACOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-19T17:06:46.142Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "SettingsService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\SettingsService.cs",
-              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\SettingsService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\SettingsService.cs",
-              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\SettingsService.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAEgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-19T17:07:48.967Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "ViewTypeService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ViewTypeService.cs",
-              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ViewTypeService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ViewTypeService.cs",
-              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ViewTypeService.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-19T17:08:40.127Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 10,
               "Title": "ExteriorTypeService.cs",
               "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ExteriorTypeService.cs",
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ExteriorTypeService.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ExteriorTypeService.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ExteriorTypeService.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAiwEsAAACSAAAA",
+              "ViewState": "AQIAAJIAAAAAAAAAAAAYwLkAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-19T17:03:50.246Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\UserService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\UserService.cs",
-              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\UserService.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAqwF4AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-02-29T19:09:16.358Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 11,
               "Title": "CorporateService.cs",
               "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\CorporateService.cs",
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\CorporateService.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\CorporateService.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\CorporateService.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAAAGUAAACPAAAA",
+              "ViewState": "AQIAANAAAAAAAAAAAAAswPMAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-19T17:03:13.599Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 12,
               "Title": "ClientService.cs",
               "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ClientService.cs",
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ClientService.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ClientService.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ClientService.cs",
-              "ViewState": "AQIAAFUAAAAAAAAAAAAQwGEAAACMAAAA",
+              "ViewState": "AQIAALYAAAAAAAAAAAAswOIAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-19T17:02:19.358Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 13,
               "Title": "CategoryService.cs",
               "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\CategoryService.cs",
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\CategoryService.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\CategoryService.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\CategoryService.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAcwGcAAACOAAAA",
+              "ViewState": "AQIAAN8AAAAAAAAAAAAUwPYAAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-19T16:59:48.045Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 14,
               "Title": "BlogService.cs",
               "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\BlogService.cs",
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\BlogService.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\BlogService.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\BlogService.cs",
-              "ViewState": "AQIAAG8AAAAAAAAAAAAQwIUAAACKAAAA",
+              "ViewState": "AQIAAFsBAAAAAAAAAAAQwHgBAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-02-29T19:41:24.724Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
-              "Title": "AgencyService.cs",
-              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AgencyService.cs",
-              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AgencyService.cs",
-              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AgencyService.cs",
-              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AgencyService.cs",
-              "ViewState": "AQIAAEoAAAAAAAAAAAAAAFcAAACFAAAA",
+              "DocumentIndex": 16,
+              "Title": "RoofTypeController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\RoofTypeController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\RoofTypeController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\RoofTypeController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\RoofTypeController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAjwBYAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-19T16:56:04.695Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-02-29T20:23:21.842Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 15,
               "Title": "AccountService.cs",
               "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AccountService.cs",
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AccountService.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AccountService.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\AccountService.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAowBMAAAAmAAAA",
+              "ViewState": "AQIAAHUAAAAAAAAAAAA4wBMAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-01T07:02:34.459Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-01T07:02:34.459Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CategoryController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCEAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:56:38.257Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ProductController.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAjwCEAAACgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T20:23:22.299Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ParkingTypeController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ParkingTypeController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ParkingTypeController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ParkingTypeController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ParkingTypeController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T20:23:41.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ClientController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ClientController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ClientController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ClientController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ClientController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:56:50.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CorporateController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CorporateController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CorporateController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CorporateController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\CorporateController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:57:01.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ExteriorTypeController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ExteriorTypeController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ExteriorTypeController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ExteriorTypeController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ExteriorTypeController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCoAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:57:12.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "FeaturesController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\FeaturesController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\FeaturesController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\FeaturesController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\FeaturesController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:57:23.318Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "BlogController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\BlogController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:56:19.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AgencyController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\AgencyController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\AgencyController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\AgencyController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\AgencyController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCIAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:56:03.661Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "ViewTypeController.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ViewTypeController.cs",
+              "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ViewTypeController.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ViewTypeController.cs",
+              "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Controllers\\ViewTypeController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAjwCUAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:55:26.601Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ISettingsService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ISettingsService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\ISettingsService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ISettingsService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\ISettingsService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:54:55.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "IRoofTypeService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IRoofTypeService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IRoofTypeService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IRoofTypeService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IRoofTypeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAACBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:54:47.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IProductService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IProductService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IProductService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IProductService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IProductService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAACKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:54:34.009Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IParkingTypeService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IParkingTypeService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IParkingTypeService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IParkingTypeService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IParkingTypeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAACEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:54:27.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IFeaturesService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IFeaturesService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IFeaturesService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IFeaturesService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IFeaturesService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAACBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:54:20.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "IFavoriteService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IFavoriteService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IFavoriteService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IFavoriteService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IFavoriteService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:54:18.497Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IViewTypeService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IViewTypeService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IViewTypeService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IViewTypeService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IViewTypeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:53:05.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "IExteriorTypeService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IExteriorTypeService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IExteriorTypeService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IExteriorTypeService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IExteriorTypeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAACFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:54:12.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IEmailService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IEmailService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IEmailService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:54:11.082Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "ICorporateService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICorporateService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICorporateService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICorporateService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICorporateService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAACCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:54:03.553Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "IClientService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IClientService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IClientService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IClientService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IClientService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAB/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:53:55.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "ICategoryService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICategoryService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICategoryService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICategoryService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICategoryService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAACBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:53:49.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "IBlogService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IBlogService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IBlogService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IBlogService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IBlogService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAB9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:53:42.962Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "IAgencyService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IAgencyService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IAgencyService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IAgencyService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IAgencyService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAB/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:53:33.219Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IAccountService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\IAccountService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\IAccountService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\IAccountService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T06:53:30.898Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ICLoudService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICLoudService.cs",
+              "RelativeDocumentMoniker": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICLoudService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Application\\Abstractions\\Services\\ICLoudService.cs",
+              "RelativeToolTip": "src\\Core\\Estate.Application\\Abstractions\\Services\\ICLoudService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T18:09:32.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "ViewTypeService.cs",
+              "DocumentMoniker": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ViewTypeService.cs",
+              "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ViewTypeService.cs",
+              "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ViewTypeService.cs",
+              "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Services\\ViewTypeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAIBJwA4AAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-19T17:08:40.127Z"
             },
             {
               "$type": "Document",
@@ -1068,7 +1039,7 @@
               "RelativeDocumentMoniker": "src\\Core\\Estate.Domain\\Entities\\Product.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Core\\Estate.Domain\\Entities\\Product.cs",
               "RelativeToolTip": "src\\Core\\Estate.Domain\\Entities\\Product.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAwwCAAAABJAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAA9wCAAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-29T14:09:13.342Z"
             },
@@ -1296,7 +1267,7 @@
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Repositories\\Generic\\Repository.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Implementations\\Repositories\\Generic\\Repository.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Implementations\\Repositories\\Generic\\Repository.cs",
-              "ViewState": "AQIAAAoAAAAAAAAAAAAqwAoAAAAsAAAA",
+              "ViewState": "AQIAAAoAAAAAAAAAAAA6wAoAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-19T16:50:25.418Z"
             },
@@ -1416,7 +1387,7 @@
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\ServiceRegistrations\\ServiceRegistration.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\ServiceRegistrations\\ServiceRegistration.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\ServiceRegistrations\\ServiceRegistration.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAAJAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAIBJwBEAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-08T07:00:40.885Z"
             },
@@ -1452,7 +1423,7 @@
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Contexts\\AppDbContextInitializer.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Contexts\\AppDbContextInitializer.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Contexts\\AppDbContextInitializer.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAuwDsAAABCAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAA8wDsAAABCAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T10:50:51.639Z"
             },
@@ -1464,7 +1435,7 @@
               "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAHsAAAAAAAAAAAAAAGgAAABOAAAA",
+              "ViewState": "AQIAAHgAAAAAAAAAAIBJwGgAAABOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-01T07:34:16.835Z"
             },
@@ -1476,7 +1447,7 @@
               "RelativeDocumentMoniker": "src\\Infrastructure\\Estate.Persistance\\Contexts\\AppDbContext.cs",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Infrastructure\\Estate.Persistance\\Contexts\\AppDbContext.cs",
               "RelativeToolTip": "src\\Infrastructure\\Estate.Persistance\\Contexts\\AppDbContext.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAUwD4AAAAeAAAA",
+              "ViewState": "AQIAABwAAAAAAAAAAAAywD4AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-07T10:50:52.398Z"
             },
@@ -1584,7 +1555,7 @@
               "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\User\\Detail.cshtml",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\User\\Detail.cshtml",
               "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\User\\Detail.cshtml",
-              "ViewState": "AQIAABUAAAAAAAAAAIBJwDEAAAA/AAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAIBZwDEAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-19T16:41:26.988Z"
             },
@@ -1644,7 +1615,7 @@
               "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Views\\Product\\Index.cshtml",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Views\\Product\\Index.cshtml",
               "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Views\\Product\\Index.cshtml",
-              "ViewState": "AQIAAF0AAAAAAAAAAIBJwHkAAAArAAAA",
+              "ViewState": "AQIAAFoAAAAAAAAAAIBZwHkAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-02-29T16:48:12.036Z"
             },
@@ -1716,7 +1687,7 @@
               "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Blog\\Update.cshtml",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Blog\\Update.cshtml",
               "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Blog\\Update.cshtml",
-              "ViewState": "AQIAACQAAAAAAAAAAIBJwEEAAAAUAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAIBZwEEAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-02-29T19:48:34.91Z"
             },
@@ -1764,7 +1735,7 @@
               "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Blog\\Create.cshtml",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Blog\\Create.cshtml",
               "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Blog\\Create.cshtml",
-              "ViewState": "AQIAAA8AAAAAAAAAAIBJwDYAAAAOAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAIBZwDYAAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-02-29T19:42:43.78Z"
             },
@@ -1776,7 +1747,7 @@
               "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Product\\Index.cshtml",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Product\\Index.cshtml",
               "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Product\\Index.cshtml",
-              "ViewState": "AQIAAD8AAAAAAAAAAIBJwEsAAAAmAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAIBZwEsAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-02-29T16:46:28.677Z"
             },
@@ -1812,7 +1783,7 @@
               "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Views\\User\\Index.cshtml",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Views\\User\\Index.cshtml",
               "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Views\\User\\Index.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAIBJwB8AAABIAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAIBZwB8AAABIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-02-29T19:15:13.575Z"
             },
@@ -1860,7 +1831,7 @@
               "RelativeDocumentMoniker": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Product\\DeletedItems.cshtml",
               "ToolTip": "C:\\Users\\T x\\Desktop\\Estate\\src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Product\\DeletedItems.cshtml",
               "RelativeToolTip": "src\\Presentation\\Estate.MVC\\Areas\\Admin\\Views\\Product\\DeletedItems.cshtml",
-              "ViewState": "AQIAAEIAAAAAAAAAAIBJwGEAAABVAAAA",
+              "ViewState": "AQIAAD8AAAAAAAAAAIBZwGEAAABVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-02-29T16:45:35.828Z"
             }

@@ -200,7 +200,7 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.ProductRoofTypes)}.{nameof(ProductRoofType.RoofType)}",
                 $"{nameof(Product.ProductViewTypes)}.{nameof(ProductViewType.ViewType)}",
                 $"{nameof(Product.ProductImages)}" };
-            Product item = await _repository.GetByIdAsync(id, includes: includes);
+            Product item = await _getByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
             foreach (var image in item.ProductImages)
             {
@@ -272,7 +272,7 @@ namespace Estate.Persistance.Implementations.Services
 
             return vMs;
         }
-        public async Task<PaginationVM<ProductFilterVM>> GetFilteredAsync(string? search, int take, int page, int order, 
+        public async Task<PaginationVM<ProductFilterVM>> GetFilteredAsync(string? search, int take, int page, int order,
             int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths, bool isDeleted = false)
         {
             if (page <= 0) throw new WrongRequestException("The request sent does not exist");
@@ -410,7 +410,7 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.ProductViewTypes)}.{nameof(ProductViewType.ViewType)}",
                 $"{nameof(Product.AppUser)}",
                 $"{nameof(Product.ProductImages)}" };
-            Product item = await _repository.GetByIdAsync(id, includes: includes);
+            Product item = await _getByIdAsync(id, false, includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             GetProductVM get = _mapper.Map<GetProductVM>(item);
@@ -421,7 +421,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task ReverseSoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Product item = await _repository.GetByIdAsync(id);
+            Product item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
@@ -431,7 +431,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task SoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            Product item = await _repository.GetByIdAsync(id);
+            Product item = await _getByIdAsync(id);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
@@ -449,7 +449,7 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.ProductRoofTypes)}.{nameof(ProductRoofType.RoofType)}",
                 $"{nameof(Product.ProductViewTypes)}.{nameof(ProductViewType.ViewType)}",
                 $"{nameof(Product.ProductImages)}" };
-            Product item = await _repository.GetByIdAsync(id, includes: includes);
+            Product item = await _getByIdAsync(id, includes: includes);
             update.Images = _mapper.Map<ICollection<IncludeProductImageVM>>(item.ProductImages);
             if (item == null) throw new NotFoundException("Your request was not found");
 
@@ -681,7 +681,7 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.ProductRoofTypes)}.{nameof(ProductRoofType.RoofType)}",
                 $"{nameof(Product.ProductViewTypes)}.{nameof(ProductViewType.ViewType)}",
                 $"{nameof(Product.ProductImages)}" };
-            Product item = await _repository.GetByIdAsync(id, includes: includes);
+            Product item = await _getByIdAsync(id, includes: includes);
             if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateProductVM update = _mapper.Map<UpdateProductVM>(item);
@@ -777,15 +777,24 @@ namespace Estate.Persistance.Implementations.Services
             }
 
             if (productId <= 0) throw new WrongRequestException("The request sent does not exist");
-            Product item = await _repository.GetByIdAsync(productId, false,$"{nameof(Product.AppUser)}");
+            Product item = await _getByIdAsync(productId, false, $"{nameof(Product.AppUser)}");
             if (item == null) throw new NotFoundException("Your request was not found");
             AppUser user = await _userManager.FindByIdAsync(_http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             if (user == null) throw new NotFoundException("Your request was not found");
-            await _email.SendMailAsync(item.AppUser.Email, $"{user.Name} {user.Surname} sent a message from the {item.Name} product", 
+            await _email.SendMailAsync(item.AppUser.Email, $"{user.Name} {user.Surname} sent a message from the {item.Name} product",
                 $"{message}");
             tempData["AgentMessage"] += "<p style=\"color: blue;\">We sent a message to the agent</p>";
 
             return true;
+        }
+
+        private async Task<Product> _getByIdAsync(int id, bool isTracking = true, params string[] includes)
+        {
+            Product product = await _repository.GetByIdAsync(id, isTracking, includes);
+            if (product is null)
+                throw new NotFoundException($"Product not found({id})!");
+
+            return product;
         }
     }
 }
