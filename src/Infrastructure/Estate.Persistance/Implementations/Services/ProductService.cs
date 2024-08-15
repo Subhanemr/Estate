@@ -201,7 +201,13 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.ProductViewTypes)}.{nameof(ProductViewType.ViewType)}",
                 $"{nameof(Product.ProductImages)}" };
             Product item = await _getByIdAsync(id, includes: includes);
-            if (item == null) throw new NotFoundException("Your request was not found");
+
+            string currentUserId = _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            bool isAdmin = _http.HttpContext.User.IsInRole("Admin");
+            bool isModerator = _http.HttpContext.User.IsInRole("Moderator");
+            if (item.AppUserId != currentUserId || !isAdmin || !isModerator)
+                throw new WrongRequestException("You do not have permission to restore this job.");
+
             foreach (var image in item.ProductImages)
             {
                 await _cLoud.FileDeleteAsync(image.Url);
@@ -275,8 +281,12 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<PaginationVM<ProductFilterVM>> GetFilteredAsync(string? search, int take, int page, int order,
             int? categoryId, int? minPrice, int? maxPrice, int? minArea, int? maxArea, int? minBeds, int? minBaths, bool isDeleted = false)
         {
-            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
-            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (page <= 0)
+                throw new WrongRequestException("Invalid page number.");
+            if (take <= 0)
+                throw new WrongRequestException("Invalid take value.");
+            if (order <= 0)
+                throw new WrongRequestException("Invalid order value.");
 
             string[] includes ={
                 $"{nameof(Product.Category)}",
@@ -411,7 +421,6 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.AppUser)}",
                 $"{nameof(Product.ProductImages)}" };
             Product item = await _getByIdAsync(id, false, includes);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             GetProductVM get = _mapper.Map<GetProductVM>(item);
 
@@ -422,7 +431,12 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             Product item = await _getByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
+
+            string currentUserId = _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            bool isAdmin = _http.HttpContext.User.IsInRole("Admin");
+            bool isModerator = _http.HttpContext.User.IsInRole("Moderator");
+            if (item.AppUserId != currentUserId || !isAdmin || !isModerator)
+                throw new WrongRequestException("You do not have permission to restore this job.");
 
             item.IsDeleted = false;
             await _repository.SaveChangeAsync();
@@ -432,7 +446,12 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             Product item = await _getByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
+
+            string currentUserId = _http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            bool isAdmin = _http.HttpContext.User.IsInRole("Admin");
+            bool isModerator = _http.HttpContext.User.IsInRole("Moderator");
+            if (item.AppUserId != currentUserId || !isAdmin || !isModerator)
+                throw new WrongRequestException("You do not have permission to restore this job.");
 
             item.IsDeleted = true;
             await _repository.SaveChangeAsync();
@@ -451,7 +470,6 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.ProductImages)}" };
             Product item = await _getByIdAsync(id, includes: includes);
             update.Images = _mapper.Map<ICollection<IncludeProductImageVM>>(item.ProductImages);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             if (!model.IsValid)
             {
@@ -682,7 +700,6 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Product.ProductViewTypes)}.{nameof(ProductViewType.ViewType)}",
                 $"{nameof(Product.ProductImages)}" };
             Product item = await _getByIdAsync(id, includes: includes);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateProductVM update = _mapper.Map<UpdateProductVM>(item);
 
@@ -778,7 +795,7 @@ namespace Estate.Persistance.Implementations.Services
 
             if (productId <= 0) throw new WrongRequestException("The request sent does not exist");
             Product item = await _getByIdAsync(productId, false, $"{nameof(Product.AppUser)}");
-            if (item == null) throw new NotFoundException("Your request was not found");
+
             AppUser user = await _userManager.FindByIdAsync(_http.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
             if (user == null) throw new NotFoundException("Your request was not found");
             await _email.SendMailAsync(item.AppUser.Email, $"{user.Name} {user.Surname} sent a message from the {item.Name} product",

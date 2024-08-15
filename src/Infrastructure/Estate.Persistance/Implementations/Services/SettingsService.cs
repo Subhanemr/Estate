@@ -27,8 +27,12 @@ namespace Estate.Persistance.Implementations.Services
         }
         public async Task<PaginationVM<ItemSettingsVM>> GetFilteredAsync(string? search, int take, int page, int order)
         {
-            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
-            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (page <= 0)
+                throw new WrongRequestException("Invalid page number.");
+            if (take <= 0)
+                throw new WrongRequestException("Invalid take value.");
+            if (order <= 0)
+                throw new WrongRequestException("Invalid order value.");
 
             double count = await _repository
                 .CountAsync(x => x.IsDeleted == false && !string.IsNullOrEmpty(search) ? x.Key.ToLower().Contains(search.ToLower()) : true, false);
@@ -78,7 +82,6 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             Settings item = await _getByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateSettingsVM update = new UpdateSettingsVM { Key = item.Key, Value = item.Value };
 
@@ -89,7 +92,6 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             Settings item = await _getByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             if (await _repository.CheckUniqueAsync(x => x.Key.ToLower().Trim() == update.Key.ToLower().Trim() && x.Id != id))
             {

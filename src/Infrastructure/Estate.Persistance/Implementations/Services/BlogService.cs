@@ -96,7 +96,7 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.BlogReplies)}",
                 $"{nameof(Blog.BlogImages)}" };
             Blog item = await _getByIdAsync(id, includes: includes);
-            if (item == null) throw new NotFoundException("Your request was not found");
+
             foreach (var image in item.BlogImages)
             {
                 await _cLoud.FileDeleteAsync(image.Url);
@@ -133,8 +133,12 @@ namespace Estate.Persistance.Implementations.Services
 
         public async Task<PaginationVM<ItemBlogVM>> GetFilteredAsync(string? search, int take, int page, int order, bool isDeleted = false)
         {
-            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
-            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (page <= 0)
+                throw new WrongRequestException("Invalid page number.");
+            if (take <= 0)
+                throw new WrongRequestException("Invalid take value.");
+            if (order <= 0)
+                throw new WrongRequestException("Invalid order value.");
 
             string[] includes = { $"{nameof(Blog.BlogImages)}" };
 
@@ -190,7 +194,6 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.AppUser)}",
                 $"{nameof(Blog.BlogImages)}" };
             Blog item = await _getByIdAsync(id, false, includes);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             GetBlogVM get = _mapper.Map<GetBlogVM>(item);
 
@@ -201,7 +204,6 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             Blog item = await _getByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
             await _repository.SaveChangeAsync();
@@ -211,7 +213,6 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             Blog item = await _getByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
             await _repository.SaveChangeAsync();
@@ -225,7 +226,6 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Blog.BlogImages)}" };
             Blog item = await _getByIdAsync(id, includes: includes);
             update.Images = _mapper.Map<ICollection<IncludeBlogImageVM>>(item.BlogImages);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             if (!model.IsValid) return false;
 
@@ -302,7 +302,6 @@ namespace Estate.Persistance.Implementations.Services
                 $"{nameof(Blog.BlogComments)}.{nameof(BlogComment.BlogReplies)}",
                 $"{nameof(Blog.BlogImages)}" };
             Blog item = await _getByIdAsync(id, includes: includes);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateBlogVM update = _mapper.Map<UpdateBlogVM>(item);
 

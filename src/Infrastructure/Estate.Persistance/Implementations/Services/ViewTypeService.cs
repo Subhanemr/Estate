@@ -47,8 +47,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task DeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ViewType item = await _repository.GetByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
+            ViewType item = await _getByIdAsync(id);
 
             _repository.Delete(item);
             await _repository.SaveChangeAsync();
@@ -75,8 +74,12 @@ namespace Estate.Persistance.Implementations.Services
         }
         public async Task<PaginationVM<ItemViewTypeVM>> GetFilteredAsync(string? search, int take, int page, int order, bool isDeleted = false)
         {
-            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
-            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (page <= 0)
+                throw new WrongRequestException("Invalid page number.");
+            if (take <= 0)
+                throw new WrongRequestException("Invalid take value.");
+            if (order <= 0)
+                throw new WrongRequestException("Invalid order value.");
 
             string[] includes = { $"{nameof(ViewType.ProductViewTypes)}" };
             double count = await _repository
@@ -126,8 +129,7 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(ViewType.ProductViewTypes)}.{nameof(ProductViewType.Product)}.{nameof(Product.ProductImages)}" };
-            ViewType item = await _repository.GetByIdAsync(id, IsTracking: false, includes: includes);
-            if (item == null) throw new NotFoundException("Your request was not found");
+            ViewType item = await _getByIdAsync(id, false, includes);
 
             GetViewTypeVM get = _mapper.Map<GetViewTypeVM>(item);
 
@@ -137,8 +139,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task ReverseSoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ViewType item = await _repository.GetByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
+            ViewType item = await _getByIdAsync(id);
 
             item.IsDeleted = false;
             await _repository.SaveChangeAsync();
@@ -147,8 +148,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task SoftDeleteAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ViewType item = await _repository.GetByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
+            ViewType item = await _getByIdAsync(id);
 
             item.IsDeleted = true;
             await _repository.SaveChangeAsync();
@@ -157,8 +157,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<UpdateViewTypeVM> UpdateAsync(int id)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ViewType item = await _repository.GetByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
+            ViewType item = await _getByIdAsync(id);
 
             UpdateViewTypeVM update = _mapper.Map<UpdateViewTypeVM>(item);
 
@@ -168,8 +167,7 @@ namespace Estate.Persistance.Implementations.Services
         public async Task<bool> UpdatePostAsync(int id, UpdateViewTypeVM update, ModelStateDictionary model)
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
-            ViewType item = await _repository.GetByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
+            ViewType item = await _getByIdAsync(id);
 
             if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == update.Name.ToLower().Trim() && x.Id != id))
             {
@@ -180,6 +178,15 @@ namespace Estate.Persistance.Implementations.Services
             _repository.Update(item);
             await _repository.SaveChangeAsync();
             return true;
+        }
+
+        private async Task<ViewType> _getByIdAsync(int id, bool isTracking = true, params string[] includes)
+        {
+            ViewType viewType = await _repository.GetByIdAsync(id, isTracking, includes);
+            if (viewType is null)
+                throw new NotFoundException($"Roof-Type not found({id})!");
+
+            return viewType;
         }
     }
 }

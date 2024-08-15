@@ -48,7 +48,6 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             RoofType item = await _getByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             _repository.Delete(item);
             await _repository.SaveChangeAsync();
@@ -75,8 +74,12 @@ namespace Estate.Persistance.Implementations.Services
         }
         public async Task<PaginationVM<ItemRoofTypeVM>> GetFilteredAsync(string? search, int take, int page, int order, bool isDeleted = false)
         {
-            if (page <= 0) throw new WrongRequestException("The request sent does not exist");
-            if (order <= 0) throw new WrongRequestException("The request sent does not exist");
+            if (page <= 0)
+                throw new WrongRequestException("Invalid page number.");
+            if (take <= 0)
+                throw new WrongRequestException("Invalid take value.");
+            if (order <= 0)
+                throw new WrongRequestException("Invalid order value.");
 
             string[] includes = { $"{nameof(RoofType.ProductRoofTypes)}" };
             double count = await _repository
@@ -128,7 +131,6 @@ namespace Estate.Persistance.Implementations.Services
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             string[] includes = { $"{nameof(RoofType.ProductRoofTypes)}.{nameof(ProductRoofType.Product)}.{nameof(Product.ProductImages)}" };
             RoofType item = await _getByIdAsync(id, false, includes);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             GetRoofTypeVM get = _mapper.Map<GetRoofTypeVM>(item);
 
@@ -139,7 +141,6 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             RoofType item = await _getByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = false;
             await _repository.SaveChangeAsync();
@@ -149,7 +150,6 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             RoofType item = await _getByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             item.IsDeleted = true;
             await _repository.SaveChangeAsync();
@@ -159,7 +159,6 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             RoofType item = await _getByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             UpdateRoofTypeVM update = _mapper.Map<UpdateRoofTypeVM>(item);
 
@@ -170,7 +169,6 @@ namespace Estate.Persistance.Implementations.Services
         {
             if (id <= 0) throw new WrongRequestException("The request sent does not exist");
             RoofType item = await _getByIdAsync(id);
-            if (item == null) throw new NotFoundException("Your request was not found");
 
             if (await _repository.CheckUniqueAsync(x => x.Name.ToLower().Trim() == update.Name.ToLower().Trim() && x.Id != id))
             {
